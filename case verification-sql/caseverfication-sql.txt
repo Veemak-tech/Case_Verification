@@ -1,0 +1,104 @@
+INSERT INTO `caseverificationdb`.`roles` (`Id`, `Name`, `IsActive`) VALUES ('1', 'Ashok', 'True');
+INSERT INTO `caseverificationdb`.`roles` (`Id`, `Name`, `IsActive`) VALUES ('2', 'Karthi', 'True');
+INSERT INTO `caseverificationdb`.`roles` (`Id`, `Name`, `IsActive`) VALUES ('3', 'Aravind', 'True');
+
+
+CREATE TABLE `caseverificationdb`.`appusers` (
+  `id` INT NOT NULL,
+  `Name` VARCHAR(45) NULL,
+  `EmailAddress` VARCHAR(45) NULL,
+  `UserName` VARCHAR(45) NULL,
+  `Password` VARCHAR(45) NULL,
+  `IsActive` VARCHAR(45) NULL,
+  `IsDeleted` VARCHAR(45) NULL,
+  `CreatedBy` VARCHAR(45) NULL,
+  `CreatedDate` DATETIME NULL DEFAULT NOW(),
+  `LastModifiedBy` VARCHAR(45) NULL,
+  `LastModefiedDate` DATETIME NULL DEFAULT NOW(),
+  `RoleID` INT NULL,
+  PRIMARY KEY (`id`));
+
+
+CREATE TABLE `caseverificationdb`.`verificationtype` (
+  `ID` INT NOT NULL,
+  `Name` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`ID`));
+
+
+CREATE TABLE `caseverificationdb`.`addresstable` (
+  `ID` INT NOT NULL,
+  `AddressLine1` VARCHAR(45) NOT NULL,
+  `AddressLine2` VARCHAR(45) NOT NULL,
+  `City` VARCHAR(45) NOT NULL,
+  `Landmark` VARCHAR(45) NOT NULL,
+  `State` VARCHAR(45) NOT NULL,
+  `Pincode` VARCHAR(45) NOT NULL,
+  `GEOLocation` VARCHAR(45) NOT NULL,
+	`CreatedBy` VARCHAR(45) NULL,
+  `CreatedDate` DATETIME NULL DEFAULT NOW(),
+  `LastModifiedBy` VARCHAR(45) NULL,
+  `LastModefiedDate` DATETIME NULL DEFAULT NOW(),
+  PRIMARY KEY (`ID`));
+
+
+CREATE TABLE `caseverificationdb`.`casedetails` (
+  `ID` INT NOT NULL,
+  `CaseID` VARCHAR(45) NULL,
+  `Description` VARCHAR(255) NULL,
+  `InsurarName` VARCHAR(45) NULL,
+  `PhoneNumber` VARCHAR(45) NULL,
+  `EmailID` VARCHAR(45) NULL,
+  `AlterNativePhoneNumber` VARCHAR(45) NULL,
+  `InsurarVerificationNotes` VARCHAR(45) NULL,
+  `WitnessVerificationNotes` VARCHAR(45) NULL,
+`CreatedBy` VARCHAR(45) NULL,
+  `CreatedDate` DATETIME NULL DEFAULT NOW(),
+  `LastModifiedBy` VARCHAR(45) NULL,
+  `LastModefiedDate` DATETIME NULL DEFAULT NOW(),
+  PRIMARY KEY (`ID`));
+
+
+CREATE TABLE `caseverificationdb`.`verificationstatustype` (
+  `ID` INT NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`ID`));
+
+
+CREATE TABLE `caseverificationdb`.`thirdpartydetails` (
+  `ID` INT NOT NULL,
+  `CaseID` VARCHAR(45) NULL,
+  `InsurarName` VARCHAR(45) NULL,
+  `PhoneNumber` VARCHAR(45) NULL,
+  `AlternativePhoneNumber` VARCHAR(45) NULL,
+  `EmailID` VARCHAR(45) NULL,
+  `AddressID` VARCHAR(45) NULL,
+`CreatedBy` VARCHAR(45) NULL,
+  `CreatedDate` DATETIME NULL DEFAULT NOW(),
+  `LastModifiedBy` VARCHAR(45) NULL,
+  `LastModefiedDate` DATETIME NULL DEFAULT NOW(),
+  PRIMARY KEY (`ID`));
+
+
+CREATE TABLE `caseverificationdb`.`filetype` (
+  `ID` INT NOT NULL,
+  `Name` VARCHAR(45) NULL,
+  `FileExtension` VARCHAR(45) NULL,
+  PRIMARY KEY (`ID`));
+
+
+CREATE TABLE `caseverificationdb`.`assignments` (
+  `AssignmentID` INT NOT NULL AUTO_INCREMENT,
+  `CaseID` INT NULL,
+  `AppUserID` INT NULL,
+`CreatedBy` VARCHAR(45) NULL,
+  `CreatedDate` DATETIME NULL DEFAULT NOW(),
+  `LastModifiedBy` VARCHAR(45) NULL,
+  `LastModefiedDate` DATETIME NULL DEFAULT NOW(),
+  PRIMARY KEY (`AssignmentID`));
+
+
+SELECT id, caseverificationdb.appusers.Name, EmailAddress, 
+UserName ,xdy.Name as 'RoleName'
+FROM caseverificationdb.appusers 
+inner join caseverificationdb.roles as xdy on xdy.RoleId  = caseverificationdb.appusers.RoleID 
+
