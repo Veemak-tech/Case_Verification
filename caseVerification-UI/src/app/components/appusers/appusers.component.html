@@ -1,0 +1,151 @@
+<div class="container-fluid">
+  <div class="row product-adding">
+    <div class="col-xl-6">
+      <div class="card">
+        <div class="card-header">
+          <h5>App Users</h5>
+        </div>
+        <div class="card-body">
+          <div class="digital-add needs-validation">
+            <div class="form-group">
+              <label for="validationCustom01" class="col-form-label pt-0"><span>*</span> Name</label>
+              <input class="form-control" id="validationCustom01" type="text" required="" placeholder="Full Name">
+            </div>
+            <div class="form-group">
+              <label for="validationCustomtitle" class="col-form-label pt-0"><span>*</span> Email</label>
+              <input class="form-control" id="validationCustomtitle" type="text" required="" placeholder="Email Address">
+            </div>
+            <div class="form-group">
+              <label for="validationCustomtitle" class="col-form-label pt-0"><span>*</span> Username</label>
+              <input class="form-control" id="validationCustomtitle" type="text" required="" placeholder="UserName">
+            </div>
+            <div class="form-group">
+              <label for="validationCustomtitle" class="col-form-label pt-0"><span>*</span> Password</label>
+              <input class="form-control" id="validationCustomtitle" id="myInput" type="password" required="" placeholder="Min 8 Characters">
+
+            </div>
+            <!-- <div class="form-group">
+                          <label class="col-form-label">Sort Summary</label>
+                          <textarea rows="5" cols="12"></textarea>
+                      </div>
+                      <div class="form-group">
+                          <label for="validationCustom02" class="col-form-label"><span>*</span> Product Price</label>
+                          <input class="form-control" id="validationCustom02" type="text" required="">
+                      </div>
+                      <div class="form-group">
+                          <label class="col-form-label"><span>*</span> Status</label>
+                          <div class="m-checkbox-inline mb-0 custom-radio-ml d-flex radio-animated">
+                              <label class="d-block" for="edo-ani">
+                                  <input class="radio_animated" id="edo-ani" type="radio" name="rdo-ani">
+                                  Enable
+                              </label>
+                              <label class="d-block" for="edo-ani1">
+                                  <input class="radio_animated" id="edo-ani1" type="radio" name="rdo-ani">
+                                  Disable
+                              </label>
+                          </div>
+                      </div>
+                      <label class="col-form-label pt-0"> Product Upload</label>
+                      <div class="card-body dropzone-custom p-0">
+                          <div class="dropzone dropzone-primary" [dropzone]="config1" (error)="onUploadError($event)"
+                              (success)="onUploadSuccess($event)">
+                              <div class="dz-message needsclick">
+                                  <i class="fa fa-cloud-upload"></i>
+                                  <h4 class="mb-0 f-w-600">Drop files here or click to upload.</h4>
+                              </div>
+                          </div>
+                      </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-xl-6">
+      <div class="card">
+        <div class="digital-add needs-validation">
+          <div class="card-body">
+          <div class="form-group mx-sm-3 mb-2">
+            <label class="col-form-label"><span>*</span> Status</label><br>
+            <input type="radio" name="status" value="IsActive" id="statusActive"><span></span>
+            <label for="validationCustomtitle" class="col-form-label pt-0" style="margin-left: 10px;"> Is Active</label>
+            <br>
+            <input type="radio" name="status" value="IsDeleted" id="statusDeleted"><span></span>
+            <label for="validationCustomtitle" class="col-form-label pt-0" style="margin-left: 10px;"> Is Deleted</label>
+
+            <!-- <select class="custom-select" required="">
+              <option value="1">Active</option>
+              <option value="2">Deleted</option>
+            </select> -->
+          </div>
+          <div class="form-group mx-sm-3 mb-2">
+            <label for="validationCustomtitle" class="col-form-label pt-0"><span>*</span> RoleID</label>
+            <input class="form-control" id="validationCustomtitle" type="text" required="">
+          <div>
+            <label for="validationCustomtitle" class="col-form-label pt-0 "><span>*</span> Created By</label>
+            <input type="text" class="form-control" id="validationCustomtitle" required="">
+          </div>
+          <div>
+            <label for="validationCustomtitle" class="col-form-label pt-0 "><span>*</span> Created Date</label>
+            <input type="datetime-local" class="form-control" id="validationCustomtitle" required="">
+          </div>
+          <div>
+            <label for="validationCustomtitle" class="col-form-label pt-0 "><span>*</span> Last Modified By</label>
+            <input type="text" class="form-control" id="validationCustomtitle" required="">
+          </div>
+          <div>
+            <label for="validationCustomtitle" class="col-form-label pt-0 "><span>*</span> Last Modified Date</label>
+            <input type="datetime-local" class="form-control" id="validationCustomtitle" required="">
+          </div>
+        </div>
+        </div>
+      </div>
+      </div>
+      <div class="form-group mb-0">
+        <div class="product-buttons text-center">
+          <button type="submit" class="btn btn-success mr-1">Submit</button>
+        </div>
+      </div>
+      <!-- <div class="col-xl-6">
+          <div class="card">
+              <div class="card-header">
+                  <h5>Add Description</h5>
+              </div>
+              <div class="card-body">
+                  <div class="digital-add needs-validation">
+                      <div class="form-group mb-0">
+                          <div class="description-sm">
+                              <ck-editor id="editor1" language="en" [fullPage]="false"></ck-editor>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="card">
+              <div class="card-header">
+                  <h5>Meta Data</h5>
+              </div>
+              <div class="card-body">
+                  <div class="digital-add needs-validation">
+                      <div class="form-group">
+                          <label for="validationCustom05" class="col-form-label pt-0"> Meta Title</label>
+                          <input class="form-control" id="validationCustom05" type="text" required="">
+                      </div>
+                      <div class="form-group">
+                          <label class="col-form-label">Meta Description</label>
+                          <textarea rows="4" cols="12"></textarea>
+                      </div>
+                      <div class="form-group mb-0">
+                          <div class="product-buttons text-center">
+                              <button type="button" class="btn btn-primary mr-1">Add</button>
+                              <button type="button" class="btn btn-light">Discard</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div> -->
+    </div>
+  </div>
+</div>
+
