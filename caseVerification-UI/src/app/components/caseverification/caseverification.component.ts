@@ -3,21 +3,20 @@ import { DomSanitizer } from '@angular/platform-browser';
 import * as RecordRTC from 'recordrtc';
 
 @Component({
-  selector: 'app-documents',
-  templateUrl: './documents.component.html',
-  styleUrls: ['./documents.component.scss']
+  selector: 'app-caseverification',
+  templateUrl: './caseverification.component.html',
+  styleUrls: ['./caseverification.component.scss']
 })
 
-
-export class DocumentsComponent {
+export class CaseverificationComponent {
 
   //Lets initiate Record OBJ
-   public record;
+   private record;
    //Will use this flag for detect recording
-   public recording = false;
+   private recording = false;
    //Url of Blob
-   public url;
-   public error;
+   private url;
+   private error;
    constructor(private domSanitizer: DomSanitizer) {
    }
    sanitize(url:string){
@@ -72,3 +71,13 @@ export class DocumentsComponent {
    }
 }
 
+export class Caseverification implements OnInit {
+
+
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}

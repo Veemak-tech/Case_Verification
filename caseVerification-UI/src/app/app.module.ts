@@ -23,6 +23,12 @@ import { AuthModule } from './components/auth/auth.module';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { CasedetailsComponent } from './components/casedetails/casedetails.component';
 import { DocumentsComponent } from './components/documents/documents.component';
+import { ThirdpartydetailsComponent } from './components/thirdpartydetails/thirdpartydetails.component';
+import { CaseverificationComponent } from './components/caseverification/caseverification.component';
+import { CasecreationComponent } from './components/casecreation/casecreation.component';
+import { CaselistComponent } from './components/caselist/caselist.component';
+import { DomSanitizer } from '@angular/platform-browser';
+
 
 
 @NgModule({
@@ -30,6 +36,10 @@ import { DocumentsComponent } from './components/documents/documents.component';
     AppComponent,
     CasedetailsComponent,
     DocumentsComponent,
+    ThirdpartydetailsComponent,
+    CaseverificationComponent,
+    CasecreationComponent,
+    CaselistComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -50,7 +60,8 @@ import { DocumentsComponent } from './components/documents/documents.component';
     MediaModule,
     MenusModule,
     UsersModule,
-    CKEditorModule
+    CKEditorModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
