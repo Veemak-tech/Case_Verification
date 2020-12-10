@@ -1,6 +1,6 @@
-# MultikartBackend
+# Case Verification Backend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.8.
 
 ## Development server
 
