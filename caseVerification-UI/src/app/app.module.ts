@@ -28,7 +28,9 @@ import { CaseverificationComponent } from './components/caseverification/casever
 import { CasecreationComponent } from './components/casecreation/casecreation.component';
 import { CaselistComponent } from './components/caselist/caselist.component';
 import { DomSanitizer } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { Caseverification2Component } from './components/caseverification2/caseverification2.component';
 
 
 @NgModule({
@@ -40,6 +42,7 @@ import { DomSanitizer } from '@angular/platform-browser';
     CaseverificationComponent,
     CasecreationComponent,
     CaselistComponent,
+    Caseverification2Component,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -61,6 +64,9 @@ import { DomSanitizer } from '@angular/platform-browser';
     MenusModule,
     UsersModule,
     CKEditorModule,
+    HttpClientModule,
+    FormsModule,
+    BrowserModule
 
   ],
   providers: [],

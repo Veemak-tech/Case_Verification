@@ -4,17 +4,27 @@
 
 <div class="card">
   <div class="row">
-  <div style="margin-left: 30px;" class="col-md-6"><br>
+    <div class="form-group" class="col-md-6" style="margin-left: 20px;">
+      <label for="validationCustom01" class="col-form-label pt-0"><span>*</span> Name</label>
+      <input class="form-control" id="validationCustom01" type="text" required="" placeholder="Full Name">
+    </div>
+    <div class="col-md-4" style="margin-left: 20px;">
+      <label for="validationCustom01"><span>*</span> Case ID</label>
+      <input class="form-control" id="validationCustom01" type="text" required="" placeholder="Case ID"
+        style="width:100px;">
+    </div>
+  <!-- <div style="margin-left: 30px;" class="col-md-6"><br>
     <label for="validationCustom01" class="col-form-label pt-0">Status</label>
     <input class="form-control" id="validationCustom01" style="width: 100px;" type="text" placeholder="Is Active" readonly>
   </div>
-  <div class="col-md-4" style="margin-left: 180px;"><br>
+  <div class="col-md-4" ><br>
     <label for="validationCustom01">Agent</label>
     <input class="form-control" id="validationCustom01" type="text" required="" placeholder="Agent Name" style="width: 300px;" readonly>
-  </div>
+  </div> -->
 </div>
 <br>
 </div>
+
 
 <div class="table-responsive">
 <table class="table table-hover">
@@ -30,43 +40,15 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>1</td>
-      <td>Mark</td>
+    <tr *ngFor="let item of data">
+      <td>{{item.CaseID}}</td>
+      <td>{{item.Name}}</td>
       <td>Active</td>
       <td>Vinoth</td>
       <td>01-02-2019</td>
       <td>05-02-2019</td>
       <td>25-02-2019</td>
     </tr>
-    <tr>
-      <td>2</td>
-      <td>Martin</td>
-      <td>Active</td>
-      <td>Vinoth kumar</td>
-      <td>11-02-2019</td>
-      <td>25-02-2019</td>
-      <td>28-12-2019</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Arun</td>
-      <td>Active</td>
-      <td>Vicky</td>
-      <td>07-02-2019</td>
-      <td>08-02-2019</td>
-      <td>29-02-2019</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>Venkat</td>
-      <td>Active</td>
-      <td>Arul</td>
-      <td>08-02-2019</td>
-      <td>09-02-2019</td>
-      <td>19-02-2019</td>
-    </tr>
-
   </tbody>
 </table>
 <hr>

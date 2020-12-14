@@ -1,0 +1,183 @@
+<div class=container>
+  <div class="card shadow-lg p-3 mb-5 bg-white rounded ">
+    <form>
+      <h3 class="maintitle">Case Creation</h3>
+      <h4 class="subhead1">Case Details</h4>
+      <div class="content">
+        <div class="row">
+          <!-- Case ID -->
+          <div class="col-lg-6 col-md-6">
+            <div class="form-group" class="caseid">
+              <div class="form-group form-inline">
+                <label for="exampleInputCompany">Case ID:</label>
+                <input ngModel type="text" class="form-control" name="CompanyName" id="exampleInputCompany"
+                  placeholder="" required />
+              </div>
+            </div>
+          </div>
+          <!-- Ref Number -->
+          <div class="col-lg-6 col-md-6">
+            <div class="form-group" class="refnumber">
+              <div class="form-group form-inline">
+                <label for="exampleInputLoction">Ref Number:</label>
+                <input ngModel type="text" class="form-control" name="Location" id="exampleInputLoction" placeholder=""
+                  required />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- Due Date -->
+          <div class="col-lg-6 col-md-6">
+            <div class="form-group">
+              <div class="form-group form-inline">
+                <label for="exampleInputCompany">Due Date:</label>
+                <input ngModel type="date" class="form-control form-group1" name="CompanyName" id="exampleInputCompany"
+                  placeholder="" required />
+              </div>
+            </div>
+          </div>
+          <!-- Agent -->
+          <div class="col-lg-6 col-md-6">
+            <div class="form-group" class="agentname">
+              <div class="form-group form-inline">
+                <label for="exampleInputLoction">Agent Name:</label>
+                <input ngModel type="text" class="form-control" name="Location" id="exampleInputLoction" placeholder=""
+                  required />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gen Notes -->
+      <div class="content1">
+        <div class="form-group" class="gennotes">
+          <div class="form-group form-inline">
+            <label for="exampleFormControlTextarea1">Notes</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" cols="88"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+      <h3 class="subhead2">Insurer Details</h3>
+      <div class="content2">
+        <div class="row">
+          <!-- Name -->
+          <div class="col-lg-6 col-md-6">
+            <div class="form-group" class="name1">
+              <div class="form-group form-inline">
+                <label for="exampleInputCompany">Name:</label>
+                <input ngModel type="text" class="form-control" name="CompanyName" id="exampleInputCompany"
+                  placeholder="" required style="padding-right: 10px;" />
+              </div>
+            </div>
+          </div>
+          <!-- Phone -->
+          <div class="col-lg-6 col-md-6">
+            <div class="form-group" class="phoneno">
+              <div class="form-group form-inline">
+                <label for="exampleInputLoction">Phone No:</label>
+                <input ngModel type="text" class="form-control" name="Location" id="exampleInputLoction" placeholder=""
+                  required />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="content2">
+        <div class="row">
+          <div class="col-lg-6 col-md-6">
+            <div class="form-group" class="emailid">
+              <div class="form-group form-inline">
+                <label for="exampleInputCompany">Email ID:</label>
+                <input ngModel type="email" class="form-control" name="email" id="exampleInputCompany" placeholder=""
+                  required style="padding-right: 10px;" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Address Line 1 and 2 -->
+      <div class="content2">
+        <div class="row">
+
+
+          <div class="row ad">
+            <div class="col">
+              <input type="text" class="form-control ad1 " placeholder="Address Line 1">
+            </div>
+            <div class="col">
+              <input type="text" class="form-control ad2" placeholder="Address Line 2">
+            </div>
+          </div><br><br>
+
+          <div class="fourboxes">
+            <div class="form-row">
+
+              <div class="form-group col-md-2">
+                <input type="text" class="form-control" id="inputCity" size="15" placeholder="City">
+              </div>
+              <div class="form-group col-md-3">
+                <input type="text" class="form-control" id="inputZip" size="15" placeholder="State">
+              </div>
+              <div class="form-group col-md-2">
+                <input type="text" class="form-control" id="inputZip" size="7" placeholder="Pincode">
+              </div>
+              <div class="form-group col-md-4">
+                <input type="text" class="form-control" id="inputZip" size="15" placeholder="Landmark">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="form-group form-inline" class="Questionaaire1">
+        <div class="content4">
+          <label for="exampleFormControlTextarea1">Questions</label>
+        </div>
+          <!-- <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </label> -->
+          <div class="row m-r-30">
+            <div class="col-md-10">
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+            </div>
+            <div class="col-md-2 action-buttons">
+              <button type="button" class="btn btn-warning btn-sm " id="recordAudioButton">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-music-note"
+                  viewBox="0 0 16 16">
+                  <path d="M9 13c0 1.105-1.12 2-2.5 2S4 14.105 4 13s1.12-2 2.5-2 2.5.895 2.5 2z" />
+                  <path fill-rule="evenodd" d="M9 3v10H8V3h1z" />
+                  <path d="M8 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 13 2.22V4L8 5V2.82z" />
+                </svg>
+              </button>
+
+              <button type="button" class="btn btn-success btn-sm">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-camera-video-fill" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5z" />
+                </svg>
+              </button>
+
+              <input class="a" type="submit">
+            </div>
+          </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+
+<img src="/src/assets/images/Untitled.jpg" alt="">

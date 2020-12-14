@@ -1,3 +1,4 @@
+import { Caseverification2Component } from './components/caseverification2/caseverification2.component';
 import { CaselistComponent } from './components/caselist/caselist.component';
 import { CasecreationComponent } from './components/casecreation/casecreation.component';
 import { CaseverificationComponent } from './components/caseverification/caseverification.component';
@@ -30,7 +31,8 @@ const routes: Routes = [
   // { path: 'thirdpartydetails', component: ThirdpartydetailsComponent},
   { path: 'caseverification', component: CaseverificationComponent},
   { path: 'casecreation', component: CasecreationComponent},
-  { path: 'caselist', component: CaselistComponent}
+  { path: 'caselist', component: CaselistComponent},
+  { path: 'caseverification2', component:Caseverification2Component}
 ];
 
 @NgModule({

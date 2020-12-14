@@ -71,13 +71,13 @@ export class CaseverificationComponent {
    }
 }
 
-export class Caseverification implements OnInit {
+// export class Caseverification implements OnInit {
 
 
 
-  constructor() { }
+//   constructor() { }
 
-  ngOnInit(): void {
-  }
+//   ngOnInit(): void {
+//   }
 
-}
+// }
