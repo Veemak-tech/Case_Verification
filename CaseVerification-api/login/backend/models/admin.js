@@ -1,6 +1,6 @@
 const db = require('../util/database');
 
-module.exports = class User {
+module.exports = class admin {
   constructor(name, email, password) {
     this.name = name;
     this.email = email;
@@ -11,10 +11,10 @@ module.exports = class User {
     return db.execute('SELECT * FROM admin WHERE email = ?', [email]);
   }
 
-//   static save(user) {
-//     return db.execute(
-//       'INSERT INTO user (name, email, password) VALUES (?, ?, ?)',
-//       [user.name, user.email, user.password]
-//     );
-//   }
+   static save(user) {
+     return db.execute(
+       'INSERT INTO admin (name, email, password) VALUES (?, ?, ?)',
+       [user.name, user.email, user.password]
+     );
+   }
 };

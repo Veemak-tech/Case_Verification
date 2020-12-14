@@ -3,11 +3,11 @@ const { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-const User = require('../models/user');
+const admin = require('../models/admin');
 
 exports.signup = async (req, res, next) => {
- console.log(" its work");
-  console.log(req.body);
+ 
+
    const errors = validationResult(req);
 
    if (!errors.isEmpty()) return;
@@ -25,7 +25,7 @@ exports.signup = async (req, res, next) => {
       password: hashedPassword,
     };
 
-    const result = await User.save(userDetails);
+    const result = await admin.save(userDetails);
 
     res.status(201).json({ message: 'User registered!' });
   } catch (err) {
@@ -40,7 +40,7 @@ exports.login = async (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
   try {
-    const user = await User.find(email);
+    const user = await admin.find(email);
 
     if (user[0].length !== 1) {
       const error = new Error('A user with this email could not be found.');

@@ -6,8 +6,11 @@ const authRoutes = require('./routes/auth');
 
 const postsRoutes = require('./routes/posts');
 
+const adminRoutes =require('./routes/adminauth');
+
 
 const errorController = require('./controllers/error');
+
 
 const app = express();
 
@@ -33,10 +36,13 @@ app.use((req, res, next) => {
 
 app.use('/auth', authRoutes);
 
-app.use('/post', postsRoutes);
+app.use('/posts', postsRoutes);
 
- app.use(errorController.get404);
+app.use('/adminauth',adminRoutes);
 
- app.use(errorController.get500);
+
+//  app.use(errorController.get404);
+
+//  app.use(errorController.get500);
 
 app.listen(ports, () => console.log(`Listening on port ${ports}`));
