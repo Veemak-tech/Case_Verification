@@ -136,11 +136,11 @@
                         <div class="card-body">
                             <ngb-tabset class="tab-coupon mb-0">
                                 <ngb-tab>
-                                    <ng-template ngbTabTitle><i class="icon-user mr-2"></i>Admin Login</ng-template>
+                                    <ng-template ngbTabTitle><i class="icon-user mr-2"></i>Login</ng-template>
                                     <ng-template ngbTabContent>
                                         <div class="tab-pane fade active show" id="account" role="tabpanel"
                                             aria-labelledby="account-tab">
-                                            <form [formGroup]="loginForm"
+                                            <form [formGroup]="loginForm" 
                                                 class="form-horizontal auth-form" novalidate="">
                                                 <div class="form-group">
                                                     <input required="" name="login[username]" type="email"
@@ -181,9 +181,9 @@
                                     </ng-template>
                                 </ngb-tab>
                                 <ngb-tab>
-                                    <ng-template ngbTabTitle><i class="icon-unlock mr-2"></i>User Login
+                                    <ng-template ngbTabTitle><i class="icon-unlock mr-2"></i> Register
                                         <ng-template ngbTabContent>
-                                            <form [formGroup]="registerForm"
+                                            <form [formGroup]="registerForm" 
                                                 class="form-horizontal auth-form" novalidate>
                                                 <div class="form-group">
                                                     <input required="" name="login[username]" type="email"

@@ -1726,7 +1726,7 @@ div{
 
 .btn{
   font-size: $btn-font-size;
-  // padding: $btn-padding;
+  padding: $btn-padding;
   border-radius: 5px;
   letter-spacing: 1px;
   line-height: 20px;
@@ -3471,8 +3471,8 @@ $warning-color;
         (dark, $dark-color),
         (warning, $warning-color) {
   .btn-#{$btn-name}{
-    background-color: $btn-color ;
-    border-color: $btn-color ;
+    background-color: $btn-color !important;
+    border-color: $btn-color !important;
     &.disabled{
       background-color: $btn-color !important;
       border-color: $btn-color !important;
