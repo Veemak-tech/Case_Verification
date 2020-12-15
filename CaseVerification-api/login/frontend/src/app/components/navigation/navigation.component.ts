@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { AdminauthService } from 'src/app/services/adminauth.service';
+
 
 import { AuthService } from "src/app/services/auth.service";
 
@@ -12,15 +12,13 @@ import { AuthService } from "src/app/services/auth.service";
 export class NavigationComponent implements OnInit {
   isAuthenticated = false;
 
-  constructor(private authService: AuthService,
-    private adminauthService: AdminauthService, 
-
-    private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.authService.isUserLoggedIn$.subscribe((isLoggedIn) => {
       this.isAuthenticated = isLoggedIn;
     });
+    
  }
 
   logout(): void {
@@ -28,10 +26,6 @@ export class NavigationComponent implements OnInit {
     this.authService.isUserLoggedIn$.next(false);
     this.router.navigate(["login"]);
   }
-  adminlogout():void{
-    localStorage.removeItem("token");
-    this.adminauthService.isUserLoggedIn$.next(false);
-    this.router.navigate(["admin"])
-  }
+  
 }
 

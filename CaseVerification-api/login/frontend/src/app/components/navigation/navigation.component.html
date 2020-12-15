@@ -12,13 +12,12 @@
     >
       <span>Posts</span>
     </a>
-    
     <a
       *ngIf="!isAuthenticated"
       routerLinkActive="active-link"
       routerLink="/login"
     >
-      <span>Login</span>
+      <span>user</span>
     </a>
     <a
       *ngIf="isAuthenticated"
@@ -29,32 +28,10 @@
       <span>Logout</span>
     </a>
     <a
-      *ngIf="isAuthenticated"
-      routerLinkActive="active-link"
-      routerLink="admin"
+    routerLinkActive="active-link"
+    routerLink="/admin"
     >
-      <span>case</span>
-    </a>
-    <a
-      *ngIf="!isAuthenticated"
-      routerLinkActive="active-link"
-      routerLink="/admin"
-    ><a
-    *ngIf="!isAuthenticated"
-    routerLinkActive="active-link"
-    routerLink="/admin"
-  >
-    <span>admin</span>
-  </a>
-  <a
-    *ngIf="isAuthenticated"
-    (click)="adminlogout()"
-    routerLinkActive="active-link"
-    routerLink="/admin"
-  >
-    <span>Logout</span>
-  </a>
-      
-    </a>
+    <span>Admin</span>
+  </a>  
   </span>
 </mat-toolbar>
