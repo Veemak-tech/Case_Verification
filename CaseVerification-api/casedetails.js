@@ -78,14 +78,14 @@ var jsonParser = bodyParser.json()
 
 app.post('/casedetails',jsonParser, (req,res)=>{
     let emp = req.body;
-    var sql = `INSERT INTO caseverificationdb.casedetails (ID,CaseID,Description,InsurerVerificationNotes,ThirdpartyVerificationNotes,CreatedBy,CreatedDate,LastModifiedBy,LastModifiedDate)
+    var sql = `INSERT INTO caseverificationdb.casedetails (ID,CaseID,Name,Description,InsurerVerificationNotes,ThirdpartyVerificationNotes,CreatedBy,CreatedDate,LastModifiedBy,LastModifiedDate)
     VALUES
     (
-        ?,?,?,?,?,?,?,?,?
+        ?,?,?,?,?,?,?,?,?,?
     )`;
     console.log("insert log" +req.body);
     //added result 
-    mysqlConnection.query(sql, [emp.ID,emp.CaseID,emp.Description,emp.InsurerVerificationNotes,emp.ThirdpartyVerificationNotes,emp.CreatedBy,emp.CreatedDate,emp.LastModifiedBy,emp.LastModifiedDate,], (err,result)=>{
+    mysqlConnection.query(sql, [emp.ID,emp.CaseID,emp.Name,emp.Description,emp.InsurerVerificationNotes,emp.ThirdpartyVerificationNotes,emp.CreatedBy,emp.CreatedDate,emp.LastModifiedBy,emp.LastModifiedDate,], (err,result)=>{
         
         if(!err)
         {
