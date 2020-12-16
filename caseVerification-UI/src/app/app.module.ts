@@ -22,8 +22,11 @@ import { SettingModule } from './components/setting/setting.module';;
 import { ReportsModule } from './components/reports/reports.module';
 import { AuthModule } from './components/auth/auth.module';
 import { Test1Component } from './components/test1/test1.component';
+<<<<<<< HEAD
 import { AuthInterceptorService } from "./services/auth-interceptor.service";
 
+=======
+>>>>>>> 02b95bcb94b28d92766105b80062fe8070f4e7ee
 
 @NgModule({
   declarations: [
@@ -48,6 +51,7 @@ import { AuthInterceptorService } from "./services/auth-interceptor.service";
     PagesModule,
     MediaModule,
     MenusModule,
+<<<<<<< HEAD
 
     HttpClientModule,
     UsersModule
@@ -57,6 +61,9 @@ import { AuthInterceptorService } from "./services/auth-interceptor.service";
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true,}
+=======
+    UsersModule
+>>>>>>> 02b95bcb94b28d92766105b80062fe8070f4e7ee
   ],
   bootstrap: [AppComponent]
 })
