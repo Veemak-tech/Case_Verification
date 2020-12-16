@@ -58,7 +58,7 @@ const routes: Routes = [
         path: 'digital/digital-category',
         component: DigitalCategoryComponent,
         data: {
-          title: "Category",
+          title: "Case Creation",
           breadcrumb: "Category"
         }
       },
@@ -66,7 +66,7 @@ const routes: Routes = [
         path: 'digital/digital-sub-category',
         component: DigitalSubCategoryComponent,
         data: {
-          title: "Sub Category",
+          title: "Case Verification",
           breadcrumb: "Sub Category"
         }
       },
@@ -74,7 +74,7 @@ const routes: Routes = [
         path: 'digital/digital-product-list',
         component: DigitalListComponent,
         data: {
-          title: "Product List",
+          title: "Case List",
           breadcrumb: "Product List"
         }
       },

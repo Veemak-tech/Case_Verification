@@ -1,18 +1,59 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="card">
-                <div class="card-header">
-                    <h5>Product Lists</h5>
-                </div>
-                <div class="card-body">
-                    <div id="batchDelete" class="custom-datatable">
-                        <div class="table-responsive">
-                            <ng2-smart-table [settings]="settings" [source]="digital_list"></ng2-smart-table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<br>
+<h3 class="title">Case List</h3>
+<br>
+
+<div class="card">
+  <div class="row">
+    <div class="form-group" class="col-md-6" style="margin-left: 20px;">
+      <label for="validationCustom01" class="col-form-label pt-0"><span>*</span> Name</label>
+      <input class="form-control" id="validationCustom01" type="text" required="" placeholder="Full Name">
     </div>
+    <div class="col-md-4" style="margin-left: 20px;">
+      <label for="validationCustom01"><span>*</span> Case ID</label>
+      <input class="form-control" id="validationCustom01" type="text" required="" placeholder="Case ID"
+        style="width:100px;">
+    </div>
+  <!-- <div style="margin-left: 30px;" class="col-md-6"><br>
+    <label for="validationCustom01" class="col-form-label pt-0">Status</label>
+    <input class="form-control" id="validationCustom01" style="width: 100px;" type="text" placeholder="Is Active" readonly>
+  </div>
+  <div class="col-md-4" ><br>
+    <label for="validationCustom01">Agent</label>
+    <input class="form-control" id="validationCustom01" type="text" required="" placeholder="Agent Name" style="width: 300px;" readonly>
+  </div> -->
 </div>
+<br>
+</div>
+
+
+<div class="table-responsive">
+<table class="table table-hover">
+  <thead>
+    <tr class="table-primary">
+      <th scope="col" style="width: 30px">Case ID</th>
+      <th scope="col" style="width: 40px">Name</th>
+      <th scope="col" style="width: 20px">Status</th>
+      <th scope="col" style="width: 30px">Agent</th>
+      <th scope="col" style="width: 25px">Created Date</th>
+      <th scope="col" style="width: 35px">Assigned Date</th>
+      <th scope="col" style="width: 10px">Comp.Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Vignesh</td>
+      <td>Active</td>
+      <td>Vinoth</td>
+      <td>01-02-2019</td>
+      <td>05-02-2019</td>
+      <td>25-02-2019</td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+</div>
+<br><br><br>
+
+
+

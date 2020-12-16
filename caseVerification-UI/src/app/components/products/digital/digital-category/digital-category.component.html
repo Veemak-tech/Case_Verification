@@ -1,52 +1,392 @@
-<!-- Container-fluid starts-->
-<div class="container-fluid">
+<!-- <h3 class="title">Case Creation</h3>
+<br>
+<hr>
+<form  #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value)">
+<div class="container">
+  <div class="card">
     <div class="row">
-        <div class="col-sm-12">
-            <div class="card">
-                <div class="card-header">
-                    <h5>Digital Products</h5>
-                </div>
-                <div class="card-body">
-                    <div class="btn-popup pull-right">
-                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-original-title="test"
-                            data-target="#exampleModal" (click)="open(content)">Add Category</button>
-                        <ng-template #content let-modal>
-                            <div class="modal-header">
-                                <h5 class="modal-title f-w-600" id="exampleModalLabel">Add Digital Product</h5>
-                                <button type="button" class="close" aria-label="Close"
-                                    (click)="modal.dismiss('Cross click')">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form class="needs-validation">
-                                    <div class="form">
-                                        <div class="form-group">
-                                            <label for="validationCustom01" class="mb-1">Category Name :</label>
-                                            <input class="form-control" id="validationCustom01" type="text">
-                                        </div>
-                                        <div class="form-group mb-0">
-                                            <label for="validationCustom02" class="mb-1">Category Image :</label>
-                                            <input class="form-control" id="validationCustom02" type="file">
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" >Save</button>
-                                <button class="btn btn-secondary" type="button" data-dismiss="modal"
-                                    (click)="modal.dismiss('Cross click')">Close</button>
-                            </div>
-                        </ng-template>
-                    </div>
-                    <div id="batchDelete" class="category-table custom-datatable">
-                        <div class="table-responsive">
-                            <ng2-smart-table [settings]="settings" [source]="digital_categories"></ng2-smart-table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+      <div class="form-group" class="col-md-6">
+        <label for="validationCustom01" class="col-form-label pt-0"><span>*</span> Case ID</label>
+        <input name="CaseID" ngModel class="form-control" id="validationCustom01" type="text" required="" placeholder="Case ID"
+          style="width:200px;">
+      </div>
+      <div class="col-md-4">
+        <label for="validationCustom01"><span>*</span>Agent Name</label>
+        <input class="form-control" id="validationCustom01" type="text" required="" placeholder="Agent Name">
+      </div>
     </div>
+    <br><br>
+    <div class="row">
+      <div class="form-group" class="col-md-6">
+        <label for="validationCustom01" class="col-form-label pt-0"><span></span>Name</label>
+        <input ngModel name="Name" type="text" class="form-control" id="validationCustom01" required="" placeholder="Name">
+      </div>
+      <div class="col-md-4">
+        <label for="validationCustom01"><span>*</span>Due Date</label>
+        <input  class="form-control" id="validationCustom01" type="text" required="" placeholder="Due Date">
+      </div>
+    </div>
+    <br>
+  </div>
 </div>
-<!-- Container-fluid Ends-->
+
+address
+<div class="container">
+  <div class="card">
+    <br>
+    <div class="col-md-6 col-md-4 col-md-12">
+    <label for="notes" style="margin-left: 20px;">Address:</label>
+    <div class="card-body">
+      <textarea  name="Notes" id="notes" cols="130" rows="5" class="responsiveaddress"></textarea>
+    </div>
+  </div>
+  </div>
+</div>
+
+insurer/ 3rd party question
+
+<div class="container">
+  <div class="card">
+    <br>
+    <div class="row">
+      <div class="col-md-6">
+        <label for="notes" style="margin-left: 20px;">Insurer Questionnaire:</label>
+        <div class="card-body">
+          <textarea ngModel name="InsurerVerificationNotes" id="notes" cols="60" rows="7"></textarea>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <label for="notes" style="margin-left: 20px;">3rd party Questionnaire:</label>
+        <div class="card-body">
+          <textarea ngModel name="ThirdpartyVerificationNotes" id="notes" cols="60" rows="7"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+end of Insurer and 3rd party question
+
+<div>
+  <div>
+    <button type="button" class="btn btn-warning btn-lg" style=" position: absolute; left: 25%;">Edit</button>
+  </div>
+  <div>
+    <button type="button" type="submit" class="btn btn-success btn-lg" style=" position: absolute; left: 65%;">Create</button>
+  </div>
+</div>
+</form>
+<br><hr> -->
+
+<div class=container>
+  <div class="card shadow-lg p-3 mb-5 bg-white rounded ">
+  <form>
+    <h3 class="maintitle">Case Creation</h3>
+    <h4 class="subhead1">Case Details</h4>
+    <div class="content">
+    <div class="row">
+      <!-- Case ID -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group" class="caseid">
+          <div class="form-group form-inline" >
+            <label for="exampleInputCompany">Case  ID:</label>
+            <input ngModel type="text" class="form-control" name="CaseID" id="exampleInputCompany" placeholder=""
+              required />
+          </div>
+        </div>
+      </div>
+      <!-- Ref Number -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group" class="refnumber">
+          <div class="form-group form-inline">
+            <label for="exampleInputLoction">Ref Number:</label>
+            <input  type="text" class="form-control" name="Location" id="exampleInputLoction" placeholder=""
+              required />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Due Date -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <div class="form-group form-inline">
+            <label for="exampleInputCompany" >Due Date:</label>
+            <input type="date" class="form-control form-group1" name="CompanyName" id="exampleInputCompany" placeholder=""
+              required />
+          </div>
+        </div>
+      </div>
+      <!-- Agent -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group" class="agentname">
+          <div class="form-group form-inline">
+            <label for="exampleInputLoction">Agent Name:</label>
+            <input ngModel type="text" class="form-control" name="Name" id="exampleInputLoction" placeholder=""
+              required />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Gen Notes -->
+  <div class="content1">
+    <div class="form-group" class="gennotes">
+      <!-- <label  for="exampleInputShortDescription">General Notes</label> -->
+      <!-- <textarea ngModel class="form-control" name="ShortDescription" id="exampleInputShortDescription" placeholder="General Notes" rows="4" cols="50" required></textarea> -->
+
+      <div class="form-group form-inline">
+        <label for="exampleFormControlTextarea1">Notes</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" cols="88"></textarea>
+      </div>
+    </div>
+  </div>
+
+    <hr>
+    <h3 class="subhead2">Insurer Details</h3>
+    <div class="content2">
+    <div class="row">
+      <!-- Name -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group" class="name1">
+          <div class="form-group form-inline">
+            <label for="exampleInputCompany">Name:</label>
+            <input ngModel type="text" class="form-control" name="Name" id="exampleInputCompany" placeholder=""
+              required style="padding-right: 10px;" />
+          </div>
+        </div>
+      </div>
+      <!-- Phone -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group" class="phoneno">
+          <div class="form-group form-inline">
+            <label for="exampleInputLoction">Phone No:</label>
+            <input  type="text" class="form-control" name="Location" id="exampleInputLoction" placeholder=""
+              required />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content2">
+    <!-- Email -->
+    <div class="row">
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group" class="emailid">
+        <div class="form-group form-inline">
+          <label for="exampleInputCompany">Email ID:</label>
+          <input type="email" class="form-control" name="email" id="exampleInputCompany" placeholder="" required
+            style="padding-right: 10px;" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="content2">
+    <div class="row">
+      <!-- Address -->
+      <!-- <div class="col-lg-12 col-md-6">
+        <div class="form-group">
+          <div class="form-group form-inline">
+            <label for="exampleInputCompany">Address:</label>
+            <input ngModel type="text" class="form-control" name="CompanyName" id="exampleInputCompany" placeholder=""
+              required size="95" />
+          </div>
+        </div>
+      </div> -->
+
+      <div class="row ad">
+        <div class="col">
+          <input ngModel type="text" name="AddressLine1" class="form-control ad1 " placeholder="Address Line 1">
+        </div>
+        <div class="col">
+          <input ngModel type="text" name="AddressLine2" class="form-control ad2" placeholder="Address Line 2">
+        </div>
+      </div><br><br>
+
+      <div class="form-row">
+
+        <div class="form-group col-md-2">
+          <input ngModel type="text" class="form-control" id="inputCity" size="15" placeholder="City">
+        </div>
+        <div class="form-group col-md-3">
+          <input ngModel type="text" class="form-control" id="inputZip" size="15" placeholder="State">
+        </div>
+        <div class="form-group col-md-2">
+          <input  type="text" class="form-control" id="inputZip" size="7" placeholder="Pincode">
+        </div>
+        <div class="form-group col-md-4">
+          <input type="text" class="form-control" id="inputZip" size="15" placeholder="Landmark" style="margin-left: 23px;">
+        </div>
+
+      </div>
+
+
+      <!-- Address 2 -->
+      <!-- <div class="col-lg-6 col-md-6">
+    <div class="form-group">
+      <div class="form-group form-inline">
+      <label for="exampleInputLoction">Address 2</label>
+      <input ngModel type="text" class="form-control" name="Location" id="exampleInputLoction" placeholder=""
+        required style="padding-right: 60px;" />
+      </div>
+    </div>
+  </div> -->
+    </div>
+  </div>
+
+
+    <div class="form-group form-inline" class="Questionaaire1">
+      <div class="content4">
+      <label for="exampleFormControlTextarea1">Questions</label>
+    </div>
+      <div class="content3">
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="7" cols="55"></textarea>
+    </div>
+  </div>
+
+
+    <hr>
+    <h3 class="subhead3">Third party Details</h3>
+    <div class="content2">
+      <div class="row">
+        <!-- Name -->
+        <div class="col-lg-6 col-md-6">
+          <div class="form-group" class="name1">
+            <div class="form-group form-inline">
+              <label for="exampleInputCompany">Name:</label>
+              <input ngModel type="text" class="form-control" name="CompanyName" id="exampleInputCompany" placeholder=""
+                required style="padding-right: 10px;" />
+            </div>
+          </div>
+        </div>
+        <!-- Phone -->
+        <div class="col-lg-6 col-md-6">
+          <div class="form-group" class="phoneno">
+            <div class="form-group form-inline">
+              <label for="exampleInputLoction">Phone No:</label>
+              <input ngModel type="text" class="form-control" name="Location" id="exampleInputLoction" placeholder=""
+                required />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content2">
+      <!-- Email -->
+      <div class="row">
+        <div class="col-lg-6 col-md-6">
+          <div class="form-group" class="emailid">
+          <div class="form-group form-inline">
+            <label for="exampleInputCompany">Email ID:</label>
+            <input ngModel type="email" class="form-control" name="email" id="exampleInputCompany" placeholder="" required
+              style="padding-right: 10px;" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  <div class="content2">
+      <div class="row">
+        <!-- Address -->
+        <!-- <div class="col-lg-12 col-md-6">
+          <div class="form-group">
+            <div class="form-group form-inline">
+              <label for="exampleInputCompany">Address:</label>
+              <input ngModel type="text" class="form-control" name="CompanyName" id="exampleInputCompany" placeholder=""
+                required size="95" />
+            </div>
+          </div>
+        </div> -->
+
+        <div class="row ad">
+          <div class="col">
+            <input type="text" class="form-control ad1 " placeholder="Address Line 1">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control ad2" placeholder="Address Line 2">
+          </div>
+        </div><br><br>
+
+        <div class="form-row">
+
+          <div class="form-group col-md-2">
+            <input type="text" class="form-control" id="inputCity" size="15" placeholder="City">
+          </div>
+          <div class="form-group col-md-3">
+            <input type="text" class="form-control" id="inputZip" size="15" placeholder="State">
+          </div>
+          <div class="form-group col-md-2">
+            <input type="text" class="form-control" id="inputZip" size="7" placeholder="Pincode">
+          </div>
+          <div class="form-group col-md-4">
+            <input type="text" class="form-control" id="inputZip" size="15" placeholder="Landmark" style="margin-left: 23px;">
+          </div>
+
+        </div>
+
+
+        <!-- Address 2 -->
+        <!-- <div class="col-lg-6 col-md-6">
+      <div class="form-group">
+        <div class="form-group form-inline">
+        <label for="exampleInputLoction">Address 2</label>
+        <input ngModel type="text" class="form-control" name="Location" id="exampleInputLoction" placeholder=""
+          required style="padding-right: 60px;" />
+        </div>
+      </div>
+    </div> -->
+      </div>
+    </div>
+
+
+      <div class="form-group form-inline" class="Questionaaire1">
+        <div class="content4">
+        <label for="exampleFormControlTextarea1">Questions</label>
+      </div>
+        <div class="content3">
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="7" cols="55"></textarea>
+      </div>
+    </div>
+
+
+
+
+
+    <!-- <div class="form-group">
+      <label for="exampleFormControlSelect1">Example select</label>
+      <select class="form-control" id="exampleFormControlSelect1">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlSelect2">Example multiple select</label>
+      <select multiple class="form-control" id="exampleFormControlSelect2">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Example textarea</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div> -->
+  </form>
+</div>
+</div>

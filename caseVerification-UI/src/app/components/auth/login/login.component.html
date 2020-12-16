@@ -118,16 +118,16 @@
                             </svg>
                         </div>
                         <div class="single-item">
-                            <owl-carousel-o [options]="owlcarouselOptions">
-                                <ng-container *ngFor="let data of owlcarousel">
+                            <!-- <owl-carousel-o [options]="owlcarouselOptions">
+                                <ng-container *ngFor="let data of owlcarousel"> -->
                                     <ng-template carouselSlide class="item">
                                         <div>
-                                            <h3>{{data.title}}</h3>
-                                            <p>{{data.desc}}</p>
+                                            <!-- <h3>{{data.title}}</h3>
+                                            <p>{{data.desc}}</p> -->
                                         </div>
                                     </ng-template>
-                                </ng-container>
-                            </owl-carousel-o>
+                                <!-- </ng-container>
+                            </owl-carousel-o> -->
                         </div>
                     </div>
                 </div>
@@ -136,19 +136,26 @@
                         <div class="card-body">
                             <ngb-tabset class="tab-coupon mb-0">
                                 <ngb-tab>
-                                    <ng-template ngbTabTitle><i class="icon-user mr-2"></i>Admin Login</ng-template>
+                                    <ng-template ngbTabTitle><i class="icon-user mr-2"></i>Login</ng-template>
                                     <ng-template ngbTabContent>
                                         <div class="tab-pane fade active show" id="account" role="tabpanel"
                                             aria-labelledby="account-tab">
-                                            <form [formGroup]="loginForm"
-                                                class="form-horizontal auth-form" novalidate="">
+                                           
+                                           
+                                           
+                                            <!-- login start -->
+                                            
+                                            
+                                            
+                                            <form [formGroup]="loginForm" (ngSubmit)="login()"
+                                                class="form-horizontal auth-form" novalidate>
                                                 <div class="form-group">
-                                                    <input required="" name="login[username]" type="email"
+                                                    <input required="" formControlName="email" type="email"
                                                         class="form-control" placeholder="Username"
                                                         id="exampleInputEmail1">
                                                 </div>
                                                 <div class="form-group">
-                                                    <input required="" name="login[password]" type="password"
+                                                    <input required="" formControlName="password" type="password"
                                                         class="form-control" placeholder="Password">
                                                 </div>
                                                 <div class="form-terms">
@@ -162,9 +169,14 @@
                                                             password</a>
                                                     </div>
                                                 </div>
+                                                <!-- login button -->
                                                 <div class="form-button">
-                                                    <button class="btn btn-primary" type="submit">Login</button>
+                                                    <button class="btn btn-primary" [disabled]="!loginForm.valid" type="submit">Login</button>
                                                 </div>
+                                               
+                                               
+                                               
+                                               
                                                 <div class="form-footer">
                                                     <span>Or Login up with social platforms</span>
                                                     <ul class="social">
@@ -181,9 +193,9 @@
                                     </ng-template>
                                 </ngb-tab>
                                 <ngb-tab>
-                                    <ng-template ngbTabTitle><i class="icon-unlock mr-2"></i>User Login
+                                    <ng-template ngbTabTitle><i class="icon-unlock mr-2"></i> Register
                                         <ng-template ngbTabContent>
-                                            <form [formGroup]="registerForm"
+                                            <form [formGroup]="loginForm" 
                                                 class="form-horizontal auth-form" novalidate>
                                                 <div class="form-group">
                                                     <input required="" name="login[username]" type="email"

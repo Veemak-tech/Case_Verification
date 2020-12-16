@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,32 +18,17 @@ import { VendorsModule } from './components/vendors/vendors.module';
 import { UsersModule } from './components/users/users.module';
 import { LocalizationModule } from './components/localization/localization.module';
 import { InvoiceModule } from './components/invoice/invoice.module';
-import { SettingModule } from './components/setting/setting.module';
+import { SettingModule } from './components/setting/setting.module';;
 import { ReportsModule } from './components/reports/reports.module';
 import { AuthModule } from './components/auth/auth.module';
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-import { CasedetailsComponent } from './components/casedetails/casedetails.component';
-import { DocumentsComponent } from './components/documents/documents.component';
-import { ThirdpartydetailsComponent } from './components/thirdpartydetails/thirdpartydetails.component';
-import { CaseverificationComponent } from './components/caseverification/caseverification.component';
-import { CasecreationComponent } from './components/casecreation/casecreation.component';
-import { CaselistComponent } from './components/caselist/caselist.component';
-import { DomSanitizer } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-import { Caseverification2Component } from './components/caseverification2/caseverification2.component';
+import { Test1Component } from './components/test1/test1.component';
+import { AuthInterceptorService } from "./services/auth-interceptor.service";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CasedetailsComponent,
-    DocumentsComponent,
-    ThirdpartydetailsComponent,
-    CaseverificationComponent,
-    CasecreationComponent,
-    CaselistComponent,
-    Caseverification2Component,
+    Test1Component,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -62,14 +48,16 @@ import { Caseverification2Component } from './components/caseverification2/casev
     PagesModule,
     MediaModule,
     MenusModule,
-    UsersModule,
-    CKEditorModule,
-    HttpClientModule,
-    FormsModule,
-    BrowserModule
 
+    HttpClientModule,
+    UsersModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
