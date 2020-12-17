@@ -1,6 +1,6 @@
 {
     "host":"localhost",
     "user":"root",
-    "database":"register",
-    "password":"password"
+    "database":"caseverificationdb",
+    "password":"12345"
 }

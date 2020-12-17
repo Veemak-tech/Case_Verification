@@ -52,7 +52,7 @@ export class AuthService {
           localStorage.setItem("token", tokenObject.token);
           this.isUserLoggedIn$.next(true);
           console.log("login works");
-          this.router.navigate([]);
+          this.router.navigate(["/products/digital/digital-category"]);
         }),
         catchError(
           this.errorHandlerService.handleError<{
@@ -65,4 +65,4 @@ export class AuthService {
 }
 
 
-  
+
