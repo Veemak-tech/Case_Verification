@@ -1,35 +1,61 @@
-import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
-
-import { AuthService } from "src/app/services/auth.service";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: "app-login",
-  templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.scss"],
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
 
-  constructor(private authService: AuthService) {}
+  public loginForm: FormGroup;
+  public registerForm: FormGroup;
 
-  ngOnInit(): void {
-    this.loginForm = this.createFormGroup();
+  constructor(private formBuilder: FormBuilder) {
+    this.createLoginForm();
+    this.createRegisterForm();
   }
 
-  createFormGroup(): FormGroup {
-    return new FormGroup({
-      email: new FormControl("", [Validators.required, Validators.email]),
-      password: new FormControl("", [
-        Validators.required,
-        Validators.minLength(7),
-      ]),
-    });
+  owlcarousel = [
+    {
+      title: "Welcome to Multikart",
+      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.",
+    },
+    {
+      title: "Welcome to Multikart",
+      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.",
+    },
+    {
+      title: "Welcome to Multikart",
+      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.",
+    }
+  ]
+  owlcarouselOptions = {
+    loop: true,
+    items: 1,
+    dots: true
+  };
+
+  createLoginForm() {
+    this.loginForm = this.formBuilder.group({
+      userName: [''],
+      password: [''],
+    })
+  }
+  createRegisterForm() {
+    this.registerForm = this.formBuilder.group({
+      userName: [''],
+      password: [''],
+      confirmPassword: [''],
+    })
   }
 
-  login(): void {
-    this.authService
-      .login(this.loginForm.value.email, this.loginForm.value.password)
-      .subscribe();
+
+  ngOnInit() {
   }
+
+  onSubmit() {
+    
+  }
+
 }

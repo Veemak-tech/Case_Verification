@@ -6,7 +6,6 @@
 */
 {
   "files": [],
-  "importHelpers": true,
   "references": [
     {
       "path": "./tsconfig.app.json"

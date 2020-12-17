@@ -4,15 +4,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { content } from './shared/routes/content-routes';
 import { ContentLayoutComponent } from './shared/layout/content-layout/content-layout.component';
 import { LoginComponent } from './components/auth/login/login.component';
-<<<<<<< HEAD
-import { } from "./services/auth-guard.service"
-=======
->>>>>>> 02b95bcb94b28d92766105b80062fe8070f4e7ee
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard/default',
+    redirectTo: 'auth/login',
     pathMatch: 'full'
   },
   {
@@ -23,10 +19,6 @@ const routes: Routes = [
   {
     path: 'auth/login',
     component: LoginComponent,
-<<<<<<< HEAD
-    
-=======
->>>>>>> 02b95bcb94b28d92766105b80062fe8070f4e7ee
   },
 
   {

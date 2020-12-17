@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,11 +21,7 @@ import { SettingModule } from './components/setting/setting.module';;
 import { ReportsModule } from './components/reports/reports.module';
 import { AuthModule } from './components/auth/auth.module';
 import { Test1Component } from './components/test1/test1.component';
-<<<<<<< HEAD
-import { AuthInterceptorService } from "./services/auth-interceptor.service";
-
-=======
->>>>>>> 02b95bcb94b28d92766105b80062fe8070f4e7ee
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -51,20 +46,10 @@ import { AuthInterceptorService } from "./services/auth-interceptor.service";
     PagesModule,
     MediaModule,
     MenusModule,
-<<<<<<< HEAD
-
-    HttpClientModule,
-    UsersModule
+    UsersModule,
+    HttpClientModule
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptorService,
-      multi: true,}
-=======
-    UsersModule
->>>>>>> 02b95bcb94b28d92766105b80062fe8070f4e7ee
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

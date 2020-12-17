@@ -53,6 +53,7 @@ export class SubCategoryComponent implements OnInit {
         type: 'html',
       },
       category: {
+
         title: 'Sub Category',
       }
     },
