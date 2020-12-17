@@ -1,14 +1,16 @@
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { Test1Component } from './components/test1/test1.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { content } from './shared/routes/content-routes';
 import { ContentLayoutComponent } from './shared/layout/content-layout/content-layout.component';
 import { LoginComponent } from './components/auth/login/login.component';
+import { AuthGuard } from './services/auth-guard.service'
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'auth/login',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -23,6 +25,12 @@ const routes: Routes = [
 
   {
     path: 'test1', component: Test1Component,
+  },
+
+  {
+    path: 'default',
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

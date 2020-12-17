@@ -21,7 +21,9 @@ import { SettingModule } from './components/setting/setting.module';;
 import { ReportsModule } from './components/reports/reports.module';
 import { AuthModule } from './components/auth/auth.module';
 import { Test1Component } from './components/test1/test1.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { AuthInterceptorService } from "./services/auth-interceptor.service";
+
 
 @NgModule({
   declarations: [
@@ -49,7 +51,14 @@ import { HttpClientModule } from '@angular/common/http'
     UsersModule,
     HttpClientModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    }
+  ],
+
+    bootstrap: [AppComponent]
+  })
 export class AppModule { }
