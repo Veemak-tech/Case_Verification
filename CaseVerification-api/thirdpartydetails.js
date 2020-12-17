@@ -78,14 +78,14 @@ var jsonParser = bodyParser.json()
 
 app.post('/thirdpartydetails',jsonParser, (req,res)=>{
     let emp = req.body;
-    var sql = `INSERT INTO caseverificationdb.thirdpartydetails (ID,CaseID,InsurerName,PhoneNumber,AlternativePhoneNumber,EmailID,AddressID,PhotoDocID,AudioDocID,VideoDocID,PhotoWithSelfieDocID,VerificationNotes,CreatedBy,CreatedDate,LastModifiedBy,LastModifiedDate)
+    var sql = `INSERT INTO caseverificationdb.thirdpartydetails (ID,CaseID,ThirdpartyName,T_PhoneNumber,T_AlternativePhoneNumber,T_EmailID,T_AddressID,T_PhotoDocID,T_AudioDocID,T_VideoDocID,T_PhotoWithSelfieDocID,T_VerificationNotes,CreatedBy,CreatedDate,LastModifiedBy,LastModifiedDate)
     VALUES
     (
         ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?
     )`;
     console.log("insert log" +req.body);
     //added result 
-    mysqlConnection.query(sql, [emp.ID,emp.CaseID,emp.InsurerName,emp.PhoneNumber,emp.AlternativePhoneNumber,emp.EmailID,emp.AddressID,emp.PhotoDocID,emp.AudioDocID,emp.VideoDocID,emp.PhotoWithSelfieDocID,emp.VerificationNotes,emp.CreatedBy,emp.CreatedDate,emp.LastModifiedBy,emp.LastModifiedDate,], (err,result)=>{
+    mysqlConnection.query(sql, [emp.ID,emp.CaseID,emp.ThirdpartyName,emp.T_PhoneNumber,emp.T_AlternativePhoneNumber,emp.T_EmailID,emp.T_AddressID,emp.T_PhotoDocID,emp.T_AudioDocID,emp.T_VideoDocID,emp.T_PhotoWithSelfieDocID,emp.T_VerificationNotes,emp.CreatedBy,emp.CreatedDate,emp.LastModifiedBy,emp.LastModifiedDate,], (err,result)=>{
         
         if(!err)
         {
