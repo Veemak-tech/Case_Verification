@@ -1,59 +1,63 @@
 import { Component, OnInit } from '@angular/core';
 import { digitalCategoryDB } from 'src/app/shared/tables/digital-category';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClient} from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-digital-category',
   templateUrl: './digital-category.component.html',
-  styleUrls: ['./digital-category.component.scss']
+  styleUrls: ['./digital-category.component.scss'],
 })
 export class DigitalCategoryComponent implements OnInit {
-  data:any;
+  data: any;
   public closeResult: string;
-  public digital_categories = []
+  public digital_categories = [];
 
-
-
-  onSubmit(data: any)
-  {
-    this.http.post('http://localhost:3900/casedetails', data)
-    .subscribe((result) => {
-      console.warn('result', result);
-    });
+  onSubmit(data: any) {
+    this.http
+      .post('http://localhost:3900/casedetails', data)
+      .subscribe((result) => {
+        console.warn('result', result);
+      });
     console.warn(data);
 
-
-    this.http.post('http://localhost:5000/address', data)
-    .subscribe((result) => {
-      console.warn('result', result);
-    });
+    this.http
+      .post('http://localhost:5000/address', data)
+      .subscribe((result) => {
+        console.warn('result', result);
+      });
     console.warn(data);
 
-
-    this.http.post('http://localhost:4300/insurerdetail', data)
-    .subscribe((result) => {
-      console.warn('result', result);
-    });
+    this.http
+      .post('http://localhost:4300/insurerdetail', data)
+      .subscribe((result) => {
+        console.warn('result', result);
+      });
     console.warn(data);
 
-    this.http.post('http://localhost:4700/thirdpartydetails', data)
-    .subscribe((result) => {
-      console.warn('result', result);
-    });
+    this.http
+      .post('http://localhost:4700/thirdpartydetails', data)
+      .subscribe((result) => {
+        console.warn('result', result);
+      });
     console.warn(data);
   }
 
-  constructor(private modalService: NgbModal, private http: HttpClient,) {
+  constructor(private modalService: NgbModal, private http: HttpClient) {
     this.digital_categories = digitalCategoryDB.digital_category;
   }
 
   open(content) {
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+    this.modalService
+      .open(content, { ariaLabelledBy: 'modal-basic-title' })
+      .result.then(
+        (result) => {
+          this.closeResult = `Closed with: ${result}`;
+        },
+        (reason) => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
   }
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
@@ -65,10 +69,9 @@ export class DigitalCategoryComponent implements OnInit {
     }
   }
 
-
   public settings = {
     actions: {
-      position: 'right'
+      position: 'right',
     },
     columns: {
       img: {
@@ -76,10 +79,10 @@ export class DigitalCategoryComponent implements OnInit {
         type: 'html',
       },
       product_name: {
-        title: 'Name'
+        title: 'Name',
       },
       price: {
-        title: 'Price'
+        title: 'Price',
       },
       status: {
         title: 'Status',
@@ -87,11 +90,9 @@ export class DigitalCategoryComponent implements OnInit {
       },
       category: {
         title: 'Category',
-      }
+      },
     },
   };
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

@@ -60,7 +60,7 @@ const routes: Routes = [
       {
         path: 'digital/digital-category',
         component: DigitalCategoryComponent,
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
 
         data: {
           title: "Case Creation",
@@ -70,7 +70,7 @@ const routes: Routes = [
       {
         path: 'digital/digital-sub-category',
         component: DigitalSubCategoryComponent,
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
 
         data: {
           title: "Case Verification",
@@ -80,7 +80,7 @@ const routes: Routes = [
       {
         path: 'digital/digital-product-list',
         component: DigitalListComponent,
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
 
         data: {
           title: "Case List",

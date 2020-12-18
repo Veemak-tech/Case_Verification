@@ -89,11 +89,13 @@ app.post('/address',jsonParser, (req,res)=>{
         
         if(!err)
         {
+            console.log(req.body);
             console.log("inserted ... " + result.insertId);
             res.json(result);
         }
         else
         {
+            console.log(req.body);
             console.log(err);
             res.json(err);
 
