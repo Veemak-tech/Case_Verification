@@ -9,6 +9,8 @@ import { DigitalSubCategoryComponent } from './digital/digital-sub-category/digi
 import { DigitalListComponent } from './digital/digital-list/digital-list.component';
 import { DigitalAddComponent } from './digital/digital-add/digital-add.component';
 import { ProductDetailComponent } from './physical/product-detail/product-detail.component';
+import { AuthGuard } from 'src/app/services/auth-guard.service'
+
 
 const routes: Routes = [
   {
@@ -49,6 +51,7 @@ const routes: Routes = [
       {
         path: 'physical/add-product',
         component: AddProductComponent,
+
         data: {
           title: "Add Products",
           breadcrumb: "Add Product"
@@ -57,6 +60,8 @@ const routes: Routes = [
       {
         path: 'digital/digital-category',
         component: DigitalCategoryComponent,
+        canActivate: [AuthGuard],
+
         data: {
           title: "Case Creation",
           breadcrumb: "Category"
@@ -65,6 +70,8 @@ const routes: Routes = [
       {
         path: 'digital/digital-sub-category',
         component: DigitalSubCategoryComponent,
+        canActivate: [AuthGuard],
+
         data: {
           title: "Case Verification",
           breadcrumb: "Sub Category"
@@ -73,6 +80,8 @@ const routes: Routes = [
       {
         path: 'digital/digital-product-list',
         component: DigitalListComponent,
+        canActivate: [AuthGuard],
+
         data: {
           title: "Case List",
           breadcrumb: "Product List"
