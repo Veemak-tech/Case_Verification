@@ -24,19 +24,19 @@ DROP TABLE IF EXISTS `address`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `address` (
   `ID` int NOT NULL AUTO_INCREMENT,
-  `AddressLine1` varchar(256) NOT NULL,
-  `AddressLine2` varchar(256) NOT NULL,
-  `City` varchar(45) NOT NULL,
-  `Landmark` varchar(256) NOT NULL,
-  `State` varchar(45) NOT NULL,
-  `Pincode` varchar(45) NOT NULL,
-  `GEOLocation` varchar(45) NOT NULL,
-  `CreatedBy` varchar(45) NOT NULL,
-  `CreatedDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `LastModifiedBy` varchar(45) NOT NULL,
-  `LastModifiedDate` datetime(6) NOT NULL,
+  `AddressLine1` varchar(256) DEFAULT NULL,
+  `AddressLine2` varchar(256) DEFAULT NULL,
+  `City` varchar(45) DEFAULT NULL,
+  `Landmark` varchar(256) DEFAULT NULL,
+  `State` varchar(45) DEFAULT NULL,
+  `Pincode` varchar(45) DEFAULT NULL,
+  `GEOLocation` varchar(45) DEFAULT NULL,
+  `CreatedBy` varchar(45) DEFAULT NULL,
+  `CreatedDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `LastModifiedBy` varchar(45) DEFAULT NULL,
+  `LastModifiedDate` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `address` (
 
 LOCK TABLES `address` WRITE;
 /*!40000 ALTER TABLE `address` DISABLE KEYS */;
-INSERT INTO `address` VALUES (1,'aravind','aravin2','namakkal','near trichy road','tamilnadu','652341','1235,14523','Aravind','2012-12-20 12:00:00','aravind','2012-12-20 12:00:00.000000'),(2,'karthikeyan','karthi4','thanjavur','near thanjavur road','andhra','512001','147,123','Malai','2020-11-20 10:00:00','Elankavi','2020-12-03 18:54:13.864951'),(3,'karthikeyan','karthi4','thanjavur','near thanjavur road','andhra','512001','147,123','Malai','2020-11-20 10:00:00','Elankavi','2020-12-03 18:54:13.864951'),(4,'aravind','aravin2','namakkal','near trichy road','tamilnadu','652341','1235,14523','Aravind','2020-12-03 00:00:00','aravind','2020-12-03 00:00:00.000000'),(5,'malaisamy','malai2','trichy','trichy road','tamilnadu','312546','123,987','aravinf','2020-12-03 00:00:00','vignesh','2020-12-03 00:00:00.000000'),(6,'aravind','aravin2','namakkal','near trichy road','tamilnadu','652341','1235,14523','Aravind','2020-12-03 00:00:00','aravind','2020-12-03 00:00:00.000000'),(7,'Irshadh','Irsadh2','Trichy','NearMain road','Tamilnadu','612001','123.12,326.12','Shiva','2020-04-15 00:00:00','Hari','2020-12-18 00:00:00.000000');
+INSERT INTO `address` VALUES (1,'aravind','aravin2','namakkal','near trichy road','tamilnadu','652341','1235,14523','Aravind','2012-12-20 12:00:00','aravind','2012-12-20 12:00:00'),(19,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(20,'aravind','aravin2','namakkal','near trichy road','tamilnadu','652341','1235,14523','Aravind','2012-12-20 00:00:00','aravind','2012-12-20 00:00:00');
 /*!40000 ALTER TABLE `address` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -123,16 +123,17 @@ DROP TABLE IF EXISTS `casedetails`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `casedetails` (
   `ID` int NOT NULL AUTO_INCREMENT,
-  `CaseID` varchar(45) NOT NULL,
+  `CaseID` varchar(45) DEFAULT NULL,
+  `Name` varchar(45) DEFAULT NULL,
   `Description` varchar(255) DEFAULT NULL,
   `InsurerVerificationNotes` varchar(255) DEFAULT NULL,
   `ThirdpartyVerificationNotes` varchar(255) DEFAULT NULL,
-  `CreatedBy` varchar(45) NOT NULL,
-  `CreatedDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `LastModifiedBy` varchar(45) NOT NULL,
-  `LastModifiedDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreatedBy` varchar(45) DEFAULT NULL,
+  `CreatedDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `LastModifiedBy` varchar(45) DEFAULT NULL,
+  `LastModifiedDate` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -141,7 +142,7 @@ CREATE TABLE `casedetails` (
 
 LOCK TABLES `casedetails` WRITE;
 /*!40000 ALTER TABLE `casedetails` DISABLE KEYS */;
-INSERT INTO `casedetails` VALUES (1,'1','All details about insurer and thirdparty','All notes','All notes and details','Shiva','2020-12-05 00:00:00','Vignesh','2020-12-09 00:00:00'),(2,'2','All details about insurer and thirdparty','All notes','All notes and details','Shivashankar','2020-12-04 00:00:00','Vigneshwaran','2020-12-16 00:00:00'),(3,'3','All details only','Everyting','All notes','Shiva','2020-11-17 00:00:00','Nedumaran','2020-11-25 00:00:00');
+INSERT INTO `casedetails` VALUES (1,'1','Vicky','All details about insurer and thirdparty','All notes','All notes and details','Shiva','2020-12-05 00:00:00','Vignesh','2020-12-09 00:00:00');
 /*!40000 ALTER TABLE `casedetails` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -221,7 +222,7 @@ CREATE TABLE `insurerdetail` (
   `LastModifiedBy` varchar(45) DEFAULT NULL,
   `LastModifiedDate` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -230,7 +231,7 @@ CREATE TABLE `insurerdetail` (
 
 LOCK TABLES `insurerdetail` WRITE;
 /*!40000 ALTER TABLE `insurerdetail` DISABLE KEYS */;
-INSERT INTO `insurerdetail` VALUES (1,'1','Shiva','7896532140','4136529870','karthi@gmail.com','1','shiva','2020-12-04 00:00:00','vicky','2020-12-07 00:00:00'),(2,'2','Shivakarthi','7896532780','7816529870','karthirock@gmail.com','2','sankar','2020-12-18 00:00:00','subash','2020-12-19 00:00:00'),(3,'3','Shivakarthi','7896532780','7816529870','karthirock@gmail.com','3','sankar','2020-12-18 00:00:00','subash','2020-12-19 00:00:00'),(4,'4','Vignesh','7463259810','8496531720','vicky21@gmail.com','4','vinoth','2020-11-24 00:00:00','vinoth','2020-11-25 00:00:00');
+INSERT INTO `insurerdetail` VALUES (1,'1','Shiva','7896532140','4136529870','karthi@gmail.com','1','shiva','2020-12-04 00:00:00','vicky','2020-12-07 00:00:00');
 /*!40000 ALTER TABLE `insurerdetail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -269,22 +270,22 @@ DROP TABLE IF EXISTS `thirdpartydetails`;
 CREATE TABLE `thirdpartydetails` (
   `ID` int NOT NULL AUTO_INCREMENT,
   `CaseID` varchar(45) DEFAULT NULL,
-  `InsurerName` varchar(45) DEFAULT NULL,
-  `PhoneNumber` varchar(45) DEFAULT NULL,
-  `AlternativePhoneNumber` varchar(45) DEFAULT NULL,
-  `EmailID` varchar(45) DEFAULT NULL,
-  `AddressID` varchar(45) DEFAULT NULL,
-  `PhotoDocID` varchar(45) DEFAULT NULL,
-  `AudioDocID` varchar(45) DEFAULT NULL,
-  `VideoDocID` varchar(45) DEFAULT NULL,
-  `PhotoWithSelfieDocID` varchar(45) DEFAULT NULL,
-  `VerificationNotes` varchar(256) DEFAULT NULL,
+  `ThirdpartyName` varchar(45) DEFAULT NULL,
+  `T_PhoneNumber` varchar(45) DEFAULT NULL,
+  `T_AlternativePhoneNumber` varchar(45) DEFAULT NULL,
+  `T_EmailID` varchar(45) DEFAULT NULL,
+  `T_AddressID` varchar(45) DEFAULT NULL,
+  `T_PhotoDocID` varchar(45) DEFAULT NULL,
+  `T_AudioDocID` varchar(45) DEFAULT NULL,
+  `T_VideoDocID` varchar(45) DEFAULT NULL,
+  `T_PhotoWithSelfieDocID` varchar(45) DEFAULT NULL,
+  `T_VerificationNotes` varchar(256) DEFAULT NULL,
   `CreatedBy` varchar(45) DEFAULT NULL,
   `CreatedDate` datetime DEFAULT CURRENT_TIMESTAMP,
   `LastModifiedBy` varchar(45) DEFAULT NULL,
   `LastModifiedDate` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -293,8 +294,34 @@ CREATE TABLE `thirdpartydetails` (
 
 LOCK TABLES `thirdpartydetails` WRITE;
 /*!40000 ALTER TABLE `thirdpartydetails` DISABLE KEYS */;
-INSERT INTO `thirdpartydetails` VALUES (1,'1','Karthi','987436521','9786325410','karthi@email.com','1','1','1','1','1','All notes are Loading in pending','karthi','2020-12-18 00:00:00','vinoth','2020-11-14 00:00:00'),(2,'2','Karthikeyan','987431532','9786485410','karthi23@email.com','2','2','2','2','2','All notes are Loading in succesfully','karthik','2020-10-28 00:00:00','vinoth kumar','2021-09-01 00:00:00');
+INSERT INTO `thirdpartydetails` VALUES (1,'1','Karthi','987436521','9786325410','karthi@email.com','1','1','1','1','1','All notes are Loading in pending','karthi','2020-12-18 00:00:00','vinoth','2020-11-14 00:00:00');
 /*!40000 ALTER TABLE `thirdpartydetails` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `user` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `password` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'malai','asd@gmail.com','$2a$12$QB/G6mDe2H5/hL6UIhxUgeT64.2By9WiyMRxtuDhH0QsZDLtnL85m'),(2,'malai1','asdf@gmail.com','$2a$12$I9PZA.jri1wEYElgJP.Is.oOSlQv8uY/t2MBFJycpJFtiwolFAJUG'),(3,'karthhi','qwertyy@gmail.com','$2a$12$jft7ZorTtXqMUD3ZoxJZluTNBXf/iBZJUTg6axWOjJBFI0ne9zsca');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -362,4 +389,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-07 12:18:33
+-- Dump completed on 2020-12-18 10:57:36
