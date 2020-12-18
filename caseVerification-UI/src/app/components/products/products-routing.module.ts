@@ -87,14 +87,14 @@ const routes: Routes = [
           breadcrumb: "Product List"
         }
       },
-      // {
-      //   path: 'digital/digital-add-product',
-      //   component: DigitalAddComponent,
-      //   data: {
-      //     title: "Add Products",
-      //     breadcrumb: "Add Product"
-      //   }
-      // }
+      {
+        path: 'digital/digital-add-product',
+        component: DigitalAddComponent,
+        data: {
+          title: "Add Products",
+          breadcrumb: "Add Product"
+        }
+      }
     ]
   }
 ];
