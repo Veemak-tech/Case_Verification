@@ -6,6 +6,8 @@ const authRoutes = require('./routes/auth');
 
 const addressRoutes = require('./routes/address');
 
+const thirdpartydetailsRoutes = require('./routes/thirdpartydetails')
+
 const rolesRoutes = require('./routes/roles');
 
 const postsRoutes = require('./routes/posts');
@@ -19,8 +21,11 @@ const casedetailsRoutes = require('./routes/casedetails');
 const insurerdetailsRoutes = require('./routes/insurerdetails');
 
 
+
+
 const errorController = require('./controllers/error');
 const casedetails = require('./models/casedetails');
+const thirdpartydetails = require('./models/thirdpartydetails');
 
 
 const app = express();
@@ -60,6 +65,8 @@ app.use('/appusers', appusersRoutes);
 app.use('/casedetails', casedetailsRoutes);
 
 app.use('/insurerdetails', insurerdetailsRoutes);
+
+app.use('/thirdpartydetails', thirdpartydetailsRoutes);
 
 
 

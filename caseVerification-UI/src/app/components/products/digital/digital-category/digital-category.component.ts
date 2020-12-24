@@ -29,7 +29,7 @@ export class DigitalCategoryComponent implements OnInit {
     console.warn(data);
 
     // this.http
-    //   .post('http://localhost:3000/insurerdetail', data)
+    //   .post('http://localhost:3000/insurerdetails', data)
     //   .subscribe((result) => {
     //     console.warn('result', result);
     //   });
