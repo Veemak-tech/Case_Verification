@@ -4,12 +4,23 @@ const bodyParser = require('body-parser');
 
 const authRoutes = require('./routes/auth');
 
+const addressRoutes = require('./routes/address');
+
+const rolesRoutes = require('./routes/roles');
+
 const postsRoutes = require('./routes/posts');
 
 const adminRoutes =require('./routes/adminauth');
 
+const appusersRoutes = require('./routes/appusers');
+
+const casedetailsRoutes = require('./routes/casedetails');
+
+const insurerdetailsRoutes = require('./routes/insurerdetails');
+
 
 const errorController = require('./controllers/error');
+const casedetails = require('./models/casedetails');
 
 
 const app = express();
@@ -38,7 +49,19 @@ app.use('/auth', authRoutes);
 
 app.use('/posts', postsRoutes);
 
+app.use('/roles', rolesRoutes);
+
 app.use('/adminauth',adminRoutes);
+
+app.use('/address', addressRoutes);
+
+app.use('/appusers', appusersRoutes);
+
+app.use('/casedetails', casedetailsRoutes);
+
+app.use('/insurerdetails', insurerdetailsRoutes);
+
+
 
 
 //  app.use(errorController.get404);

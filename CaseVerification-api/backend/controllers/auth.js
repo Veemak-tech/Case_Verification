@@ -5,9 +5,12 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
 
+const Roles = require('../models/roles')
+
 
 exports.signup = async (req, res, next) => {
  console.log(" its work");
+ console.log(res);
   
    const errors = validationResult(req);
 
@@ -36,6 +39,7 @@ exports.signup = async (req, res, next) => {
     next(err);
   }
 };
+
 
 exports.login = async (req, res, next) => {
   const email = req.body.email;

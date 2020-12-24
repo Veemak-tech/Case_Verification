@@ -36,6 +36,9 @@ exports.signup = async (req, res, next) => {
   }
 };
 
+
+
+
 exports.login = async (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
@@ -64,7 +67,7 @@ exports.login = async (req, res, next) => {
         userId: storedUser.id,
       },
       'secretfortoken',
-      { expiresIn: '1h' }
+      { expiresIn: '5h' }
     );
     res.status(200).json({ token: token, userId: storedUser.id });
   } catch (err) {

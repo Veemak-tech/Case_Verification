@@ -14,32 +14,32 @@ export class DigitalCategoryComponent implements OnInit {
   public digital_categories = [];
 
   onSubmit(data: any) {
+    // this.http
+    //   .post('http://localhost:3000/casedetails', data)
+    //   .subscribe((result) => {
+    //     console.warn('result', result);
+    //   });
+    // console.warn(data);
+
     this.http
-      .post('http://localhost:3900/casedetails', data)
+      .post('http://localhost:3000/address', data)
       .subscribe((result) => {
         console.warn('result', result);
       });
     console.warn(data);
 
-    this.http
-      .post('http://localhost:5000/address', data)
-      .subscribe((result) => {
-        console.warn('result', result);
-      });
-    console.warn(data);
+    // this.http
+    //   .post('http://localhost:3000/insurerdetail', data)
+    //   .subscribe((result) => {
+    //     console.warn('result', result);
+    //   });
+    // console.warn(data);
 
-    this.http
-      .post('http://localhost:4300/insurerdetail', data)
-      .subscribe((result) => {
-        console.warn('result', result);
-      });
-    console.warn(data);
-
-    this.http
-      .post('http://localhost:4700/thirdpartydetails', data)
-      .subscribe((result) => {
-        console.warn('result', result);
-      });
+    // this.http
+    //   .post('http://localhost:3000/thirdpartydetails', data)
+    //   .subscribe((result) => {
+    //     console.warn('result', result);
+    //   });
     console.warn(data);
   }
 
