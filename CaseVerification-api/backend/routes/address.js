@@ -8,12 +8,12 @@ const auth = require('../middleware/auth');
 
 const router = express.Router();
 
-router.get('/', auth, AddressController.fetchAll);
+router.get('/', AddressController.fetchAll);
 
 router.post(
   '/',
   [
-    auth,
+    // auth,
     
     body('AddressLine1').trim().not().isEmpty(),
     body('AddressLine2').trim().not().isEmpty(),
@@ -29,6 +29,6 @@ router.post(
   AddressController.postAddress
 );
 
-router.delete('/:id', auth, AddressController.deletePost);
+router.delete('/:id', AddressController.deletePost);
 
 module.exports = router;

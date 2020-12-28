@@ -8,12 +8,12 @@ const auth = require('../middleware/auth');
 
 const router = express.Router();
 
-router.get('/', auth, insurerdetailsController.fetchAll);
+router.get('/', insurerdetailsController.fetchAll);
 
 router.post(
   '/',
   [
-    auth,
+    // auth,
     
     body('CaseID').trim().not().isEmpty(),
     body('InsurerName').trim().not().isEmpty(),
@@ -28,6 +28,6 @@ router.post(
   insurerdetailsController.postinsurerdetails
 );
 
-router.delete('/:id', auth, insurerdetailsController.deletePost);
+router.delete('/:id', insurerdetailsController.deletePost);
 
 module.exports = router;

@@ -30,6 +30,7 @@ module.exports = class Address {
   }
 
   static save(post) {
+    console.log("insert address");
     return db.execute(
       'INSERT INTO Address (AddressLine1,AddressLine2,City,Landmark,State,Pincode,GEOLocation,CreatedBy,LastModifiedBy) VALUES (?,?,?,?,?,?,?,?,?)',
       [post.AddressLine1,post.AddressLine2,post.City,post.Landmark,post.State,post.Pincode,post.GEOLocation,post.CreatedBy,post.LastModifiedBy]

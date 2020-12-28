@@ -10,7 +10,7 @@ module.exports = class casedetails {
       CreatedBy,
       LastModifiedBy
   ) {
-    
+    debugger
       this.CaseID = CaseID;
       this.Name = Name;
       this.Description = Description;
@@ -27,6 +27,7 @@ module.exports = class casedetails {
   }
 
   static save(post) {
+    debugger
     
     return db.execute(
       

@@ -8,12 +8,12 @@ const auth = require('../middleware/auth');
 
 const router = express.Router();
 
-router.get('/', auth, thirdpartydetailsController.fetchAll);
+router.get('/',  thirdpartydetailsController.fetchAll);
 
 router.post(
   '/',
   [
-    auth,
+    // auth,
     
     body('CaseID').trim().not().isEmpty(),
     body('ThirdpartyName').trim().not().isEmpty(),
@@ -33,6 +33,6 @@ router.post(
   thirdpartydetailsController.postthirdpartydetails
 );
 
-router.delete('/:id', auth, thirdpartydetailsController.deletePost);
+router.delete('/:id',  thirdpartydetailsController.deletePost);
 
 module.exports = router;

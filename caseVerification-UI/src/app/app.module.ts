@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { DashboardModule } from './components/dashboard/dashboard.module';
 import { SharedModule } from './shared/shared.module';
 import { ProductsModule } from './components/products/products.module';
@@ -49,7 +50,10 @@ import { AuthInterceptorService } from "./services/auth-interceptor.service";
     MediaModule,
     MenusModule,
     UsersModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserModule
   ],
   providers: [
     {
