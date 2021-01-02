@@ -1,7 +1,9 @@
-const { validationResult, body } = require('express-validator');
+const { validationResult, body } = require("express-validator");
 
-const casedetails = require('../models/casedetails');
-const Address = require('../models/address');
+const casedetails = require("../models/casedetails");
+const Address = require("../models/address");
+const insurerdetails = require("../models/insurerdetails");
+const thirdpartydetails = require("../models/thirdpartydetails");
 
 exports.fetchAll = async (req, res, next) => {
   try {
@@ -28,33 +30,57 @@ exports.postcasedetails = async (req, res, next) => {
   const ThirdpartyVerificationNotes = req.body.ThirdpartyVerificationNotes;
   const CreatedBy = 1; //req.body.CreatedBy;
   const LastModifiedBy = 2; // req.body.LastModifiedBy;
-  
 
   try {
     const case1 = {
-      CaseID:CaseID,
-      Name:Name,
-      Description:Description,
-      InsurerVerificationNotes:InsurerVerificationNotes,
-      ThirdpartyVerificationNotes:ThirdpartyVerificationNotes,
-      CreatedBy:CreatedBy,
-      LastModifiedBy:LastModifiedBy
+      CaseID: CaseID,
+      Name: Name,
+      Description: Description,
+      InsurerVerificationNotes: InsurerVerificationNotes,
+      ThirdpartyVerificationNotes: ThirdpartyVerificationNotes,
+      CreatedBy: CreatedBy,
+      LastModifiedBy: LastModifiedBy,
     };
-    
-    
+
     const result = await casedetails.save(case1);
 
     //Address
 
-      var address = req.body.insAddress;
-      address["GEOLocation"] = Description;
-      address["CreatedBy"] = CreatedBy;
-      address["LastModifiedBy"] = LastModifiedBy;
+    var address = req.body.insAddress;
+    address["GEOLocation"] = Description;
+    address["CreatedBy"] = CreatedBy;
+    address["LastModifiedBy"] = LastModifiedBy;
 
-      console.log(address);
-       const result1 = await Address.save(address);
+    console.log(address);
+    const result1 = await Address.save(address);
 
-    res.status(201).json({ message: 'casedetails Added 👌' });
+    // Insurer Details
+    var InsurerDetails = req.body.insDetails;
+    InsurerDetails["CreatedBy"] = CreatedBy;
+    InsurerDetails["LastModifiedBy"] = LastModifiedBy;
+    InsurerDetails["AlternativePhoneNumber"] = "999999999";
+    InsurerDetails["AddressID"] = "550441";
+
+    console.log(InsurerDetails);
+    const result2 = await insurerdetails.save(InsurerDetails);
+
+    // Thirdparty Details
+    var ThirdpartyDetails = req.body.tpartyDetails
+    ThirdpartyDetails["CaseID"] = CaseID;
+    ThirdpartyDetails["T_AlternativePhoneNumber"] = "8888888888";
+    ThirdpartyDetails["T_AddressID"] = "550442";
+    ThirdpartyDetails["T_PhotoDocID"] = "550443";
+    ThirdpartyDetails["T_AudioDocID"] = "550444";
+    ThirdpartyDetails["T_VideoDocID"] = "550445";
+    ThirdpartyDetails["T_PhotoWithSelfieDocID"] = "550446";
+    ThirdpartyDetails["CreatedBy"] = CreatedBy;
+    ThirdpartyDetails["LastModifiedBy"] = LastModifiedBy;
+
+    console.log(ThirdpartyDetails);
+    const result3 = await thirdpartydetails.save(ThirdpartyDetails);
+
+
+    res.status(201).json({ message: "casedetails Added 👌" });
   } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;

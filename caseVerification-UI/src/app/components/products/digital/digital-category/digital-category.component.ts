@@ -45,9 +45,7 @@ export class DigitalCategoryComponent implements OnInit {
 onSubmit(formData): void {
 
 
-this.AddressService
 this.CasedetailsService
-
 
   .createPost(formData, this.authService.userId)
   .pipe(first())
