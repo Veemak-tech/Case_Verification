@@ -6,6 +6,7 @@ import { content } from './shared/routes/content-routes';
 import { ContentLayoutComponent } from './shared/layout/content-layout/content-layout.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { AuthGuard } from './services/auth-guard.service'
+import {AdminauthGuard } from './services/Adminauth-guard.service'
 
 const routes: Routes = [
   {
