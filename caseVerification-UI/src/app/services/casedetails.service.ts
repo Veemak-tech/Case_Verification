@@ -55,6 +55,15 @@ export class CasedetailsService {
             AddressID: formData.AddressID
           },
 
+          tpartyAddress: {
+            AddressLine1: formData.T_AddressLine1,
+            AddressLine2: formData.T_AddressLine2,
+            City: formData.T_City,
+            Landmark: formData.T_Landmark,
+            State: formData.T_State,
+            Pincode: formData.T_Pincode,
+          },
+
           tpartyDetails: {
             CaseID: formData.CaseID,
             ThirdpartyName: formData.ThirdpartyName,
