@@ -24,12 +24,14 @@ import { AuthModule } from './components/auth/auth.module';
 import { Test1Component } from './components/test1/test1.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AuthInterceptorService } from "./services/auth-interceptor.service";
+import {FreeapiserviceService} from "./services/freeapiservice.service"
 
 
 @NgModule({
   declarations: [
     AppComponent,
     Test1Component,
+
   ],
   imports: [
     BrowserAnimationsModule,
@@ -53,13 +55,16 @@ import { AuthInterceptorService } from "./services/auth-interceptor.service";
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserModule
+    BrowserModule,
+
   ],
   providers: [
+    FreeapiserviceService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true,
+
     }
   ],
 

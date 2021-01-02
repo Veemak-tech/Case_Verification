@@ -1,5 +1,7 @@
+import { CasedetailsService } from './../../../../services/casedetails.service';
 import { AddressService } from './../../../../services/address.service';
 import { address } from './../../../../models/address';
+import { casedetails} from './../../../../models/casedetails';
 import { first } from 'rxjs/operators';
 import { FormControl, FormGroup,Validators,NgForm } from '@angular/forms';
 import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
@@ -26,6 +28,7 @@ export class DigitalCategoryComponent implements OnInit {
 
   constructor(
     private AddressService: AddressService,
+    private CasedetailsService: CasedetailsService,
     private modalService: NgbModal,
     private http: HttpClient,
     private authService: AuthService
@@ -36,50 +39,16 @@ export class DigitalCategoryComponent implements OnInit {
   public closeResult: string;
   public digital_categories = [];
 
-createFormGroup(): FormGroup {
-  return new FormGroup ({
-    AddressLine1: new FormControl ("", [
-      Validators.required,
-      Validators.minLength(5),
-    ]),
-    AddressLine2: new FormControl ("", [
-      Validators.required,
-      Validators.minLength(10),
-    ]),
-    City: new FormControl ("", [
-      Validators.required,
-      Validators.minLength(10),
-    ]),
-    Landmark: new FormControl ("", [
-      Validators.required,
-      Validators.minLength(10),
-    ]),
-    State: new FormControl ("", [
-      Validators.required,
-      Validators.minLength(10),
-    ]),
-    Pincode: new FormControl ("", [
-      Validators.required,
-      Validators.minLength(10),
-    ]),
-    // GEOLocation: new FormControl ("", [
-    //   Validators.required,
-    //   Validators.minLength(10),
-    // ]),
-    // CreatedBy: new FormControl ("", [
-    //   Validators.required,
-    //   Validators.minLength(10),
-    // ]),
-    // LastModifiedBy: new FormControl ("", [
-    //   Validators.required,
-    //   Validators.minLength(10),
-    // ]),
-  });
-}
 
-onSubmit(formData: Pick<address, "AddressLine1" | "AddressLine2" | "City" | "Landmark" | "State" | "Pincode" >): void {
-  debugger;
-  this.AddressService
+
+
+onSubmit(formData): void {
+
+
+this.AddressService
+this.CasedetailsService
+
+
   .createPost(formData, this.authService.userId)
   .pipe(first())
   .subscribe(() => {

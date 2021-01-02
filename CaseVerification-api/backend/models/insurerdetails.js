@@ -28,12 +28,12 @@ module.exports = class insurerdetails {
     
   }
 
-  static save(post) {
+  static save(insDetails) {
     
     return db.execute(
       
       'INSERT INTO insurerdetails (CaseID,InsurerName,PhoneNumber,AlternativePhoneNumber,EmailID,AddressID,CreatedBy,LastModifiedBy) VALUES (?,?,?,?,?,?,?,?)',
-      [post.CaseID,post.InsurerName,post.PhoneNumber,post.AlternativePhoneNumber,post.EmailID,post.AddressID,post.CreatedBy,post.LastModifiedBy]
+      [insDetails.CaseID,insDetails.InsurerName,insDetails.PhoneNumber,insDetails.AlternativePhoneNumber,insDetails.EmailID,insDetails.AddressID,insDetails.CreatedBy,insDetails.LastModifiedBy]
       
     );
   }

@@ -29,15 +29,15 @@ module.exports = class Address {
     return db.execute('SELECT * FROM Address');
   }
 
-  static save(post) {
+  static save(address) {
     console.log("insert address");
     return db.execute(
       'INSERT INTO Address (AddressLine1,AddressLine2,City,Landmark,State,Pincode,GEOLocation,CreatedBy,LastModifiedBy) VALUES (?,?,?,?,?,?,?,?,?)',
-      [post.AddressLine1,post.AddressLine2,post.City,post.Landmark,post.State,post.Pincode,post.GEOLocation,post.CreatedBy,post.LastModifiedBy]
+      [address.AddressLine1,address.AddressLine2,address.City,address.Landmark,address.State,address.Pincode,address.GEOLocation,address.CreatedBy,address.LastModifiedBy]
     );
   }
 
-  static delete(id) {
-    return db.execute('DELETE FROM Address WHERE ID = ?', [id]);
-  }
+  
 };
+
+

@@ -10,7 +10,7 @@ module.exports = class casedetails {
       CreatedBy,
       LastModifiedBy
   ) {
-    debugger
+    
       this.CaseID = CaseID;
       this.Name = Name;
       this.Description = Description;
@@ -26,13 +26,13 @@ module.exports = class casedetails {
     
   }
 
-  static save(post) {
-    debugger
+  static save(caseD) {
+    
     
     return db.execute(
       
       'INSERT INTO casedetails (CaseID,Name,Description,InsurerVerificationNotes,ThirdpartyVerificationNotes,CreatedBy,LastModifiedBy) VALUES (?,?,?,?,?,?,?)',
-      [post.CaseID,post.Name,post.Description,post.InsurerVerificationNotes,post.ThirdpartyVerificationNotes,post.CreatedBy,post.LastModifiedBy]
+      [caseD.CaseID,caseD.Name,caseD.Description,caseD.InsurerVerificationNotes,caseD.ThirdpartyVerificationNotes,caseD.CreatedBy,caseD.LastModifiedBy]
       
     );
   }

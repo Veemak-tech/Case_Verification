@@ -2,13 +2,13 @@ const express = require('express');
 
 const { body } = require('express-validator');
 
-const AddressController = require('../controllers/address');
+const addressController = require('../controllers/address');
 
-const auth = require('../middleware/auth');
+//const auth = require('../middleware/auth');
 
 const router = express.Router();
 
-router.get('/', AddressController.fetchAll);
+router.get('/', addressController.fetchAll);
 
 router.post(
   '/',
@@ -26,9 +26,8 @@ router.post(
     body('LastModifiedBy').trim().not().isEmpty(),
     
   ],
-  AddressController.postAddress
+  addressController.postAddress
 );
 
-router.delete('/:id', AddressController.deletePost);
 
 module.exports = router;

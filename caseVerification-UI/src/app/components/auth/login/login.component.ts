@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
 
 
   login(): void {
-debugger
+
     this.authService
       .login(this.loginForm.value.email, this.loginForm.value.password)
       .subscribe();

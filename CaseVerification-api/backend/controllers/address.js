@@ -15,11 +15,18 @@ exports.fetchAll = async (req, res, next) => {
 };
 
 exports.postAddress = async (req, res, next) => {
+  console.log("i am here");
   const errors = validationResult(req);
 
-  if (!errors.isEmpty()) return;
+  // if (!errors.isEmpty()){ 
+    //console.log("i am insert");
+    // console.log(errors);  
+    
+    //return;
 
-  
+    //}
+
+  console.log("message");
   const AddressLine1 = req.body.AddressLine1;
   const AddressLine2 = req.body.AddressLine2;
   const City = req.body.City;
@@ -32,7 +39,7 @@ exports.postAddress = async (req, res, next) => {
   
 
   try {
-    const post = {
+    const insAddress = {
       AddressLine1:AddressLine1,
       AddressLine2:AddressLine2,
       City:City,
@@ -43,7 +50,7 @@ exports.postAddress = async (req, res, next) => {
       CreatedBy:CreatedBy,
       LastModifiedBy:LastModifiedBy
     };
-    const result = await Address.save(post);
+    const result = await Address.save(insAddress);
     res.status(201).json({ message: 'Address Added!' });
   } catch (err) {
     if (!err.statusCode) {

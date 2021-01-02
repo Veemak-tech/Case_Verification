@@ -38,12 +38,12 @@ module.exports = class thirdpartydetails {
     
   }
 
-  static save(post) {
+  static save(tDetails) {
     
     return db.execute(
       
       'INSERT INTO thirdpartydetails (CaseID,ThirdpartyName,T_PhoneNumber,T_AlternativePhoneNumber,T_EmailID,T_AddressID,T_PhotoDocID,T_AudioDocID,T_VideoDocID,T_PhotoWithSelfieDocID,T_VerificationNotes,CreatedBy,LastModifiedBy) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)',
-      [post.CaseID,post.ThirdpartyName,post.T_PhoneNumber,post.T_AlternativePhoneNumber,post.T_EmailID,post.T_AddressID,post.T_PhotoDocID,post.T_AudioDocID,post.T_VideoDocID,post.T_PhotoWithSelfieDocID,post.T_VerificationNotes,post.CreatedBy,post.LastModifiedBy]
+      [tDetails.CaseID,tDetails.ThirdpartyName,tDetails.T_PhoneNumber,tDetails.T_AlternativePhoneNumber,tDetails.T_EmailID,tDetails.T_AddressID,tDetails.T_PhotoDocID,tDetails.T_AudioDocID,tDetails.T_VideoDocID,tDetails.T_PhotoWithSelfieDocID,tDetails.T_VerificationNotes,tDetails.CreatedBy,tDetails.LastModifiedBy]
       
     );
   }

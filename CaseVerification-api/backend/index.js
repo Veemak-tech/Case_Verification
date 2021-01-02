@@ -20,12 +20,14 @@ const casedetailsRoutes = require('./routes/casedetails');
 
 const insurerdetailsRoutes = require('./routes/insurerdetails');
 
+const casecreationRoutes = require('./routes/casecreation')
+
 
 
 
 const errorController = require('./controllers/error');
-const casedetails = require('./models/casedetails');
-const thirdpartydetails = require('./models/thirdpartydetails');
+// const casedetails = require('./models/casedetails');
+// const thirdpartydetails = require('./models/thirdpartydetails');
 
 
 const app = express();
@@ -50,23 +52,25 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/auth', authRoutes);
+ app.use('/auth', authRoutes);
 
-app.use('/posts', postsRoutes);
+// app.use('/posts', postsRoutes);
 
-app.use('/roles', rolesRoutes);
+// app.use('/roles', rolesRoutes);
 
-app.use('/adminauth',adminRoutes);
+ app.use('/adminauth',adminRoutes);
 
-app.use('/address', addressRoutes);
+ app.use('/address', addressRoutes);
 
-app.use('/appusers', appusersRoutes);
+// app.use('/appusers', appusersRoutes);
 
-app.use('/casedetails', casedetailsRoutes);
+  app.use('/casedetails', casedetailsRoutes);
 
-app.use('/insurerdetails', insurerdetailsRoutes);
+ app.use('/insurerdetails', insurerdetailsRoutes);
 
-app.use('/thirdpartydetails', thirdpartydetailsRoutes);
+//  app.use('/thirdpartydetails', thirdpartydetailsRoutes);
+
+// app.use('/casecreation', casecreationRoutes)
 
 
 

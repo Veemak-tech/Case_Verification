@@ -31,7 +31,7 @@ exports.postinsurerdetails = async (req, res, next) => {
   
 
   try {
-    const post = {
+    const insDetails = {
       CaseID:CaseID,
       InsurerName:InsurerName,
       PhoneNumber:PhoneNumber,
@@ -41,7 +41,7 @@ exports.postinsurerdetails = async (req, res, next) => {
       CreatedBy:CreatedBy,
       LastModifiedBy:LastModifiedBy
     };
-    const result = await insurerdetails.save(post);
+    const result = await insurerdetails.save(insDetails);
     res.status(201).json({ message: 'Insurer Details Added Succesfully 👍😎' });
   } catch (err) {
     if (!err.statusCode) {
