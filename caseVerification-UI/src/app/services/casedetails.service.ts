@@ -29,7 +29,7 @@ export class CasedetailsService {
       .post<casedetails>(
         this.url,
         {
-          CaseID: formData.CaseID,
+          CustomerCaseID: formData.CustomerCaseID,
           Name: formData.Name,
           Description: formData.Description,
           InsurerVerificationNotes: formData.InsurerVerificationNotes,

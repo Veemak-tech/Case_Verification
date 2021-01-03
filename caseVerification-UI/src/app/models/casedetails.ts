@@ -4,7 +4,7 @@ import { thirdpartyDetails } from "./thirdpartydetails"
 
 export interface casedetails {
 
-  CaseID: string;
+  CustomerCaseID: string;
   Name: string;
   Description: string;
   InsurerVerificationNotes: string;
