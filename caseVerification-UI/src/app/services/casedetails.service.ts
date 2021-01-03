@@ -36,6 +36,7 @@ export class CasedetailsService {
           ThirdpartyVerificationNotes: formData.ThirdpartyVerificationNotes,
           CreatedBy: formData.CreatedBy,
           LastModifiedBy: formData.LastModifiedBy,
+
           insAddress: {
             AddressLine1: formData.AddressLine1,
             AddressLine2: formData.AddressLine2,
@@ -43,6 +44,38 @@ export class CasedetailsService {
             Landmark: formData.Landmark,
             State: formData.State,
             Pincode: formData.Pincode,
+          },
+
+          insDetails:{
+            CaseID: formData.CaseID,
+            InsurerName: formData.InsurerName,
+            PhoneNumber: formData.PhoneNumber,
+            AlternativePhoneNumber: formData.AlternativePhoneNumber,
+            EmailID: formData.EmailID,
+            AddressID: formData.AddressID
+          },
+
+          tpartyAddress: {
+            AddressLine1: formData.T_AddressLine1,
+            AddressLine2: formData.T_AddressLine2,
+            City: formData.T_City,
+            Landmark: formData.T_Landmark,
+            State: formData.T_State,
+            Pincode: formData.T_Pincode,
+          },
+
+          tpartyDetails: {
+            CaseID: formData.CaseID,
+            ThirdpartyName: formData.ThirdpartyName,
+            T_PhoneNumber: formData.T_PhoneNumber,
+            T_AlternativePhoneNumber: formData.T_AlternativePhoneNumber,
+            T_EmailID: formData.T_EmailID,
+            T_AddressID: formData.T_AddressID,
+            T_PhotoDocID: formData.T_PhotoDocID,
+            T_AudioDocID: formData.T_AudioDocID,
+            T_VideoDocID: formData.T_VideoDocID,
+            T_PhotoWithSelfieDocID: formData.T_PhotoWithSelfieDocID,
+            T_VerificationNotes: formData.T_VerificationNotes,
           }
 
         },

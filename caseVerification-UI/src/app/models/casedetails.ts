@@ -1,4 +1,6 @@
 import { address } from "./address";
+import { insurerDetails } from "./insurerDetails"
+import { thirdpartyDetails } from "./thirdpartydetails"
 
 export interface casedetails {
 
@@ -11,4 +13,9 @@ export interface casedetails {
   LastModifiedBy:string;
 
   insAddress:address;
+
+  insDetails: insurerDetails;
+
+  tpartyDetails: thirdpartyDetails;
+
 }
