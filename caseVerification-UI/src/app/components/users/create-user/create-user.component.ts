@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
+import {AdminauthService } from "src/app/services/adminauth.service";
 
 @Component({
   selector: 'app-create-user',
@@ -7,29 +9,30 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./create-user.component.scss']
 })
 export class CreateUserComponent implements OnInit {
-  public accountForm: FormGroup;
-  public permissionForm: FormGroup;
+  RegisterForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
-    this.createAccountForm();
-    this.createPermissionForm();
+  constructor(private adminauthService: AdminauthService, private router: Router) {}
+
+  ngOnInit(): void {
+    this.RegisterForm= this.createFormGroup();
   }
 
-  createAccountForm() {
-    this.accountForm = this.formBuilder.group({
-      fname: [''],
-      lname: [''],
-      email: [''],
-      password: [''],
-      confirmPwd: ['']
-    })
-  }
-  createPermissionForm() {
-    this.permissionForm = this.formBuilder.group({
-    })
+  createFormGroup(): FormGroup {
+    return new FormGroup({
+      name: new FormControl("", [Validators.required, Validators.minLength(5)]),
+      email: new FormControl("", [Validators.required, Validators.email]),
+      password: new FormControl("", [
+        Validators.required,
+        Validators.minLength(7),
+      ]),
+    });
   }
 
-  ngOnInit() {
+  signup(): void {
+    this.adminauthService.signup(this.RegisterForm.value).subscribe((msg) => {
+      console.log(msg);
+      console.log("user registerd");
+    
+    });
   }
-
 }

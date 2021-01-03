@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { userListDB } from 'src/app/shared/tables/list-users';
+import {AdminauthService} from "src/app/services/adminauth.service"
 
 @Component({
   selector: 'app-list-user',
@@ -7,11 +8,18 @@ import { userListDB } from 'src/app/shared/tables/list-users';
   styleUrls: ['./list-user.component.scss']
 })
 export class ListUserComponent implements OnInit {
-  public user_list = []
+  
+  data : any;
 
-  constructor() {
-    this.user_list = userListDB.list_user;
+  constructor(private user:AdminauthService) {
+  
+    this.user.getData().subscribe(data=>{
+     console.warn(data);
+      this.data=data;
+    })
   }
+
+  
 
   public settings = {
     columns: {

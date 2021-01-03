@@ -23,6 +23,7 @@ import 'mousetrap';
 import { DropzoneModule } from 'ngx-dropzone-wrapper';
 import { DROPZONE_CONFIG } from 'ngx-dropzone-wrapper';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
+import { UserComponent } from './digital/user/user.component';
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   maxFilesize: 50,
@@ -32,7 +33,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
 
 
 @NgModule({
-  declarations: [CategoryComponent, SubCategoryComponent, ProductListComponent, AddProductComponent, DigitalCategoryComponent, DigitalSubCategoryComponent, DigitalListComponent, DigitalAddComponent, ProductDetailComponent],
+  declarations: [CategoryComponent, SubCategoryComponent, ProductListComponent, AddProductComponent, DigitalCategoryComponent, DigitalSubCategoryComponent, DigitalListComponent, DigitalAddComponent, ProductDetailComponent, UserComponent],
   imports: [
     CommonModule,
     FormsModule,

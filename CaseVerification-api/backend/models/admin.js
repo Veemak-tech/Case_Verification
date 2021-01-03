@@ -6,6 +6,10 @@ module.exports = class admin {
     this.email = email;
     this.password = password;
   }
+  
+  static fetchAll() {
+    return db.execute('SELECT * FROM admin');
+  }
 
   static find(email) {
     return db.execute('SELECT * FROM admin WHERE email = ?', [email]);

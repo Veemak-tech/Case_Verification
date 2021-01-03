@@ -26,10 +26,22 @@ export class AdminauthService {
     private errorHandlerService: ErrorHandlerService,
     private router: Router
   ) {}
+  getData(){
+    let url="http://localhost:3000/adminauth";
+    return this.http.get(url);
 
+  }
+
+  signup(user: Omit<admin, "id">): Observable<admin> {
+    return this.http
+      .post<admin>(`${this.url}/signup`, user, this.httpOptions)
+      .pipe(
+        first(),
+        catchError(this.errorHandlerService.handleError<admin>("signup"))
+      );
+      }
   
-  login(
-    email: Pick<admin, "email">,
+  login(email: Pick<admin, "email">,
     password: Pick<admin, "password">
   ): Observable<{
     token: string;
@@ -43,7 +55,7 @@ export class AdminauthService {
           this.userId = tokenObject.userId;
           localStorage.setItem("token", tokenObject.token);
           this.isUserLoggedIn$.next(true);
-          this.router.navigate(["posts"]);
+          // this.router.navigate([""]);
           console.log("admin works");
         }),
         catchError(
