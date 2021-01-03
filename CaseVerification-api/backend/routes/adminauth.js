@@ -9,6 +9,7 @@ const router = express.Router();
 const adminController = require('../controllers/adminauth');
 const admin = require('../models/admin');
 
+
 router.post(
   '/signup',
   [
@@ -28,6 +29,7 @@ router.post(
   adminController.signup
 );
 
-router.post('/login', adminController.login);
 
+router.post('/login', adminController.login);
+router.get('/', adminController.fetchAll);
 module.exports = router;
