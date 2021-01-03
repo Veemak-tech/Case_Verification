@@ -43,6 +43,7 @@ exports.postcasedetails = async (req, res, next) => {
     };
 
     const result = await casedetails.save(case1);
+    console.log(case1);
     // var header = result.ResultSetHeader;
     // console.log(result);
     console.log(result[0].insertId);
