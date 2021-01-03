@@ -43,6 +43,11 @@ exports.postcasedetails = async (req, res, next) => {
     };
 
     const result = await casedetails.save(case1);
+    // var header = result.ResultSetHeader;
+    // console.log(result);
+    console.log(result[0].insertId);
+
+    var caseid = result[0].insertId;
 
     //Address
 
@@ -53,24 +58,34 @@ exports.postcasedetails = async (req, res, next) => {
 
     console.log(address);
     const result1 = await Address.save(address);
-     
-    var 
+
+    var insureraddressid = result1[0].insertId;
 
     // Insurer Details
     var InsurerDetails = req.body.insDetails;
+
+    InsurerDetails["CaseID"] = caseid;
     InsurerDetails["CreatedBy"] = CreatedBy;
     InsurerDetails["LastModifiedBy"] = LastModifiedBy;
     InsurerDetails["AlternativePhoneNumber"] = "999999999";
-    InsurerDetails["AddressID"] = "550441";
+    InsurerDetails["AddressID"] = insureraddressid;
 
     console.log(InsurerDetails);
     const result2 = await insurerdetails.save(InsurerDetails);
 
     // Thirdparty Details
-    var ThirdpartyDetails = req.body.tpartyDetails
-    ThirdpartyDetails["CaseID"] = CaseID;
+    var ThirdpartyDetails = req.body.tpartyDetails;
+    var thirdpartyaddress = req.body.tpartyAddress;
+
+    thirdpartyaddress["GEOLocation"] = Description;
+    thirdpartyaddress["CreatedBy"] = CreatedBy;
+    thirdpartyaddress["LastModifiedBy"] = LastModifiedBy;
+    const tpaddressresult = await Address.save(thirdpartyaddress);
+    var thirdpartyaddressid = tpaddressresult[0].insertId;
+
+    ThirdpartyDetails["CaseID"] = caseid;
     ThirdpartyDetails["T_AlternativePhoneNumber"] = "8888888888";
-    ThirdpartyDetails["T_AddressID"] = "550442";
+    ThirdpartyDetails["T_AddressID"] = thirdpartyaddressid;
     ThirdpartyDetails["T_PhotoDocID"] = "550443";
     ThirdpartyDetails["T_AudioDocID"] = "550444";
     ThirdpartyDetails["T_VideoDocID"] = "550445";
@@ -80,6 +95,7 @@ exports.postcasedetails = async (req, res, next) => {
 
     console.log(ThirdpartyDetails);
     const result3 = await thirdpartydetails.save(ThirdpartyDetails);
+
 
 
     res.status(201).json({ message: "casedetails Added 👌" });
