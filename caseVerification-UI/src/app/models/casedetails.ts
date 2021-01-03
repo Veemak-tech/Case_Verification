@@ -11,6 +11,8 @@ export interface casedetails {
   ThirdpartyVerificationNotes: string;
   CreatedBy: string;
   LastModifiedBy:string;
+  ReferenceNumber:string;
+  DueDate:string;
 
   insAddress:address;
 

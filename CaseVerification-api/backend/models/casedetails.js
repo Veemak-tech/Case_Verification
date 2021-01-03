@@ -8,7 +8,9 @@ module.exports = class casedetails {
       InsurerVerificationNotes,
       ThirdpartyVerificationNotes,
       CreatedBy,
-      LastModifiedBy
+      LastModifiedBy,
+      ReferenceNumber,
+      DueDate
   ) {
     
       this.CaseID = CaseID;
@@ -18,7 +20,8 @@ module.exports = class casedetails {
       this.ThirdpartyVerificationNotes = ThirdpartyVerificationNotes;
       this.CreatedBy = CreatedBy;
       this.LastModifiedBy = LastModifiedBy;
-    
+      this.ReferenceNumber = ReferenceNumber;
+      this.DueDate = DueDate;
   }
 
   static fetchAll() {
@@ -31,8 +34,8 @@ module.exports = class casedetails {
     
     return db.execute(
       
-      'INSERT INTO casedetails (CaseID,Name,Description,InsurerVerificationNotes,ThirdpartyVerificationNotes,CreatedBy,LastModifiedBy) VALUES (?,?,?,?,?,?,?)',
-      [caseD.CaseID,caseD.Name,caseD.Description,caseD.InsurerVerificationNotes,caseD.ThirdpartyVerificationNotes,caseD.CreatedBy,caseD.LastModifiedBy]
+      'INSERT INTO casedetails (CaseID,Name,Description,InsurerVerificationNotes,ThirdpartyVerificationNotes,CreatedBy,LastModifiedBy, ReferenceNumber, DueDate) VALUES (?,?,?,?,?,?,?,?,?)',
+      [caseD.CaseID,caseD.Name,caseD.Description,caseD.InsurerVerificationNotes,caseD.ThirdpartyVerificationNotes,caseD.CreatedBy,caseD.LastModifiedBy,caseD.ReferenceNumber,caseD.DueDate]
       
     );
   }

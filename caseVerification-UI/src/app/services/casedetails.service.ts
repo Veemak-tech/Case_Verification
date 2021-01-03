@@ -36,6 +36,8 @@ export class CasedetailsService {
           ThirdpartyVerificationNotes: formData.ThirdpartyVerificationNotes,
           CreatedBy: formData.CreatedBy,
           LastModifiedBy: formData.LastModifiedBy,
+          ReferenceNumber: formData.ReferenceNumber,
+          DueDate: formData.DueDate,
 
           insAddress: {
             AddressLine1: formData.AddressLine1,

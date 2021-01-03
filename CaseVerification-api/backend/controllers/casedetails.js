@@ -30,6 +30,8 @@ exports.postcasedetails = async (req, res, next) => {
   const ThirdpartyVerificationNotes = req.body.ThirdpartyVerificationNotes;
   const CreatedBy = 1; //req.body.CreatedBy;
   const LastModifiedBy = 2; // req.body.LastModifiedBy;
+  const ReferenceNumber = req.body.ReferenceNumber;
+  const DueDate = req.body.DueDate;
 
   try {
     const case1 = {
@@ -40,6 +42,8 @@ exports.postcasedetails = async (req, res, next) => {
       ThirdpartyVerificationNotes: ThirdpartyVerificationNotes,
       CreatedBy: CreatedBy,
       LastModifiedBy: LastModifiedBy,
+      ReferenceNumber: ReferenceNumber,
+      DueDate: DueDate
     };
 
     const result = await casedetails.save(case1);
