@@ -26,11 +26,7 @@ export class AdminauthService {
     private errorHandlerService: ErrorHandlerService,
     private router: Router
   ) {}
-  getData(){
-    let url="http://localhost:3000/adminauth";
-    return this.http.get(url);
-
-  }
+  
 
   signup(user: Omit<admin, "id">): Observable<admin> {
     return this.http
