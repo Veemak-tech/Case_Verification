@@ -8,11 +8,12 @@ export interface casedetails {
   Name: string;
   Description: string;
   InsurerVerificationNotes: string;
-  ThirdpartyVerificationNotes: string;
-  CreatedBy: string;
-  LastModifiedBy:string;
+  T_VerificationNotes: string;
   ReferenceNumber:string;
   DueDate:string;
+  CreatedBy: string;
+  LastModifiedBy:string;
+
 
   insAddress:address;
 

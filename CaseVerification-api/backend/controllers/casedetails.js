@@ -27,7 +27,7 @@ exports.postcasedetails = async (req, res, next) => {
   const Name = req.body.Name;
   const Description = req.body.Description;
   const InsurerVerificationNotes = req.body.InsurerVerificationNotes;
-  const ThirdpartyVerificationNotes = req.body.ThirdpartyVerificationNotes;
+  const T_VerificationNotes = req.body.T_VerificationNotes;
   const CreatedBy = 1; //req.body.CreatedBy;
   const LastModifiedBy = 2; // req.body.LastModifiedBy;
   const ReferenceNumber = req.body.ReferenceNumber;
@@ -39,7 +39,7 @@ exports.postcasedetails = async (req, res, next) => {
       Name: Name,
       Description: Description,
       InsurerVerificationNotes: InsurerVerificationNotes,
-      ThirdpartyVerificationNotes: ThirdpartyVerificationNotes,
+      T_VerificationNotes: T_VerificationNotes,
       CreatedBy: CreatedBy,
       LastModifiedBy: LastModifiedBy,
       ReferenceNumber: ReferenceNumber,
