@@ -1,4 +1,5 @@
 import { ErrorHandlerService } from './error-handler.service';
+import { DigitalListComponent } from '../components/products/digital/digital-list/digital-list.component'
 import { User } from './../models/User';
 import { catchError, first } from 'rxjs/operators';
 import { from, Observable } from 'rxjs';
@@ -33,9 +34,12 @@ export class CasedetailsService {
           Name: formData.Name,
           Description: formData.Description,
           InsurerVerificationNotes: formData.InsurerVerificationNotes,
-          ThirdpartyVerificationNotes: formData.ThirdpartyVerificationNotes,
+          T_VerificationNotes: formData.T_VerificationNotes,
+          ReferenceNumber: formData.ReferenceNumber,
+          DueDate: formData.DueDate,
           CreatedBy: formData.CreatedBy,
           LastModifiedBy: formData.LastModifiedBy,
+
 
           insAddress: {
             AddressLine1: formData.AddressLine1,
@@ -86,5 +90,17 @@ export class CasedetailsService {
           this.ErrorHandlerService.handleError<casedetails>('create Address')
         )
       );
+  }
+
+  getData(){
+    let url = "http://localhost:3000/casedetails";
+    return this.http.get(url);
+  }
+
+  // delete
+
+  deletecasedetails(id: number): Observable<DigitalListComponent> {
+    const url = `${this.url}/${id}`;
+    return this.http.delete<DigitalListComponent>(url, this.httpOptions);
   }
 }

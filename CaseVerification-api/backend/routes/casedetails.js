@@ -19,9 +19,13 @@ router.post(
     body('Name').trim().not().isEmpty(),
     body('Description').trim().not().isEmpty(),
     body('InsurerVerificationNotes').trim().not().isEmpty(),
-    body('ThirdpartyVerificationNotes').trim().not().isEmpty(),
+    body('T_VerificationNotes').trim().not().isEmpty(),
+    body('ReferenceNumber').trim().not().isEmpty(),
+    body('DueDate').trim().not().isEmpty(),
     body('CreatedBy').trim().not().isEmpty(),
     body('LastModifiedBy').trim().not().isEmpty(),
+    
+
     
   ],
   casedetailsController.postcasedetails

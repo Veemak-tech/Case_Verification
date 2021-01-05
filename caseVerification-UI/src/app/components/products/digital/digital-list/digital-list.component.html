@@ -13,47 +13,96 @@
       <input class="form-control" id="validationCustom01" type="text" required="" placeholder="Case ID"
         style="width:100px;">
     </div>
-  <!-- <div style="margin-left: 30px;" class="col-md-6"><br>
-    <label for="validationCustom01" class="col-form-label pt-0">Status</label>
-    <input class="form-control" id="validationCustom01" style="width: 100px;" type="text" placeholder="Is Active" readonly>
-  </div>
-  <div class="col-md-4" ><br>
-    <label for="validationCustom01">Agent</label>
-    <input class="form-control" id="validationCustom01" type="text" required="" placeholder="Agent Name" style="width: 300px;" readonly>
-  </div> -->
 </div>
 <br>
 </div>
 
 
-<div class="table-responsive">
+<!-- <div class="table-responsive">
 <table class="table table-hover">
   <thead>
-    <tr class="table-primary">
+    <tr class="table-info">
       <th scope="col" style="width: 30px">Case ID</th>
       <th scope="col" style="width: 40px">Name</th>
-      <th scope="col" style="width: 20px">Status</th>
-      <th scope="col" style="width: 30px">Agent</th>
-      <th scope="col" style="width: 25px">Created Date</th>
-      <th scope="col" style="width: 35px">Assigned Date</th>
-      <th scope="col" style="width: 10px">Comp.Date</th>
+      <th scope="col" style="width: 20px">Description</th>
+      <th scope="col" style="width: 30px">Insurer V.Notes</th>
+      <th scope="col" style="width: 25px">Thirdparty V.Notes</th>
+      <th scope="col" style="width: 35px">Created By</th>
+      <th scope="col" style="width: 35px">Created Date</th>
+      <th scope="col" style="width: 35px">Last Modified By</th>
+      <th scope="col" style="width: 10px">Last Modified Date</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>1</td>
-      <td>Vignesh</td>
-      <td>Active</td>
-      <td>Vinoth</td>
-      <td>01-02-2019</td>
-      <td>05-02-2019</td>
-      <td>25-02-2019</td>
+    <tr *ngFor = "let item of data">
+      <td>{{item.CaseID}}</td>
+      <td>{{item.Name}}</td>
+      <td>{{item.Description}}</td>
+      <td>{{item.InsurerVerificationNotes}}</td>
+      <td>{{item.ThirdpartyVerificationNotes}}</td>
+      <td>{{item.CreatedBy}}</td>
+      <td>{{item.CreatedDate}}</td>
+      <td>{{item.LastModifiedBy}}</td>
+      <td>{{item.LastModifiedDate}}</td>
     </tr>
   </tbody>
 </table>
 <hr>
 </div>
-<br><br><br>
+<br><br><br> -->
 
+<!-- <div>
+<table class="table" st-pipe="mc.callServer" st-table="mc.displayed">
+	<thead>
+    <tr>
+      <th><input st-search="CaseID"/>Enter Case ID to search..</th>
+      <th><input st-search="Name"/>Enter Name to search..</th>
+    </tr>
+	<tr>
+		<th st-sort="CaseID">CaseID</th>
+		<th st-sort="Name">Name</th>
+		<th st-sort="Description">Description</th>
+    <th st-sort="InsurerVerificationNotes">InsurerVerificationNotes</th>
+    <th st-sort="ThirdpartyVerificationNotes">ThirdpartyVerificationNotes</th>
+    <th st-sort="CreatedBy">CreatedBy</th>
+    <th st-sort="CreatedDate">CreatedDate</th>
+    <th st-sort="LastModifiedBy">LastModifiedBy</th>
+    <th st-sort="LastModifiedDate">LastModifiedDate</th>
+	</tr>
+
+	</thead>
+	<tbody ng-show="!mc.isLoading">
+	<tr *ngFor = "let item of data">
+		<td>{{item.CaseID}}</td>
+		<td>{{item.Name}}</td>
+		<td>{{item.Description}}</td>
+    <td>{{item.InsurerVerificationNotes}}</td>
+    <td>{{item.ThirdpartyVerificationNotes}}</td>
+    <td>{{item.CreatedBy}}</td>
+    <td>{{item.CreatedDate}}</td>
+    <td>{{item.LastModifiedBy}}</td>
+    <td>{{item.LastModifiedDate}}</td>
+	</tr>
+	</tbody>
+
+</table>
+</div> -->
+
+
+
+<div class="container-fluid">
+  <div class="card">
+      <div class="card-header">
+          <h5>Vendor Details</h5>
+      </div>
+      <div class="card-body vendor-table">
+          <div id="batchDelete" class="custom-datatable vendor-list">
+              <div class="table-responsive ">
+                      <ng2-smart-table  [settings]="caselistSettings" [source]="caseList" (deleteConfirm)="onDelete()"></ng2-smart-table>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
 
 

@@ -1,41 +1,80 @@
+import { CasedetailsService } from './../../../../services/casedetails.service';
 import { Component, OnInit } from '@angular/core';
 import { digitalListDB } from 'src/app/shared/tables/digital-list';
+import { HttpClient } from '@angular/common/http'
+
 @Component({
   selector: 'app-digital-list',
   templateUrl: './digital-list.component.html',
-  styleUrls: ['./digital-list.component.scss']
+  styleUrls: ['./digital-list.component.scss'],
 })
-export class DigitalListComponent implements OnInit {
-  public digital_list = []
+export class DigitalListComponent {
+  public caseList: any;
+  deleteID: string;
+  CasedetailsService: any;
 
-  constructor() {
-    this.digital_list = digitalListDB.digital_list;
+  // Get data
+  constructor(
+    private user: CasedetailsService,
+    private httpClient: HttpClient
+    ) {
+    this.user.getData().subscribe((data1) => {
+      console.warn(data1);
+      this.caseList = data1;
+    });
   }
 
-  public settings = {
+  public caselistSettings = {
     actions: {
-      position: 'right'
+      position: 'right',
     },
     columns: {
-      id: {
-        title: 'Id',
-      },
-      img: {
-        title: 'Product',
+      CaseID: {
+        title: 'Case ID',
         type: 'html',
       },
-      title: {
-        title: 'Product Title'
+      Name: {
+        title: 'Name',
       },
-      entry_type: {
-        title: 'Entry Type',
+      Description: {
+        title: 'Description',
       },
-      quantity: {
-        title: 'Quantity',
-      }
+      InsurerVerificationNotes: {
+        title: 'Insurer Verification Notes',
+      },
+      T_VerificationNotes: {
+        title: 'Thirdparty Verification Notes',
+      },
+      CreatedBy: {
+        title: 'Created By',
+      },
+      CreatedDate: {
+        title: 'Created Date',
+      },
     },
   };
 
-  ngOnInit() { }
+
+  // onDelete(){
+  //   window.alert("hi")
+  // }
+
+  // onDeleteConfirm(event) {
+  //   if (window.confirm('Are you sure you want to save?')) {
+  //     //call to remote api, remember that you have to await this
+  //     event.confirm.resolve(event.newData);
+  //   } else {
+  //     event.confirm.reject();
+  //   }
+  // }
+
+  onDelete()
+  {
+    const deleteURL = 'http://localhost:3000/casedetails/' + this.deleteID;
+    // console.log(deleteURL);
+    this.httpClient.delete(deleteURL).subscribe((results) => {
+      this.CasedetailsService.dismissAll();
+    });
+  }
 
 }
