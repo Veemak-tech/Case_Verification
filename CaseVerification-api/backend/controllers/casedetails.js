@@ -79,9 +79,10 @@ exports.postcasedetails = async (req, res, next) => {
     const result2 = await insurerdetails.save(InsurerDetails);
 
     // Thirdparty Details
+    console.log("third party detail");
     var ThirdpartyDetails = req.body.tpartyDetails;
     var thirdpartyaddress = req.body.tpartyAddress;
-
+    console.log(thirdpartyaddress);
     thirdpartyaddress["GEOLocation"] = Description;
     thirdpartyaddress["CreatedBy"] = CreatedBy;
     thirdpartyaddress["LastModifiedBy"] = LastModifiedBy;
@@ -98,9 +99,8 @@ exports.postcasedetails = async (req, res, next) => {
     ThirdpartyDetails["CreatedBy"] = CreatedBy;
     ThirdpartyDetails["LastModifiedBy"] = LastModifiedBy;
 
-    console.log(ThirdpartyDetails);
+    console.log(req.body.ThirdpartyDetails);
     const result3 = await thirdpartydetails.save(ThirdpartyDetails);
-
 
 
     res.status(201).json({ message: "casedetails Added 👌" });
@@ -122,4 +122,20 @@ exports.deletePost = async (req, res, next) => {
     }
     next(err);
   }
+};
+
+updateUsers: (req, res) => {
+  const body = req.body;
+  
+  body.password = hashSync(body.password, salt);
+  updateUser(body, (err, results) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    return res.json({
+      success: 1,
+      message: "updated successfully"
+    });
+  });
 };

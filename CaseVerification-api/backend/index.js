@@ -54,7 +54,7 @@ app.use((req, res, next) => {
 
  app.use('/auth', authRoutes);
 
-// app.use('/posts', postsRoutes);
+ app.use('/posts', postsRoutes);
 
 // app.use('/roles', rolesRoutes);
 

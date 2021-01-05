@@ -33,4 +33,6 @@ router.post(
 
 router.delete('/:id', casedetailsController.deletePost);
 
+
+
 module.exports = router;
