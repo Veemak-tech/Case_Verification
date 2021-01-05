@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { userListDB } from 'src/app/shared/tables/list-users';
-import {AdminauthService} from "src/app/services/adminauth.service"
+import {AuthService} from "src/app/services/auth.service"
 
 @Component({
   selector: 'app-list-user',
@@ -9,37 +9,37 @@ import {AdminauthService} from "src/app/services/adminauth.service"
 })
 export class ListUserComponent implements OnInit {
   
-  data : any;
+  userlist :any;
 
-  constructor(private user:AdminauthService) {
+  constructor(private user:AuthService) {
   
     this.user.getData().subscribe(data=>{
      console.warn(data);
-      this.data=data;
+      this.userlist=data;
     })
   }
 
   
 
   public settings = {
+    actions: {
+      position: 'right'
+    }, 
     columns: {
-      avatar: {
-        title: 'Avatar',
-        type: 'html'
+      
+      id: {
+        title: 'ID',
       },
-      fName: {
-        title: 'First Name',
-      },
-      lName: {
-        title: 'Last Name'
+      name: {
+        title: 'Name'
       },
       email: {
         title: 'Email'
       },
-      last_login: {
-        title: 'Last Login'
+      date: {
+        title: 'date'
       },
-      role: {
+      RoleID: {
         title: 'Role'
       },
     },

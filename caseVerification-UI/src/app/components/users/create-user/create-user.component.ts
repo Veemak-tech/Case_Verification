@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
-import {AdminauthService } from "src/app/services/adminauth.service";
+import {AuthService } from "src/app/services/auth.service";
 
 @Component({
   selector: 'app-create-user',
@@ -11,7 +11,7 @@ import {AdminauthService } from "src/app/services/adminauth.service";
 export class CreateUserComponent implements OnInit {
   RegisterForm: FormGroup;
 
-  constructor(private adminauthService: AdminauthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.RegisterForm= this.createFormGroup();
@@ -23,13 +23,13 @@ export class CreateUserComponent implements OnInit {
       email: new FormControl("", [Validators.required, Validators.email]),
       password: new FormControl("", [
         Validators.required,
-        Validators.minLength(7),
-      ]),
+        Validators.minLength(7),]),
+        RoleID: new FormControl("", [Validators.required, Validators.minLength(5)]),
     });
   }
 
   signup(): void {
-    this.adminauthService.signup(this.RegisterForm.value).subscribe((msg) => {
+    this.authService.signup(this.RegisterForm.value).subscribe((msg) => {
       console.log(msg);
       console.log("user registerd");
     

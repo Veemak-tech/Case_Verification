@@ -10,7 +10,7 @@ const Roles = require('../models/roles')
 
 exports.signup = async (req, res, next) => {
  console.log(" its work");
- console.log(res);
+ 
   
    const errors = validationResult(req);
 
@@ -19,6 +19,7 @@ exports.signup = async (req, res, next) => {
   const name = req.body.name;
   const email = req.body.email;
   const password = req.body.password;
+  const RoleID=req.body.RoleID;
 
   try {
     const hashedPassword = await bcrypt.hash(password, 12);
@@ -27,11 +28,23 @@ exports.signup = async (req, res, next) => {
       name: name,
       email: email,
       password: hashedPassword,
+      RoleID: RoleID,
     };
 
     const result = await User.save(userDetails);
 
     res.status(201).json({ message: 'User registered!' });
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};
+exports.fetchAll = async (req, res, next) => {
+  try {
+    const [allPosts] = await User.fetchAll();
+    res.status(200).json(allPosts);
   } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;

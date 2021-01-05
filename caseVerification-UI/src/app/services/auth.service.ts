@@ -27,6 +27,11 @@ export class AuthService {
     private errorHandlerService: ErrorHandlerService,
     private router: Router
   ) {}
+  getData(){
+    let url="http://localhost:3000/auth";
+    return this.http.get(url);
+
+  }
 
   signup(user: Omit<User, "id">): Observable<User> {
     return this.http
