@@ -43,7 +43,7 @@ exports.postcasedetails = async (req, res, next) => {
       CreatedBy: CreatedBy,
       LastModifiedBy: LastModifiedBy,
       ReferenceNumber: ReferenceNumber,
-      DueDate: DueDate
+      DueDate: DueDate,
     };
 
     const result = await casedetails.save(case1);
@@ -102,7 +102,6 @@ exports.postcasedetails = async (req, res, next) => {
     console.log(req.body.ThirdpartyDetails);
     const result3 = await thirdpartydetails.save(ThirdpartyDetails);
 
-
     res.status(201).json({ message: "casedetails Added 👌" });
   } catch (err) {
     if (!err.statusCode) {
@@ -124,18 +123,25 @@ exports.deletePost = async (req, res, next) => {
   }
 };
 
-updateUsers: (req, res) => {
-  const body = req.body;
-  
-  body.password = hashSync(body.password, salt);
-  updateUser(body, (err, results) => {
-    if (err) {
-      console.log(err);
-      return;
+// put
+exports.putCasedetails = async (req, res, next) => {
+  try {
+    const putResponse = await casedetails.update(
+      req.body.CaseID,
+      req.body.Name,
+      req.body.Description,
+      req.body.InsurerVerificationNotes,
+      req.body.T_VerificationNotes,
+      req.body.ReferenceNumber,
+      req.body.DueDate,
+      req.body.CreatedBy,
+      req.body.LastModifiedBy
+    );
+    res.status(200).json(putResponse);
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
     }
-    return res.json({
-      success: 1,
-      message: "updated successfully"
-    });
-  });
+    next(err);
+  }
 };

@@ -10,6 +10,8 @@ const router = express.Router();
 
 router.get('/',  casedetailsController.fetchAll);
 
+router.put('/', casedetailsController.putCasedetails);
+
 router.post(
   '/',
   [

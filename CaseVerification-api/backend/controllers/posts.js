@@ -1,7 +1,7 @@
 const { validationResult, body } = require("express-validator");
 
 const Post = require("../models/post");
-const usersModel = require("../models/post");
+
 
 exports.fetchAll = async (req, res, next) => {
   try {
@@ -44,18 +44,15 @@ exports.postPost = async (req, res, next) => {
 };
 
 // put
-
-exports.putPost = (req, res) => {
-  const postreqdata = new usersModel(req.body);
-  console.log("postreqdata update", postreqdata);
-  // checking null
-  if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
-    res.send(400).send({ success: false, message: "Please fill all fields" });
-  } else {
-    usersModel.putPost(req.params.id, postreqdata, (err, usermodel) => {
-      if (err) res.send(err);
-      res.json({ status: true, message: "post table updated!!!!!!" });
-    });
+exports.putPost = async (req, res, next) => {
+  try {
+    const putResponse = await Post.update(req.body.id, req.body.title, req.body.body, req.body.user);
+    res.status(200).json(putResponse);
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
   }
 };
 
