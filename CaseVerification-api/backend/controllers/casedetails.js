@@ -134,7 +134,6 @@ exports.putCasedetails = async (req, res, next) => {
       req.body.T_VerificationNotes,
       req.body.ReferenceNumber,
       req.body.DueDate,
-      req.body.CreatedBy,
       req.body.LastModifiedBy
     );
     res.status(200).json(putResponse);

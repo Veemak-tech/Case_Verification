@@ -1,7 +1,8 @@
 import { CasedetailsService } from './../../../../services/casedetails.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,EventEmitter } from '@angular/core';
 import { digitalListDB } from 'src/app/shared/tables/digital-list';
 import { HttpClient } from '@angular/common/http'
+import { allIcons } from 'ngx-bootstrap-icons';
 
 @Component({
   selector: 'app-digital-list',
@@ -24,15 +25,34 @@ export class DigitalListComponent {
     });
   }
 
+  public onCustomAction(event) {
+    switch ( event.action) {
+      case 'viewrecord':
+        this.viewRecord(event.data);
+        break;
+
+    }
+  }
+
+  public viewRecord(formData: any) {
+    let rowData = formData;
+    let resultimage = rowData.resultimagepath;
+    let searchtimage = rowData.searchimagepath;
+    let title  = rowData.filename;
+  }
+
+
   public caselistSettings = {
     actions: {
-      columnTitle: 'Actions',
-      add: true,
-      edit: false,
-      delete: true,
-      position: 'right'
-    },
-
+      columnTitle: 'Action',
+      add: false,
+      edit:true,
+      delete:false,
+      custom: [
+        { name: 'viewrecord', title: '<i class="fas fa-edit"></i>'},
+      ],
+      position:'left'
+      },
 
     columns: {
       CaseID: {
@@ -56,8 +76,8 @@ export class DigitalListComponent {
       },
       CreatedDate: {
         title: 'Created Date',
-      },
-    }
+      }
+    },
   };
 
   // onDelete()

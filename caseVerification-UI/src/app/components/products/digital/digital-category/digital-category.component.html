@@ -237,7 +237,16 @@
       <div class="form-group form-inline" class="Questionaaire1">
         <div class="content4">
           <label for="exampleFormControlTextarea1">Questions</label>
+          <div class="btn-group">
+            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Small
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Action</a>
+            </div>
+          </div>
         </div>
+
         <div class="content3">
           <textarea class="form-control" name="T_VerificationNotes" ngModel id="exampleFormControlTextarea1"
             rows="7" cols="55"></textarea>
@@ -248,3 +257,7 @@
     </form>
   </div>
 </div>
+
+<script>
+  $('.dropdown-toggle').dropdown()
+</script>
