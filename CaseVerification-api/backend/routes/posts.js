@@ -4,23 +4,31 @@ const { body } = require('express-validator');
 
 const postsController = require('../controllers/posts');
 
-const auth = require('../middleware/auth');
+// const auth = require('../middleware/auth');
 
 const router = express.Router();
 
-router.get('/', auth, postsController.fetchAll);
+router.get('/', postsController.fetchAll);
 
 router.post(
   '/',
+  
   [
-    auth,
+    
     body('title').trim().isLength({ min: 5 }).not().isEmpty(),
     body('body').trim().isLength({ min: 10 }).not().isEmpty(),
     body('user').trim().not().isEmpty(),
   ],
+  
   postsController.postPost
+  
 );
 
-router.delete('/:id', auth, postsController.deletePost);
+router.put('/', postsController.putPost);
+
+
+router.delete('/:id', postsController.deletePost);
+
+
 
 module.exports = router;

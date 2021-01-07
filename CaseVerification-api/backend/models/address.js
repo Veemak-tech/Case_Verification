@@ -31,8 +31,9 @@ module.exports = class Address {
 
   static save(address) {
     console.log("insert address");
+    console.log(address);
     return db.execute(
-      'INSERT INTO Address (AddressLine1,AddressLine2,City,Landmark,State,Pincode,GEOLocation,CreatedBy,LastModifiedBy) VALUES (?,?,?,?,?,?,?,?,?)',
+      'INSERT INTO Address (AddressLine1,AddressLine2,City,Landmark,State,Pincode,GEOLocation,CreatedBy,LastModifiedBy,CreatedDate,LastModifiedDate) VALUES (?,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP())',
       [address.AddressLine1,address.AddressLine2,address.City,address.Landmark,address.State,address.Pincode,address.GEOLocation,address.CreatedBy,address.LastModifiedBy]
     );
   }

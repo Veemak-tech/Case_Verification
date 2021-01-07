@@ -43,7 +43,7 @@ exports.postcasedetails = async (req, res, next) => {
       CreatedBy: CreatedBy,
       LastModifiedBy: LastModifiedBy,
       ReferenceNumber: ReferenceNumber,
-      DueDate: DueDate
+      DueDate: DueDate,
     };
 
     const result = await casedetails.save(case1);
@@ -79,9 +79,10 @@ exports.postcasedetails = async (req, res, next) => {
     const result2 = await insurerdetails.save(InsurerDetails);
 
     // Thirdparty Details
+    console.log("third party detail");
     var ThirdpartyDetails = req.body.tpartyDetails;
     var thirdpartyaddress = req.body.tpartyAddress;
-
+    console.log(thirdpartyaddress);
     thirdpartyaddress["GEOLocation"] = Description;
     thirdpartyaddress["CreatedBy"] = CreatedBy;
     thirdpartyaddress["LastModifiedBy"] = LastModifiedBy;
@@ -98,10 +99,8 @@ exports.postcasedetails = async (req, res, next) => {
     ThirdpartyDetails["CreatedBy"] = CreatedBy;
     ThirdpartyDetails["LastModifiedBy"] = LastModifiedBy;
 
-    console.log(ThirdpartyDetails);
+    console.log(req.body.ThirdpartyDetails);
     const result3 = await thirdpartydetails.save(ThirdpartyDetails);
-
-
 
     res.status(201).json({ message: "casedetails Added 👌" });
   } catch (err) {
@@ -116,6 +115,29 @@ exports.deletePost = async (req, res, next) => {
   try {
     const deleteResponse = await casedetails.delete(req.params.id);
     res.status(200).json(deleteResponse);
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};
+
+// put
+exports.putCasedetails = async (req, res, next) => {
+  try {
+    const putResponse = await casedetails.update(
+      req.body.CaseID,
+      req.body.Name,
+      req.body.Description,
+      req.body.InsurerVerificationNotes,
+      req.body.T_VerificationNotes,
+      req.body.ReferenceNumber,
+      req.body.DueDate,
+      req.body.CreatedBy,
+      req.body.LastModifiedBy
+    );
+    res.status(200).json(putResponse);
   } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;

@@ -26,8 +26,14 @@ export class DigitalListComponent {
 
   public caselistSettings = {
     actions: {
-      position: 'right',
+      columnTitle: 'Actions',
+      add: true,
+      edit: false,
+      delete: true,
+      position: 'right'
     },
+
+
     columns: {
       CaseID: {
         title: 'Case ID',
@@ -51,30 +57,17 @@ export class DigitalListComponent {
       CreatedDate: {
         title: 'Created Date',
       },
-    },
+    }
   };
 
-
-  // onDelete(){
-  //   window.alert("hi")
+  // onDelete()
+  // {
+  //   const deleteURL = 'http://localhost:3000/casedetails/' + this.deleteID;
+  //   // console.log(deleteURL);
+  //   this.httpClient.delete(deleteURL).subscribe((results) => {
+  //     this.CasedetailsService.dismissAll();
+  //   });
   // }
-
-  // onDeleteConfirm(event) {
-  //   if (window.confirm('Are you sure you want to save?')) {
-  //     //call to remote api, remember that you have to await this
-  //     event.confirm.resolve(event.newData);
-  //   } else {
-  //     event.confirm.reject();
-  //   }
-  // }
-
-  onDelete()
-  {
-    const deleteURL = 'http://localhost:3000/casedetails/' + this.deleteID;
-    // console.log(deleteURL);
-    this.httpClient.delete(deleteURL).subscribe((results) => {
-      this.CasedetailsService.dismissAll();
-    });
-  }
 
 }
+

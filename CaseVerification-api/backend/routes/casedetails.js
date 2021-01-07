@@ -10,6 +10,8 @@ const router = express.Router();
 
 router.get('/',  casedetailsController.fetchAll);
 
+router.put('/', casedetailsController.putCasedetails);
+
 router.post(
   '/',
   [
@@ -32,5 +34,7 @@ router.post(
 );
 
 router.delete('/:id', casedetailsController.deletePost);
+
+
 
 module.exports = router;
