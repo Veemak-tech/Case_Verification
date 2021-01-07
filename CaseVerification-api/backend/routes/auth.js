@@ -23,10 +23,13 @@ router.post(
       })
       .normalizeEmail(),
     body('password').trim().isLength({ min: 7 }),
+    body('RoleID').not().isEmpty(),
   ],
   authController.signup
 );
 
 router.post('/login', authController.login);
 router.get('/', authController.fetchAll);
+router.put('/',authController.Update );
+
 module.exports = router;

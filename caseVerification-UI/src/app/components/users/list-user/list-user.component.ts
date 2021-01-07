@@ -17,13 +17,18 @@ export class ListUserComponent implements OnInit {
      console.warn(data);
       this.userlist=data;
     })
+    
   }
 
   
 
   public settings = {
     actions: {
-      position: 'right'
+      position: 'right',
+      
+      edit:{
+        confirmSave:true
+           }
     }, 
     columns: {
       
@@ -44,8 +49,9 @@ export class ListUserComponent implements OnInit {
       },
     },
   };
-
+  
   ngOnInit() {
+    
   }
 
 }

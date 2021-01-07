@@ -27,11 +27,13 @@ export class AuthService {
     private errorHandlerService: ErrorHandlerService,
     private router: Router
   ) {}
+  
   getData(){
     let url="http://localhost:3000/auth";
     return this.http.get(url);
 
   }
+  
 
   signup(user: Omit<User, "id">): Observable<User> {
     return this.http
@@ -41,6 +43,16 @@ export class AuthService {
         catchError(this.errorHandlerService.handleError<User>("signup"))
       );
   }
+  update(user: Omit<User, "id">): Observable<User> {
+    return this.http
+      .put<User>(`${this.url}/`, user, this.httpOptions)
+      .pipe(
+        first(),
+        catchError(this.errorHandlerService.handleError<User>("update"))
+      );
+  }
+  
+  
   login(
     email: Pick<User, "email">,
     password: Pick<User, "password">
@@ -66,6 +78,9 @@ export class AuthService {
           }>("login")
         )
       );
+
+      
+      
   }
 }
 

@@ -1,14 +1,22 @@
 const db = require('../util/database');
 
 module.exports = class User {
-  constructor(name, email, password, RoleID) {
+  constructor(id,name, email, password, RoleID) {
+    this.id=id;
     this.name = name;
     this.email = email;
     this.password = password;
     this.RoleID = RoleID;
+    
   }
   static fetchAll() {
     return db.execute('SELECT * FROM users');
+  }
+
+  static update(update){
+    
+    return db.execute('UPDATE users SET name = ? ,email = ?,password = ?,RoleID= ? WHERE id= ?',
+    [update.name,update.email,update.password,update.RoleID,update.id]);
   }
 
   static find(email) {

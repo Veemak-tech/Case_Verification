@@ -53,6 +53,59 @@ exports.fetchAll = async (req, res, next) => {
   }
 };
 
+// exports.update = (req, res) =>{
+//   const user=new User(req.body);
+//   console.log("update user",user);
+//   if(req.body.constructor===Object && Object.keys(req.body).length===0)
+//   {
+//     res.send(400).send({success:false,message:"please fill all fields"});
+
+//   }
+//   else{
+//   User.(req.params.id,user,(Error,user)=>{
+//       if(Error)res.send(Error);
+//       res.json({status:true,message:"success"});
+//       console.log(user);
+//     })
+//   }
+// }
+
+
+exports.Update = async (req, res, next) => {
+  console.log(" its work");
+  
+   
+    const errors = validationResult(req);
+ 
+    if (!errors.isEmpty()) return;
+   const id =req.body.id;
+   const name = req.body.name;
+   const email = req.body.email;
+   const password = req.body.password;
+   const RoleID=req.body.RoleID;
+ 
+   try {
+     const hashedPassword = await bcrypt.hash(password, 12);
+ 
+     const userDetails = {
+       id: id,
+       name: name,
+       email: email,
+       password: hashedPassword,
+       RoleID: RoleID,
+     };
+ 
+     const result = await User.update(userDetails);
+ 
+     res.status(201).json({ message: 'User updated!' });
+   } catch (err) {
+     if (!err.statusCode) {
+       err.statusCode = 500;
+     }
+     next(err);
+   }
+ }; 
+
 
 exports.login = async (req, res, next) => {
   const email = req.body.email;
