@@ -10,7 +10,7 @@ import { allIcons } from 'ngx-bootstrap-icons';
   templateUrl: './digital-list.component.html',
   styleUrls: ['./digital-list.component.scss'],
 })
-export class DigitalListComponent {
+export class DigitalListComponent implements OnInit {
   public caseList: any;
   deleteID: string;
   CasedetailsService: any;
@@ -19,37 +19,60 @@ export class DigitalListComponent {
   constructor(
     private user: CasedetailsService,
     private httpClient: HttpClient,
-    private router: Router,
-
+    private router: Router
   ) {
     this.user.getData().subscribe((data1) => {
       console.warn(data1);
       this.caseList = data1;
     });
   }
-
-  public onCustomAction(event) {
-
-    this.editRecord(event.data);
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
   }
+
+  // custom action
+  public onCustomAction(event) {
+    debugger;
+    switch (event.action){
+      case 'viewrecord':
+        this.viewRecord(event.data);
+        break;
+        case 'editrecord':
+          this.editRecord(event.data);
+    }
+  }
+
   public editRecord(formData: any) {
     let rowdata = formData;
     let navigationExtras: NavigationExtras = {
       queryParams: {
-        CaseID: rowdata.CaseID,
+        "CaseID": rowdata.CaseID,
       },
     };
 
     this.router.navigate(['/products/digital/case-edit'], navigationExtras);
     this.sendValues.emit(rowdata.CaseID);
   }
+
+
+  public viewRecord(formData:any){
+    let rowdata = formData;
+    let CaseID = rowdata.CaseID;
+    let Name = rowdata.Name;
+    let Description = rowdata.Description;
+    let InsurerVerificationNotes = rowdata.InsurerVerificationNotes;
+    let T_VerificationNotes = rowdata.T_VerificationNotes;
+    let CreatedBy = rowdata.CreatedBy;
+  }
+
+
   @Output() sendValues = new EventEmitter<any>();
 
   handleRowSelect(event) {
     let rowdata = event.data;
     let navigationExtras: NavigationExtras = {
       queryParams: {
-        id: rowdata.id,
+        "CaseID": rowdata.CaseID,
       },
     };
     this.router.navigate(['/products/digital/case-edit'], navigationExtras);
@@ -63,8 +86,12 @@ export class DigitalListComponent {
       edit: false,
       delete: false,
       custom: [
-        { name: 'editrecord', title: '<i class="ng2-smart-action ng2-smart-action-edit-edit ng-star-inserted"></i>&nbsp;&nbsp;'}
-       // { name: 'editrecord', title: '<i class="nb-plus"></i>' }
+        {
+          name: 'editrecord',
+          title:
+            '<i class="ng2-smart-action ng2-smart-action-edit-edit ng-star-inserted"></i>&nbsp;&nbsp;',
+        },
+         // { name: 'viewrecord', title: '<i class="ng2-smart-action ng2-smart-action-edit-edit ng-star-inserted"></i>' }
       ],
       position: 'left',
     },

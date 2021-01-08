@@ -22,7 +22,6 @@ exports.postcasedetails = async (req, res, next) => {
   const errors = validationResult(req);
 
   // if (!errors.isEmpty()) return;
-
   const CaseID = req.body.CaseID;
   const Name = req.body.Name;
   const Description = req.body.Description;

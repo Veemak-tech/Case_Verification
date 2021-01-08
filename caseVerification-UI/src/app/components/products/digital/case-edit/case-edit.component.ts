@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-case-edit',
@@ -7,7 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CaseEditComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private httpClient:HttpClient, private router:Router
+  ) { }
+
+  public onCustomAction(event){
+    switch(event.action) {
+      case 'viewrecord':
+        this.viewRecord(event.data);
+        break;
+    }
+  }
+
+  public viewRecord(formData:any){
+    let rowData = formData;
+    let CaseID = rowData.CaseID;
+    let Name= rowData.Name;
+    let Description = rowData.Description;
+    let InsurerVerificationNotes = rowData.InsurerVerificationNotes;
+    let T_VerificationNotes = rowData.T_VerificationNotes;
+    let CreatedBy = rowData.CreatedBy;
+  }
 
   ngOnInit(): void {
   }
