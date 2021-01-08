@@ -57,7 +57,7 @@ exports.postcasedetails = async (req, res, next) => {
     //Address
 
     var address = req.body.insAddress;
-    address["GEOLocation"] = Description;
+    address["GEOLocation"] = "109.89,100.9";
     address["CreatedBy"] = CreatedBy;
     address["LastModifiedBy"] = LastModifiedBy;
 
@@ -83,7 +83,7 @@ exports.postcasedetails = async (req, res, next) => {
     var ThirdpartyDetails = req.body.tpartyDetails;
     var thirdpartyaddress = req.body.tpartyAddress;
     console.log(thirdpartyaddress);
-    thirdpartyaddress["GEOLocation"] = Description;
+    thirdpartyaddress["GEOLocation"] = "109.23.2,100.23.3";
     thirdpartyaddress["CreatedBy"] = CreatedBy;
     thirdpartyaddress["LastModifiedBy"] = LastModifiedBy;
     const tpaddressresult = await Address.save(thirdpartyaddress);

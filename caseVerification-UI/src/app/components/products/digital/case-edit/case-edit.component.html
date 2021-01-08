@@ -1,7 +1,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
 <div class=container-fluid>
   <div class="card shadow-lg p-3 mb-5 bg-white rounded ">
-    <form #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value)">
+    <form #userPost="ngForm">
       <!-- <h3 class="maintitle">Case Creation</h3> -->
       <h4 class="subhead1">Case Details</h4>
       <div class="content">
@@ -204,7 +204,7 @@
 
           <div class="row ad">
             <div class="col">
-              <input type="text" ngModel name="T_AddressLine1" class="form-control ad1 " placeholder="Address Line 1">
+              <input type="text" ngModel name="T_AddressLine1" class="form-control ad1 " placeholder="Address Line 1" readonly>
             </div>
             <div class="col">
               <input type="text" ngModel name="T_AddressLine2" class="form-control ad2" placeholder="Address Line 2">
@@ -237,15 +237,7 @@
       <div class="form-group form-inline" class="Questionaaire1">
         <div class="content4">
           <label for="exampleFormControlTextarea1">Questions</label>
-          <div class="btn-group" style="margin-left: 10px;">
-            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Small
-            </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Format 1</a>
-              <a class="dropdown-item" href="#">Format 2</a>
-            </div>
-          </div>
+
         </div>
 
         <div class="content3">

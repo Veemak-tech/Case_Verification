@@ -9,6 +9,7 @@ import { DigitalSubCategoryComponent } from './digital/digital-sub-category/digi
 import { DigitalListComponent } from './digital/digital-list/digital-list.component';
 import { DigitalAddComponent } from './digital/digital-add/digital-add.component';
 import { ProductDetailComponent } from './physical/product-detail/product-detail.component';
+import {CaseEditComponent} from './digital/case-edit/case-edit.component';
 import { AuthGuard } from 'src/app/services/auth-guard.service'
 
 
@@ -93,6 +94,14 @@ const routes: Routes = [
         data: {
           title: "Add Products",
           breadcrumb: "Add Product"
+        }
+      },
+      {
+        path: 'digital/case-edit',
+        component: CaseEditComponent,
+        data:{
+          title:"Case Edit",
+          breadcrump: "Case Edit"
         }
       }
     ]

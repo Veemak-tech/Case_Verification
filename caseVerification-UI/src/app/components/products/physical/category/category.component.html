@@ -1,48 +1,56 @@
-<style>
-  table, td, th {
-    border :1px solid black;
-  }
-
-  table{
-    border-collapse: collapse;
-    width: 90%;
-  }
-
-  th{
-    height: 50px;
-  }
-</style>
-
-<h2>Get Mothod</h2>
-
-<table>
-  <tr>
-    <th>ID</th>
-    <th>AddressLine1</th>
-    <th>AddressLine2</th>
-    <th>City</th>
-    <th>Landmark</th>
-    <th>State</th>
-    <th>Pincode</th>
-    <th>GEOLocation</th>
-    <th>CreatedBy</th>
-    <th>CreatedDate</th>
-    <th>LastModifiedBy</th>
-    <th>LastModifiedDate</th>
-  </tr>
-
-  <tr *ngFor="let com of lstcomments">
-    <td>{{com.ID}}</td>
-    <td>{{com.AddressLine1}}</td>
-    <td>{{com.AddressLine2}}</td>
-    <td>{{com.City}}</td>
-    <td>{{com.Landmark}}</td>
-    <td>{{com.State}}</td>
-    <td>{{com.Pincode}}</td>
-    <td>{{com.GEOLocation}}</td>
-    <td>{{com.CreatedBy}}</td>
-    <td>{{com.CreatedDate}}</td>
-    <td>{{com.LastModifiedBy}}</td>
-    <td>{{com.LastModifiedDate}}</td>
-  </tr>
-</table>
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-sm-12">
+          <div class="card tab2-card">
+              <div class="card-header">
+                  <h5> Edit Profile</h5>
+              </div>
+              <div class="card-body tab2-card">
+                  <ngb-tabset class="tab-coupon">
+                      <ngb-tab title="Account">
+                          <ng-template ngbTabContent>                                                                                                                                        <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                      aria-labelledby="account-tab">
+                                  <form>
+                                      <h4>Profile Details</h4>
+                                      <div class="form-group row">
+                                          <label for="validationCustom0" class="col-xl-3 col-md-4"><span>*</span>
+                                              Name</label>
+                                          <input class="form-control col-xl-8 col-md-7" id="validationCustom0"
+                                              type="text" formControlName="name" required="">
+                                      </div>
+                                      <!-- <div class="form-group row">
+                                          <label for="validationCustom1" class="col-xl-3 col-md-4"><span>*</span> Last
+                                              Name</label>
+                                          <input class="form-control col-xl-8 col-md-7" id="validationCustom1"
+                                              type="text" required="">
+                                      </div> -->
+                                      <div class="form-group row">
+                                          <label for="validationCustom2" class="col-xl-3 col-md-4"><span>*</span>
+                                              Email</label>
+                                          <input class="form-control col-xl-8 col-md-7" id="validationCustom2"
+                                              type="text" formControlName="email" required="">
+                                      </div>
+                                      <div class="form-group row">
+                                          <label for="validationCustom3" class="col-xl-3 col-md-4"><span>*</span>
+                                              Password</label>
+                                          <input class="form-control col-xl-8 col-md-7" id="validationCustom3"
+                                              type="password" formControlName="password" required="">
+                                          </div>
+                                      <div class="form-group row">
+                                          <label for="validationCustom0" class="col-xl-3 col-md-4"><span>*</span>
+                                              RoleID</label>
+                                          <input class="form-control col-xl-8 col-md-7" id="validationCustom0"
+                                              type="text" formControlName="RoleID" required="">
+                                      </div>
+                                      <!-- <div class="form-group row">
+                                          <label for="validationCustom4" class="col-xl-3 col-md-4"><span>*</span>
+                                              Role</label>
+                                          <input class="form-control col-xl-8 col-md-7" id="validationCustom4"
+                                              type="password" required="">
+                                      </div> -->
+                                      <button type="button" type="submit"class="btn btn-primary">Save</button>
+                                  </form>
+                              </div>
+                          </ng-template>
+                      </ngb-tab>

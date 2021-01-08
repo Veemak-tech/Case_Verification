@@ -1,7 +1,8 @@
+import { Router, NavigationExtras } from '@angular/router';
 import { CasedetailsService } from './../../../../services/casedetails.service';
-import { Component, OnInit,EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { digitalListDB } from 'src/app/shared/tables/digital-list';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
 import { allIcons } from 'ngx-bootstrap-icons';
 
 @Component({
@@ -17,8 +18,10 @@ export class DigitalListComponent {
   // Get data
   constructor(
     private user: CasedetailsService,
-    private httpClient: HttpClient
-    ) {
+    private httpClient: HttpClient,
+    private router: Router,
+
+  ) {
     this.user.getData().subscribe((data1) => {
       console.warn(data1);
       this.caseList = data1;
@@ -26,33 +29,45 @@ export class DigitalListComponent {
   }
 
   public onCustomAction(event) {
-    switch ( event.action) {
-      case 'viewrecord':
-        this.viewRecord(event.data);
-        break;
 
-    }
+    this.editRecord(event.data);
   }
+  public editRecord(formData: any) {
+    let rowdata = formData;
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        CaseID: rowdata.CaseID,
+      },
+    };
 
-  public viewRecord(formData: any) {
-    let rowData = formData;
-    let resultimage = rowData.resultimagepath;
-    let searchtimage = rowData.searchimagepath;
-    let title  = rowData.filename;
+    this.router.navigate(['/products/digital/case-edit'], navigationExtras);
+    this.sendValues.emit(rowdata.CaseID);
   }
+  @Output() sendValues = new EventEmitter<any>();
 
+  handleRowSelect(event) {
+    let rowdata = event.data;
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        id: rowdata.id,
+      },
+    };
+    this.router.navigate(['/products/digital/case-edit'], navigationExtras);
+    this.sendValues.emit(rowdata.CaseID);
+  }
 
   public caselistSettings = {
     actions: {
       columnTitle: 'Action',
       add: false,
-      edit:true,
-      delete:false,
+      edit: false,
+      delete: false,
       custom: [
-        { name: 'viewrecord', title: '<i class="fas fa-edit"></i>'},
+        { name: 'editrecord', title: '<i class="ng2-smart-action ng2-smart-action-edit-edit ng-star-inserted"></i>&nbsp;&nbsp;'}
+       // { name: 'editrecord', title: '<i class="nb-plus"></i>' }
       ],
-      position:'left'
-      },
+      position: 'left',
+    },
 
     columns: {
       CaseID: {
@@ -76,18 +91,7 @@ export class DigitalListComponent {
       },
       CreatedDate: {
         title: 'Created Date',
-      }
+      },
     },
   };
-
-  // onDelete()
-  // {
-  //   const deleteURL = 'http://localhost:3000/casedetails/' + this.deleteID;
-  //   // console.log(deleteURL);
-  //   this.httpClient.delete(deleteURL).subscribe((results) => {
-  //     this.CasedetailsService.dismissAll();
-  //   });
-  // }
-
 }
-
