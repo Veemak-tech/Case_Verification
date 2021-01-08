@@ -48,19 +48,28 @@ module.exports = class casedetails {
     return db.execute("DELETE FROM casedetails WHERE ID = ?", [id]);
   }
 
-  static update(CaseID,Name,Description,InsurerVerificationNotes,T_VerificationNotes,ReferenceNumber,DueDate,CreatedBy,LastModifiedBy) {
-    return db.execute("UPDATE casedetails SET Name=?, Description=?, InsurerVerificationNotes=?, T_VerificationNotes=?, ReferenceNumber=?, DueDate=?,CreatedBy=?,LastModifiedBy=? WHERE CaseID=?", 
-    [
-      CaseID,
-      Name,
-      Description,
-      InsurerVerificationNotes,
-      T_VerificationNotes,
-      ReferenceNumber,
-      DueDate,
-      CreatedBy,
-      LastModifiedBy
-    ]);
+  static update(
+    CaseID,
+    Name,
+    Description,
+    InsurerVerificationNotes,
+    T_VerificationNotes,
+    ReferenceNumber,
+    DueDate,
+    LastModifiedBy
+  ) {
+    return db.execute(
+      "UPDATE casedetails SET Name=?, Description=?, InsurerVerificationNotes=?, T_VerificationNotes=?, ReferenceNumber=?, DueDate=?,LastModifiedBy=? WHERE CaseID=?",
+      [
+        Name,
+        Description,
+        InsurerVerificationNotes,
+        T_VerificationNotes,
+        ReferenceNumber,
+        DueDate,
+        LastModifiedBy,
+        CaseID,
+      ]
+    );
   }
-  
 };

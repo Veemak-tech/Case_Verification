@@ -10,6 +10,8 @@ const router = express.Router();
 
 router.get('/', addressController.fetchAll);
 
+router.put('/', addressController.putAddress);
+
 router.post(
   '/',
   [
