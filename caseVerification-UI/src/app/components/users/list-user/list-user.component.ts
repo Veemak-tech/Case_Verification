@@ -1,9 +1,17 @@
+<<<<<<< HEAD
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { userListDB } from 'src/app/shared/tables/list-users';
+import { AuthService } from "src/app/services/auth.service"
+import { NavigationExtras, Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http'
+=======
 import { HttpClient } from '@angular/common/http';
 import { Router, NavigationExtras } from '@angular/router';
 import { Component, OnInit, EventEmitter,Output } from '@angular/core';
 import { userListDB } from 'src/app/shared/tables/list-users';
 import {AuthService} from "src/app/services/auth.service";
 
+>>>>>>> ac432ef4acd26f566243eaa41e4904b3c9ee39c5
 
 @Component({
   selector: 'app-list-user',
@@ -11,6 +19,25 @@ import {AuthService} from "src/app/services/auth.service";
   styleUrls: ['./list-user.component.scss']
 })
 export class ListUserComponent implements OnInit {
+<<<<<<< HEAD
+
+  userlist: any;
+
+  constructor(private user: AuthService, private router: Router, private httpclient: HttpClient) {
+
+    this.user.getData().subscribe(data => {
+      console.warn(data);
+      this.userlist = data;
+    })
+
+  }
+
+
+
+  public settings = {
+    actions: {
+      position: 'right',
+=======
 
   userlist :any;
 
@@ -76,10 +103,16 @@ export class ListUserComponent implements OnInit {
   public settings = {
     actions: {
       columnTitle: 'Action',
+>>>>>>> ac432ef4acd26f566243eaa41e4904b3c9ee39c5
       add: false,
       edit: false,
       delete: false,
       custom: [
+<<<<<<< HEAD
+        { name: 'edit', title: '<i class="ng2-smart-action ng2-smart-action-edit-edit ng-star-inserted"></i>' }
+      ]
+
+=======
         {
           name: 'editrecord',
           title:
@@ -88,6 +121,7 @@ export class ListUserComponent implements OnInit {
          { name: 'viewrecord', title: '<i class="ng2-smart-action ng2-smart-action-edit-edit ng-star-inserted"></i>' }
       ],
       position: 'left',
+>>>>>>> ac432ef4acd26f566243eaa41e4904b3c9ee39c5
     },
     columns: {
 
@@ -109,9 +143,45 @@ export class ListUserComponent implements OnInit {
     },
   };
 
+<<<<<<< HEAD
+  public onCustomAction(event) {
+    this.editRecord(event.data);
+  
+  }
+
+  public editRecord(formData: any) {
+    let rowdata = formData;
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        "Id" : rowdata.id,
+      },
+    };
+    
+    this.router.navigate(['users/edit-user'], navigationExtras);
+    this.sendValues.emit(rowdata.id);
+=======
+  ngOnInit() {
+
+>>>>>>> ac432ef4acd26f566243eaa41e4904b3c9ee39c5
+  }
+
+  @Output() sendValues = new EventEmitter<any>();
+  handleRowSelect(event) {
+debugger
+    let rowdata = event.data;
+    let navigationExtras: NavigationExtras = {
+
+      queryParams: {
+        "Id" : rowdata.id
+      }
+    }
+  
+    this.router.navigate(['users/edit-user'], navigationExtras);
+    this.sendValues.emit(rowdata.id);
+  }
+
   ngOnInit() {
 
   }
-
 }
 
