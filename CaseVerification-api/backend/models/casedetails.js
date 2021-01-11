@@ -27,6 +27,10 @@ module.exports = class casedetails {
     return db.execute("SELECT * FROM casedetails");
   }
 
+  static fetchById(CaseID){
+    return db.execute ("SELECT * FROM casedetails WHERE CaseID=?", [CaseID]);
+  }
+
   static save(caseD) {
     return db.execute(
       "INSERT INTO casedetails (CaseID,Name,Description,InsurerVerificationNotes,T_VerificationNotes,ReferenceNumber,DueDate,CreatedBy,LastModifiedBy) VALUES (?,?,?,?,?,?,?,?,?)",
