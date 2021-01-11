@@ -31,5 +31,6 @@ router.post(
 router.post('/login', authController.login);
 router.get('/', authController.fetchAll);
 router.put('/',authController.Update );
+router.get('/:id',authController.fetchbyId)
 
 module.exports = router;

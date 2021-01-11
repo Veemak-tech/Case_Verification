@@ -33,6 +33,11 @@ export class AuthService {
     return this.http.get(url);
 
   }
+  getDatabyID(id : number){
+    let url="http://localhost:3000/auth/"+id;
+    return this.http.get(url);
+
+  }
   
 
   signup(user: Omit<User, "id">): Observable<User> {
