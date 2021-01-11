@@ -5,7 +5,8 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
 
-const Roles = require('../models/roles')
+const Roles = require('../models/roles');
+const { all } = require('../routes/auth');
 
 
 exports.signup = async (req, res, next) => {
@@ -45,6 +46,21 @@ exports.fetchAll = async (req, res, next) => {
   try {
     const [allPosts] = await User.fetchAll();
     res.status(200).json(allPosts);
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};
+
+exports.fetchbyId = async (req, res, next) => {
+  try {
+    console.log(" fetch is works"+req.params.id);
+    const [allPosts] = await User.fetchbyId(req.params.id);
+    console.log(allPosts);
+    res.status(200).json(allPosts);
+
   } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;

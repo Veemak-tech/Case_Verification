@@ -10,9 +10,13 @@ module.exports = class User {
     
   }
   static fetchAll() {
-    return db.execute('SELECT * FROM users');
+    return db.execute('SELECT * FROM users ');
   }
+static fetchbyId(id){
 
+  return db.execute( 'SELECT * FROM users  WHERE id=?',[id]);
+
+}
   static update(update){
     
     return db.execute('UPDATE users SET name = ? ,email = ?,password = ?,RoleID= ? WHERE id= ?',

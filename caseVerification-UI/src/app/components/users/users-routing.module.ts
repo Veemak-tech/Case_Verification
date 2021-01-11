@@ -29,16 +29,6 @@ const routes: Routes = [
         }
       },
       {
-<<<<<<< HEAD
-        path: 'edit-user',
-        component: EditUserComponent,
-        data: {
-          title: "Edit User",
-          breadcrumb: "Edit User"
-        }
-      }
-     ]
-=======
         path: 'user-edit',
         component: UserEditComponent,
         data: {
@@ -47,7 +37,6 @@ const routes: Routes = [
         }
       },
     ]
->>>>>>> ac432ef4acd26f566243eaa41e4904b3c9ee39c5
   }
 ];
 
