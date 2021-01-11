@@ -1,4 +1,5 @@
-import { Router, NavigationExtras } from '@angular/router';
+import { casedetails } from './../../../../models/casedetails';
+import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { CasedetailsService } from './../../../../services/casedetails.service';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { digitalListDB } from 'src/app/shared/tables/digital-list';
@@ -14,12 +15,14 @@ export class DigitalListComponent implements OnInit {
   public caseList: any;
   deleteID: string;
   CasedetailsService: any;
+  Casedetails:casedetails;
 
   // Get data
   constructor(
     private user: CasedetailsService,
     private httpClient: HttpClient,
-    private router: Router
+    private router: Router,
+    private _route:ActivatedRoute
   ) {
     this.user.getData().subscribe((data1) => {
       console.warn(data1);
@@ -27,7 +30,34 @@ export class DigitalListComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this._route.paramMap.subscribe(parameterMap => {
+      const CaseID = +parameterMap.get('CaseID');
+      this.getCasedetails(CaseID);
+    });
+  }
+
+  private getCasedetails(CaseID:number) {
+    if(CaseID === 0) {
+      this.Casedetails = {
+        CaseID: null,
+        Name: null,
+        Description: null,
+        InsurerVerificationNotes: null,
+        T_VerificationNotes: null,
+        ReferenceNumber:null,
+        DueDate:null,
+        CreatedBy: null,
+        LastModifiedBy:null,
+        insAddress:null,
+
+        insDetails: null,
+
+        tpartyDetails: null,
+      };
+    }
+    else {
+      this.Casedetails = this.CasedetailsService.getCasedetails(CaseID);
+    }
   }
 
   // custom action

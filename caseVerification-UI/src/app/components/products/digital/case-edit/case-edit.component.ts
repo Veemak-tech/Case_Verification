@@ -1,6 +1,7 @@
-import { Router } from '@angular/router';
+import { casedetails } from './../../../../models/casedetails';
+import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter,Input } from '@angular/core';
 
 
 @Component({
@@ -9,30 +10,29 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./case-edit.component.scss']
 })
 export class CaseEditComponent implements OnInit {
+  private selectCaseID:number;
+  @Input() Casedetails:casedetails;
+  @Input() searchTerm:string;
+  private _route: any;
 
   constructor(
-    private httpClient:HttpClient, private router:Router
+    private httpClient:HttpClient, private _router:Router, route:ActivatedRoute
   ) { }
 
-  public onCustomAction(event){
-    switch(event.action) {
-      case 'viewrecord':
-        this.viewRecord(event.data);
-        break;
-    }
-  }
 
-  public viewRecord(formData:any){
-    let rowData = formData;
-    let CaseID = rowData.CaseID;
-    let Name= rowData.Name;
-    let Description = rowData.Description;
-    let InsurerVerificationNotes = rowData.InsurerVerificationNotes;
-    let T_VerificationNotes = rowData.T_VerificationNotes;
-    let CreatedBy = rowData.CreatedBy;
-  }
 
   ngOnInit(): void {
+    this.selectCaseID = +this._route.snapshot.paramMap.get('CaseID');
+  }
+
+  viewcasedetails(){
+    this._router.navigate(['/casedetails', this.Casedetails.CaseID],{
+      queryParams: {'searchTerm':this.searchTerm}
+    });
+  }
+
+  editcasedetails(){
+    this._router.navigate(['/edit', this.Casedetails.CaseID],);
   }
 
 }

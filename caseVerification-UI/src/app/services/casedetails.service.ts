@@ -97,6 +97,10 @@ export class CasedetailsService {
     return this.http.get(url);
   }
 
+  getById(CaseID:number){
+    let url = "http://localhost:3000/casedetails/:CaseID";
+    return this.http.get(url);
+  }
   // delete
 
   deletecasedetails(id: number): Observable<DigitalListComponent> {
