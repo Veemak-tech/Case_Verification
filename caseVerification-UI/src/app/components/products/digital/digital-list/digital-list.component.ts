@@ -6,6 +6,7 @@ import { digitalListDB } from 'src/app/shared/tables/digital-list';
 import { HttpClient } from '@angular/common/http';
 import { allIcons } from 'ngx-bootstrap-icons';
 
+
 @Component({
   selector: 'app-digital-list',
   templateUrl: './digital-list.component.html',
@@ -62,7 +63,7 @@ export class DigitalListComponent implements OnInit {
 
   // custom action
   public onCustomAction(event) {
-    debugger;
+    //debugger;
     switch (event.action){
       case 'viewrecord':
         this.viewRecord(event.data);
@@ -79,20 +80,15 @@ export class DigitalListComponent implements OnInit {
         "CaseID": rowdata.CaseID,
       },
     };
-
+debugger;
     this.router.navigate(['/products/digital/case-edit'], navigationExtras);
     this.sendValues.emit(rowdata.CaseID);
   }
 
 
   public viewRecord(formData:any){
+
     let rowdata = formData;
-    let CaseID = rowdata.CaseID;
-    let Name = rowdata.Name;
-    let Description = rowdata.Description;
-    let InsurerVerificationNotes = rowdata.InsurerVerificationNotes;
-    let T_VerificationNotes = rowdata.T_VerificationNotes;
-    let CreatedBy = rowdata.CreatedBy;
   }
 
 
@@ -123,7 +119,7 @@ export class DigitalListComponent implements OnInit {
         },
          // { name: 'viewrecord', title: '<i class="ng2-smart-action ng2-smart-action-edit-edit ng-star-inserted"></i>' }
       ],
-      position: 'left',
+      position: 'right',
     },
 
     columns: {
@@ -137,18 +133,18 @@ export class DigitalListComponent implements OnInit {
       Description: {
         title: 'Description',
       },
-      InsurerVerificationNotes: {
-        title: 'Insurer Verification Notes',
-      },
-      T_VerificationNotes: {
-        title: 'Thirdparty Verification Notes',
-      },
-      CreatedBy: {
-        title: 'Created By',
-      },
-      CreatedDate: {
-        title: 'Created Date',
-      },
+      // InsurerVerificationNotes: {
+      //   title: 'Insurer Verification Notes',
+      // },
+      // T_VerificationNotes: {
+      //   title: 'Thirdparty Verification Notes',
+      // },
+      // CreatedBy: {
+      //   title: 'Created By',
+      // },
+      // CreatedDate: {
+      //   title: 'Created Date',
+      // },
     },
   };
 }

@@ -1,11 +1,14 @@
+import { tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 import { ErrorHandlerService } from './error-handler.service';
 import { DigitalListComponent } from '../components/products/digital/digital-list/digital-list.component'
 import { User } from './../models/User';
 import { catchError, first } from 'rxjs/operators';
-import { from, Observable } from 'rxjs';
+import {Observable, BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { casedetails } from '../models/casedetails';
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
@@ -22,7 +25,8 @@ export class CasedetailsService {
 
   constructor(
     private http: HttpClient,
-    private ErrorHandlerService: ErrorHandlerService
+    private ErrorHandlerService: ErrorHandlerService,
+    private router:Router
   ) {}
 
   createPost(formData, userId: Pick<User, 'id'>): Observable<casedetails> {
@@ -97,8 +101,8 @@ export class CasedetailsService {
     return this.http.get(url);
   }
 
-  getById(CaseID:number){
-    let url = "http://localhost:3000/casedetails/:CaseID";
+  getByID(CaseID:number){
+    let url = "http://localhost:3000/casedetails/"+CaseID;
     return this.http.get(url);
   }
   // delete

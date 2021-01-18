@@ -1,41 +1,37 @@
 import { HttpClient } from '@angular/common/http';
 import { Router, NavigationExtras } from '@angular/router';
-import { Component, OnInit, EventEmitter,Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { userListDB } from 'src/app/shared/tables/list-users';
-import {AuthService} from "src/app/services/auth.service";
-
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-list-user',
   templateUrl: './list-user.component.html',
-  styleUrls: ['./list-user.component.scss']
+  styleUrls: ['./list-user.component.scss'],
 })
 export class ListUserComponent implements OnInit {
-
-  userlist :any;
+  userlist: any;
 
   constructor(
-    private user:AuthService,
+    private user: AuthService,
     private httpClient: HttpClient,
     private router: Router
-    ){
-    this.user.getData().subscribe(data=>{
-     console.warn(data);
-      this.userlist=data;
-    })
-
-
+  ) {
+    this.user.getData().subscribe((data) => {
+      console.warn(data);
+      this.userlist = data;
+    });
   }
 
   // custom action
   public onCustomAction(event) {
     // debugger;
-    switch (event.action){
+    switch (event.action) {
       case 'viewrecord':
         this.viewRecord(event.data);
         break;
-        case 'editrecord':
-          this.editRecord(event.data);
+      case 'editrecord':
+        this.editRecord(event.data);
     }
   }
 
@@ -43,18 +39,17 @@ export class ListUserComponent implements OnInit {
     let rowdata = formData;
     let navigationExtras: NavigationExtras = {
       queryParams: {
-        "id": rowdata.id,
+        id: rowdata.id,
       },
     };
-    debugger;
+    //debugger;
 
     this.router.navigate(['/users/user-edit'], navigationExtras);
     this.sendValues.emit(rowdata.id);
   }
 
-  public viewRecord(formData:any){
+  public viewRecord(formData: any) {
     let rowdata = formData;
-    
   }
 
   @Output() sendValues = new EventEmitter<any>();
@@ -63,10 +58,10 @@ export class ListUserComponent implements OnInit {
     let rowdata = event.data;
     let navigationExtras: NavigationExtras = {
       queryParams: {
-        "id": rowdata.id,
+        id: rowdata.id,
       },
     };
-    debugger;
+    //debugger;
     this.router.navigate(['/users/user-edit'], navigationExtras);
     this.sendValues.emit(rowdata.id);
   }
@@ -83,35 +78,32 @@ export class ListUserComponent implements OnInit {
           title:
             '<i class="ng2-smart-action ng2-smart-action-edit-edit ng-star-inserted"></i>&nbsp;&nbsp;',
         },
-         { name: 'viewrecord', title: '<i class="ng2-smart-action ng2-smart-action-edit-edit ng-star-inserted"></i>' }
+        {
+          name: 'viewrecord',
+          title:
+            '<i class="ng2"></i>',
+        },
       ],
       position: 'left',
     },
     columns: {
-
       id: {
         title: 'ID',
       },
       name: {
-        title: 'Name'
+        title: 'Name',
       },
       email: {
-        title: 'Email'
+        title: 'Email',
       },
       date: {
-        title: 'date'
+        title: 'date',
       },
       RoleID: {
-        title: 'Role'
+        title: 'Role',
       },
     },
   };
 
-  ngOnInit() {
-
-  }
-
-
- 
+  ngOnInit() {}
 }
-
