@@ -16,7 +16,7 @@ import { NgForm} from '@angular/forms';
 export class UserEditComponent implements OnInit {
   userdetail :User;
   EditForm: FormGroup;
-  userForm: NgForm;
+  
 
 
   constructor(
@@ -55,13 +55,15 @@ this.route.queryParams.subscribe(params => {
       email: new FormControl("", [Validators.required, Validators.email]),
       RoleID: new FormControl("", [Validators.required, Validators.minLength(5)]),
     });
+  }
+    update( ): void {
+      this.user.update(this.EditForm.value).subscribe((msg) => {
+        console.log(msg);
+        console.log("user updated");
+      
+      });
+    }
+  }
 
-}
-update( ): void {
-  this.user.update(this.EditForm.value).subscribe((msg) => {
-    console.log(msg);
-    console.log("user updated");
-  
-  });
-}
-}
+
+
