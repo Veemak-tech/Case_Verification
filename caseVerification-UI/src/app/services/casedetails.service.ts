@@ -1,13 +1,15 @@
+import { casedetails } from './../models/casedetails';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { ErrorHandlerService } from './error-handler.service';
 import { DigitalListComponent } from '../components/products/digital/digital-list/digital-list.component'
 import { User } from './../models/User';
 import { catchError, first } from 'rxjs/operators';
-import {Observable, BehaviorSubject } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Observable, BehaviorSubject, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { casedetails } from '../models/casedetails';
+
+
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -17,6 +19,7 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class CasedetailsService {
+  headers = new HttpHeaders().set('Content-Type', 'application/json');
   private url = 'http://localhost:3000/casedetails';
 
   httpOptions: { headers: HttpHeaders } = {
@@ -25,7 +28,7 @@ export class CasedetailsService {
 
   constructor(
     private http: HttpClient,
-    private ErrorHandlerService: ErrorHandlerService,
+    private errorHandlerService: ErrorHandlerService,
     private router:Router
   ) {}
 
@@ -91,7 +94,7 @@ export class CasedetailsService {
       )
       .pipe(
         catchError(
-          this.ErrorHandlerService.handleError<casedetails>('create Address')
+          this.errorHandlerService.handleError<casedetails>('create Address')
         )
       );
   }
@@ -110,5 +113,27 @@ export class CasedetailsService {
   deletecasedetails(id: number): Observable<DigitalListComponent> {
     const url = `${this.url}/${id}`;
     return this.http.delete<DigitalListComponent>(url, this.httpOptions);
+  }
+
+  // Update
+  update(Casedetails: casedetails): Observable<any> {
+    return this.http
+      .put<casedetails>(this.url, Casedetails, this.httpOptions)
+      .pipe(catchError(this.errorHandlerService.handleError<any>("update")));
+  }
+
+
+  // To catch error
+  errorMgmt(error: HttpErrorResponse) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // Get client-side error
+      errorMessage = error.error.message;
+    } else {
+      // Get server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.log(errorMessage);
+    return throwError(errorMessage);
   }
 }
