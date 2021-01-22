@@ -1,7 +1,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
 <div class=container-fluid>
   <div class="card shadow-lg p-3 mb-5 bg-white rounded ">
-    <form #userPost="ngForm">
+    <form [formGroup]="EditForm" novalidate>
       <!-- <h3 class="maintitle">Case Creation</h3> -->
       <h4 class="subhead1">Case Details</h4>
       <div class="content">
@@ -11,7 +11,7 @@
             <div class="form-group" class="caseid">
               <div class="form-group form-inline">
                 <label for="exampleInputCompany">Case ID:</label>
-                <input ngModel type="text"  class="form-control" name="CaseID" id="exampleInputCompany" placeholder=""
+                <input type="text" formControlName="CaseID"  class="form-control" name="CaseID" id="exampleInputCompany" placeholder=""
                   required />
               </div>
             </div>
@@ -21,7 +21,7 @@
             <div class="form-group" class="refnumber">
               <div class="form-group form-inline">
                 <label for="exampleInputLoction">Ref Number:</label>
-                <input type="text" ngModel name="ReferenceNumber" [(ngModel)]="Casedetails.ReferenceNumber" class="form-control" id="exampleInputLoction" placeholder="" required />
+                <input type="text" formControlName="ReferenceNumber" class="form-control" id="exampleInputLoction" placeholder="" required />
               </div>
             </div>
           </div>
@@ -33,7 +33,7 @@
             <div class="form-group">
               <div class="form-group form-inline">
                 <label for="exampleInputCompany">Due Date:</label>
-                <input type="date" ngModel name="DueDate"  value="2012-12-12" [(ngModel)]="Casedetails.DueDate" class="form-control form-group1" id="exampleInputCompany"
+                <input type="date" value="2012-12-12" class="form-control form-group1" id="exampleInputCompany"
                   placeholder="" required />
               </div>
             </div>
@@ -43,7 +43,7 @@
             <div class="form-group" class="agentname">
               <div class="form-group form-inline">
                 <label for="exampleInputLoction">Agent Name:</label>
-                <input ngModel type="text" class="form-control" value="Name" name="Name" id="exampleInputLoction" placeholder=""
+                <input  formControlName="Name" type="text" class="form-control" value="Name" id="exampleInputLoction" placeholder=""
                   required />
               </div>
             </div>
@@ -57,11 +57,12 @@
 
           <div class="form-group form-inline">
             <label for="exampleFormControlTextarea1">Notes:</label>
-            <textarea class="form-control" ngModel name="Description" value="Description" id="exampleFormControlTextarea1" rows="3"
+            <textarea class="form-control" formControlName="Description" id="exampleFormControlTextarea1" rows="3"
               cols="88"></textarea>
           </div>
         </div>
       </div>
+      </form>
 
       <!------------------------------------------------------------- Insurer Details------------------------------------------------------- -->
 <!--
