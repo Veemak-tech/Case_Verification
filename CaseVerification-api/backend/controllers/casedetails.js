@@ -19,7 +19,9 @@ exports.fetchAll = async (req, res, next) => {
 
 exports.fetchById = async (req,res,next) => {
   try{
+   
     const [SinglePost] = await casedetails.fetchById(req.params.CaseID);
+   
     res.status(200).json(SinglePost);
   }
   catch (err) {

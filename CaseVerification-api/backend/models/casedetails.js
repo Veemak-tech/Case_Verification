@@ -27,16 +27,17 @@ module.exports = class casedetails {
     return db.execute("SELECT * FROM casedetails");
   }
 
-  static fetchById(CaseID){
-    return db.execute ("SELECT * FROM casedetails WHERE CaseID=?", [CaseID]);
-  }
+  // static fetchById(CaseID){
+  //   return db.execute ("SELECT * FROM casedetails WHERE CaseID=?", [CaseID]);
+  // }
 
   static fetchById(CaseID){
+    
     var ocasedetail =  db.execute ("SELECT ID, CaseID, Name, Description, InsurerVerificationNotes, T_VerificationNotes, ReferenceNumber, DueDate, CreatedBy, CreatedDate, LastModifiedBy, LastModifiedDate FROM caseverificationdb.casedetails WHERE CaseID=?", [CaseID]);
   
     var insdetsql = "SELECT ID, CaseID, InsurerName, PhoneNumber, AlternativePhoneNumber, EmailID, AddressID, CreatedBy, CreatedDate, LastModifiedBy, "
                   + "LastModifiedDate FROM caseverificationdb.insurerdetails WHERE CaseID=?";
-    var rinsdetail = db.execute(insdetsql, [CaseID] );
+    var rinsdetail =  db.execute(insdetsql, [CaseID] );
    var tpdaddsql =  " SELECT A.ID, A.AddressLine1, A.AddressLine2, A.City, A.Landmark, A.State, A.Pincode, A.GEOLocation, A.CreatedBy, A.CreatedDate, A.LastModifiedBy, A.LastModifiedDate " 
                 + " FROM caseverificationdb.address A inner join caseverificationdb.thirdpartydetails TPD on  TPD.T_AddressID = A.ID  " 
                 + " where TPD.CaseID  = ?  ";
@@ -50,10 +51,10 @@ module.exports = class casedetails {
 
     
 
-
-
   }
 
+
+  // Post Method
   static save(caseD) {
     return db.execute(
       "INSERT INTO casedetails (CaseID,Name,Description,InsurerVerificationNotes,T_VerificationNotes,ReferenceNumber,DueDate,CreatedBy,LastModifiedBy) VALUES (?,?,?,?,?,?,?,?,?)",
@@ -75,6 +76,8 @@ module.exports = class casedetails {
     return db.execute("DELETE FROM casedetails WHERE ID = ?", [id]);
   }
 
+
+  // Update Method
   static update(
     CaseID,
     Name,
