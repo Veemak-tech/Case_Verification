@@ -24,8 +24,18 @@ module.exports = class insurerdetails {
   }
 
   static fetchAll() {
-    return db.execute('SELECT * FROM insurerdetails');
+    var results =  db.execute('SELECT * FROM insurerdetails');
     
+  }
+
+  static loaddatafromReultset(results)
+  {
+     var insadd = results[0];
+      
+     var oInddadress = new insurerdetails(insadd["CaseID"], insadd["InsurerName"],insadd["PhoneNumber"],insadd["AlternativePhoneNumber"],insadd["EmailID"],
+     insadd["AddressID"],insadd["CreatedBy"],insadd["LastModifiedBy"])
+
+     return oInddadress;
   }
 
   static save(insDetails) {

@@ -16,7 +16,6 @@ import { CouponsModule } from './components/coupons/coupons.module';
 import { PagesModule } from './components/pages/pages.module';
 import { MediaModule } from './components/media/media.module';
 import { MenusModule } from './components/menus/menus.module';
-import { VendorsModule } from './components/vendors/vendors.module';
 import { UsersModule } from './components/users/users.module';
 import { LocalizationModule } from './components/localization/localization.module';
 import { InvoiceModule } from './components/invoice/invoice.module';
@@ -48,7 +47,6 @@ import {FreeapiserviceService} from "./services/freeapiservice.service"
     LocalizationModule,
     ProductsModule,
     SalesModule,
-    VendorsModule,
     CouponsModule,
     PagesModule,
     MediaModule,
