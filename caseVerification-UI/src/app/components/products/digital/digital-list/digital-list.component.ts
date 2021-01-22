@@ -80,7 +80,7 @@ export class DigitalListComponent implements OnInit {
         "CaseID": rowdata.CaseID,
       },
     };
-debugger;
+// debugger;
     this.router.navigate(['/products/digital/case-edit'], navigationExtras);
     this.sendValues.emit(rowdata.CaseID);
   }

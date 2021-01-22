@@ -41,8 +41,8 @@ export class NavService {
 		// 	path: '/dashboard/default', title: 'Dashboard', icon: 'home', type: 'link', badgeType: 'primary', active: false
 		// },
 		{
-			title: 'Products', icon: 'box', type: 'sub', active: false, children: [
-				{
+			title: 'Insurance', icon: 'box', type: 'sub', active: true, children: [
+				/*{
 					title: 'Physical', type: 'sub', children: [
 						{ path: '/products/physical/category', title: 'Category', type: 'link' },
 						{ path: '/products/physical/sub-category', title: 'Sub Category', type: 'link' },
@@ -51,7 +51,7 @@ export class NavService {
 
 						// { path: '/products/physical/add-product', title: 'Add Product', type: 'link' },
 					]
-				},
+				},*/
 				{
 					title: 'Case', type: 'sub', children: [
 						{ path: '/products/digital/digital-category', title: 'Case Creation', type: 'link' },
@@ -91,17 +91,18 @@ export class NavService {
 		// 	]
 		// },
 		{
-			title: 'Users', icon: 'user-plus', type: 'sub', active: false, children: [
+			title: 'Admin', icon: 'user-plus', type: 'sub', active: false, children: [
 				{ path: '/users/list-user', title: 'User List', type: 'link' },
 				{ path: '/users/create-user', title: 'Create User', type: 'link' },
 			]
 		},
-		{
+	/*	{
 			title: 'Vendors', icon: 'users', type: 'sub', active: false, children: [
 				{ path: '/vendors/list-vendors', title: 'Vendor List', type: 'link' },
 				{ path: '/vendors/create-vendors', title: 'Create Vendor', type: 'link' },
 			]
 		},
+		*/
 		// {
 		// 	title: 'Localization', icon: 'chrome', type: 'sub', children: [
 		// 		{ path: '/localization/translations', title: 'Translations', type: 'link' },

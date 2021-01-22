@@ -51,13 +51,7 @@ export const content: Routes = [
       breadcrumb: "Users"
     }
   },
-  {
-    path: 'vendors',
-    loadChildren: () => import('../../components/vendors/vendors.module').then(m => m.VendorsModule),
-    data: {
-      breadcrumb: "Vendors"
-    }
-  },
+ 
   {
     path: 'localization',
     loadChildren: () => import('../../components/localization/localization.module').then(m => m.LocalizationModule),
