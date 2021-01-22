@@ -12,7 +12,7 @@ router.get('/',  casedetailsController.fetchAll);
 
 router.get('/:CaseID', casedetailsController.fetchById);
 
-router.put('/:CaseID', casedetailsController.putCasedetails);
+router.put('/', casedetailsController.putCasedetails);
 
 router.post(
   '/',
