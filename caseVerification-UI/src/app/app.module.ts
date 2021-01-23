@@ -1,4 +1,4 @@
-import { Swal } from 'sweetalert2/dist/sweetalert2.js';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -61,8 +61,8 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserModule,
     Ng2SmartTableModule,
     NgxBootstrapIconsModule.pick(allIcons),
-    ToastrModule.forRoot()
-
+     ToastrModule.forRoot()
+  
 
   ],
   providers: [
