@@ -1,6 +1,6 @@
 import { casedetails } from './../models/casedetails';
 import { tap } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { Params, Router } from '@angular/router';
 import { ErrorHandlerService } from './error-handler.service';
 import { DigitalListComponent } from '../components/products/digital/digital-list/digital-list.component'
 import { User } from './../models/User';
@@ -20,7 +20,7 @@ const httpOptions = {
 })
 export class CasedetailsService {
   headers = new HttpHeaders().set('Content-Type', 'application/json');
-  private url = 'http://localhost:3000/casedetails';
+  public url = 'http://localhost:3000/casedetails';
 
   httpOptions: { headers: HttpHeaders } = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -116,11 +116,19 @@ export class CasedetailsService {
   }
 
   // Update
-  update(Casedetails: casedetails): Observable<any> {
-    return this.http
-      .put<casedetails>(this.url, Casedetails, this.httpOptions)
-      .pipe(catchError(this.errorHandlerService.handleError<any>("update")));
+
+  update(CaseID:Observable<Params>,data:any){
+    return this.http.put(`${this.url}`,data)
   }
+
+
+
+  // update(Casedetails: casedetails): Observable<any> {
+  //    debugger;
+  //   return this.http
+  //     .put<casedetails>("http://localhost:3000/casedetails", Casedetails, {responseType:"json"})
+  //     .pipe(catchError(this.errorHandlerService.handleError<any>("update")));
+  // }
 
 
   // To catch error
