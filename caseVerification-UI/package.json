@@ -12,7 +12,7 @@
   "private": true,
   "dependencies": {
     "@akveo/ng2-completer": "^9.0.1",
-    "@angular/animations": "~10.0.2",
+    "@angular/animations": "^10.0.14",
     "@angular/cdk": "~10.0.1",
     "@angular/common": "~10.0.2",
     "@angular/compiler": "~10.0.2",
@@ -56,9 +56,12 @@
     "ngx-dropzone-wrapper": "^8.0.0",
     "ngx-owl-carousel-o": "^2.0.3",
     "ngx-slimscroll": "^8.1.0",
+    "ngx-toastr": "^13.2.0",
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",
     "screenfull": "^5.1.0",
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^10.13.0",
     "tslib": "^2.1.0",
     "web-animations-js": "^2.3.2",
     "zone.js": "~0.10.2"

@@ -16,12 +16,21 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { id } from '@swimlane/ngx-charts';
 import { tap } from 'rxjs/operators';
 import { thirdpartyDetails } from 'src/app/models/thirdpartydetails';
+import { ToastrService } from 'ngx-toastr';
+import { Injectable } from '@angular/core';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import 'sweetalert2/src/sweetalert2.scss';
+import swal from 'sweetalert';
+
 
 @Component({
   selector: 'app-case-edit',
   templateUrl: './case-edit.component.html',
   styleUrls: ['./case-edit.component.scss'],
 })
+// @Injectable({
+//   providedIn: 'root'
+// })
 export class CaseEditComponent implements OnInit {
   private selectCaseID: number;
   @Input() Casedetails: casedetails;
@@ -30,18 +39,22 @@ export class CaseEditComponent implements OnInit {
   EditForm: FormGroup;
   case: casedetails;
   caseForm: NgForm;
-  CasedetailsService: any;
+  // CasedetailsService: any;
   fetchAll: any;
+  casedet$: any;
+
+
 
   constructor(
     private httpClient: HttpClient,
     private _router: Router,
     private route: ActivatedRoute,
     private caseservice: CasedetailsService,
-    private fb:FormBuilder
+    private fb:FormBuilder,
+    private toastrService: ToastrService
   ) {
     var CaseID: number;
-    debugger;
+    // debugger;
     this.route.queryParams.subscribe((params) => {
       CaseID = params['CaseID'];
     });
@@ -73,43 +86,34 @@ export class CaseEditComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  casedetailsupdate({ value, valid }):void {
 
-    const CaseID = <string>this.EditForm.get('CaseID').value;
-    const Name = <string>this.EditForm.get('Name').value;
-    const ReferenceNumber = <string>this.EditForm.get('ReferenceNumber').value;
-    const Description = <string>this.EditForm.get('Description').value;
-    const InsurerVerificationNotes = <string>this.EditForm.get('InsurerVerificationNotes').value;
-    const T_VerificationNotes = <string>this.EditForm.get('T_VerificationNotes').value;
-    const DueDate = <string>this.EditForm.get('DueDate').value;
-    const CreatedBy = <string>this.EditForm.get('CreatedBy').value;
-    const LastModifiedBy = <string>this.EditForm.get('LastModifiedBy').value;
-    const insAddress = null;
-    const insDetails = null;
-    const tpartyDetails = null;
+  casedetailsupdate(){
+    this.caseservice.update(this.route.queryParams,this.EditForm.value).subscribe((result)=>{
+      console.log("yrdffyy");
+      // debugger;
+      // this.toastrService.success('Case Details Updated');
+      // window.alert("success")
+      // swal("Hello world!");
+      // swal({
+      //   icon: "success",
+      //   buttons: [false],
+      // });
+
+      swal( {
+        icon:"success",
+        title:"Case Details Updated Succesfully!!",
+        buttons: [false],
+        timer: 1500,
+      });
 
 
-    if (!CaseID) return;
 
-    const caseupdate: casedetails = {
-      CaseID,
-      Name,
-      ReferenceNumber,
-      Description,
-      InsurerVerificationNotes,
-      T_VerificationNotes,
-      DueDate,
-      CreatedBy,
-      LastModifiedBy,
-      insAddress,
-      insDetails,
-      tpartyDetails
-
-    };
-
-    this.Casedetails = this.CasedetailsService.update(caseupdate);
-    // .pipe(tap(() => (this.Casedetails = this.fetchAll())));
+    });
   }
+
+//   myFunction() {
+//     alert("Adding Succesful!");
+// }
 
 }
 
@@ -142,4 +146,42 @@ export class CaseEditComponent implements OnInit {
   //       console.log(result, 'data updated succesfully');
   //     });
 
+
+
+//   casedetailsupdate({ value, valid }):void {
+
+//     const CaseID = <string>this.EditForm.get('CaseID').value;
+//     const Name = <string>this.EditForm.get('Name').value;
+//     const ReferenceNumber = <string>this.EditForm.get('ReferenceNumber').value;
+//     const Description = <string>this.EditForm.get('Description').value;
+//     const InsurerVerificationNotes = <string>this.EditForm.get('InsurerVerificationNotes').value;
+//     const T_VerificationNotes = <string>this.EditForm.get('T_VerificationNotes').value;
+//     const DueDate = <string>this.EditForm.get('DueDate').value;
+//     const CreatedBy = <string>this.EditForm.get('CreatedBy').value;
+//     const LastModifiedBy = <string>this.EditForm.get('LastModifiedBy').value;
+//     const insAddress = null;
+//     const insDetails = null;
+//     const tpartyDetails = null;
+
+
+//     if (!CaseID) return;
+
+//     const caseupdate: casedetails = {
+//       CaseID,
+//       Name,
+//       ReferenceNumber,
+//       Description,
+//       InsurerVerificationNotes,
+//       T_VerificationNotes,
+//       DueDate,
+//       CreatedBy,
+//       LastModifiedBy,
+//       insAddress,
+//       insDetails,
+//       tpartyDetails
+//     };
+//  debugger;
+//     this.casedet$ = this.caseservice.update(caseupdate)
+//      .pipe(tap(() => (this.Casedetails = this.fetchAll())));
+//   }
 

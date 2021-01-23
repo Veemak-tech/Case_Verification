@@ -138,7 +138,9 @@ exports.deletePost = async (req, res, next) => {
 };
 
 // put
+
 exports.putCasedetails = async (req, res, next) => {
+ 
   try {
     const putResponse = await casedetails.update(
       req.body.CaseID,
@@ -149,8 +151,9 @@ exports.putCasedetails = async (req, res, next) => {
       req.body.ReferenceNumber,
       req.body.DueDate,
       req.body.LastModifiedBy
-    );
+    ); 
     res.status(200).json(putResponse);
+    console.log("Case details Updated !!!!")
   } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;

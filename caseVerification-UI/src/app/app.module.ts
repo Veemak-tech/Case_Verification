@@ -1,3 +1,4 @@
+import { Swal } from 'sweetalert2/dist/sweetalert2.js';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -26,6 +27,8 @@ import { Test1Component } from './components/test1/test1.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AuthInterceptorService } from "./services/auth-interceptor.service";
 import {FreeapiserviceService} from "./services/freeapiservice.service"
+import { ToastrModule } from 'ngx-toastr';
+
 
 
 @NgModule({
@@ -57,7 +60,10 @@ import {FreeapiserviceService} from "./services/freeapiservice.service"
     ReactiveFormsModule,
     BrowserModule,
     Ng2SmartTableModule,
-    NgxBootstrapIconsModule.pick(allIcons)
+    NgxBootstrapIconsModule.pick(allIcons),
+    ToastrModule.forRoot()
+
+
   ],
   providers: [
     FreeapiserviceService,
