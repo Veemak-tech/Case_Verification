@@ -22,13 +22,14 @@ import { User } from 'src/app/models/User';
 export class UserEditComponent implements OnInit {
   userdetail: User;
   EditForm: FormGroup;
+
   
 
   constructor(
     private user: AuthService,
     private httpClient: HttpClient,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {
     // const id:number = Number( this.route.snapshot.paramMap.get('id'));
     var id: number;
@@ -43,9 +44,11 @@ export class UserEditComponent implements OnInit {
       console.warn(data);
       this.userdetail = data[0];
       this.EditForm = new FormGroup({
-        name: new FormControl(data[0]['name']),
-        email: new FormControl(data[0]['email']),
-        RoleID: new FormControl(data[0]['RoleID']),
+        id : new FormControl(this.userdetail['id']),
+        name: new FormControl(this.userdetail['name']),
+        email: new FormControl(this.userdetail['email']),
+        password: new FormControl(this.userdetail['password']),
+        RoleID: new FormControl(this.userdetail['RoleID']),
      });
      
      
@@ -56,6 +59,16 @@ export class UserEditComponent implements OnInit {
   ngOnInit() {
 
   }
-  
-  
+  update(){
+    this.user.update(this.route.queryParams,this.EditForm.value).subscribe((result)=>
+  {
+console.log(result);
+console.log("its working2662");
+
+this.router.navigate(['/users/list-user']);
 }
+    );
+    
+  }
+}
+  

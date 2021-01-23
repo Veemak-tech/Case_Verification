@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Router } from "@angular/router";
+import { Params, Router } from "@angular/router";
 import { NgModule } from '@angular/core';
 
 import { Observable, BehaviorSubject } from "rxjs";
@@ -48,13 +48,10 @@ export class AuthService {
         catchError(this.errorHandlerService.handleError<User>("signup"))
       );
   }
-  update(user: Omit<User, "id">): Observable<User> {
-    return this.http
-      .put<User>(`${this.url}/`, user, this.httpOptions)
-      .pipe(
-        first(),
-        catchError(this.errorHandlerService.handleError<User>("update"))
-      );
+  update(id: Observable<Params> ,data: any){
+    debugger
+return this.http.put(`${this.url}`,data);
+
   }
   
   
@@ -74,6 +71,7 @@ export class AuthService {
           localStorage.setItem("token", tokenObject.token);
           this.isUserLoggedIn$.next(true);
           console.log("login works");
+
           this.router.navigate(["/products/digital/digital-category"]);
         }),
         catchError(

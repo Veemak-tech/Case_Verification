@@ -81,7 +81,7 @@ export class ListUserComponent implements OnInit {
         {
           name: 'viewrecord',
           title:
-            '<i class="ng2"></i>',
+            '<i></i>',
         },
       ],
       position: 'left',

@@ -27,9 +27,9 @@ module.exports = class casedetails {
     return db.execute("SELECT * FROM casedetails");
   }
 
-  static fetchById(CaseID){
-    return db.execute ("SELECT * FROM casedetails WHERE CaseID=?", [CaseID]);
-  }
+  // static fetchById(CaseID){
+  //   return db.execute ("SELECT * FROM casedetails WHERE CaseID=?", [CaseID]);
+  // }
 
   static fetchById(CaseID){
     var ocasedetail =  db.execute ("SELECT ID, CaseID, Name, Description, InsurerVerificationNotes, T_VerificationNotes, ReferenceNumber, DueDate, CreatedBy, CreatedDate, LastModifiedBy, LastModifiedDate FROM caseverificationdb.casedetails WHERE CaseID=?", [CaseID]);

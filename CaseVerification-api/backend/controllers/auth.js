@@ -88,19 +88,21 @@ exports.fetchbyId = async (req, res, next) => {
 
 
 exports.Update = async (req, res, next) => {
-  console.log(" its work");
+  console.log(" its work545455212");
   
    
-    const errors = validationResult(req);
+    // const errors = validationResult(req);
  
-    if (!errors.isEmpty()) return;
+    // if (!errors.isEmpty()) return;
    const id =req.body.id;
    const name = req.body.name;
    const email = req.body.email;
    const password = req.body.password;
    const RoleID=req.body.RoleID;
+   console.log("tyuio")
  
    try {
+     
      const hashedPassword = await bcrypt.hash(password, 12);
  
      const userDetails = {
@@ -112,6 +114,7 @@ exports.Update = async (req, res, next) => {
      };
  
      const result = await User.update(userDetails);
+     console.log("user updated")
  
      res.status(201).json({ message: 'User updated!' });
    } catch (err) {

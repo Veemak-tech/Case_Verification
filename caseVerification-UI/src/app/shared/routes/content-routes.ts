@@ -52,13 +52,13 @@ export const content: Routes = [
     }
   },
  
-  {
-    path: 'localization',
-    loadChildren: () => import('../../components/localization/localization.module').then(m => m.LocalizationModule),
-    data: {
-      breadcrumb: "Localization"
-    }
-  },
+  // {
+  //   path: 'localization',
+  //   loadChildren: () => import('../../components/localization/localization.module').then(m => m.LocalizationModule),
+  //   data: {
+  //     breadcrumb: "Localization"
+  //   }
+  // },
   {
     path: 'reports',
     loadChildren: () => import('../../components/reports/reports.module').then(m => m.ReportsModule),
