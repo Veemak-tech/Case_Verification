@@ -22,7 +22,7 @@ import { User } from 'src/app/models/User';
 export class UserEditComponent implements OnInit {
   userdetail: User;
   EditForm: FormGroup;
-  userForm: NgForm;
+  
 
   constructor(
     private user: AuthService,
@@ -46,17 +46,16 @@ export class UserEditComponent implements OnInit {
         name: new FormControl(data[0]['name']),
         email: new FormControl(data[0]['email']),
         RoleID: new FormControl(data[0]['RoleID']),
-      });
+     });
+     
+     
     });
+    
   }
 
-  ngOnInit(): void {
-    // this.EditForm= this.createFormGroup();
-  }
+  ngOnInit() {
 
-  // createFormGroup(): FormGroup {
-  //   return new FormGroup({
-  //     name: new FormControl(data['name'], [Validators.required, Validators.minLength(5)]),
-  //     email: new FormControl(['email'], [Validators.required, Validators.email]),
-  //     RoleID: new FormControl(['RoleID'], [Validators.required, Validators.minLength(5)]),
+  }
+  
+  
 }
