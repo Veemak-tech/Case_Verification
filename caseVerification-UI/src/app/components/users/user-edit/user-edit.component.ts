@@ -58,7 +58,6 @@ export class UserEditComponent implements OnInit {
       .subscribe((result) => {
         console.log(result);
         console.log('its working2662');
-
         this.router.navigate(['/users/list-user']);
       });
   }
