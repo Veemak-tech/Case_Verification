@@ -47,7 +47,7 @@ export class CaseEditComponent implements OnInit {
 
   constructor(
     private httpClient: HttpClient,
-    private _router: Router,
+    private router: Router,
     private route: ActivatedRoute,
     private caseservice: CasedetailsService,
     private fb:FormBuilder,
@@ -105,16 +105,12 @@ export class CaseEditComponent implements OnInit {
         buttons: [false],
         timer: 1500,
       });
-
+      debugger;
+      this.router.navigate(['digital/digital-list']);
 
 
     });
   }
-
-//   myFunction() {
-//     alert("Adding Succesful!");
-// }
-
 }
 
 
