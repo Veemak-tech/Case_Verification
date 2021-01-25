@@ -9,6 +9,7 @@ import { digitalCategoryDB } from 'src/app/shared/tables/digital-category';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/services/auth.service';
+import swal from 'sweetalert';
 
 
 
@@ -51,6 +52,13 @@ this.CasedetailsService
   .pipe(first())
   .subscribe(() => {
     this.create.emit(null);
+  });
+
+  swal( {
+    icon:"success",
+    title:"Submitted Successfully",
+    buttons: [false],
+    timer: 1500,
   });
   // this.form.reset();
   // this.userPost.resetForm();

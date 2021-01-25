@@ -65,7 +65,6 @@ export class UserEditComponent implements OnInit {
           timer: 1500,
         });
         console.log('its working2662');
-
         this.router.navigate(['/users/list-user']);
       });
   }
