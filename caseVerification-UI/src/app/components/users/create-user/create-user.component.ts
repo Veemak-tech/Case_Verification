@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import {AuthService } from "src/app/services/auth.service";
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-create-user',
@@ -31,7 +32,14 @@ export class CreateUserComponent implements OnInit {
   signup(): void {
     this.authService.signup(this.RegisterForm.value).subscribe((msg) => {
       console.log(msg);
+      swal( {
+        icon:"success",
+        title:"User Created Succesfully!!",
+        buttons: [false],
+        timer: 1500,
+      });
       console.log("user registerd");
+      this.router.navigate(['/users/list-user']);
     
     });
   }

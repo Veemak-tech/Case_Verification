@@ -13,6 +13,7 @@ import {
 import { userListDB } from 'src/app/shared/tables/list-users';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/models/User';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-user-edit',
@@ -57,6 +58,12 @@ export class UserEditComponent implements OnInit {
       .update(this.route.queryParams, this.EditForm.value)
       .subscribe((result) => {
         console.log(result);
+        swal( {
+          icon:"success",
+          title:"User Details Updated Succesfully!!",
+          buttons: [false],
+          timer: 1500,
+        });
         console.log('its working2662');
 
         this.router.navigate(['/users/list-user']);
