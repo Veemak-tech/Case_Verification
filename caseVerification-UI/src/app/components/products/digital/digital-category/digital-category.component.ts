@@ -63,7 +63,7 @@ this.CasedetailsService
     timer: 1500,
   });
   debugger;
-  this.router.navigate(['/digital/digital-list']);
+  this.router.navigate(['/products/digital/digital-product-list']);
   // this.form.reset();
   // this.userPost.resetForm();
 }

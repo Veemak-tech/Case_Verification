@@ -106,7 +106,7 @@ export class CaseEditComponent implements OnInit {
         timer: 1500,
       });
       debugger;
-      this.router.navigate(['digital/digital-list']);
+      this.router.navigate(['/products/digital/digital-product-list']);
 
 
     });
