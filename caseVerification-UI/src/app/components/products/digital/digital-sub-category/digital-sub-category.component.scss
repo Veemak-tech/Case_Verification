@@ -19,23 +19,23 @@
 }
 
 .subhead1{
-  text-align: center;
-  font-family: 'Gill Sans', sans-serif;
+  text-align: left;
+  // font-family: 'Gill Sans', sans-serif;
   color: #98acf8;
   font-size: 25px;
-  background-color: lightgoldenrodyellow;
+  background-color: rgb(255, 255, 255);
 }
 
 .subhead2{
-  text-align: center;
+  text-align: left;
   color: #98acf8;
-  background-color: lightgoldenrodyellow;
+  background-color: rgb(255, 255, 255);
 }
 
 .subhead3{
   color: #98acf8;
-  text-align: center;
-  background-color: lightgoldenrodyellow;
+  text-align: left;
+  background-color: rgb(255, 255, 255);
 }
 
 .caseid{
@@ -80,8 +80,7 @@ width: 220px;
 
 .Questionaaire1{
   align-items: flex-start;
-  margin: auto;
-  margin-left: 160px;
+  margin-left: 60px;
   width: 800px;
 }
 
@@ -94,11 +93,11 @@ width: 220px;
 }
 
 .ad1{
-  width: 400px;
+  width: 370px;
 }
 
 .ad2{
-  width: 327px;
+  width: 160.8%;
 }
 
 .content{
@@ -115,89 +114,15 @@ width: 220px;
 
 .content3{
   margin-left: 12.5%;
-  width: 70%;
-  height: 50%;
-  display: flexbox;
+  width: 95%;
 
 }
 
-// .content4{
-//   margin-left: 12.5%;
-// }
+.content4{
+  margin-left: 12.5%;
 
-.m-r-30 {
-  margin-right: 30px;
 }
 
-.action-buttons {
-  button, input {
-    display: block;
-    margin-bottom: 5px;
-  }
-}
-
-
-// slider
-
-/* The switch - the box around the slider */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 14px;
-}
-
-/* Hide default HTML checkbox */
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ffbc58;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 15px;
-  width: 15px;
-  left: 5px;
-  bottom: 5px;
-  background-color: rgb(18, 201, 214);
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #81ba00;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
+.submit{
+  align-items: center;
 }

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { CasedetailsService } from './../../../../services/casedetails.service';
 import { AddressService } from './../../../../services/address.service';
 import { address } from './../../../../models/address';
@@ -32,7 +33,8 @@ export class DigitalCategoryComponent implements OnInit {
     private CasedetailsService: CasedetailsService,
     private modalService: NgbModal,
     private http: HttpClient,
-    private authService: AuthService
+    private authService: AuthService,
+    private router : Router
   ) {
     this.digital_categories = digitalCategoryDB.digital_category;
   }
@@ -60,6 +62,8 @@ this.CasedetailsService
     buttons: [false],
     timer: 1500,
   });
+  debugger;
+  this.router.navigate(['/products/digital/digital-product-list']);
   // this.form.reset();
   // this.userPost.resetForm();
 }
