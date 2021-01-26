@@ -7,6 +7,7 @@ const router = express.Router();
 const User = require('../models/user');
 
 const authController = require('../controllers/auth');
+const auth = require('../middleware/auth');
 
 router.post(
   '/signup',
@@ -25,12 +26,12 @@ router.post(
     body('password').trim().isLength({ min: 7 }),
     body('RoleID').not().isEmpty(),
   ],
-  authController.signup
+  auth,authController.signup
 );
 
 router.post('/login', authController.login);
-router.get('/', authController.fetchAll);
-router.put('/',authController.Update );
-router.get('/:id',authController.fetchbyId)
+router.get('/',auth, authController.fetchAll);
+router.put('/',auth,authController.Update );
+router.get('/:id',auth,authController.fetchbyId)
 
 module.exports = router;
