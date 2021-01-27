@@ -101,6 +101,7 @@ export class DigitalListComponent implements OnInit {
         "CaseID": rowdata.CaseID,
       },
     };
+    //debugger;
     this.router.navigate(['/products/digital/case-edit'], navigationExtras);
     this.sendValues.emit(rowdata.CaseID);
   }
@@ -133,6 +134,9 @@ export class DigitalListComponent implements OnInit {
       Description: {
         title: 'Description',
       },
+      InsurerName: {
+        title: 'InsurerName',
+      }
       // InsurerVerificationNotes: {
       //   title: 'Insurer Verification Notes',
       // },

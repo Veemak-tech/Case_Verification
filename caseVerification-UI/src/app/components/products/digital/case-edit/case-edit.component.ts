@@ -75,6 +75,27 @@ export class CaseEditComponent implements OnInit {
         insAddress: new FormControl(this.case['insAddress']),
         insDetails: new FormControl(this.case['insDetails']),
         tpartyDetails: new FormControl(this.case['tpartyDetails']),
+        InsurerName: new FormControl (this.case['InsurerName']),
+        AddressLine1: new FormControl (this.case['AddressLine1']),
+        AddressLine2: new FormControl (this.case['AddressLine2']),
+        City: new FormControl (this.case['City']),
+        State: new FormControl (this.case['State']),
+        Landmark: new FormControl (this.case['Landmark']),
+        Pincode: new FormControl (this.case['Pincode']),
+        T_AddressLine1: new FormControl (this.case['T_AddressLine1']),
+        T_AddressLine2: new FormControl (this.case['T_AddressLine2']),
+        T_City: new FormControl (this.case['T_City']),
+        T_Landmark: new FormControl (this.case['T_Landmark']),
+        T_State: new FormControl (this.case['T_State']),
+        T_Pincode: new FormControl (this.case['T_Pincode']),
+        T_EmailID: new FormControl (this.case['T_EmailID']),
+
+
+
+        EmailID: new FormControl (this.case['EmailID']),
+        PhoneNumber: new FormControl (this.case['PhoneNumber']),
+        T_PhoneNumber: new FormControl (this.case['T_PhoneNumber']),
+        ThirdpartyName: new FormControl (this.case['ThirdpartyName']),
 
       });
     });

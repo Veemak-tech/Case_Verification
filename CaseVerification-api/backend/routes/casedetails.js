@@ -8,7 +8,7 @@ const auth = require('../middleware/auth');
 
 const router = express.Router();
 
-router.get('/', auth, casedetailsController.fetchAll);
+router.get('/',  casedetailsController.fetchAll);
 
 router.get('/:CaseID', casedetailsController.fetchById);
 

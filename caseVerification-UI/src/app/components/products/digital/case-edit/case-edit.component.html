@@ -78,7 +78,7 @@
               <div class="form-group form-inline">
                 <label for="exampleInputCompany">Name:</label>
                 <input  type="text" class="form-control" id="exampleInputCompany"
-                  placeholder="" required style="padding-right: 10px;" />
+                  placeholder="" formControlName="InsurerName" required style="padding-right: 10px;" />
               </div>
             </div>
           </div>
@@ -87,7 +87,7 @@
             <div class="form-group" class="phoneno">
               <div class="form-group form-inline">
                 <label for="exampleInputLoction">Phone No:</label>
-                <input type="text"  class="form-control" name="PhoneNumber" id="exampleInputLoction"
+                <input type="text"  class="form-control" formControlName="PhoneNumber" name="PhoneNumber" id="exampleInputLoction"
                   placeholder="" required />
               </div>
             </div>
@@ -102,7 +102,7 @@
             <div class="form-group" class="emailid">
               <div class="form-group form-inline">
                 <label for="exampleInputCompany">Email ID:</label>
-                <input  type="email" class="form-control"  id="exampleInputCompany" placeholder=""
+                <input  type="email" class="form-control" formControlName="EmailID" id="exampleInputCompany" placeholder=""
                   required style="padding-right: 10px;" />
               </div>
             </div>
@@ -116,27 +116,27 @@
 
           <div class="row ad">
             <div class="col">
-              <input  type="text" name="AddressLine1"  class="form-control ad1 " placeholder="Address Line 1">
+              <input  type="text" name="AddressLine1" formControlName="AddressLine1" class="form-control ad1 " placeholder="Address Line 1">
             </div>
             <div class="col">
-              <input  type="text" name="AddressLine2"  class="form-control ad2" placeholder="Address Line 2">
+              <input  type="text" name="AddressLine2" formControlName="AddressLine2"  class="form-control ad2" placeholder="Address Line 2">
             </div>
           </div><br><br>
 
           <div class="form-row">
 
             <div class="form-group col-md-3">
-              <input  type="text" name="City"  class="form-control" id="inputCity" size="20" placeholder="City">
+              <input  type="text" name="City" formControlName="City" class="form-control" id="inputCity" size="20" placeholder="City">
             </div>
             <div class="form-group col-md-3">
-              <input  type="text" name="State"  class="form-control" id="inputZip" size="15" placeholder="State">
+              <input  type="text" name="State" formControlName="State" class="form-control" id="inputZip" size="15" placeholder="State">
             </div>
             <div class="form-group col-md-1.5">
-              <input  type="text" name="Pincode"  class="form-control" id="inputZip" size="5"
+              <input  type="text" name="Pincode" formControlName="Pincode" class="form-control" id="inputZip" size="5"
                 placeholder="Pincode">
             </div>
             <div class="form-group col-md-4.5">
-              <input  type="text" name="Landmark"  class="form-control" id="inputZip" size="15"
+              <input  type="text" name="Landmark" formControlName="Landmark" class="form-control" id="inputZip" size="15"
                 placeholder="Landmark" style="margin-left: 23px;">
             </div>
 
@@ -169,7 +169,7 @@
               <div class="form-group form-inline">
                 <label for="exampleInputCompany">Name:</label>
                 <input  type="text" class="form-control"  name="ThirdpartyName" id="exampleInputCompany"
-                  placeholder="" required style="padding-right: 10px;" />
+                  placeholder="" formControlName="ThirdpartyName" required style="padding-right: 10px;" />
               </div>
             </div>
           </div>
@@ -178,7 +178,7 @@
             <div class="form-group" class="phoneno">
               <div class="form-group form-inline">
                 <label for="exampleInputLoction">Phone No:</label>
-                <input  type="text" class="form-control"  name="T_PhoneNumber" id="exampleInputLoction"
+                <input  type="text" formControlName="T_PhoneNumber" class="form-control"  name="T_PhoneNumber" id="exampleInputLoction"
                   placeholder="" required />
               </div>
             </div>
@@ -193,7 +193,7 @@
             <div class="form-group" class="emailid">
               <div class="form-group form-inline">
                 <label for="exampleInputCompany">Email ID:</label>
-                <input  type="email" class="form-control" name="T_EmailID" id="exampleInputCompany"
+                <input  type="email" class="form-control" name="T_EmailID" formControlName="T_EmailID" id="exampleInputCompany"
                   placeholder="" required style="padding-right: 10px;" />
               </div>
             </div>
@@ -207,27 +207,27 @@
 
           <div class="row ad">
             <div class="col">
-              <input type="text"  name="T_AddressLine1"  class="form-control ad1 " placeholder="Address Line 1" >
+              <input type="text"  name="T_AddressLine1" formControlName="T_AddressLine1" class="form-control ad1 " placeholder="Address Line 1" >
             </div>
             <div class="col">
-              <input type="text"  name="T_AddressLine2"  class="form-control ad2" placeholder="Address Line 2">
+              <input type="text"  name="T_AddressLine2" formControlName="T_AddressLine2" class="form-control ad2" placeholder="Address Line 2">
             </div>
           </div><br><br>
 
           <div class="form-row">
 
             <div class="form-group col-md-3">
-              <input  type="text" name="T_City"  class="form-control" id="inputCity" size="20" placeholder="City">
+              <input  type="text" name="T_City" formControlName="T_City" class="form-control" id="inputCity" size="20" placeholder="City">
             </div>
             <div class="form-group col-md-3">
-              <input  type="text" name="T_State"  class="form-control" id="inputZip" size="15" placeholder="State">
+              <input  type="text" name="T_State" formControlName="T_State" class="form-control" id="inputZip" size="15" placeholder="State">
             </div>
             <div class="form-group col-md-1.5">
-              <input  type="text" name="T_Pincode"  class="form-control" id="inputZip" size="5"
+              <input  type="text" name="T_Pincode" formControlName="T_Pincode" class="form-control" id="inputZip" size="5"
                 placeholder="Pincode">
             </div>
             <div class="form-group col-md-4.5">
-              <input  type="text" name="T_Landmark"  class="form-control" id="inputZip" size="15"
+              <input  type="text" name="T_Landmark" formControlName="T_Landmark" class="form-control" id="inputZip" size="15"
                 placeholder="Landmark" style="margin-left: 23px;">
             </div>
 
