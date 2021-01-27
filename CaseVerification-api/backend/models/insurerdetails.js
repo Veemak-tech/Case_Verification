@@ -51,4 +51,21 @@ module.exports = class insurerdetails {
   static delete(id) {
     return db.execute('DELETE FROM insurerdetails WHERE ID = ?', [id]);
   }
+
+  static update(
+    CaseID,
+    InsurerName,
+    PhoneNumber,
+    EmailID
+  ){
+    return db.execute(
+      "UPDATE insurerdetails SET InsurerName=?, PhoneNumber=?, EmailID=? WHERE CaseID=?",
+      [
+        CaseID,
+        InsurerName,
+        PhoneNumber,
+        EmailID,
+      ]
+      );
+  }
 };

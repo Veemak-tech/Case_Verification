@@ -89,9 +89,6 @@ export class CaseEditComponent implements OnInit {
         T_State: new FormControl (this.case['T_State']),
         T_Pincode: new FormControl (this.case['T_Pincode']),
         T_EmailID: new FormControl (this.case['T_EmailID']),
-
-
-
         EmailID: new FormControl (this.case['EmailID']),
         PhoneNumber: new FormControl (this.case['PhoneNumber']),
         T_PhoneNumber: new FormControl (this.case['T_PhoneNumber']),
@@ -111,7 +108,7 @@ export class CaseEditComponent implements OnInit {
   casedetailsupdate(){
     this.caseservice.update(this.route.queryParams,this.EditForm.value).subscribe((result)=>{
       console.log("Cd updated!");
-      // debugger;
+       debugger;
       // this.toastrService.success('Case Details Updated');
       // window.alert("success")
       // swal("Hello world!");
@@ -126,7 +123,7 @@ export class CaseEditComponent implements OnInit {
         buttons: [false],
         timer: 1500,
       });
-      debugger;
+      // debugger;
       this.router.navigate(['/products/digital/digital-product-list']);
 
 
