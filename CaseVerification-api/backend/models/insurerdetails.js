@@ -52,20 +52,24 @@ module.exports = class insurerdetails {
     return db.execute('DELETE FROM insurerdetails WHERE ID = ?', [id]);
   }
 
-  static update(
-    CaseID,
-    InsurerName,
-    PhoneNumber,
-    EmailID
-  ){
-    return db.execute(
-      "UPDATE insurerdetails SET InsurerName=?, PhoneNumber=?, EmailID=? WHERE CaseID=?",
-      [
-        CaseID,
-        InsurerName,
-        PhoneNumber,
-        EmailID,
-      ]
-      );
-  }
+
+  // update
+
+ static update(
+  updateinsurardet
+ ){
+    debugger;
+   console.log("qwerty");
+   return db.execute(
+     "UPDATE insurerdetails SET InsurerName=?, PhoneNumber=?, AlternativePhoneNumber=?,EmailID=?,AddressID=? WHERE CaseID=?",
+     [
+      updateinsurardet.InsurerName,
+      updateinsurardet.PhoneNumber,
+      updateinsurardet.AlternativePhoneNumber,
+      updateinsurardet.EmailID,
+      updateinsurardet.AddressID,
+      updateinsurardet.CaseID
+     ]
+   );
+ }
 };

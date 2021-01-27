@@ -17,14 +17,12 @@ exports.fetchAll = async (req, res, next) => {
   }
 };
 
-exports.fetchById = async (req,res,next) => {
-  try{
-   
+exports.fetchById = async (req, res, next) => {
+  try {
     const [SinglePost] = await casedetails.fetchById(req.params.CaseID);
-   
+
     res.status(200).json(SinglePost);
-  }
-  catch (err) {
+  } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;
     }
@@ -137,10 +135,10 @@ exports.deletePost = async (req, res, next) => {
   }
 };
 
-// put
+// put working
 
 // exports.putCasedetails = async (req, res, next) => {
- 
+
 //   try {
 //     const putResponse = await casedetails.update(
 //       req.body.CaseID,
@@ -151,7 +149,8 @@ exports.deletePost = async (req, res, next) => {
 //       req.body.ReferenceNumber,
 //       req.body.DueDate,
 //       req.body.LastModifiedBy
-//     ); 
+//     );
+
 //     res.status(200).json(putResponse);
 //     console.log("Case details Updated !!!!")
 //   } catch (err) {
@@ -162,35 +161,59 @@ exports.deletePost = async (req, res, next) => {
 //   }
 // };
 
- // test put
-
+// test put
 exports.putCasedetails = async (req, res, next) => {
- 
   try {
-    const putResponse = await casedetails.update(
-      req.body.CaseID,
-      req.body.Name,
-      req.body.Description,
-      req.body.InsurerVerificationNotes,
-      req.body.T_VerificationNotes,
-      req.body.ReferenceNumber,
-      req.body.DueDate,
-      req.body.LastModifiedBy
-    );
+    debugger;
+    const putResponse = {
+      CaseID: req.body.CaseID,
+      Name: req.body.Name,
+      Description: req.body.Description,
+      InsurerVerificationNotes: req.body.InsurerVerificationNotes,
+      T_VerificationNotes: req.body.T_VerificationNotes,
+      ReferenceNumber: req.body.ReferenceNumber,
+      DueDate: req.body.DueDate,
+      LastModifiedBy: req.body.LastModifiedBy,
+    };
 
-    res.status(200).json(putResponse);
-    console.log("Case details Updated !!!!")
+    const result = await casedetails.update(putResponse);
 
-    const putInsurerdetails = await insurerdetails.update(
-      req.body.CaseID,
-      req.body.InsurerName,
-      req.body.PhoneNumber,
-      req.body.EmailID,
-    )
+    console.log(result[0].insertId);
+    var caseid = result[0].insertId;
 
-    res.status(200).json(putInsurerdetails);
-    console.log("Case Insurer Updated !!!!")
-    
+    var insureraddressidput = result[0].insertId;
+
+debugger;
+    // Insurer Details
+    var updateinsurardetails = req.body.insDetails;
+
+    updateinsurardetails["CaseID"]=115,
+    updateinsurardetails["InsurerName"]=req.body.insDetails.InsurerName,
+    updateinsurardetails["PhoneNumber"]=req.body.insDetails.PhoneNumber,
+    updateinsurardetails["AlternativePhoneNumber"]="212121212",
+    updateinsurardetails["EmailID"]=req.body.insDetails.EmailID,
+    updateinsurardetails["AddressID"]=insureraddressidput
+
+    console.log(updateinsurardetails);
+    const insurerput = await insurerdetails.update(updateinsurardetails);
+
+
+    //  const updateinsurardet = {
+
+    //   CaseID: req.body.insDetails.CaseID,
+    //   InsurerName: req.body.insDetails.InsurerName,
+    //   PhoneNumber: req.body.insDetails.PhoneNumber,
+    //   AlternativePhoneNumber: "212121212",
+    //   EmailID: req.body.insDetails.EmailID,
+    //   AddressID: insureraddressidput
+    // };
+
+    // console.log(updateinsurardet);
+    // const result2 = await insurerdetails.update(updateinsurardet);
+
+    //res.status(200).json(updateinsurardet)
+     res.status(200).json(putResponse);
+    console.log("Case details Updated !!!!");
   } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;

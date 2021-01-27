@@ -117,26 +117,21 @@ module.exports = class casedetails {
 
   // Update Method
   static update(
-    CaseID,
-    Name,
-    Description,
-    InsurerVerificationNotes,
-    T_VerificationNotes,
-    ReferenceNumber,
-    DueDate,
-    LastModifiedBy
+    putResponse
+    
   ) {
+    debugger;
     return db.execute(
       "UPDATE casedetails SET Name=?, Description=?, InsurerVerificationNotes=?, T_VerificationNotes=?, ReferenceNumber=?, DueDate=?,LastModifiedBy=? WHERE CaseID=?",
       [
-        Name,
-        Description,
-        InsurerVerificationNotes,
-        T_VerificationNotes,
-        ReferenceNumber,
-        DueDate,
-        LastModifiedBy,
-        CaseID,
+       putResponse.Name,
+       putResponse.Description,
+       putResponse.InsurerVerificationNotes,
+       putResponse.T_VerificationNotes,
+       putResponse.ReferenceNumber,
+       putResponse.DueDate,
+       putResponse.LastModifiedBy,
+       putResponse.CaseID,
       ]
     );
   }

@@ -106,9 +106,10 @@ export class CaseEditComponent implements OnInit {
   }
 
   casedetailsupdate(){
+    debugger;
     this.caseservice.update(this.route.queryParams,this.EditForm.value).subscribe((result)=>{
       console.log("Cd updated!");
-       debugger;
+
       // this.toastrService.success('Case Details Updated');
       // window.alert("success")
       // swal("Hello world!");

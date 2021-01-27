@@ -117,10 +117,36 @@ export class CasedetailsService {
 
   // Update
 
-  update(CaseID:Observable<Params>,data:any){
-    return this.http.put(`${this.url}`,data)
-  }
+  // update(CaseID:Observable<Params>,data:any){
+  //   return this.http.put(`${this.url}`,data)
+  // }
 
+  update(CaseID:Observable<Params>,data:any){
+    debugger;
+    return this.http.put<casedetails>(`${this.url}`,{
+      CaseID: data.CaseID,
+      Name: data.Name,
+      Description: data.Description,
+      InsurerVerificationNotes: data.InsurerVerificationNotes,
+      T_VerificationNotes: data.T_VerificationNotes,
+      ReferenceNumber: data.ReferenceNumber,
+      DueDate: data.DueDate,
+      // CreatedBy: data.CreatedBy,
+      LastModifiedBy: data.LastModifiedBy,
+
+      insDetails:{
+        CaseID:data.CaseID,
+        InsurerName: data.InsurerName,
+        PhoneNumber: data.PhoneNumber,
+        // AlternativePhoneNumber: data.AlternativePhoneNumber,
+        EmailID: data.EmailID,
+        // AddressID: data.AddressID
+      },
+    },
+
+
+    this.httpOptions)
+  }
 
 
   // update(Casedetails: casedetails): Observable<any> {
