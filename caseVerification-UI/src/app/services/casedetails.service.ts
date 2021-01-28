@@ -131,16 +131,14 @@ export class CasedetailsService {
       T_VerificationNotes: data.T_VerificationNotes,
       ReferenceNumber: data.ReferenceNumber,
       DueDate: data.DueDate,
-      // CreatedBy: data.CreatedBy,
       LastModifiedBy: data.LastModifiedBy,
 
       insDetails:{
-        CaseID:data.CaseID,
+        ID:data.ID,
         InsurerName: data.InsurerName,
         PhoneNumber: data.PhoneNumber,
-        // AlternativePhoneNumber: data.AlternativePhoneNumber,
         EmailID: data.EmailID,
-        // AddressID: data.AddressID
+        I_AddressID: data.I_AddressID,
         I_CaseID:data.I_CaseID
       },
     },

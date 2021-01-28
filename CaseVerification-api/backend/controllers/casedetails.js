@@ -165,7 +165,7 @@ exports.deletePost = async (req, res, next) => {
 // test put
 exports.putCasedetails = async (req, res, next) => {
   try {
-    // debugger;
+     debugger;
     const putResponse = {
       CaseID: req.body.CaseID,
       Name: req.body.Name,
@@ -178,6 +178,7 @@ exports.putCasedetails = async (req, res, next) => {
     };
 
     const result = await casedetails.update(putResponse);
+    console.log(putResponse);
 
     console.log(result[0].insertId);
     var caseid = result[0].insertId;
@@ -188,7 +189,8 @@ exports.putCasedetails = async (req, res, next) => {
     // Insurer Details
     var updateinsurardetails = req.body.insDetails;
 
-    updateinsurardetails["CaseID"]=req.body.insDetails.I_CaseID,
+   // updateinsurardetails["ID"]=req.body.insDetails.ID,
+    updateinsurardetails["CaseID"]=req.body.insDetails.ID,
     updateinsurardetails["InsurerName"]=req.body.insDetails.InsurerName,
     updateinsurardetails["PhoneNumber"]=req.body.insDetails.PhoneNumber,
     updateinsurardetails["AlternativePhoneNumber"]="212121212",
@@ -199,9 +201,9 @@ exports.putCasedetails = async (req, res, next) => {
     const insurerput = await insurerdetails.update(updateinsurardetails);
 
     // Address Insurer
-    var updateinsaddress = req.body.insAddress;
+    // var updateinsaddress = req.body.insAddress;
 
-    updateinsaddress[""]
+    // updateinsaddress[""]
 
     //  const updateinsurardet = {
 

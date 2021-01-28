@@ -61,7 +61,7 @@ export class CaseEditComponent implements OnInit {
     this.caseservice.getByID(ID).subscribe((data: casedetails) => {
       console.log(data);
       this.case = data[0];
-       debugger;
+      // debugger;
       this.EditForm = new FormGroup({
         ID:new FormControl(this.case['ID']),
         CaseID: new FormControl(this.case['CaseID']),
@@ -100,7 +100,9 @@ export class CaseEditComponent implements OnInit {
         I_City: new FormControl (this.case['I_City']),
         I_State: new FormControl (this.case['I_State']),
         I_Pincode: new FormControl (this.case['I_Pincode']),
-        I_Landmark: new FormControl (this.case['I_Landmark'])
+        I_Landmark: new FormControl (this.case['I_Landmark']),
+        I_AddressID: new FormControl(this.case['I_AddressID']),
+        T_AddressID: new FormControl (this.case['T_AddressID'])
 
       });
     });
@@ -115,7 +117,7 @@ export class CaseEditComponent implements OnInit {
 
 
   casedetailsupdate(){
-    debugger;
+    // debugger;
     this.caseservice.update(this.route.queryParams,this.EditForm.value).subscribe((result)=>{
       console.log("Cd updated!");
 
