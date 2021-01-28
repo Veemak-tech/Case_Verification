@@ -37,8 +37,8 @@ export class DigitalListComponent implements OnInit {
     });
   }
 
-  private getCasedetails(CaseID:number) {
-    if(CaseID === 0) {
+  private getCasedetails(ID:number) {
+    if(ID === 0) {
       this.Casedetails = {
         CaseID: null,
         Name: null,
@@ -57,7 +57,7 @@ export class DigitalListComponent implements OnInit {
       };
     }
     else {
-      this.Casedetails = this.CasedetailsService.getCasedetails(CaseID);
+      this.Casedetails = this.CasedetailsService.getCasedetails(ID);
     }
   }
 
@@ -77,12 +77,12 @@ export class DigitalListComponent implements OnInit {
     let rowdata = formData;
     let navigationExtras: NavigationExtras = {
       queryParams: {
-        "CaseID": rowdata.CaseID,
+        "ID": rowdata.ID,
       },
     };
 // debugger;
     this.router.navigate(['/products/digital/case-edit'], navigationExtras);
-    this.sendValues.emit(rowdata.CaseID);
+    this.sendValues.emit(rowdata.ID);
   }
 
 
@@ -136,6 +136,9 @@ export class DigitalListComponent implements OnInit {
       },
       InsurerName: {
         title: 'InsurerName',
+      },
+      ID: {
+        title: 'ID'
       }
       // InsurerVerificationNotes: {
       //   title: 'Insurer Verification Notes',

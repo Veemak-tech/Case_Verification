@@ -58,7 +58,7 @@ module.exports = class insurerdetails {
  static update(
   updateinsurardet
  ){
-    debugger;
+    // debugger;
    console.log("qwerty");
    return db.execute(
      "UPDATE insurerdetails SET InsurerName=?, PhoneNumber=?, AlternativePhoneNumber=?,EmailID=?,AddressID=? WHERE CaseID=?",

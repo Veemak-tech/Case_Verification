@@ -43,8 +43,6 @@ export class CaseEditComponent implements OnInit {
   fetchAll: any;
   casedet$: any;
 
-
-
   constructor(
     private httpClient: HttpClient,
     private router: Router,
@@ -53,16 +51,19 @@ export class CaseEditComponent implements OnInit {
     private fb:FormBuilder,
     private toastrService: ToastrService
   ) {
-    var CaseID: number;
+    var ID: number;
     // debugger;
     this.route.queryParams.subscribe((params) => {
-      CaseID = params['CaseID'];
+      ID = params['ID'];
     });
 
-    this.caseservice.getByID(CaseID).subscribe((data: casedetails) => {
+
+    this.caseservice.getByID(ID).subscribe((data: casedetails) => {
       console.log(data);
       this.case = data[0];
+       debugger;
       this.EditForm = new FormGroup({
+        ID:new FormControl(this.case['ID']),
         CaseID: new FormControl(this.case['CaseID']),
         Name: new FormControl(this.case['Name']),
         Description: new FormControl(this.case['Description']),
@@ -93,6 +94,13 @@ export class CaseEditComponent implements OnInit {
         PhoneNumber: new FormControl (this.case['PhoneNumber']),
         T_PhoneNumber: new FormControl (this.case['T_PhoneNumber']),
         ThirdpartyName: new FormControl (this.case['ThirdpartyName']),
+        I_CaseID:new FormControl (this.case['I_CaseID']),
+        I_AddressLine1: new FormControl (this.case['I_AddressLine1']),
+        I_AddressLine2: new FormControl (this.case['I_AddressLine2']),
+        I_City: new FormControl (this.case['I_City']),
+        I_State: new FormControl (this.case['I_State']),
+        I_Pincode: new FormControl (this.case['I_Pincode']),
+        I_Landmark: new FormControl (this.case['I_Landmark'])
 
       });
     });
@@ -104,6 +112,7 @@ export class CaseEditComponent implements OnInit {
   ngOnInit(): void {
 
   }
+
 
   casedetailsupdate(){
     debugger;

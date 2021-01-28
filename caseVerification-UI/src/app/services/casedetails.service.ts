@@ -141,6 +141,7 @@ export class CasedetailsService {
         // AlternativePhoneNumber: data.AlternativePhoneNumber,
         EmailID: data.EmailID,
         // AddressID: data.AddressID
+        I_CaseID:data.I_CaseID
       },
     },
 

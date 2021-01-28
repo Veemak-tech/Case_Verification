@@ -24,26 +24,25 @@ module.exports = class casedetails {
   }
 
   // static fetchAll() {
-  //   return db.execute("SELECT * FROM casedetails");
+  //   debugger;
+  //   return db.execute('SELECT * ' +
+  //   'FROM casedetails');
     
   // }
 
-  // static fetchAll() {
-  //   return db.execute("SELECT casedetails.ID,casedetails.CaseID,casedetails.Name,casedetails.Description,"
-  //   +"insurerdetails.InsurerName FROM caseverificationdb.casedetails INNER JOIN caseverificationdb.insurerdetails ON" 
-  //   +"caseverificationdb.insurerdetails.CaseID = caseverificationdb.casedetails.ID");
-    
-  // }
 
   static fetchAll() {
+    //debugger;
     return db.execute("SELECT casedetails.ID,casedetails.CaseID,casedetails.Name,casedetails.Description,casedetails.InsurerVerificationNotes,thirdpartydetails.T_VerificationNotes,casedetails.CreatedBy,casedetails.CreatedDate,casedetails.LastModifiedBy,casedetails.LastModifiedDate,insurerdetails.InsurerName,insurerdetails.PhoneNumber,insurerdetails.AlternativePhoneNumber,insurerdetails.EmailID,address.AddressLine1,address.AddressLine2,thirdpartydetails.ThirdpartyName,thirdpartydetails.T_PhoneNumber,thirdpartydetails.T_AlternativePhoneNumber,tpaddress.AddressLine1,tpaddress.AddressLine2 as taddress FROM caseverificationdb.casedetails LEFT JOIN caseverificationdb.insurerdetails ON caseverificationdb.insurerdetails.CaseID = caseverificationdb.casedetails.ID LEFT JOIN caseverificationdb.address ON  caseverificationdb.insurerdetails.AddressID = caseverificationdb.address.ID LEFT JOIN caseverificationdb.thirdpartydetails ON caseverificationdb.casedetails.ID = caseverificationdb.thirdpartydetails.CaseID LEFT JOIN caseverificationdb.address tpaddress ON  caseverificationdb.thirdpartydetails.T_AddressID = tpaddress.ID");}
 
 
 
 
 
-  static fetchById(CaseID){
-    return db.execute ("SELECT casedetails.ID,casedetails.CaseID,casedetails.Name,casedetails.Description,casedetails.InsurerVerificationNotes,thirdpartydetails.T_VerificationNotes,casedetails.CreatedBy,casedetails.CreatedDate,casedetails.LastModifiedBy,casedetails.LastModifiedDate,insurerdetails.InsurerName,insurerdetails.PhoneNumber,insurerdetails.AlternativePhoneNumber,insurerdetails.EmailID,address.AddressLine1,address.AddressLine2,thirdpartydetails.ThirdpartyName,thirdpartydetails.T_PhoneNumber,casedetails.ReferenceNumber,address.City,address.Landmark,address.State,address.Pincode,thirdpartydetails.T_AlternativePhoneNumber,tpaddress.City as T_City,tpaddress.Landmark as T_Landmark,tpaddress.State as T_State,tpaddress.Pincode as T_Pincode,thirdpartydetails.T_EmailID,tpaddress.AddressLine1 as T_AddressLine1,tpaddress.AddressLine2 as T_AddressLine2 FROM caseverificationdb.casedetails LEFT JOIN caseverificationdb.insurerdetails ON caseverificationdb.insurerdetails.CaseID = caseverificationdb.casedetails.ID LEFT JOIN caseverificationdb.address ON  caseverificationdb.insurerdetails.AddressID = caseverificationdb.address.ID LEFT JOIN caseverificationdb.thirdpartydetails ON caseverificationdb.casedetails.ID = caseverificationdb.thirdpartydetails.CaseID LEFT JOIN caseverificationdb.address tpaddress ON  caseverificationdb.thirdpartydetails.T_AddressID = tpaddress.ID where caseverificationdb.casedetails.CaseID = ?", [CaseID]);
+  static fetchById(ID){
+     debugger;
+    return db.execute ('SELECT casedetails.ID,casedetails.CaseID,casedetails.Name,casedetails.Description,casedetails.InsurerVerificationNotes,thirdpartydetails.T_VerificationNotes,casedetails.CreatedBy,casedetails.CreatedDate,casedetails.LastModifiedBy,insaddress.AddressLine1 as I_AddressLine1,insaddress.AddressLine2 as I_AddressLine2,insaddress.City as I_City,insaddress.Landmark as I_Landmark,insaddress.State as I_State,insaddress.Pincode as I_Pincode, casedetails.LastModifiedDate,insurerdetails.InsurerName,insurerdetails.PhoneNumber,insurerdetails.AlternativePhoneNumber,insurerdetails.EmailID,insurerdetails.CaseID as I_CaseID,casedetails.ReferenceNumber,thirdpartydetails.ThirdpartyName,thirdpartydetails.T_PhoneNumber,tpaddress.AddressLine1 as T_AddressLine1,tpaddress.AddressLine2 as T_AddressLine2,tpaddress.City as T_City,tpaddress.Landmark as T_Landmark,tpaddress.State as T_State,tpaddress.Pincode as T_Pincode,thirdpartydetails.T_EmailID,thirdpartydetails.T_AlternativePhoneNumber FROM caseverificationdb.casedetails LEFT JOIN caseverificationdb.insurerdetails ON caseverificationdb.insurerdetails.CaseID = caseverificationdb.casedetails.ID LEFT JOIN caseverificationdb.thirdpartydetails ON caseverificationdb.casedetails.ID = caseverificationdb.thirdpartydetails.CaseID LEFT JOIN caseverificationdb.address tpaddress ON  caseverificationdb.thirdpartydetails.T_AddressID = tpaddress.ID LEFT JOIN caseverificationdb.address insaddress ON  caseverificationdb.insurerdetails.CaseID = insaddress.ID where caseverificationdb.casedetails.ID = ?',[ID]);
+    
   }
 
   // static fetchById(CaseID){
@@ -120,7 +119,7 @@ module.exports = class casedetails {
     putResponse
     
   ) {
-    debugger;
+    // debugger;
     return db.execute(
       "UPDATE casedetails SET Name=?, Description=?, InsurerVerificationNotes=?, T_VerificationNotes=?, ReferenceNumber=?, DueDate=?,LastModifiedBy=? WHERE CaseID=?",
       [

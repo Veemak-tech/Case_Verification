@@ -18,8 +18,9 @@ exports.fetchAll = async (req, res, next) => {
 };
 
 exports.fetchById = async (req, res, next) => {
+  // debugger;
   try {
-    const [SinglePost] = await casedetails.fetchById(req.params.CaseID);
+    const [SinglePost] = await casedetails.fetchById(req.params.ID);
 
     res.status(200).json(SinglePost);
   } catch (err) {
@@ -164,7 +165,7 @@ exports.deletePost = async (req, res, next) => {
 // test put
 exports.putCasedetails = async (req, res, next) => {
   try {
-    debugger;
+    // debugger;
     const putResponse = {
       CaseID: req.body.CaseID,
       Name: req.body.Name,
@@ -183,11 +184,11 @@ exports.putCasedetails = async (req, res, next) => {
 
     var insureraddressidput = result[0].insertId;
 
-debugger;
+// debugger;
     // Insurer Details
     var updateinsurardetails = req.body.insDetails;
 
-    updateinsurardetails["CaseID"]=115,
+    updateinsurardetails["CaseID"]=req.body.insDetails.I_CaseID,
     updateinsurardetails["InsurerName"]=req.body.insDetails.InsurerName,
     updateinsurardetails["PhoneNumber"]=req.body.insDetails.PhoneNumber,
     updateinsurardetails["AlternativePhoneNumber"]="212121212",
@@ -197,6 +198,10 @@ debugger;
     console.log(updateinsurardetails);
     const insurerput = await insurerdetails.update(updateinsurardetails);
 
+    // Address Insurer
+    var updateinsaddress = req.body.insAddress;
+
+    updateinsaddress[""]
 
     //  const updateinsurardet = {
 

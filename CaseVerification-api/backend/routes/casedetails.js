@@ -10,7 +10,7 @@ const router = express.Router();
 
 router.get('/',  casedetailsController.fetchAll);
 
-router.get('/:CaseID', casedetailsController.fetchById);
+router.get('/:ID', casedetailsController.fetchById);
 
 router.put('/', casedetailsController.putCasedetails);
 
