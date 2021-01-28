@@ -137,9 +137,9 @@ export class DigitalListComponent implements OnInit {
       InsurerName: {
         title: 'InsurerName',
       },
-      ID: {
-        title: 'ID'
-      }
+      // ID: {
+      //   title: 'ID'
+      // }
       // InsurerVerificationNotes: {
       //   title: 'Insurer Verification Notes',
       // },

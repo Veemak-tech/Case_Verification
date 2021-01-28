@@ -165,7 +165,7 @@ exports.deletePost = async (req, res, next) => {
 // test put
 exports.putCasedetails = async (req, res, next) => {
   try {
-     debugger;
+    // debugger;
     const putResponse = {
       CaseID: req.body.CaseID,
       Name: req.body.Name,
@@ -195,25 +195,53 @@ exports.putCasedetails = async (req, res, next) => {
     updateinsurardetails["PhoneNumber"]=req.body.insDetails.PhoneNumber,
     updateinsurardetails["AlternativePhoneNumber"]="212121212",
     updateinsurardetails["EmailID"]=req.body.insDetails.EmailID,
-    updateinsurardetails["AddressID"]=insureraddressidput
+     updateinsurardetails["AddressID"]=req.body.insDetails.I_AddressID
 
-    console.log(updateinsurardetails);
     const insurerput = await insurerdetails.update(updateinsurardetails);
+    console.log(insurerput);
 
     // Address Insurer
-    // var updateinsaddress = req.body.insAddress;
+    var updateinsaddress = req.body.insAddress;
+    // debugger;
 
-    // updateinsaddress[""]
+     updateinsaddress["ID"]=req.body.insAddress.I_AddressID,
+     updateinsaddress["AddressLine1"]=req.body.insAddress.I_AddressLine1,
+     updateinsaddress["AddressLine2"]=req.body.insAddress.I_AddressLine2,
+     updateinsaddress["City"]=req.body.insAddress.I_City,
+     updateinsaddress["State"]=req.body.insAddress.I_State,
+     updateinsaddress["Pincode"]=req.body.insAddress.I_Pincode,
+     updateinsaddress["Landmark"]=req.body.insAddress.I_Landmark
 
-    //  const updateinsurardet = {
+    const insaddressput = await Address.updateinsurerAddress(updateinsaddress);
+    console.log(insaddressput);
 
-    //   CaseID: req.body.insDetails.CaseID,
-    //   InsurerName: req.body.insDetails.InsurerName,
-    //   PhoneNumber: req.body.insDetails.PhoneNumber,
-    //   AlternativePhoneNumber: "212121212",
-    //   EmailID: req.body.insDetails.EmailID,
-    //   AddressID: insureraddressidput
-    // };
+
+    // thirdparty details
+    var updateTpartydet = req.body.tpartyDetails;
+    // debugger;
+
+    updateTpartydet["CaseID"]=req.body.tpartyDetails.ID,
+    updateTpartydet["ThirdpartyName"]=req.body.tpartyDetails.ThirdpartyName,
+    updateTpartydet["T_PhoneNumber"]=req.body.tpartyDetails.T_PhoneNumber,
+    updateTpartydet["T_EmailID"]=req.body.tpartyDetails.T_EmailID,
+    updateTpartydet["T_VerificationNotes"]=req.body.tpartyDetails.T_VerificationNotes
+
+    const tpartydetput = await thirdpartydetails.updatetpartydetails(updateTpartydet);
+    console.log(updateTpartydet);
+
+    // tparty address
+    var updatetpartyAddress = req.body.tpartyAddress;
+    debugger;
+    updatetpartyAddress["ID"]=req.body.tpartyAddress.T_AddressID,
+    updatetpartyAddress["AddressLine1"]=req.body.tpartyAddress.T_AddressLine1,
+    updatetpartyAddress["AddressLine2"]=req.body.tpartyAddress.T_AddressLine2,
+    updatetpartyAddress["City"]=req.body.tpartyAddress.T_City,
+    updatetpartyAddress["State"]=req.body.tpartyAddress.T_State,
+    updatetpartyAddress["Pincode"]=req.body.tpartyAddress.T_Pincode,
+    updatetpartyAddress["Landmark"]=req.body.tpartyAddress.T_Landmark
+
+    const tpartyaddressput = await Address.updatetpAddress(updatetpartyAddress);
+    console.log(updatetpartyAddress);
 
     // console.log(updateinsurardet);
     // const result2 = await insurerdetails.update(updateinsurardet);

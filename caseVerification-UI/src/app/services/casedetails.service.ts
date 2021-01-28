@@ -141,6 +141,35 @@ export class CasedetailsService {
         I_AddressID: data.I_AddressID,
         I_CaseID:data.I_CaseID
       },
+
+      insAddress: {
+        I_AddressID:data.I_AddressID,
+        I_AddressLine1:data.I_AddressLine1,
+        I_AddressLine2:data.I_AddressLine2,
+        I_City:data.I_City,
+        I_State:data.I_State,
+        I_Pincode:data.I_Pincode,
+        I_Landmark:data.I_Landmark
+      },
+
+      tpartyDetails: {
+        ID: data.ID,
+        ThirdpartyName: data.ThirdpartyName,
+        T_PhoneNumber: data.T_PhoneNumber,
+        T_EmailID: data.T_EmailID,
+        T_VerificationNotes: data.T_VerificationNotes,
+      },
+
+      tpartyAddress: {
+        ID:data.ID,
+        T_AddressID:data.T_AddressID,
+        T_AddressLine1:data.T_AddressLine1,
+        T_AddressLine2:data.T_AddressLine2,
+        T_City:data.T_City,
+        T_State:data.T_State,
+        T_Pincode:data.T_Pincode,
+        T_Landmark:data.T_Landmark
+      }
     },
 
 

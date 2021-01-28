@@ -51,4 +51,20 @@ module.exports = class thirdpartydetails {
   static delete(id) {
     return db.execute('DELETE FROM thirdpartdetails WHERE ID = ?', [id]);
   }
+
+  static updatetpartydetails(
+    updateTpartydet
+  ){
+   // debugger;
+    return db.execute(
+      "UPDATE thirdpartydetails SET ThirdpartyName=?, T_PhoneNumber=?, T_EmailID=?, T_VerificationNotes=? WHERE CaseID=?",
+[
+  updateTpartydet.ThirdpartyName,
+  updateTpartydet.T_PhoneNumber,
+  updateTpartydet.T_EmailID,
+  updateTpartydet.T_VerificationNotes,
+  updateTpartydet.CaseID
+]   
+ );
+  }
 };

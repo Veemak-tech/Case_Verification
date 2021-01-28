@@ -46,29 +46,40 @@ module.exports = class Address {
     );
   }
 
-  static update(
-    ID,
-    AddressLine1,
-    AddressLine2,
-    City,
-    Landmark,
-    State,
-    Pincode,
-    GEOLocation,
-    LastModifiedBy
+  // insurer address Update
+  static updateinsurerAddress(
+    updateinsaddress
   ) {
+    // debugger
     return db.execute(
-      "UPDATE address SET AddressLine1=?,AddressLine2=?,City=?,Landmark=?,State=?,Pincode=?,GEOLocation=?,LastModifiedBy=? WHERE ID=?",
+      "UPDATE address SET AddressLine1=?, AddressLine2=?, City=?, State=?, Pincode=?, Landmark=? WHERE ID=?",
       [
-        AddressLine1,
-        AddressLine2,
-        City,
-        Landmark,
-        State,
-        Pincode,
-        GEOLocation,
-        LastModifiedBy,
-        ID,
+        updateinsaddress.AddressLine1,
+        updateinsaddress.AddressLine2,
+        updateinsaddress.City,
+        updateinsaddress.State,
+        updateinsaddress.Pincode,
+        updateinsaddress.Landmark,
+        updateinsaddress.ID,
+      ]
+    );
+  }
+
+  // update tparty address 
+  static updatetpAddress(
+    updatetpartyAddress
+  ) {
+     debugger
+    return db.execute(
+      "UPDATE address SET AddressLine1=?, AddressLine2=?, City=?, State=?, Pincode=?, Landmark=? WHERE ID=?",
+      [
+        updatetpartyAddress.AddressLine1,
+        updatetpartyAddress.AddressLine2,
+        updatetpartyAddress.City,
+        updatetpartyAddress.State,
+        updatetpartyAddress.Pincode,
+        updatetpartyAddress.Landmark,
+        updatetpartyAddress.ID,
       ]
     );
   }
