@@ -62,7 +62,7 @@ this.CasedetailsService
     buttons: [false],
     timer: 1500,
   });
-  debugger;
+  // debugger;
   this.router.navigate(['/products/digital/digital-product-list']);
   // this.form.reset();
   // this.userPost.resetForm();

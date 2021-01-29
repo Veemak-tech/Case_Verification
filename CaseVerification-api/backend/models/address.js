@@ -69,7 +69,7 @@ module.exports = class Address {
   static updatetpAddress(
     updatetpartyAddress
   ) {
-     debugger
+     //debugger
     return db.execute(
       "UPDATE address SET AddressLine1=?, AddressLine2=?, City=?, State=?, Pincode=?, Landmark=? WHERE ID=?",
       [

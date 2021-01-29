@@ -231,7 +231,7 @@ exports.putCasedetails = async (req, res, next) => {
 
     // tparty address
     var updatetpartyAddress = req.body.tpartyAddress;
-    debugger;
+    // debugger;
     updatetpartyAddress["ID"]=req.body.tpartyAddress.T_AddressID,
     updatetpartyAddress["AddressLine1"]=req.body.tpartyAddress.T_AddressLine1,
     updatetpartyAddress["AddressLine2"]=req.body.tpartyAddress.T_AddressLine2,
