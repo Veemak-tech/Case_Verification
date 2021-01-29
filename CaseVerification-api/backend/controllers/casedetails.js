@@ -136,8 +136,100 @@ exports.deletePost = async (req, res, next) => {
   }
 };
 
-// put working
+// Update working
 
+//------------------------------------------------Case Details Update---------------------------------------------
+exports.putCasedetails = async (req, res, next) => {
+  try {
+    // debugger;
+    const putResponse = {
+      CaseID: req.body.CaseID,
+      Name: req.body.Name,
+      Description: req.body.Description,
+      InsurerVerificationNotes: req.body.InsurerVerificationNotes,
+      T_VerificationNotes: req.body.T_VerificationNotes,
+      ReferenceNumber: req.body.ReferenceNumber,
+      DueDate: req.body.DueDate,
+      LastModifiedBy: req.body.LastModifiedBy,
+    };
+
+    const result = await casedetails.update(putResponse);
+    console.log("Case Details Updated!!",putResponse);
+
+    console.log(result[0].insertId);
+    var caseid = result[0].insertId;
+
+    var insureraddressidput = result[0].insertId;
+
+// debugger;
+    // -----------------------------------------Insurer Details Update---------------------------------------------------
+    var updateinsurardetails = req.body.insDetails;
+
+    updateinsurardetails["CaseID"]=req.body.insDetails.ID,
+    updateinsurardetails["InsurerName"]=req.body.insDetails.InsurerName,
+    updateinsurardetails["PhoneNumber"]=req.body.insDetails.PhoneNumber,
+    updateinsurardetails["AlternativePhoneNumber"]="212121212",
+    updateinsurardetails["EmailID"]=req.body.insDetails.EmailID,
+     updateinsurardetails["AddressID"]=req.body.insDetails.I_AddressID
+
+    const insurerput = await insurerdetails.update(updateinsurardetails);
+    console.log("Insurer Details Updated!!",insurerput);
+
+    //------------------------------------------------- Insurer Address Update----------------------------------------
+    var updateinsaddress = req.body.insAddress;
+    // debugger;
+     updateinsaddress["ID"]=req.body.insAddress.I_AddressID,
+     updateinsaddress["AddressLine1"]=req.body.insAddress.I_AddressLine1,
+     updateinsaddress["AddressLine2"]=req.body.insAddress.I_AddressLine2,
+     updateinsaddress["City"]=req.body.insAddress.I_City,
+     updateinsaddress["State"]=req.body.insAddress.I_State,
+     updateinsaddress["Pincode"]=req.body.insAddress.I_Pincode,
+     updateinsaddress["Landmark"]=req.body.insAddress.I_Landmark
+
+    const insaddressput = await Address.updateinsurerAddress(updateinsaddress);
+    console.log("Insurer Address Updated!!",insaddressput);
+
+
+    //------------------------------------ thirdparty details Update---------------------------------------------
+    var updateTpartydet = req.body.tpartyDetails;
+    // debugger;
+    updateTpartydet["CaseID"]=req.body.tpartyDetails.ID,
+    updateTpartydet["ThirdpartyName"]=req.body.tpartyDetails.ThirdpartyName,
+    updateTpartydet["T_PhoneNumber"]=req.body.tpartyDetails.T_PhoneNumber,
+    updateTpartydet["T_EmailID"]=req.body.tpartyDetails.T_EmailID,
+    updateTpartydet["T_VerificationNotes"]=req.body.tpartyDetails.T_VerificationNotes
+
+    const tpartydetput = await thirdpartydetails.updatetpartydetails(updateTpartydet);
+    console.log("Third party details Updated!!!",updateTpartydet);
+
+    // ---------------------------------------------tparty address Update-----------------------------------
+    var updatetpartyAddress = req.body.tpartyAddress;
+    // debugger;
+    updatetpartyAddress["ID"]=req.body.tpartyAddress.T_AddressID,
+    updatetpartyAddress["AddressLine1"]=req.body.tpartyAddress.T_AddressLine1,
+    updatetpartyAddress["AddressLine2"]=req.body.tpartyAddress.T_AddressLine2,
+    updatetpartyAddress["City"]=req.body.tpartyAddress.T_City,
+    updatetpartyAddress["State"]=req.body.tpartyAddress.T_State,
+    updatetpartyAddress["Pincode"]=req.body.tpartyAddress.T_Pincode,
+    updatetpartyAddress["Landmark"]=req.body.tpartyAddress.T_Landmark
+
+    const tpartyaddressput = await Address.updatetpAddress(updatetpartyAddress);
+    console.log("Thirdparty Address Updated!!",updatetpartyAddress);
+
+     res.status(200).json(putResponse);
+  
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};
+
+
+//-----------------------------------------------Testing methods------------------------------------------------------------
+
+// Put method
 // exports.putCasedetails = async (req, res, next) => {
 
 //   try {
@@ -161,98 +253,3 @@ exports.deletePost = async (req, res, next) => {
 //     next(err);
 //   }
 // };
-
-// test put
-exports.putCasedetails = async (req, res, next) => {
-  try {
-    // debugger;
-    const putResponse = {
-      CaseID: req.body.CaseID,
-      Name: req.body.Name,
-      Description: req.body.Description,
-      InsurerVerificationNotes: req.body.InsurerVerificationNotes,
-      T_VerificationNotes: req.body.T_VerificationNotes,
-      ReferenceNumber: req.body.ReferenceNumber,
-      DueDate: req.body.DueDate,
-      LastModifiedBy: req.body.LastModifiedBy,
-    };
-
-    const result = await casedetails.update(putResponse);
-    console.log(putResponse);
-
-    console.log(result[0].insertId);
-    var caseid = result[0].insertId;
-
-    var insureraddressidput = result[0].insertId;
-
-// debugger;
-    // Insurer Details
-    var updateinsurardetails = req.body.insDetails;
-
-   // updateinsurardetails["ID"]=req.body.insDetails.ID,
-    updateinsurardetails["CaseID"]=req.body.insDetails.ID,
-    updateinsurardetails["InsurerName"]=req.body.insDetails.InsurerName,
-    updateinsurardetails["PhoneNumber"]=req.body.insDetails.PhoneNumber,
-    updateinsurardetails["AlternativePhoneNumber"]="212121212",
-    updateinsurardetails["EmailID"]=req.body.insDetails.EmailID,
-     updateinsurardetails["AddressID"]=req.body.insDetails.I_AddressID
-
-    const insurerput = await insurerdetails.update(updateinsurardetails);
-    console.log(insurerput);
-
-    // Address Insurer
-    var updateinsaddress = req.body.insAddress;
-    // debugger;
-
-     updateinsaddress["ID"]=req.body.insAddress.I_AddressID,
-     updateinsaddress["AddressLine1"]=req.body.insAddress.I_AddressLine1,
-     updateinsaddress["AddressLine2"]=req.body.insAddress.I_AddressLine2,
-     updateinsaddress["City"]=req.body.insAddress.I_City,
-     updateinsaddress["State"]=req.body.insAddress.I_State,
-     updateinsaddress["Pincode"]=req.body.insAddress.I_Pincode,
-     updateinsaddress["Landmark"]=req.body.insAddress.I_Landmark
-
-    const insaddressput = await Address.updateinsurerAddress(updateinsaddress);
-    console.log(insaddressput);
-
-
-    // thirdparty details
-    var updateTpartydet = req.body.tpartyDetails;
-    // debugger;
-
-    updateTpartydet["CaseID"]=req.body.tpartyDetails.ID,
-    updateTpartydet["ThirdpartyName"]=req.body.tpartyDetails.ThirdpartyName,
-    updateTpartydet["T_PhoneNumber"]=req.body.tpartyDetails.T_PhoneNumber,
-    updateTpartydet["T_EmailID"]=req.body.tpartyDetails.T_EmailID,
-    updateTpartydet["T_VerificationNotes"]=req.body.tpartyDetails.T_VerificationNotes
-
-    const tpartydetput = await thirdpartydetails.updatetpartydetails(updateTpartydet);
-    console.log(updateTpartydet);
-
-    // tparty address
-    var updatetpartyAddress = req.body.tpartyAddress;
-    // debugger;
-    updatetpartyAddress["ID"]=req.body.tpartyAddress.T_AddressID,
-    updatetpartyAddress["AddressLine1"]=req.body.tpartyAddress.T_AddressLine1,
-    updatetpartyAddress["AddressLine2"]=req.body.tpartyAddress.T_AddressLine2,
-    updatetpartyAddress["City"]=req.body.tpartyAddress.T_City,
-    updatetpartyAddress["State"]=req.body.tpartyAddress.T_State,
-    updatetpartyAddress["Pincode"]=req.body.tpartyAddress.T_Pincode,
-    updatetpartyAddress["Landmark"]=req.body.tpartyAddress.T_Landmark
-
-    const tpartyaddressput = await Address.updatetpAddress(updatetpartyAddress);
-    console.log(updatetpartyAddress);
-
-    // console.log(updateinsurardet);
-    // const result2 = await insurerdetails.update(updateinsurardet);
-
-    //res.status(200).json(updateinsurardet)
-     res.status(200).json(putResponse);
-    console.log("Case details Updated !!!!");
-  } catch (err) {
-    if (!err.statusCode) {
-      err.statusCode = 500;
-    }
-    next(err);
-  }
-};

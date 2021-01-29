@@ -52,6 +52,8 @@ module.exports = class thirdpartydetails {
     return db.execute('DELETE FROM thirdpartdetails WHERE ID = ?', [id]);
   }
 
+
+  //---------------------------------------update tp details--------------------------------------------
   static updatetpartydetails(
     updateTpartydet
   ){
