@@ -8,16 +8,16 @@ const auth = require('../middleware/auth');
 
 const router = express.Router();
 
-router.get('/',  casedetailsController.fetchAll);
+router.get('/',auth,  casedetailsController.fetchAll);
 
-router.get('/:ID', casedetailsController.fetchById);
+router.get('/:ID',auth, casedetailsController.fetchById);
 
-router.put('/', casedetailsController.putCasedetails);
+router.put('/',auth, casedetailsController.putCasedetails);
 
 router.post(
   '/',
   [
-    // auth,
+     auth,
     
     body('CaseID').trim().not().isEmpty(),
     body('Name').trim().not().isEmpty(),
