@@ -51,7 +51,8 @@ app.use((req, res, next) => {
   }
   next();
 });
-console.log("works");
+
+debugger
  app.use('/auth', authRoutes);
 
  app.use('/posts', postsRoutes);
