@@ -28,8 +28,9 @@ router.post(
   ],
   auth,authController.signup
 );
+router.post('/admin',authController.Adminlogin);
+router.post('/login',authController.login);
 
-router.post('/login', authController.login);
 router.get('/',auth, authController.fetchAll);
 router.put('/',auth,authController.Update );
 router.get('/:id',auth,authController.fetchbyId)

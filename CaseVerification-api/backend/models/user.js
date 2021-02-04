@@ -26,8 +26,14 @@ static fetchbyId(id){
   static find(email) {
     return db.execute('SELECT * FROM users WHERE email = ?', [email]);
   }
+  
+  static findadmin(email) {
+    debugger
+    return db.execute("SELECT * FROM users WHERE email = ?  and RoleID=1", [email]);
+  }
 
   static save(user) {
+    
     return db.execute(
       'INSERT INTO users (name, email, password, RoleID) VALUES (?,?,?,?)',
       [user.name, user.email, user.password, user.RoleID]

@@ -62,15 +62,15 @@ return this.http.put(`${this.url}`,data);
     token: string;
     userId: Pick<User, "id">;
   }> {
-    return this.http
-      .post(`${this.url}/login`, { email, password }, this.httpOptions)
+    
+    return this.http.post(`http://localhost:3000/auth/admin`, { email, password }, this.httpOptions)
       .pipe(
         first(),
         tap((tokenObject: { token: string; userId: Pick<User, "id"> }) => {
           this.userId = tokenObject.userId;
           localStorage.setItem("token", tokenObject.token);
           this.isUserLoggedIn$.next(true);
-          console.log("login works");
+        
 
           this.router.navigate(["/products/digital/digital-category"]);
         }),
