@@ -43,7 +43,7 @@ export class AuthService {
 
   signup(user: Omit<User, "id">): Observable<User> {
     return this.http
-      .post<User>(`${this.url}/signup`, user, this.httpOptions)
+      .post<User>(`${environment.apiauthsignup}`, user, this.httpOptions)
       .pipe(
         first(),
         catchError(this.errorHandlerService.handleError<User>("signup"))
@@ -51,7 +51,7 @@ export class AuthService {
   }
   update(id: Observable<Params> ,data: any){
     // debugger
-return this.http.put(`${this.url}`,data);
+return this.http.put(`${environment.apiauth}`,data);
 
   }
 
@@ -63,15 +63,15 @@ return this.http.put(`${this.url}`,data);
     token: string;
     userId: Pick<User, "id">;
   }> {
-    
-    return this.http.post(`http://localhost:3000/auth/admin`, { email, password }, this.httpOptions)
+
+    return this.http.post(`${environment.apiauthlogin}`, { email, password }, this.httpOptions)
       .pipe(
         first(),
         tap((tokenObject: { token: string; userId: Pick<User, "id"> }) => {
           this.userId = tokenObject.userId;
           localStorage.setItem("token", tokenObject.token);
           this.isUserLoggedIn$.next(true);
-        
+
 
           this.router.navigate(["/products/digital/digital-category"]);
         }),

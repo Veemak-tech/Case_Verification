@@ -5,7 +5,9 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:3000/casedetails',
-  apiauth:'http://localhost:3000/auth'
+  apiauth:'http://localhost:3000/auth',
+  apiauthsignup: 'http://localhost:3000/auth/signup',
+  apiauthlogin: 'http://localhost:3000/auth/admin'
 
 };
 
