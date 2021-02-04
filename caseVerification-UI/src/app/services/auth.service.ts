@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Params, Router } from "@angular/router";
@@ -29,13 +30,13 @@ export class AuthService {
   ) {}
 
   getData(){
-    let url="http://localhost:3000/auth";
-    return this.http.get(url);
+    //let url="http://localhost:3000/auth";
+    return this.http.get(`${environment.apiauth}`);
 
   }
   getDatabyID(id : number){
-    let url="http://localhost:3000/auth/"+id;
-    return this.http.get(url);
+    // let url="http://localhost:3000/auth/"+id;
+    return this.http.get(`${environment.apiauth}/${id}`);
 
   }
 

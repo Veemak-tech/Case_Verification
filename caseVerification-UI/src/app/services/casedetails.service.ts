@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { casedetails } from './../models/casedetails';
 import { tap } from 'rxjs/operators';
 import { Params, Router } from '@angular/router';
@@ -11,6 +12,7 @@ import { Injectable } from '@angular/core';
 
 
 
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
@@ -20,7 +22,7 @@ const httpOptions = {
 })
 export class CasedetailsService {
   headers = new HttpHeaders().set('Content-Type', 'application/json');
-  public url = 'http://localhost:3000/casedetails';
+  // public url = 'http://localhost:3000/casedetails';
 
   httpOptions: { headers: HttpHeaders } = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -35,7 +37,7 @@ export class CasedetailsService {
   createPost(formData, userId: Pick<User, 'id'>): Observable<casedetails> {
     return this.http
       .post<casedetails>(
-        this.url,
+        `${environment.apiUrl}`,
         {
           CaseID: formData.CaseID,
           Name: formData.Name,
@@ -101,29 +103,24 @@ export class CasedetailsService {
 
   getData(){
     let url = "http://localhost:3000/casedetails";
-    return this.http.get(url);
+    return this.http.get(`${environment.apiUrl}`);
   }
 
-  getByID(CaseID:number){
-    let url = "http://localhost:3000/casedetails/"+CaseID;
-    return this.http.get(url);
+  getByID(ID:number){
+   // let url = "http://localhost:3000/casedetails/"+CaseID;
+    return this.http.get(`${environment.apiUrl}/${ID}`);
   }
   // delete
 
   deletecasedetails(id: number): Observable<DigitalListComponent> {
-    const url = `${this.url}/${id}`;
+    const url = `${environment.apiUrl}/${id}`;
     return this.http.delete<DigitalListComponent>(url, this.httpOptions);
   }
 
-  // Update
-
-  // update(CaseID:Observable<Params>,data:any){
-  //   return this.http.put(`${this.url}`,data)
-  // }
 
   update(CaseID:Observable<Params>,data:any){
     debugger;
-    return this.http.put<casedetails>(`${this.url}`,{
+    return this.http.put<casedetails>(`${environment.apiUrl}`,{
       CaseID: data.CaseID,
       Name: data.Name,
       Description: data.Description,
@@ -175,14 +172,6 @@ export class CasedetailsService {
 
     this.httpOptions)
   }
-
-
-  // update(Casedetails: casedetails): Observable<any> {
-  //    debugger;
-  //   return this.http
-  //     .put<casedetails>("http://localhost:3000/casedetails", Casedetails, {responseType:"json"})
-  //     .pipe(catchError(this.errorHandlerService.handleError<any>("update")));
-  // }
 
 
   // To catch error

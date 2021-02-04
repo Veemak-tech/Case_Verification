@@ -58,7 +58,7 @@ export class NavService {
 						{ path: '/products/digital/digital-sub-category', title: 'Case Verification', type: 'link' },
 						{ path: '/products/digital/digital-product-list', title: 'Case List', type: 'link' },
 
-						//  { path: '/products/digital/digital-add-product', title: 'CaseCreation', type: 'link' },
+						 { path: '/products/digital/digital-add-product', title: 'CaseCreation', type: 'link' },
 					]
 				},
 			]

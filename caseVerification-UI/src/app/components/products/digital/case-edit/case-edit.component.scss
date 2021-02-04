@@ -1,3 +1,12 @@
+
+
+@media screen and (max-width: 600px) {
+  * {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
 .title{
   text-align: center;
 }
@@ -80,7 +89,7 @@ width: 220px;
 
 .Questionaaire1{
   align-items: flex-start;
-  margin-left: 60px;
+  margin-left: 58px;
   width: 800px;
 }
 
@@ -126,3 +135,6 @@ width: 220px;
 .submit{
   align-items: center;
 }
+
+
+
