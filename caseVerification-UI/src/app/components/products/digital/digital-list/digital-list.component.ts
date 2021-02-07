@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { casedetails } from './../../../../models/casedetails';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { CasedetailsService } from './../../../../services/casedetails.service';
@@ -5,6 +6,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { digitalListDB } from 'src/app/shared/tables/digital-list';
 import { HttpClient } from '@angular/common/http';
 import { allIcons } from 'ngx-bootstrap-icons';
+
 
 
 @Component({
@@ -17,24 +19,46 @@ export class DigitalListComponent implements OnInit {
   deleteID: string;
   CasedetailsService: any;
   Casedetails:casedetails;
+  data: any;
+  name: string;
 
   // Get data
   constructor(
     private user: CasedetailsService,
     private httpClient: HttpClient,
     private router: Router,
-    private _route:ActivatedRoute
+    private _route:ActivatedRoute,
+    private userName: AuthService
   ) {
     this.user.getData().subscribe((data1) => {
       console.warn(data1);
       this.caseList = data1;
     });
+    debugger;
+
+
+
+    var name:string;
+    this._route.queryParams.subscribe((params) => {
+
+      name = params['name'];
+    });
+
   }
   ngOnInit(): void {
     this._route.paramMap.subscribe(parameterMap => {
       const CaseID = +parameterMap.get('CaseID');
       this.getCasedetails(CaseID);
     });
+
+
+
+      // this.userName.passname.subscribe((result) => {
+      //   console.warn( result );
+      //   this.data = result;
+
+      // });
+
   }
 
   private getCasedetails(ID:number) {
@@ -80,7 +104,7 @@ export class DigitalListComponent implements OnInit {
         "ID": rowdata.ID,
       },
     };
-// debugger;
+ debugger;
     this.router.navigate(['/products/digital/case-edit'], navigationExtras);
     this.sendValues.emit(rowdata.ID);
   }

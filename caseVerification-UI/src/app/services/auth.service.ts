@@ -2,18 +2,21 @@ import { environment } from './../../environments/environment';
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Params, Router } from "@angular/router";
-import { NgModule } from '@angular/core';
+import { NgModule, Output, EventEmitter } from '@angular/core';
 
-import { Observable, BehaviorSubject } from "rxjs";
+import { Observable, BehaviorSubject, Subject } from "rxjs";
 import { first, catchError, tap } from "rxjs/operators";
 
 import { User } from "../models/User";
 import { ErrorHandlerService } from "./error-handler.service";
 
+
 @Injectable({
   providedIn: "root",
 })
 export class AuthService {
+
+
   private url = "http://localhost:3000/auth";
 
   isUserLoggedIn$ = new BehaviorSubject<boolean>(false);
@@ -22,11 +25,14 @@ export class AuthService {
   httpOptions: { headers: HttpHeaders } = {
     headers: new HttpHeaders({ "Content-Type": "application/json" }),
   };
+  name: Pick<User, "name">;
+
 
   constructor(
     private http: HttpClient,
     private errorHandlerService: ErrorHandlerService,
-    private router: Router
+    private router: Router,
+    // public usermodel: User
   ) {}
 
   getData(){
@@ -67,13 +73,15 @@ return this.http.put(`${environment.apiauth}`,data);
     return this.http.post(`${environment.apiauthlogin}`, { email, password }, this.httpOptions)
       .pipe(
         first(),
-        tap((tokenObject: { token: string; userId: Pick<User, "id"> }) => {
+        tap((tokenObject: { token: string; userId: Pick<User, "id">; name:Pick<User, "name"> }) => {
+          debugger;
           this.userId = tokenObject.userId;
+          this.name = tokenObject.name;
           localStorage.setItem("token", tokenObject.token);
           this.isUserLoggedIn$.next(true);
 
-
           this.router.navigate(["/products/digital/digital-category"]);
+
         }),
         catchError(
           this.errorHandlerService.handleError<{
@@ -81,11 +89,13 @@ return this.http.put(`${environment.apiauth}`,data);
             userId: Pick<User, "id">;
           }>("login")
         )
+
       );
 
 
-
   }
+
+
 }
 
 

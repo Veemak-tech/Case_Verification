@@ -122,7 +122,7 @@ export class NavService {
 		// 	title: 'Invoice', path: '/invoice', icon: 'archive', type: 'link', active: false
 		// },
 		{
-			title: 'Login',path: '/auth/login', icon: 'log-in', type: 'link', active: false
+			title: 'Logout',path: '/auth/login', icon: 'log-out', type: 'link', active: false
 		}
 	]
 	// Array

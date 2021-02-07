@@ -52,7 +52,7 @@ app.use((req, res, next) => {
   next();
 });
 
-debugger
+//debugger
  app.use('/auth', authRoutes);
 
  app.use('/posts', postsRoutes);

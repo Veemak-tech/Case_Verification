@@ -1,3 +1,4 @@
+
 <div class=container>
   <div class="card shadow-lg p-3 mb-5 bg-white rounded ">
     <form>
@@ -12,6 +13,7 @@
                 <label for="exampleInputCompany">Case ID:</label>
                 <input ngModel type="text" class="form-control" name="CompanyName" id="exampleInputCompany"
                   placeholder="" required />
+                  <div class="invalid-feedback">Please enter a valid username.</div>
               </div>
             </div>
           </div>
@@ -20,8 +22,8 @@
             <div class="form-group" class="refnumber">
               <div class="form-group form-inline">
                 <label for="exampleInputLoction">Ref Number:</label>
-                <input ngModel type="text" class="form-control" name="Location" id="exampleInputLoction" placeholder=""
-                  required />
+                <input ngModel type="text" class="form-control" name="Ref Number" id="Ref Number" placeholder="" required />
+                  <div class="invalid-feedback">Please enter a valid username.</div>
               </div>
             </div>
           </div>
@@ -35,6 +37,7 @@
                 <label for="exampleInputCompany">Due Date:</label>
                 <input ngModel type="date" class="form-control form-group1" name="CompanyName" id="exampleInputCompany"
                   placeholder="" required />
+
               </div>
             </div>
           </div>
@@ -75,6 +78,7 @@
                 <label for="exampleInputCompany">Name:</label>
                 <input ngModel type="text" class="form-control" name="CompanyName" id="exampleInputCompany"
                   placeholder="" required style="padding-right: 10px;" />
+                  <div class="invalid-feedback">Please enter a valid username.</div>
               </div>
             </div>
           </div>
@@ -295,7 +299,8 @@
           </div>
         </div>
       </div>
-
-    </form>
+      <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
   </div>
 </div>
+

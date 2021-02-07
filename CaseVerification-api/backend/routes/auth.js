@@ -33,6 +33,7 @@ router.post('/login',authController.login);
 
 router.get('/',auth, authController.fetchAll);
 router.put('/',auth,authController.Update );
+// debugger;
 router.get('/:id',auth,authController.fetchbyId)
 
 module.exports = router;

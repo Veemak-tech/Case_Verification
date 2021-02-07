@@ -24,11 +24,12 @@ static fetchbyId(id){
   }
 
   static find(email) {
+    debugger;
     return db.execute('SELECT * FROM users WHERE email = ?', [email]);
   }
   
   static findadmin(email) {
-    debugger
+     debugger
     return db.execute("SELECT * FROM users WHERE email = ?  and RoleID=1", [email]);
   }
 

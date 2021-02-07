@@ -102,7 +102,7 @@ export class CasedetailsService {
   }
 
   getData(){
-    let url = "http://localhost:3000/casedetails";
+    // let url = "http://localhost:3000/casedetails";
     return this.http.get(`${environment.apiUrl}`);
   }
 
