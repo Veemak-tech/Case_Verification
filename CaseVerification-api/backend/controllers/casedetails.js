@@ -154,7 +154,7 @@ exports.putCasedetails = async (req, res, next) => {
     };
 
     const result = await casedetails.update(putResponse);
-    console.log("Case Details Updated!!",putResponse);
+    console.log("Case Details Updated!!!!",putResponse);
 
     console.log(result[0].insertId);
     var caseid = result[0].insertId;

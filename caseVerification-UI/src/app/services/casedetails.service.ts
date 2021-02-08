@@ -21,6 +21,9 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class CasedetailsService {
+
+
+
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   // public url = 'http://localhost:3000/casedetails';
 
@@ -35,6 +38,7 @@ export class CasedetailsService {
   ) {}
 
   createPost(formData, userId: Pick<User, 'id'>): Observable<casedetails> {
+     let userid = localStorage.getItem("id");
     return this.http
       .post<casedetails>(
         `${environment.apiUrl}`,
@@ -47,7 +51,7 @@ export class CasedetailsService {
           ReferenceNumber: formData.ReferenceNumber,
           DueDate: formData.DueDate,
           CreatedBy: formData.CreatedBy,
-          LastModifiedBy: formData.LastModifiedBy,
+          LastModifiedBy: userid,
 
 
           insAddress: {

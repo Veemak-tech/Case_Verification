@@ -78,6 +78,8 @@ return this.http.put(`${environment.apiauth}`,data);
           this.userId = tokenObject.userId;
           this.name = tokenObject.name;
           localStorage.setItem("token", tokenObject.token);
+          localStorage.setItem("id", tokenObject.userId.toString());
+          localStorage.setItem("userName", tokenObject.name.toString());
           this.isUserLoggedIn$.next(true);
 
           this.router.navigate(["/products/digital/digital-category"]);
