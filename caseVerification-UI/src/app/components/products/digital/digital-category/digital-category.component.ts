@@ -46,6 +46,7 @@ export class DigitalCategoryComponent implements OnInit {
 
 
 onSubmit(formData): void {
+  debugger;
 
 
 this.CasedetailsService
