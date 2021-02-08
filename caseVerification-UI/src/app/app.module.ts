@@ -28,6 +28,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AuthInterceptorService } from "./services/auth-interceptor.service";
 import {FreeapiserviceService} from "./services/freeapiservice.service"
 import { ToastrModule } from 'ngx-toastr';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -56,13 +57,14 @@ import { ToastrModule } from 'ngx-toastr';
     MenusModule,
     UsersModule,
     HttpClientModule,
+    FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
     Ng2SmartTableModule,
     NgxBootstrapIconsModule.pick(allIcons),
      ToastrModule.forRoot()
-  
+
 
   ],
   providers: [
