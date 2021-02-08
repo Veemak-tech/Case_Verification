@@ -11,8 +11,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/services/auth.service';
 import swal from 'sweetalert';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-
+import { faUserCheck } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -25,7 +24,7 @@ export class DigitalCategoryComponent implements OnInit {
   @Output() create: EventEmitter<any> = new EventEmitter();
 
   form: FormGroup;
-  faCoffee = faCoffee;
+  faUserCheck = faUserCheck;
 
 
   isOpen = false;
