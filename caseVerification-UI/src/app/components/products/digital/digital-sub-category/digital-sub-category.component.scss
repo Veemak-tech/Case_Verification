@@ -1,128 +1,32 @@
-.title{
-  text-align: center;
+.card{
+  padding: 1.5rem;
 }
 
-.responsiveaddress{
-  float: left;
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-.caseid{
-  margin-left: 10px;
-
-}
-
-.maintitle{
-  color: cornflowerblue;
-  font-family: Impact, fantasy;
-}
-
-.subhead1{
-  text-align: left;
-  // font-family: 'Gill Sans', sans-serif;
-  color: #98acf8;
-  font-size: 25px;
-  background-color: rgb(255, 255, 255);
+.inputbox{
+  padding-top: 5px;
 }
 
 .subhead2{
-  text-align: left;
+
   color: #98acf8;
-  background-color: rgb(255, 255, 255);
 }
 
-.subhead3{
-  color: #98acf8;
-  text-align: left;
-  background-color: rgb(255, 255, 255);
+// .row{
+//   text-align: right;
+// }
+
+.text-align{
+  text-align: right;
 }
 
-.caseid{
-align-items: flex-start;
+.buttonfont{
+  font-size: x-small;
 }
 
-.duedate{
-align-items: flex-start;
-width: 220px;
+
+@media only screen and (max-width: 600px) {
+  .text-align{
+    text-align: left;
+  }
 }
 
-.gennotes{
-  align-items: flex-start;
-  padding-left: 26px;
-}
-
-.agentname{
-  align-items: flex-start;
-}
-
-.refnumber{
-  align-items: flex-start;
-}
-
-.name1{
-  align-items: flex-start;
-  margin-left: 19px;
-}
-
-.emailid{
-  align-items: flex-start;
-}
-
-.phoneno{
-  align-items: flex-start;
-  margin-left: 20px;
-}
-
-.form-row{
-  margin-left: 73px;
-}
-
-.Questionaaire1{
-  align-items: flex-start;
-  margin-left: 60px;
-  width: 800px;
-}
-
-.form-group1{
-  width: 220px;
-}
-
-.ad{
-  margin-left: 63px;
-}
-
-.ad1{
-  width: 370px;
-}
-
-.ad2{
-  width: 160.8%;
-}
-
-.content{
-  margin-left: 9%;
-}
-
-.content1{
-  margin-left: 9%;
-}
-
-.content2{
-  margin-left: 9%;
-}
-
-.content3{
-  margin-left: 12.5%;
-  width: 95%;
-
-}
-
-.content4{
-  margin-left: 12.5%;
-
-}
-
-.submit{
-  align-items: center;
-}
