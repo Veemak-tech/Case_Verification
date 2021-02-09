@@ -16,7 +16,7 @@
         </div>
         <div class="nav-right col">
             <ul class="nav-menus" [ngClass]="{'open' : openNav}">
-                <li>
+                <!-- <li>
                     <form class="form-inline search-form">
                         <div class="form-group">
                             <input class="form-control-plaintext" [class.open]="isOpenMobile" type="search"
@@ -27,7 +27,7 @@
                             </span>
                         </div>
                     </form>
-                </li>
+                </li> -->
                 <li>
                     <a href="javascript:void(0)" class="text-dark" toggleFullscreen>
                         <app-feather-icons [icon]="'maximize-2'"></app-feather-icons>
@@ -98,7 +98,7 @@
                     <div class="media align-items-center">
                       <!-- <img class="align-self-center pull-right img-50 rounded-circle"
                             src="assets/images/dashboard/man.png" alt="header-user"> -->
-                            <h6>{{userName}}</h6>
+                            <h6><i class="far fa-user mr-2"></i>{{userName}}</h6>
 
                         <!-- <div class="dotted-animation"><span class="animate-circle"></span><span
                                 class="main-circle"></span></div> -->
@@ -107,7 +107,7 @@
                         <li><a [routerLink]="'/settings/profile'">
                                 <app-feather-icons [icon]="'user'"></app-feather-icons>Edit Profile
                             </a></li>
-                        <li><a href="javascript:void(0)">
+                        <!-- <li><a href="javascript:void(0)">
                                 <app-feather-icons [icon]="'mail'"></app-feather-icons>Inbox
                             </a></li>
                         <li><a href="javascript:void(0)">
@@ -115,7 +115,7 @@
                             </a></li>
                         <li><a href="javascript:void(0)">
                                 <app-feather-icons [icon]="'settings'"></app-feather-icons>Settings
-                            </a></li>
+                            </a></li> -->
                         <li><a [routerLink]="'/auth/login'">
                                 <app-feather-icons [icon]="'log-out'"></app-feather-icons>Logout
                             </a></li>
