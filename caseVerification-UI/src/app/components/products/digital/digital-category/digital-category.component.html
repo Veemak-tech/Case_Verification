@@ -3,6 +3,8 @@
 
 
 <link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
+<script src="../../../../../assets/bootstrap-maxlength.min.js"></script>
+  <script src="../../../../../assets/bootstrap-maxlength.js"></script>
 
 </head>
 
@@ -17,19 +19,19 @@
           <h3 class="subhead2">Case Details</h3>
           <div class="col-md-12 row">
 
-            <div class="col-md-6 form-group row">
+            <div class="col-md-6 form-group row p-adjust-mob">
               <div class="col-sm-2"></div>
               <label for="name" class="col-form-label col-sm-3 text-align">Case ID:</label>
-              <div class="col-sm-6">
-                <input type="text" ngModel class="form-control" id="name" name="CaseID" placeholder="Enter Case ID" required="">
+              <div class="col-sm-6 p-adjust-mob">
+                <input type="text" ngModel class="form-control" id="name" name="CaseID" maxlength=20 placeholder="Enter Case ID" required="">
               </div>
             </div>
 
-            <div class="col-md-6 form-group row">
+            <div class="col-md-6 form-group row p-adjust-mob">
               <div class="col-sm-2"></div>
               <label for="name" class="col-form-label col-sm-4 text-align">Ref Number:</label>
-              <div class="col-sm-6">
-                <input type="text" ngModel class="form-control" id="name" name="ReferenceNumber" placeholder="Reference Number" required="">
+              <div class="col-sm-6 p-adjust-mob">
+                <input type="text" ngModel class="form-control" id="name" name="ReferenceNumber" maxlength="20" placeholder="Reference Number" required="">
               </div>
             </div>
           </div>
@@ -38,51 +40,51 @@
 
           <div class="col-md-12 row">
 
-            <div class="col-md-6 form-group row">
+            <div class="col-md-6 form-group row p-adjust-mob">
               <div class="col-sm-2"></div>
               <label for="name" class="col-form-label col-sm-3 text-align">Due date:</label>
-              <div class="col-sm-6">
+              <div class="col-sm-6 p-adjust-mob">
                 <input type="date" ngModel class="form-control" name="DueDate" id="name" required="">
               </div>
             </div>
 
-            <div class="col-md-6 form-group row">
+            <div class="col-md-6 form-group row p-adjust-mob">
               <div class="col-sm-2"></div>
               <label for="name" class="col-form-label col-sm-4 text-align">Agent Name:</label>
-              <div class="col-sm-6">
-                <input type="text" ngModel class="form-control" name="Name" id="name" placeholder="Agent Name" required="">
+              <div class="col-sm-6 p-adjust-mob">
+                <input type="text" ngModel class="form-control" name="Name" maxlength="50" id="name" placeholder="Agent Name" required="">
               </div>
             </div>
           </div>
 
           <div class="row mt-0">
             <div class="col-sm-2" style="margin-left: 31px;"></div>
-            <label for="notes" class="col-form-label col-sm-9">Notes:</label>
+            <label for="notes" class="col-form-label col-sm-9 tarea-label">Notes:</label>
           </div>
 
           <div class=" row" >
             <div class="col-sm-1 ml-4"></div>
             <div class="col-sm-1 ml-3"></div>
-            <textarea ngModel class="form-control col-sm-8 ml-2" name="Description" rows="3" placeholder="Write Your Notes"></textarea>
+            <textarea ngModel class="form-control col-sm-8 ml-2 case-textarea" maxlength="256" name="Description" rows="3" placeholder="Write Your Notes"></textarea>
             <div class="col-sm-2"></div>
           </div>
 
           <hr>
           <h3 class="subhead2">Insurer Details</h3>
           <div class="col-md-12 row">
-            <div class="col-md-6 form-group row">
+            <div class="col-md-6 form-group row p-adjust-mob">
               <div class="col-sm-1"></div>
               <label for="InsurerName" class="col-form-label col-sm-4 text-align">Insurer Name:</label>
-              <div class="col-sm-6">
-                <input type="text" ngModel class="form-control" placeholder="Enter Insurer Name" name="InsurerName" id="">
+              <div class="col-sm-6 p-adjust-mob">
+                <input type="text" ngModel class="form-control" maxlength="50" placeholder="Enter Insurer Name" name="InsurerName" id="">
               </div>
             </div>
 
-            <div class="col-md-6 form-group row">
+            <div class="col-md-6 p-adjust-mob form-group row">
               <div class="col-sm-2"></div>
               <label for="PhoneNumber" class="col-form-label col-sm-4 text-align">Phone Number:</label>
-              <div class="col-sm-6">
-                <input type="text" ngModel class="form-control" placeholder="Phone Number" name="PhoneNumber" id="">
+              <div class="col-sm-6 p-adjust-mob">
+                <input type="text" ngModel class="form-control" maxlength="20" placeholder="Phone Number" name="PhoneNumber" id="">
               </div>
 
             </div>
@@ -90,18 +92,18 @@
 
 
           <div class="col-md-12 row">
-            <div class="col-md-6 form-group row">
+            <div class="col-md-6 form-group row p-adjust-mob">
               <div class="col-sm-1"></div>
               <label for="InsurerName" class="col-form-label col-sm-4 text-align">Email:</label>
-              <div class="col-sm-6">
-                <input type="email" ngModel class="form-control" placeholder="Email ID" name="EmailID" id="">
+              <div class="col-sm-6 p-adjust-mob">
+                <input type="email" ngModel class="form-control" maxlength="50" placeholder="Email ID" name="EmailID" id="">
               </div>
             </div>
           </div>
 
           <div class="row mt-0">
             <div class="col-sm-2" style="margin-left: 31px;"></div>
-            <label for="notes" class="col-form-label col-sm-9">Address:</label>
+            <label for="notes" class="col-form-label col-sm-9 tarea-label">Address:</label>
           </div>
 
           <div class="col-md-12 row">
@@ -110,10 +112,10 @@
             <div class="col-sm-1 ml-4"></div>
             <!-- </div> -->
             <div class="col-sm-4 form-group">
-              <input type="text" ngModel class="form-control" placeholder="AddressLine 1" name="AddressLine1" id="" placeholder="AddressLine 1">
+              <input type="text" ngModel class="form-control" maxlength="256" placeholder="AddressLine 1" name="AddressLine1" id="" placeholder="AddressLine 1">
             </div>
             <div class="col-sm-5 form-group">
-              <input type="text" ngModel class="form-control" placeholder="AddressLine 2" name="AddressLine2" id="" placeholder="AddressLine 2">
+              <input type="text" ngModel class="form-control" maxlength="256" placeholder="AddressLine 2" name="AddressLine2" id="" placeholder="AddressLine 2">
             </div>
             <!-- <div class="col-sm-2"></div> -->
           </div>
@@ -123,16 +125,16 @@
             <!-- <div style="width: 110px;"></div> -->
 
             <div class="col-sm-2 ml-1 form-group">
-              <input type="text" ngModel class="form-control" name="City" id="" placeholder="City">
+              <input type="text" ngModel class="form-control" maxlength="20" name="City" id="" placeholder="City">
             </div>
             <div class="col-sm-2 form-group">
-              <input type="text" ngModel class="form-control" name="State" id="" placeholder="State">
+              <input type="text" ngModel class="form-control" maxlength="20" name="State" id="" placeholder="State">
             </div>
             <div class="col-sm-2 form-group">
-              <input type="text" ngModel class="form-control" name="Pincode" id="" placeholder="Pincode">
+              <input type="text" ngModel class="form-control" maxlength="10" name="Pincode" id="" placeholder="Pincode">
             </div>
             <div class="col-sm-3 form-group">
-              <input type="text" ngModel class="form-control" name="Landmark" id="" placeholder="Landmark">
+              <input type="text" ngModel class="form-control" maxlength="256" name="Landmark" id="" placeholder="Landmark">
             </div>
             <!-- <div class="col-sm-2"></div> -->
 
@@ -155,13 +157,13 @@
 
           <div class="row mt-0">
             <div class="col-sm-2" style="margin-left: 31px;"></div>
-            <label for="notes" class="col-form-label col-sm-9">Questions:</label>
+            <label for="notes" class="col-form-label col-sm-9 tarea-label">Questions:</label>
           </div>
 
           <div class=" row">
-            <div class="col-sm-1"></div>
-            <div style="width: 135px;"></div>
-            <textarea ngModel class="form-control col-sm-8" name="InsurerVerificationNotes" rows="6" placeholder="Insurer Questions"></textarea>
+            <div class="col-sm-2 ml-5"></div>
+            <!-- <div style="width: 135px;"></div> -->
+            <textarea ngModel class="form-control col-sm-8 case-textarea" maxlength="256" name="InsurerVerificationNotes" rows="6" placeholder="Insurer Questions"></textarea>
             <div class="col-sm-1"></div>
           </div>
 
@@ -169,19 +171,19 @@
           <hr>
           <h3 class="subhead2">Thirdparty Details</h3>
           <div class="col-md-12 row">
-            <div class="col-md-6 form-group row">
+            <div class="col-md-6 form-group row p-adjust-mob">
               <!-- <div class="col-sm-1"></div> -->
               <label for="InsurerName" class="col-form-label col-sm-5 text-align">Thirdparty Name:</label>
-              <div class="col-sm-6">
-                <input ngModel type="text" class="form-control" placeholder="Thirdparty Name" name="ThirdpartyName" id="">
+              <div class="col-sm-6 p-adjust-mob">
+                <input ngModel type="text" class="form-control" maxlength="50" placeholder="Thirdparty Name" name="ThirdpartyName" id="">
               </div>
             </div>
 
-            <div class="col-md-6 form-group row">
+            <div class="col-md-6 form-group row p-adjust-mob">
               <div class="col-sm-2"></div>
               <label for="PhoneNumber" class="col-form-label col-sm-4 text-align">Phone Number:</label>
-              <div class="col-sm-6">
-                <input ngModel type="text" class="form-control" placeholder="Phone Number" name="T_PhoneNumber" id="">
+              <div class="col-sm-6 p-adjust-mob">
+                <input ngModel type="text" class="form-control" maxlength="20" placeholder="Phone Number" name="T_PhoneNumber" id="">
               </div>
 
             </div>
@@ -189,18 +191,18 @@
 
 
           <div class="col-md-12 row">
-            <div class="col-md-6 form-group row">
+            <div class="col-md-6 form-group row p-adjust-mob">
               <div class="col-sm-1"></div>
               <label for="InsurerName" class="col-form-label col-sm-4 text-align">Email:</label>
-              <div class="col-sm-6">
-                <input ngModel type="email" class="form-control" name="T_EmailID" id="">
+              <div class="col-sm-6 p-adjust-mob">
+                <input ngModel type="email" class="form-control" maxlength="50" name="T_EmailID" id="">
               </div>
             </div>
           </div>
 
           <div class="row mt-0">
             <div class="col-sm-2" style="margin-left: 31px;"></div>
-            <label for="notes" class="col-form-label col-sm-9">Address:</label>
+            <label for="notes" class="col-form-label col-sm-9 tarea-label">Address:</label>
           </div>
 
           <div class="col-md-12 row">
@@ -209,10 +211,10 @@
             <!-- <div style="width: 110px;">
                           </div> -->
             <div class="col-sm-4 form-group">
-              <input ngModel type="text" class="form-control" name="T_AddressLine1" id="" placeholder="AddressLine 1">
+              <input ngModel type="text" class="form-control" maxlength="256" name="T_AddressLine1" id="" placeholder="AddressLine 1">
             </div>
             <div class="col-sm-5 form-group">
-              <input ngModel type="text" class="form-control" name="T_AddressLine2" id="" placeholder="AddressLine 2">
+              <input ngModel type="text" class="form-control" maxlength="256" name="T_AddressLine2" id="" placeholder="AddressLine 2">
             </div>
             <!-- <div class="col-sm-2"></div> -->
           </div>
@@ -222,16 +224,16 @@
             <!-- <div style="width: 110px;"></div> -->
 
             <div class="col-sm-2 ml-1 form-group">
-              <input ngModel type="text" class="form-control" name="T_City" id="" placeholder="City">
+              <input ngModel type="text" class="form-control" maxlength="20" name="T_City" id="" placeholder="City">
             </div>
             <div class="col-sm-2 form-group">
-              <input ngModel type="text" class="form-control" name="T_State" id="" placeholder="State">
+              <input ngModel type="text" class="form-control" maxlength="20" name="T_State" id="" placeholder="State">
             </div>
             <div class="col-sm-2 form-group">
-              <input ngModel type="text" class="form-control" name="T_Pincode" id="" placeholder="Pincode">
+              <input ngModel type="text" class="form-control" maxlength="10" name="T_Pincode" id="" placeholder="Pincode">
             </div>
             <div class="col-sm-3 form-group">
-              <input ngModel type="text" class="form-control" name="T_Landmark" id="" placeholder="Landmark">
+              <input ngModel type="text" class="form-control" maxlength="256" name="T_Landmark" id="" placeholder="Landmark">
             </div>
             <!-- <div class="col-sm-2"></div> -->
 
@@ -239,7 +241,7 @@
 
           <div class="row mt-0">
             <div class="col-sm-2" style="margin-left: 31px;"></div>
-            <label for="notes" class="col-form-label col-sm-2">Questions:</label>
+            <label for="notes" class="col-form-label col-sm-2 tarea-label">Questions:</label>
             <!-- <div class=" col-sm-1 btn-group">
               <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                Q-Template
@@ -254,12 +256,12 @@
           <div class=" row">
             <div class="col-sm-2 ml-5"></div>
             <!-- <div style="width: 135px;"></div> -->
-            <textarea ngModel class="form-control col-sm-8" name="T_VerificationNotes" rows="6" placeholder="Thirdparty Questions"></textarea>
+            <textarea ngModel class="form-control col-sm-8 case-textarea" maxlength="256" name="T_VerificationNotes" rows="6" placeholder="Thirdparty Questions"></textarea>
             <div class="col-sm-1"></div>
           </div>
           <br>
           <div class="text-center">
-            <button type="submit" class="btn btn-outline-primary ml-5"><i class="fas fa-user-check mr-2"></i>Submit</button>
+            <button type="submit" class="btn btn-outline-primary ml-5 btn-mob-adjust"><i class="fas fa-user-check mr-2"></i>Submit</button>
           </div>
 
         </form>
@@ -267,3 +269,7 @@
     </div>
   </div>
 </section>
+
+
+
+

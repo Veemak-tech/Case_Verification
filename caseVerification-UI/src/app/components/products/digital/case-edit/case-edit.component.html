@@ -12,18 +12,18 @@
           <h3 class="subhead2">Case Details</h3>
           <div class="col-md-12 row">
 
-            <div class="col-md-6 form-group row">
+            <div class="col-md-6 form-group row p-adjust-mob">
               <div class="col-sm-2"></div>
               <label for="name" class="col-form-label col-sm-3 text-align">Case ID:</label>
-              <div class="col-sm-6">
+              <div class="col-sm-6 p-adjust-mob">
                 <input type="text"  class="form-control" formControlName="CaseID"  placeholder="Enter Case ID" required="">
               </div>
             </div>
 
-            <div class="col-md-6 form-group row">
+            <div class="col-md-6 form-group row p-adjust-mob">
               <div class="col-sm-2"></div>
               <label for="name" class="col-form-label col-sm-4 text-align">Ref Number:</label>
-              <div class="col-sm-6">
+              <div class="col-sm-6 p-adjust-mob">
                 <input type="text"  class="form-control" formControlName="ReferenceNumber" id="name" name="ReferenceNumber" placeholder="Reference Number" required="">
               </div>
             </div>
@@ -33,18 +33,18 @@
 
           <div class="col-md-12 row">
 
-            <div class="col-md-6 form-group row">
+            <div class="col-md-6 form-group row p-adjust-mob">
               <div class="col-sm-2"></div>
               <label for="name" class="col-form-label col-sm-3 text-align">Due date:</label>
-              <div class="col-sm-6">
+              <div class="col-sm-6 p-adjust-mob">
                 <input type="date"  class="form-control" formControlName="DueDate" name="DueDate" id="name" required="">
               </div>
             </div>
 
-            <div class="col-md-6 form-group row">
+            <div class="col-md-6 form-group row p-adjust-mob">
               <div class="col-sm-2"></div>
               <label for="name" class="col-form-label col-sm-4 text-align">Agent Name:</label>
-              <div class="col-sm-6">
+              <div class="col-sm-6 p-adjust-mob">
                 <input type="text"  class="form-control" formControlName="Name" name="Name" id="name" placeholder="Agent Name" required="">
               </div>
             </div>
@@ -52,31 +52,31 @@
 
           <div class="row mt-0">
             <div class="col-sm-2" style="margin-left: 31px;"></div>
-            <label for="notes" class="col-form-label col-sm-9">Notes:</label>
+            <label for="notes" class="col-form-label col-sm-9 tarea-label">Notes:</label>
           </div>
 
           <div class=" row" >
             <div class="col-sm-1 ml-4"></div>
             <div class="col-sm-1 ml-3"></div>
-            <textarea  class="form-control col-sm-8 ml-2" formControlName="Description" name="Description" rows="3" placeholder="Write Your Notes"></textarea>
+            <textarea  class="form-control col-sm-8 ml-2 case-textarea" formControlName="Description" name="Description" rows="3" placeholder="Write Your Notes"></textarea>
             <div class="col-sm-2"></div>
           </div>
 
           <hr>
           <h3 class="subhead2">Insurer Details</h3>
           <div class="col-md-12 row">
-            <div class="col-md-6 form-group row">
+            <div class="col-md-6 form-group row p-adjust-mob">
               <div class="col-sm-1"></div>
               <label for="InsurerName" class="col-form-label col-sm-4 text-align">Insurer Name:</label>
-              <div class="col-sm-6">
+              <div class="col-sm-6 p-adjust-mob">
                 <input type="text"  class="form-control" formControlName="InsurerName" placeholder="Enter Insurer Name" name="InsurerName" id="">
               </div>
             </div>
 
-            <div class="col-md-6 form-group row">
+            <div class="col-md-6 form-group row p-adjust-mob">
               <div class="col-sm-2"></div>
               <label for="PhoneNumber" class="col-form-label col-sm-4 text-align">Phone Number:</label>
-              <div class="col-sm-6">
+              <div class="col-sm-6 p-adjust-mob">
                 <input type="text"  class="form-control" formControlName="PhoneNumber" placeholder="Phone Number" name="PhoneNumber" id="">
               </div>
 
@@ -85,10 +85,10 @@
 
 
           <div class="col-md-12 row">
-            <div class="col-md-6 form-group row">
+            <div class="col-md-6 form-group row p-adjust-mob">
               <div class="col-sm-1"></div>
               <label for="InsurerName" class="col-form-label col-sm-4 text-align">Email:</label>
-              <div class="col-sm-6">
+              <div class="col-sm-6 p-adjust-mob">
                 <input type="email"  class="form-control" formControlName="EmailID" placeholder="Email ID" name="EmailID" id="">
               </div>
             </div>
@@ -145,13 +145,13 @@
 
           <div class="row mt-0">
             <div class="col-sm-2" style="margin-left: 31px;"></div>
-            <label for="notes" class="col-form-label col-sm-9">Notes:</label>
+            <label for="notes" class="col-form-label col-sm-9 tarea-label">Questions:</label>
           </div>
 
           <div class=" row">
-            <div class="col-sm-1"></div>
-            <div style="width: 135px;"></div>
-            <textarea  class="form-control col-sm-8" formControlName="InsurerVerificationNotes" name="InsurerVerificationNotes" rows="6" placeholder="Insurer Questions"></textarea>
+            <div class="col-sm-2 ml-5"></div>
+            <!-- <div style="width: 135px;"></div> -->
+            <textarea  class="form-control col-sm-8 case-textarea" formControlName="InsurerVerificationNotes" name="InsurerVerificationNotes" rows="6" placeholder="Insurer Questions"></textarea>
             <div class="col-sm-1"></div>
           </div>
 
@@ -159,18 +159,18 @@
           <hr>
           <h3 class="subhead2">Thirdparty Details</h3>
           <div class="col-md-12 row">
-            <div class="col-md-6 form-group row">
+            <div class="col-md-6 form-group row p-adjust-mob">
               <!-- <div class="col-sm-1"></div> -->
               <label for="InsurerName" class="col-form-label col-sm-5 text-align">Thirdparty Name:</label>
-              <div class="col-sm-6">
+              <div class="col-sm-6 p-adjust-mob">
                 <input  type="text" class="form-control" formControlName="ThirdpartyName" placeholder="Thirdparty Name" name="ThirdpartyName" id="">
               </div>
             </div>
 
-            <div class="col-md-6 form-group row">
+            <div class="col-md-6 form-group row p-adjust-mob">
               <div class="col-sm-2"></div>
               <label for="PhoneNumber" class="col-form-label col-sm-4 text-align">Phone Number:</label>
-              <div class="col-sm-6">
+              <div class="col-sm-6 p-adjust-mob">
                 <input  type="text" class="form-control" formControlName="T_PhoneNumber" placeholder="Phone Number" name="T_PhoneNumber" id="">
               </div>
 
@@ -179,10 +179,10 @@
 
 
           <div class="col-md-12 row">
-            <div class="col-md-6 form-group row">
+            <div class="col-md-6 form-group row p-adjust-mob">
               <div class="col-sm-1"></div>
               <label for="InsurerName" class="col-form-label col-sm-4 text-align">Email:</label>
-              <div class="col-sm-6">
+              <div class="col-sm-6 p-adjust-mob">
                 <input  type="email" class="form-control" formControlName="T_EmailID" name="T_EmailID" id="">
               </div>
             </div>
@@ -224,18 +224,18 @@
 
           <div class="row mt-0">
             <div class="col-sm-2" style="margin-left: 31px;"></div>
-            <label for="notes" class="col-form-label col-sm-9">Notes:</label>
+            <label for="notes" class="col-form-label col-sm-9 tarea-label">Questions:</label>
           </div>
 
           <div class=" row">
             <div class="col-sm-2 ml-5"></div>
             <!-- <div style="width: 135px;"></div> -->
-            <textarea  class="form-control col-sm-8" formControlName="T_VerificationNotes" name="T_VerificationNotes" rows="6" placeholder="Thirdparty Questions"></textarea>
+            <textarea  class="form-control col-sm-8 case-textarea" formControlName="T_VerificationNotes" name="T_VerificationNotes" rows="6" placeholder="Thirdparty Questions"></textarea>
             <div class="col-sm-1"></div>
           </div>
           <br>
           <div class="text-center">
-            <button type="submit" class="btn btn-outline-primary ml-5"><i class="fas fa-user-check mr-2"></i>Submit</button>
+            <button type="submit" class="btn btn-outline-primary ml-5 btn-mob-adjust"><i class="fas fa-user-check mr-2"></i>Submit</button>
           </div>
 
         </form>
