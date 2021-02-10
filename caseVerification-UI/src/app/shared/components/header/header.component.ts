@@ -1,5 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NavService } from '../../service/nav.service';
+import { Router } from "@angular/router";
+
+import { AuthService } from "src/app/services/auth.service";
 
 @Component({
   selector: 'app-header',
@@ -12,10 +15,15 @@ export class HeaderComponent implements OnInit {
   public openNav: boolean = false;
   public isOpenMobile : boolean;
   public userName : string = "";
+  isAuthenticated = false;
+  
 
   @Output() rightSidebarEvent = new EventEmitter<boolean>();
 
-  constructor(public navServices: NavService) { }
+  constructor(public navServices: NavService, 
+    private authService: AuthService, 
+    private router: Router
+    ) { }
 
   collapseSidebar() {
     this.open = !this.open;
@@ -31,8 +39,16 @@ export class HeaderComponent implements OnInit {
   }
 
 
-  ngOnInit() {
+  ngOnInit():void {
+    this.authService.isUserLoggedIn$.subscribe((isLoggedIn) => {
+      this.isAuthenticated = isLoggedIn;
     this.userName = localStorage.getItem("userName").toString()
-   }
-
+   
+   });
+  }
+  logout(): void {
+    localStorage.removeItem("token");
+    this.authService.isUserLoggedIn$.next(false);
+    this.router.navigate(["login"]);
+  }
 }

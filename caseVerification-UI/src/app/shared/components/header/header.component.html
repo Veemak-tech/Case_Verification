@@ -116,8 +116,12 @@
                         <li><a href="javascript:void(0)">
                                 <app-feather-icons [icon]="'settings'"></app-feather-icons>Settings
                             </a></li>
-                        <li><a [routerLink]="'/auth/login'">
-                                <app-feather-icons [icon]="'log-out'"></app-feather-icons>Logout
+                        <li><a
+                            *ngIf="isAuthenticated"
+                            (click)="logout()"
+                            routerLinkActive="active-link"
+                            routerLink="/login" [routerLink]="'/auth/login'">
+                                <app-feather-icons [icon]="'log-out'" ></app-feather-icons>Logout
                             </a></li>
                     </ul>
                 </li>
