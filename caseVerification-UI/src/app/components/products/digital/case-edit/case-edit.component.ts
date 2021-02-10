@@ -61,7 +61,7 @@ export class CaseEditComponent implements OnInit {
     this.caseservice.getByID(ID).subscribe((data: casedetails) => {
       console.log(data);
       this.case = data[0];
-      //  debugger;
+        debugger;
       this.EditForm = new FormGroup({
         ID:new FormControl(this.case['ID']),
         CaseID: new FormControl(this.case['CaseID']),

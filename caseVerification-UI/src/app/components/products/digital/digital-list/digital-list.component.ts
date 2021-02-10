@@ -144,6 +144,7 @@ export class DigitalListComponent implements OnInit {
         },
          // { name: 'viewrecord', title: '<i class="ng2-smart-action ng2-smart-action-edit-edit ng-star-inserted"></i>' }
       ],
+
       position: 'right',
     },
 
@@ -164,6 +165,7 @@ export class DigitalListComponent implements OnInit {
       ID: {
         title: 'ID'
       }
+
       // InsurerVerificationNotes: {
       //   title: 'Insurer Verification Notes',
       // },
@@ -179,3 +181,37 @@ export class DigitalListComponent implements OnInit {
     },
   };
 }
+
+
+
+// settings: {
+//   columns: {
+//      age: {
+//        title: 'Age',
+//        editor: {
+//          type: 'list',
+//          config: {
+//            selectText: 'Select',
+//            list: [
+//              {value: '1', title:'Option 1'},
+//              {value: '2', title:'Option 2'},
+//              {value: '3', title:'Option 3'},
+//              {value: '4', title:'Option 4'},
+//            ],
+//          },
+//        }
+//        filter: {
+//          type: 'list',
+//          config: {
+//            selectText: 'Select',
+//            list: [
+//              {value: '1', title:'Option 1'},
+//              {value: '2', title:'Option 2'},
+//              {value: '3', title:'Option 3'},
+//              {value: '4', title:'Option 4'},
+//            ],
+//          },
+//        },
+//      },
+//   }
+// }
