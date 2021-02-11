@@ -29,6 +29,7 @@ import { AuthInterceptorService } from "./services/auth-interceptor.service";
 import {FreeapiserviceService} from "./services/freeapiservice.service"
 import { ToastrModule } from 'ngx-toastr';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 
 
@@ -64,7 +65,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BrowserModule,
     Ng2SmartTableModule,
     NgxBootstrapIconsModule.pick(allIcons),
-     ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MDBBootstrapModule.forRoot()
 
 
   ],

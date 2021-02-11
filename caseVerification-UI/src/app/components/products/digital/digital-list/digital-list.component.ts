@@ -6,6 +6,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { digitalListDB } from 'src/app/shared/tables/digital-list';
 import { HttpClient } from '@angular/common/http';
 import { allIcons } from 'ngx-bootstrap-icons';
+import { multicast } from 'rxjs/operators';
 
 
 
@@ -132,10 +133,14 @@ export class DigitalListComponent implements OnInit {
 
   public caselistSettings = {
     actions: {
+
+      selectMode: 'multi',
+
       columnTitle: 'Action',
       add: false,
       edit: false,
       delete: false,
+      rowSelect: true,
       custom: [
         {
           name: 'editrecord',
@@ -145,7 +150,7 @@ export class DigitalListComponent implements OnInit {
          // { name: 'viewrecord', title: '<i class="ng2-smart-action ng2-smart-action-edit-edit ng-star-inserted"></i>' }
       ],
 
-      position: 'right',
+      position: 'left',
     },
 
     columns: {
@@ -156,12 +161,12 @@ export class DigitalListComponent implements OnInit {
       Name: {
         title: 'Name',
       },
-      Description: {
-        title: 'Description',
-      },
-      InsurerName: {
-        title: 'InsurerName',
-      },
+      // Description: {
+      //   title: 'Description',
+      // },
+      // InsurerName: {
+      //   title: 'InsurerName',
+      // },
       ID: {
         title: 'ID'
       }

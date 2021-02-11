@@ -1,248 +1,121 @@
-<link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry </td>
+      <td>Horton</td>
+      <td>@twitter</td>
 
-<section class=" contact-page section-b-space">
-  <div class="container">
-    <div class="card">
-
-      <div class="row">
-
-
-        <form>
-          <h3 class="subhead2">Case Details</h3>
-          <div class="col-md-12 row">
-
-            <div class="col-md-6 form-group row">
-              <div class="col-sm-2"></div>
-              <label for="name" class="col-form-label col-sm-3 text-align">Case ID:</label>
-              <div class="col-sm-6">
-                <input type="text" ngModel class="form-control" id="name" placeholder="Enter Your name" required="">
-              </div>
-            </div>
-
-            <div class="col-md-6 form-group row">
-              <div class="col-sm-2"></div>
-              <label for="name" class="col-form-label col-sm-4 text-align">Ref Number:</label>
-              <div class="col-sm-6">
-                <input type="text" ngModel class="form-control" id="name" placeholder="Enter Your name" required="">
-              </div>
-            </div>
-          </div>
-
-
-
-          <div class="col-md-12 row">
-
-            <div class="col-md-6 form-group row">
-              <div class="col-sm-2"></div>
-              <label for="name" class="col-form-label col-sm-3 text-align">Due date:</label>
-              <div class="col-sm-6">
-                <input type="date" ngModel class="form-control" id="name" required="">
-              </div>
-            </div>
-
-            <div class="col-md-6 form-group row">
-              <div class="col-sm-2"></div>
-              <label for="name" class="col-form-label col-sm-4 text-align">Agent Name:</label>
-              <div class="col-sm-6">
-                <input type="text" ngModel class="form-control" id="name" placeholder="Agent name" required="">
-              </div>
-            </div>
-          </div>
-
-          <div class="row mt-0">
-            <div class="col-sm-2" style="margin-left: 31px;"></div>
-            <label for="notes" class="col-form-label col-sm-9">Notes:</label>
-          </div>
-
-          <div class=" row" >
-            <div class="col-sm-1 ml-4"></div>
-            <div class="col-sm-1 ml-3"></div>
-            <textarea ngModel class="form-control col-sm-8 ml-2" rows="3" placeholder="Write Your Message"></textarea>
-            <div class="col-sm-2"></div>
-          </div>
-
-          <hr>
-          <h3 class="subhead2">Insurer Details</h3>
-          <div class="col-md-12 row">
-            <div class="col-md-6 form-group row">
-              <div class="col-sm-1"></div>
-              <label for="InsurerName" class="col-form-label col-sm-4 text-align">Insurer Name:</label>
-              <div class="col-sm-6">
-                <input type="text" ngModel class="form-control" name="" id="">
-              </div>
-            </div>
-
-            <div class="col-md-6 form-group row">
-              <div class="col-sm-2"></div>
-              <label for="PhoneNumber" class="col-form-label col-sm-4 text-align">Phone Number:</label>
-              <div class="col-sm-6">
-                <input type="text" ngModel class="form-control" name="" id="">
-              </div>
-
-            </div>
-          </div>
+    </tr>
+  </tbody>
+</table>
 
 
-          <div class="col-md-12 row">
-            <div class="col-md-6 form-group row">
-              <div class="col-sm-1"></div>
-              <label for="InsurerName" class="col-form-label col-sm-4 text-align">Email:</label>
-              <div class="col-sm-6">
-                <input type="email" ngModel class="form-control" name="" id="">
-              </div>
-            </div>
-          </div>
 
-          <div class="col-md-12 row">
-            <div class="col-sm-1 ml-1"></div>
-            <!-- <div style="width: 110px;"> -->
-            <div class="col-sm-1 ml-4"></div>
-            <!-- </div> -->
-            <div class="col-sm-4 form-group">
-              <input type="text" class="form-control" name="" id="" placeholder="AddressLine 1">
-            </div>
-            <div class="col-sm-5 form-group">
-              <input type="text" ngModel class="form-control" name="" id="" placeholder="AddressLine 2">
-            </div>
-            <!-- <div class="col-sm-2"></div> -->
-          </div>
+<hr>
 
 
-          <div class="col-md-12 row">
-            <div class="col-sm-2 ml-4"></div>
-            <!-- <div style="width: 110px;"></div> -->
 
+<div class="select">
+  <select class="form-control" id="locale">
+    <option value="af-ZA">af-ZA</option>
+    <option value="ar-SA">ar-SA</option>
+    <option value="ca-ES">ca-ES</option>
+    <option value="cs-CZ">cs-CZ</option>
+    <option value="da-DK">da-DK</option>
+    <option value="de-DE">de-DE</option>
+    <option value="el-GR">el-GR</option>
+    <option value="en-US" selected>en-US</option>
+    <option value="es-AR">es-AR</option>
+    <option value="es-CL">es-CL</option>
+    <option value="es-CR">es-CR</option>
+    <option value="es-ES">es-ES</option>
+    <option value="es-MX">es-MX</option>
+    <option value="es-NI">es-NI</option>
+    <option value="es-SP">es-SP</option>
+    <option value="et-EE">et-EE</option>
+    <option value="eu-EU">eu-EU</option>
+    <option value="fa-IR">fa-IR</option>
+    <option value="fi-FI">fi-FI</option>
+    <option value="fr-BE">fr-BE</option>
+    <option value="fr-FR">fr-FR</option>
+    <option value="he-IL">he-IL</option>
+    <option value="hr-HR">hr-HR</option>
+    <option value="hu-HU">hu-HU</option>
+    <option value="id-ID">id-ID</option>
+    <option value="it-IT">it-IT</option>
+    <option value="ja-JP">ja-JP</option>
+    <option value="ka-GE">ka-GE</option>
+    <option value="ko-KR">ko-KR</option>
+    <option value="ms-MY">ms-MY</option>
+    <option value="nb-NO">nb-NO</option>
+    <option value="nl-NL">nl-NL</option>
+    <option value="pl-PL">pl-PL</option>
+    <option value="pt-BR">pt-BR</option>
+    <option value="pt-PT">pt-PT</option>
+    <option value="ro-RO">ro-RO</option>
+    <option value="ru-RU">ru-RU</option>
+    <option value="sk-SK">sk-SK</option>
+    <option value="sv-SE">sv-SE</option>
+    <option value="th-TH">th-TH</option>
+    <option value="tr-TR">tr-TR</option>
+    <option value="uk-UA">uk-UA</option>
+    <option value="ur-PK">ur-PK</option>
+    <option value="uz-Latn-UZ">uz-Latn-UZ</option>
+    <option value="vi-VN">vi-VN</option>
+    <option value="zh-CN">zh-CN</option>
+    <option value="zh-TW">zh-TW</option>
+  </select>
+</div>
 
-            <div class="col-sm-2 ml-1 form-group">
-              <input type="text" ngModel class="form-control" name="" id="" placeholder="City">
-            </div>
-            <div class="col-sm-2 form-group">
-              <input type="text" ngModel class="form-control" name="" id="" placeholder="State">
-            </div>
-
-
-            <div class="col-sm-2 form-group">
-              <input type="text" ngModel class="form-control" name="" id="" placeholder="Pincode">
-            </div>
-            <div class="col-sm-3 form-group">
-              <input type="text" ngModel class="form-control" name="" id="" placeholder="Landmark">
-            </div>
-            <!-- <div class="col-sm-2"></div> -->
-
-          </div>
-
-          <!-- <div class="row">
-                          <div class="col-xl-1 ml-4"></div>
-                        <div class="col-xl-1 text-align ml-2">
-                          <div class="col-xl-2" style="margin-left: 31px;"></div>
-                          <label for="notes" class="col-form-label ">Notes:</label>
-                        </div>
-                           <div class="col-sm-2 ml-5"></div>
-                           <div style="width: 135px;"></div>
-                          <div class="col-sm-8">
-                            <textarea class="form-control" rows="6" placeholder="Write Your Message 1"></textarea>
-                          </div>
-
-                           <div class="col-sm-1"></div>
-                      </div> -->
-
-          <div class="row mt-0">
-            <div class="col-sm-2" style="margin-left: 31px;"></div>
-            <label for="notes" class="col-form-label col-sm-9">Notes:</label>
-          </div>
-
-          <div class=" row">
-            <div class="col-sm-1"></div>
-            <div style="width: 135px;"></div>
-            <textarea ngModel class="form-control col-sm-8" rows="6" placeholder="Thirdparty Questions"></textarea>
-            <div class="col-sm-1"></div>
-          </div>
-
-
-          <hr>
-          <h3 class="subhead2">Thirdparty Details</h3>
-          <div class="col-md-12 row">
-            <div class="col-md-6 form-group row">
-              <!-- <div class="col-sm-1"></div> -->
-              <label for="InsurerName" class="col-form-label col-sm-5 text-align">Thirdparty Name:</label>
-              <div class="col-sm-6">
-                <input ngModel type="text" class="form-control" name="" id="">
-              </div>
-            </div>
-
-            <div class="col-md-6 form-group row">
-              <div class="col-sm-2"></div>
-              <label for="PhoneNumber" class="col-form-label col-sm-4 text-align">Phone Number:</label>
-              <div class="col-sm-6">
-                <input ngModel type="text" class="form-control" name="" id="">
-              </div>
-
-            </div>
-          </div>
-
-
-          <div class="col-md-12 row">
-            <div class="col-md-6 form-group row">
-              <div class="col-sm-1"></div>
-              <label for="InsurerName" class="col-form-label col-sm-4 text-align">Email:</label>
-              <div class="col-sm-6">
-                <input ngModel type="email" class="form-control" name="" id="">
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-12 row">
-            <div class="col-sm-1 ml-1"></div>
-            <div class="col-sm-1 ml-4"></div>
-            <!-- <div style="width: 110px;">
-                          </div> -->
-            <div class="col-sm-4 form-group">
-              <input ngModel type="text" class="form-control" name="" id="" placeholder="AddressLine 1">
-            </div>
-            <div class="col-sm-5 form-group">
-              <input ngModel type="text" class="form-control" name="" id="" placeholder="AddressLine 2">
-            </div>
-            <!-- <div class="col-sm-2"></div> -->
-          </div>
-
-          <div class="col-md-12 row">
-            <div class="col-sm-2 ml-4"></div>
-            <!-- <div style="width: 110px;"></div> -->
-
-            <div class="col-sm-2 ml-1 form-group">
-              <input ngModel type="text" class="form-control" name="" id="" placeholder="City">
-            </div>
-            <div class="col-sm-2 form-group">
-              <input ngModel type="text" class="form-control" name="" id="" placeholder="State">
-            </div>
-            <div class="col-sm-2 form-group">
-              <input ngModel type="text" class="form-control" name="" id="" placeholder="Pincode">
-            </div>
-            <div class="col-sm-3 form-group">
-              <input ngModel type="text" class="form-control" name="" id="" placeholder="Landmark">
-            </div>
-            <!-- <div class="col-sm-2"></div> -->
-
-          </div>
-
-          <div class="row mt-0">
-            <div class="col-sm-2" style="margin-left: 31px;"></div>
-            <label for="notes" class="col-form-label col-sm-9">Notes:</label>
-          </div>
-
-          <div class=" row">
-            <div class="col-sm-2 ml-5"></div>
-            <!-- <div style="width: 135px;"></div> -->
-            <textarea ngModel class="form-control col-sm-8" rows="6" placeholder="Thirdparty Questions"></textarea>
-            <div class="col-sm-1"></div>
-          </div>
-          <br>
-          <div class="text-center">
-            <button type="submit" class="btn btn-outline-primary ml-5">Submit</button>
-          </div>
-
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
+<div id="toolbar">
+  <button id="remove" class="btn btn-danger" disabled>
+    <i class="fa fa-trash"></i> Delete
+  </button>
+</div>
+<table
+  id="table"
+  data-toolbar="#toolbar"
+  data-search="true"
+  data-show-refresh="true"
+  data-show-toggle="true"
+  data-show-fullscreen="true"
+  data-show-columns="true"
+  data-show-columns-toggle-all="true"
+  data-detail-view="true"
+  data-show-export="true"
+  data-click-to-select="true"
+  data-detail-formatter="detailFormatter"
+  data-minimum-count-columns="2"
+  data-show-pagination-switch="true"
+  data-pagination="true"
+  data-id-field="id"
+  data-page-list="[10, 25, 50, 100, all]"
+  data-show-footer="true"
+  data-side-pagination="server"
+  data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data"
+  data-response-handler="responseHandler">
+</table>
