@@ -38,6 +38,11 @@ module.exports = class casedetails {
     
   }
 
+  static getpaging(pageno,pagesize){
+    debugger
+    return db.execute ("call getallcasedetailByPage(?,?)",[pageno,pagesize]);
+  }
+
 
   // Post Method
   static save(caseD) {

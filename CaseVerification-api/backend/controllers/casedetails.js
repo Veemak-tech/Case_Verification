@@ -19,6 +19,20 @@ exports.fetchAll = async (req, res, next) => {
   }
 };
 
+exports.getpaging = async (req, res, next) => {
+  debugger;
+  try {
+    const [pagining] = await casedetails.getpaging(req.params.pageno, 4);
+
+    res.status(200).json(pagining);
+  } catch (err) {
+    if (!err.statusCode){
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};
+
 
 exports.fetchById = async (req, res, next) => {
   // debugger;
@@ -139,6 +153,8 @@ exports.deletePost = async (req, res, next) => {
   }
 };
 
+
+
 // Update working
 
 //------------------------------------------------Case Details Update---------------------------------------------
@@ -228,6 +244,8 @@ exports.putCasedetails = async (req, res, next) => {
     next(err);
   }
 };
+
+
 
 
 //-----------------------------------------------Testing methods------------------------------------------------------------

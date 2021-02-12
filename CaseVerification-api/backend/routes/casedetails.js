@@ -8,9 +8,11 @@ const auth = require('../middleware/auth');
 
 const router = express.Router();
 
-router.get('/',auth,  casedetailsController.fetchAll);
+router.get('/',  casedetailsController.fetchAll);
 
 router.get('/:ID', casedetailsController.fetchById);
+
+router.get('/:pageno/:pagesize', casedetailsController.getpaging);
 
 router.put('/',auth, casedetailsController.putCasedetails);
 
