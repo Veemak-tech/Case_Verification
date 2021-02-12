@@ -1,9 +1,11 @@
+import { NgxPaginationModule } from 'ngx-pagination';
 import { Component, OnInit } from '@angular/core';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 import { AuthService } from 'src/app/services/auth.service';
 import { casedetails } from './../../../../models/casedetails';
 import { HttpClient } from '@angular/common/http';
 import { CasedetailsService } from './../../../../services/casedetails.service';
+
 
 
 

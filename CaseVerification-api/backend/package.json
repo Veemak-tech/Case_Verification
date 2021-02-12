@@ -16,7 +16,8 @@
     "express": "^4.17.1",
     "express-validator": "^6.6.0",
     "jsonwebtoken": "^8.5.1",
-    "mysql2": "^2.1.0"
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.5.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.6",

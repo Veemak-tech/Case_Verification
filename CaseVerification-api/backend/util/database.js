@@ -9,5 +9,21 @@ const pool = mysql.createPool({
   password: config.password,
 });
 
+
+
+// const pool = mysql.createPool({
+//   host: config.host,
+//   user: config.user,
+//   password: config.password,
+//   database: config.database,
+//   dialect: "mysql",
+//    pool: {
+//     max: 5,
+//     min: 0,
+//     acquire: 30000,
+//     idle: 10000
+//   }
+// });
+
 module.exports = pool.promise();
 

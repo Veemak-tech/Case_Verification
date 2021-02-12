@@ -5,6 +5,8 @@ const Address = require("../models/address");
 const insurerdetails = require("../models/insurerdetails");
 const thirdpartydetails = require("../models/thirdpartydetails");
 
+
+
 exports.fetchAll = async (req, res, next) => {
   try {
     const [allPosts] = await casedetails.fetchAll();
@@ -16,6 +18,7 @@ exports.fetchAll = async (req, res, next) => {
     next(err);
   }
 };
+
 
 exports.fetchById = async (req, res, next) => {
   // debugger;

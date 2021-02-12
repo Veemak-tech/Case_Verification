@@ -22,9 +22,6 @@ const insurerdetailsRoutes = require('./routes/insurerdetails');
 
 const casecreationRoutes = require('./routes/casecreation')
 
-
-
-
 const errorController = require('./controllers/error');
 // const casedetails = require('./models/casedetails');
 // const thirdpartydetails = require('./models/thirdpartydetails');

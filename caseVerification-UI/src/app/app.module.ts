@@ -1,7 +1,7 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,7 +29,8 @@ import { AuthInterceptorService } from "./services/auth-interceptor.service";
 import {FreeapiserviceService} from "./services/freeapiservice.service"
 import { ToastrModule } from 'ngx-toastr';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
+
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
@@ -66,10 +67,13 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     Ng2SmartTableModule,
     NgxBootstrapIconsModule.pick(allIcons),
     ToastrModule.forRoot(),
-    MDBBootstrapModule.forRoot()
+    NgxPaginationModule
 
 
   ],
+
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
+
   providers: [
     FreeapiserviceService,
     {
