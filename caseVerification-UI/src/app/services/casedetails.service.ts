@@ -110,6 +110,11 @@ export class CasedetailsService {
     return this.http.get(`${environment.apiUrl}`);
   }
 
+  getpaging(pageno:number){
+    debugger;
+    return this.http.get(`${environment.apiUrl}/${pageno}/${10}`)
+  }
+
   getByID(ID:number){
    // let url = "http://localhost:3000/casedetails/"+CaseID;
     return this.http.get(`${environment.apiUrl}/${ID}`);
