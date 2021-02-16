@@ -68,6 +68,20 @@ exports.fetchbyId = async (req, res, next) => {
     next(err);
   }
 };
+exports.fetchbyname = async (req, res, next) => {
+  try {
+    console.log(" fetch is works"+req.params.name);
+    const [allPosts] = await User.fetchbyname(req.params.name);
+    console.log(allPosts);
+    res.status(200).json(allPosts);
+
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};
 
 // exports.update = (req, res) =>{
 //   const user=new User(req.body);

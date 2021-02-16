@@ -17,6 +17,11 @@ static fetchbyId(id){
   return db.execute( 'SELECT * FROM users  WHERE id=?',[id]);
 
 }
+static fetchbyname(name){
+
+  return db.execute( 'SELECT name FROM users  WHERE  RoleID=!1',[name]);
+
+}
   static update(update){
     
     return db.execute('UPDATE users SET name = ? ,email = ?,password = ?,RoleID= ? WHERE id= ?',
