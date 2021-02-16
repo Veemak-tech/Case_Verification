@@ -16,6 +16,7 @@
     "express": "^4.17.1",
     "express-validator": "^6.6.0",
     "jsonwebtoken": "^8.5.1",
+    "jw-paginate": "^1.0.4",
     "mysql2": "^2.2.5",
     "sequelize": "^6.5.0"
   },

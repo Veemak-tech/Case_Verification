@@ -1,4 +1,5 @@
 const { validationResult, body } = require("express-validator");
+const paginate = require('jw-paginate');
 
 const casedetails = require("../models/casedetails");
 const Address = require("../models/address");
@@ -22,9 +23,16 @@ exports.fetchAll = async (req, res, next) => {
 exports.getpaging = async (req, res, next) => {
   debugger;
   try {
-    const [pagining] = await casedetails.getpaging(req.params.pageno, 4);
+     // get page from query params or default to first page
+     const pageno = parseInt(req.query.pageno) || 1;
+    
+    const [pagining] = await casedetails.getpaging(pageno, 10);
+ 
+    const pageOfItems = pagining[0];
+    const pager = paginate(100, pageno,10);
+    res.status(200).json({ pager, pageOfItems });
+    console.log({ pager, pageOfItems });
 
-    res.status(200).json(pagining);
   } catch (err) {
     if (!err.statusCode){
       err.statusCode = 500;
@@ -40,6 +48,7 @@ exports.fetchById = async (req, res, next) => {
     const [SinglePost] = await casedetails.fetchById(req.params.ID);
 
     res.status(200).json(SinglePost);
+    console.log("paging works!!")
   } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;

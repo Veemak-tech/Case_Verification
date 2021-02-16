@@ -29,7 +29,7 @@ import { AuthInterceptorService } from "./services/auth-interceptor.service";
 import {FreeapiserviceService} from "./services/freeapiservice.service"
 import { ToastrModule } from 'ngx-toastr';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
+import { JwPaginationModule } from 'jw-angular-pagination';
 import {NgxPaginationModule} from 'ngx-pagination';
 
 
@@ -67,7 +67,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     Ng2SmartTableModule,
     //NgxBootstrapIconsModule.pick(allIcons),
     ToastrModule.forRoot(),
-    NgxPaginationModule
+    NgxPaginationModule,
+    JwPaginationModule
 
 
   ],

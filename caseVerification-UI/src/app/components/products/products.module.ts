@@ -25,6 +25,10 @@ import { DROPZONE_CONFIG } from 'ngx-dropzone-wrapper';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 import { UserComponent } from './digital/user/user.component';
 import { CaseEditComponent } from './digital/case-edit/case-edit.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { JwPaginationModule } from 'jw-angular-pagination';
+
+
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   maxFilesize: 50,
@@ -44,7 +48,9 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     Ng2SmartTableModule,
     NgbModule,
     DropzoneModule,
-    GalleryModule.forRoot()
+    GalleryModule.forRoot(),
+    NgxPaginationModule,
+    JwPaginationModule
   ],
   providers: [
     {

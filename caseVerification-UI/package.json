@@ -52,6 +52,7 @@
     "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",
     "jquery": "^3.5.1",
+    "jw-angular-pagination": "^1.2.0",
     "mdb-ui-kit": "^3.2.0",
     "mdbootstrap": "^4.19.2",
     "mousetrap": "^1.6.5",
