@@ -48,6 +48,15 @@
     }
 }
 
+// open and close form
+function openForm() {
+  document.getElementById("exampleModalCenter").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("exampleModalCenter").style.display = "none";
+}
+
 // sort by alphapet
 
 function sortTable(n) {
