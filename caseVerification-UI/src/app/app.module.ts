@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
+// import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
 import { Ng2SmartTableModule } from 'ng2-smart-table'
 import { DashboardModule } from './components/dashboard/dashboard.module';
 import { SharedModule } from './shared/shared.module';
@@ -65,7 +65,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ReactiveFormsModule,
     BrowserModule,
     Ng2SmartTableModule,
-    NgxBootstrapIconsModule.pick(allIcons),
+    //NgxBootstrapIconsModule.pick(allIcons),
     ToastrModule.forRoot(),
     NgxPaginationModule
 
