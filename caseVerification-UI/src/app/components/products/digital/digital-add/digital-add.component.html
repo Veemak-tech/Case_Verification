@@ -11,13 +11,10 @@
           aria-haspopup="true" aria-expanded="false">
           Assign to Agent
         </button>
-      
-        <select  >
-          <option class="dropdown-item" *ngFor="let item of data" type="button">{{item.name}}</option>
-          
-        </select>
-       
-      
+        <div class="dropdown-menu"  >
+            <option *ngFor="let item of name" class="dropdown-item" type="button">{{item.name}}</option>
+        </div>
+
       </div>
     </div>
 
@@ -68,7 +65,7 @@
         onclick="list2View()"> <i class="fas fa-grip-lines"></i></button>
     </div>
   </div>
-<!--
+  <!--
   <div class="card">
   <table class="column">
     <caption>Statement Summary</caption>
@@ -108,14 +105,17 @@
             <h5 class="card-title">CaseID: {{item.CaseID}}</h5>
             <h6 class="card-text">{{item.username}}</h6>
             <h6 class="card-text">Name: {{item.Name}}</h6>
-            <a href="https://www.google.co.in/" class="btn btn-sm btn-outline-primary ml-2"><i class="fas fa-pencil-alt"></i></a>
-            <button class="btn btn-sm btn-outline-success ml-2" data-toggle="modal" onclick="openForm()"><i class="fas fa-eye"></i></button>
+            <a href="https://www.google.co.in/" class="btn btn-sm btn-outline-primary ml-2"><i
+                class="fas fa-pencil-alt"></i></a>
+            <button class="btn btn-sm btn-outline-success ml-2" data-toggle="modal" onclick="openForm()"><i
+                class="fas fa-eye"></i></button>
             <!-- <button class="open-button" onclick="openForm()">Open Form</button> -->
 
 
             <div class="form-popup" id="myForm">
               <form class="form-container">
-                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                       <div class="modal-header">

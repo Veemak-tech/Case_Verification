@@ -27,7 +27,7 @@ export class DigitalAddComponent implements OnInit {
 
   pagesize = [];
   pageno: any = {};
-data :any;
+  data :[];
   public caseList: any;
   name: any;
   public paginate : any;
@@ -52,7 +52,7 @@ data :any;
    }
 
    ngOnInit() {
-     
+
     this.route.queryParams.subscribe(result => this.loadPage(result.page || 1));
 
 }

@@ -17,13 +17,12 @@ static fetchbyId(id){
   return db.execute( 'SELECT * FROM users  WHERE id=?',[id]);
 
 }
-static fetchbyname(name){
+static fetchbyname(RoleID){
 debugger
-  return db.execute( 'SELECT name FROM users  WHERE  RoleID!=1',[name]);
-
+  return db.execute( 'SELECT name FROM users  WHERE  RoleID!=1',[RoleID]);
 }
+
   static update(update){
-    
     return db.execute('UPDATE users SET name = ? ,email = ?,password = ?,RoleID= ? WHERE id= ?',
     [update.name,update.email,update.password,update.RoleID,update.id]);
   }
