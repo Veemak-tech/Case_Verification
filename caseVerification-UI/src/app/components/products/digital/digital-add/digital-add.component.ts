@@ -27,8 +27,9 @@ export class DigitalAddComponent implements OnInit {
 
   pagesize = [];
   pageno: any = {};
-
+data :any;
   public caseList: any;
+  name: any;
   public paginate : any;
   viewRecord: any;
   editRecord: any;
@@ -41,11 +42,17 @@ export class DigitalAddComponent implements OnInit {
     private route: ActivatedRoute,
 
   ) {
+    debugger
+    this.userName.getName().subscribe((data) => {
+      console.warn(data);
+      console.log("user is working")
+      this.name = data;
+    });
 
    }
 
    ngOnInit() {
-     debugger;
+     
     this.route.queryParams.subscribe(result => this.loadPage(result.page || 1));
 
 }
@@ -61,13 +68,15 @@ public onCustomAction(event) {
   }
 }
 
+
+
 private loadPage(page) {
-  debugger;
+  // debugger;
   // get page of items from api
   this.httpClient.get<any>(`http://localhost:3000/casedetails/${page}/${10}`).subscribe(result => {
       this.pageno = result.pager;
       this.pagesize = result.pageOfItems;
-debugger;
+// debugger;
       console.log(result.pagining)
   });
 }

@@ -11,11 +11,13 @@
           aria-haspopup="true" aria-expanded="false">
           Assign to Agent
         </button>
-        <div class="dropdown-menu">
-          <button class="dropdown-item" type="button">Siva</button>
-          <button class="dropdown-item" type="button">Karthik</button>
-          <button class="dropdown-item" type="button">karthikeyan</button>
-        </div>
+      
+        <select  >
+          <option class="dropdown-item" *ngFor="let item of data" type="button">{{item.name}}</option>
+          
+        </select>
+       
+      
       </div>
     </div>
 

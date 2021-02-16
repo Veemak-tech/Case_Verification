@@ -21,7 +21,7 @@ exports.fetchAll = async (req, res, next) => {
 };
 
 exports.getpaging = async (req, res, next) => {
-  debugger;
+  // debugger;
   try {
      // get page from query params or default to first page
      const pageno = parseInt(req.query.pageno) || 1;

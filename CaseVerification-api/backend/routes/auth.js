@@ -30,9 +30,9 @@ router.post(
 );
 router.post('/admin',authController.Adminlogin);
 router.post('/login',authController.login);
-
+// debugger
 router.get('/',auth, authController.fetchAll);
-router.get('/',auth,authController.fetchbyname)
+router.get('/Roleid:2',authController.fetchbyname)
 router.put('/',auth,authController.Update );
 // debugger;
 router.get('/:id',auth,authController.fetchbyId)

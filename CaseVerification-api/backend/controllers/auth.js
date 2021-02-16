@@ -70,10 +70,11 @@ exports.fetchbyId = async (req, res, next) => {
 };
 exports.fetchbyname = async (req, res, next) => {
   try {
+    debugger
     console.log(" fetch is works"+req.params.name);
-    const [allPosts] = await User.fetchbyname(req.params.name);
-    console.log(allPosts);
-    res.status(200).json(allPosts);
+    const [allname] = await User.fetchbyname(req.params.name);
+    console.log(allname);
+    res.status(200).json(allname);
 
   } catch (err) {
     if (!err.statusCode) {

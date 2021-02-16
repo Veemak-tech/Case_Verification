@@ -39,7 +39,7 @@ module.exports = class casedetails {
   }
 
   static getpaging(pageno,pagesize){
-    debugger
+    // debugger
     return db.execute ("call getallcasedetailByPage(?,?)",[pageno,pagesize]);
   }
 
