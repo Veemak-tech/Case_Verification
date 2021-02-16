@@ -33,106 +33,71 @@
 //   line-height: 1.25;
 // }
 
-// table {
-//  // border: 1px solid #ccc;
-//   border-collapse: collapse;
-//   margin: 0;
-//   padding: 0;
-//   width: 100%;
-//   table-layout: fixed;
-// }
-
-// table caption {
-//   font-size: 1.5em;
-//   margin: .5em 0 .75em;
-// }
-
-// table tr {
-//  // background-color: #f8f8f8;
-//   border: 1px solid #ddd;
-//   padding: .35em;
-// }
-
-// table th,
-// table td {
-//   padding: .625em;
-//   text-align: center;
-// }
-
-// table th {
-//   font-size: .85em;
-//   letter-spacing: .1em;
-//   text-transform: uppercase;
-// }
-
-// @media screen and (max-width: 600px) {
-//   table {
-//     border: 0;
-//   }
-
-//   table caption {
-//     font-size: 1.3em;
-//   }
-
-//   table thead {
-//     border: none;
-//     clip: rect(0 0 0 0);
-//     height: 1px;
-//     margin: -1px;
-//     overflow: hidden;
-//     padding: 0;
-//     position: absolute;
-//     width: 1px;
-//   }
-
-//   table tr {
-//     border-bottom: 3px solid #ddd;
-//     display: block;
-//     margin-bottom: .625em;
-//   }
-
-//   table td {
-//    // border-bottom: 1px solid #ddd;
-//     display: block;
-//     font-size: .8em;
-//     text-align: right;
-
-//   }
 
 
-//     table td:nth-child(odd){
-//       background-color: oldlace;
-//     }
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+
+  table td {
+   // border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+
+  }
 
 
-//   table td::before {
-//     /*
-//     * aria-label has no advantage, it won't be read inside a table
-//     content: attr(aria-label);
-//     */
-//     content: attr(data-label);
-//     float: left;
-//     font-weight: bold;
-//     text-transform: uppercase;
-//   }
-
-//   table td:last-child {
-//     border-bottom: 0;
-//   }
+    table td:nth-child(odd){
+      background-color: oldlace;
+    }
 
 
-// }
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
 
-// #myInput {
-//  // background-image: url('/css/searchicon.png');
-//   background-position: 10px 10px;
-//   background-repeat: no-repeat;
-//   width: 100%;
-//   font-size: 16px;
-//   padding: 12px 20px 12px 40px;
-//   border: 1px solid #ddd;
-//   margin-bottom: 12px;
-// }
+  table td:last-child {
+    border-bottom: 0;
+  }
+
+  // .column-m {
+  //   width: 77%;
+  // }
+
+
+}
+
+
 
 
   .select,
@@ -160,10 +125,19 @@
 
 .bordercol{
   border-style:outset ;
+  border-radius: 1em;
+  width: 50%;
+
 }
 .bordercol:hover{
-  background-color: #eaffd0;
+  background-image: linear-gradient(to right top, #e594c2, #da9cd1, #cda4dd, #bface6, #b2b4eb, #a8bdf0, #9fc5f3, #99ccf4, #96d7f6, #98e1f5, #9feaf2, #acf2ee);
   opacity: 1.5;
+  border-radius: 1.5em;
+  box-shadow: 0 0 2.5em -0.5em black;
+}
+
+.pad{
+  padding: 0.5em;
 }
 
 
