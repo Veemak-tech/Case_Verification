@@ -1,52 +1,183 @@
 <div class="card text-center m-3">
   <h3 class="card-header">Case List</h3>
+  <div class="row">
+    <div class="col-sm-2">
+      <input type="checkbox" onclick="toggle(this);" /> Select all<i class="fa fa-check" aria-hidden="true"></i>
+    </div>
+    <div class="col-sm-2"></div>
+    <div class="col-sm-2">
+      <div class="btn-group">
+        <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Assign to Agent
+        </button>
+        <div class="dropdown-menu">
+          <button class="dropdown-item" type="button">Siva</button>
+          <button class="dropdown-item" type="button">Karthik</button>
+          <button class="dropdown-item" type="button">karthikeyan</button>
+        </div>
+      </div>
+    </div>
 
-    <div class="card-body ">
 
 
-    <button class="btn btn-outline-info btn-sm" onclick="listView()"><i class="fa fa-list-ul list-layout-view"></i></button>
-<button class="btn btn-outline-primary btn-sm" onclick="gridView()"><i class="fa fa-th grid-layout-view"></i></button>
+    <div class="col-sm-2">
+
+      <div class="btn-group">
+        <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Filter By Assign
+        </button>
+        <div class="dropdown-menu">
+          <button class="dropdown-item" type="button">Assigned</button>
+          <button class="dropdown-item" type="button">Un Assigned</button>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+    <div class="col-sm-2">
+      <div class="btn-group">
+        <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Filter By Status
+        </button>
+        <div class="dropdown-menu">
+          <button class="dropdown-item" type="button">Verified</button>
+          <button class="dropdown-item" type="button">Approved</button>
+          <button class="dropdown-item" type="button">In Progress</button>
+          <button class="dropdown-item" type="button">Pending</button>
+          <button class="dropdown-item" type="button">Rejected</button>
+          <button class="dropdown-item" type="button">Archived</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-sm-2">
+      <button class="btn btn-outline-info btn-sm" onclick="listView()"><i
+          class="fa fa-list-ul list-layout-view"></i></button>
+      <button class="btn btn-outline-primary btn-sm" onclick="gridView()"><i
+          class="fa fa-th grid-layout-view"></i></button>
+      <button class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top" title="2 Grid View"
+        onclick="list2View()"> <i class="fas fa-grip-lines"></i></button>
+    </div>
+  </div>
+<!--
+  <div class="card">
+  <table class="column">
+    <caption>Statement Summary</caption>
+    <thead>
+      <tr>
+        <th scope="col">Account</th>
+        <th scope="col">Due Date</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of pagesize">
+        <td data-label="Account">{{item.CaseID}}</td>
+        <td data-label="Due Date">{{item.Name}}</td>
+
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+
+
+  <!-- <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name"> -->
+
+  <div class="card-body ">
+
     <div class="collection-grid-view" *ngIf="layoutView == 'grid-view'">
 
 
-        <div class="card ">
-          <li>
-          <div class="card-body column" *ngFor="let item of pagesize">
+      <div class="card pad" id="myTable">
+
+        <li style="list-style-type: none;">
+          <div class="card-body column column-m bordercol button two  mb-3 mt-2" *ngFor="let item of pagesize">
             <div class="form-check form-check-inline">
               <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
               <label class="form-check-label" for="inlineCheckbox1"></label>
             </div>
-            <h5 class="card-title">{{item.CaseID}}</h5>
-            <p class="card-text">{{item.Name}}</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <h5 class="card-title">CaseID: {{item.CaseID}}</h5>
+            <h6 class="card-text">Name: {{item.Name}}</h6>
+            <a href="https://www.google.co.in/" class="btn btn-sm btn-outline-primary ml-2"><i class="fas fa-pencil-alt"></i></a>
+            <a href="https://www.google.co.in/" class="btn btn-sm btn-outline-success ml-2"><i class="fas fa-eye"></i></a>
+
           </div>
         </li>
-        </div>
       </div>
+    </div>
   </div>
 
 
 
 
   <div class="card-footer pb-0 pt-3">
-      <ul *ngIf="pageno.pages && pageno.pages.length" class="pagination">
-          <li [ngClass]="{disabled:pageno.currentPage === 1}" class="page-item first-item">
-              <a routerLink [queryParams]="{ page: 1 }" class="page-link">First</a>
-          </li>
-          <li [ngClass]="{disabled:pageno.currentPage === 1}" class="page-item previous-item">
-              <a routerLink [queryParams]="{ page: pageno.currentPage - 1 }" class="page-link">Previous</a>
-          </li>
-          <li *ngFor="let page of pageno.pages" [ngClass]="{active:pageno.currentPage === page}" class="page-item number-item">
-              <a routerLink [queryParams]="{ page: page }" class="page-link">{{page}}</a>
-          </li>
-          <li [ngClass]="{disabled:pageno.currentPage === pageno.totalPages}" class="page-item next-item">
-              <a routerLink [queryParams]="{ page: pageno.currentPage + 1 }" class="page-link">Next</a>
-          </li>
-          <li [ngClass]="{disabled:pageno.currentPage === pageno.totalPages}" class="page-item last-item">
-              <a routerLink [queryParams]="{ page: pageno.totalPages }" class="page-link">Last</a>
-          </li>
-      </ul>
+    <ul *ngIf="pageno.pages && pageno.pages.length" class="pagination">
+      <li [ngClass]="{disabled:pageno.currentPage === 1}" class="page-item first-item">
+        <a routerLink [queryParams]="{ page: 1 }" class="page-link">First</a>
+      </li>
+      <li [ngClass]="{disabled:pageno.currentPage === 1}" class="page-item previous-item">
+        <a routerLink [queryParams]="{ page: pageno.currentPage - 1 }" class="page-link">Previous</a>
+      </li>
+      <li *ngFor="let page of pageno.pages" [ngClass]="{active:pageno.currentPage === page}"
+        class="page-item number-item">
+        <a routerLink [queryParams]="{ page: page }" class="page-link">{{page}}</a>
+      </li>
+      <li [ngClass]="{disabled:pageno.currentPage === pageno.totalPages}" class="page-item next-item">
+        <a routerLink [queryParams]="{ page: pageno.currentPage + 1 }" class="page-link">Next</a>
+      </li>
+      <li [ngClass]="{disabled:pageno.currentPage === pageno.totalPages}" class="page-item last-item">
+        <a routerLink [queryParams]="{ page: pageno.totalPages }" class="page-link">Last</a>
+      </li>
+    </ul>
   </div>
 </div>
 
 
+<!-- Test -->
+
+
+<table>
+  <tr class="header">
+    <th style="width:60%;">Name</th>
+    <th style="width:40%;">Country</th>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Berglunds snabbkop</td>
+    <td>Sweden</td>
+  </tr>
+  <tr>
+    <td>Island Trading</td>
+    <td>UK</td>
+  </tr>
+  <tr>
+    <td>Koniglich Essen</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Laughing Bacchus Winecellars</td>
+    <td>Canada</td>
+  </tr>
+  <tr>
+    <td>Magazzini Alimentari Riuniti</td>
+    <td>Italy</td>
+  </tr>
+  <tr>
+    <td>North/South</td>
+    <td>UK</td>
+  </tr>
+  <tr>
+    <td>Paris specialites</td>
+    <td>France</td>
+  </tr>
+</table>

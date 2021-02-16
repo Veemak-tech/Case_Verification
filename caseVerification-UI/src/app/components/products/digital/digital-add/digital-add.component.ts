@@ -30,6 +30,8 @@ export class DigitalAddComponent implements OnInit {
 
   public caseList: any;
   public paginate : any;
+  viewRecord: any;
+  editRecord: any;
 
 
   constructor(
@@ -43,8 +45,20 @@ export class DigitalAddComponent implements OnInit {
    }
 
    ngOnInit() {
+     debugger;
     this.route.queryParams.subscribe(result => this.loadPage(result.page || 1));
 
+}
+
+public onCustomAction(event) {
+  //debugger;
+  switch (event.action){
+    case 'viewrecord':
+      this.viewRecord(event.data);
+      break;
+      case 'editrecord':
+        this.editRecord(event.data);
+  }
 }
 
 private loadPage(page) {
