@@ -68,7 +68,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     //NgxBootstrapIconsModule.pick(allIcons),
     ToastrModule.forRoot(),
     NgxPaginationModule,
-    JwPaginationModule
+     JwPaginationModule
 
 
   ],
