@@ -19,7 +19,7 @@ static fetchbyId(id){
 }
 static fetchbyname(name){
 debugger
-  return db.execute( 'SELECT name FROM users  WHERE  RoleID!=1',[name]);
+  return db.execute( 'SELECT name FROM users  WHERE  RoleID=2',[name]);
 
 }
   static update(update){
