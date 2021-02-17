@@ -31,7 +31,7 @@ exports.getpaging = async (req, res, next) => {
     const pageOfItems = pagining[0];
     const pager = paginate(100, pageno,10);
     res.status(200).json({ pager, pageOfItems });
-    console.log({ pager, pageOfItems });
+    console.log({ pager});
 
   } catch (err) {
     if (!err.statusCode){

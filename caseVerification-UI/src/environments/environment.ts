@@ -8,7 +8,12 @@ export const environment = {
   apiauth:'http://localhost:3000/auth',
   apiauthsignup: 'http://localhost:3000/auth/signup',
   apiauthlogin: 'http://localhost:3000/auth/admin',
+<<<<<<< HEAD
   getname:'http://localhost:3000/auth/RoleID:2'
+=======
+  getname:'http://localhost:3000/auth/RoleID:2',
+
+>>>>>>> dd1a93ce4e05db62a2e9b768350d4e2d3c6c8b1b
 
 };
 

@@ -88,7 +88,7 @@ export class DigitalListComponent implements OnInit {
 
   // custom action
   public onCustomAction(event) {
-    //debugger;
+    debugger;
     switch (event.action){
       case 'viewrecord':
         this.viewRecord(event.data);
