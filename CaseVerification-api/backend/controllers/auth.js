@@ -70,7 +70,7 @@ exports.fetchbyId = async (req, res, next) => {
 };
 exports.fetchbyname = async (req, res, next) => {
   try {
-    debugger
+    // debugger
     console.log(" fetch is works"+req.params.RoleID);
     const [allname] = await User.fetchbyname(req.params.RoleID);
     console.log(allname);

@@ -4,16 +4,22 @@
     <div class="col-sm-2">
       <input type="checkbox" onclick="toggle(this);" /> Select all<i class="fa fa-check" aria-hidden="true"></i>
     </div>
-    <div class="col-sm-2"></div>
+
+
+    <div class="col-sm-2">
+      <select class="form-select btn btn-outline-info btn-sm" id="assignto" (onchange)="onAssign($event)">
+
+        <option *ngFor="let item of name" value="{{item.id}}"  >{{item.name}}</option>
+
+      </select>
+    </div>
     <div class="col-sm-2">
       <div class="btn-group">
         <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           Assign to Agent
         </button>
-        <div class="dropdown-menu"  >
-            <option *ngFor="let item of name" class="dropdown-item" type="button">{{item.name}}</option>
-        </div>
+
 
       </div>
     </div>
@@ -65,31 +71,13 @@
         onclick="list2View()"> <i class="fas fa-grip-lines"></i></button>
     </div>
   </div>
-  <!--
-  <div class="card">
-  <table class="column">
-    <caption>Statement Summary</caption>
-    <thead>
-      <tr>
-        <th scope="col">Account</th>
-        <th scope="col">Due Date</th>
 
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of pagesize">
-        <td data-label="Account">{{item.CaseID}}</td>
-        <td data-label="Due Date">{{item.Name}}</td>
 
-      </tr>
-    </tbody>
-  </table>
-</div> -->
 
 
   <!-- <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name"> -->
 
-  <div class="card-body ">
+  <div class="card-body" id="gridcaselist">
 
     <div class="collection-grid-view" *ngIf="layoutView == 'grid-view'">
 
@@ -99,51 +87,27 @@
         <li style="list-style-type: none;">
           <div class="card-body column column-m bordercol button two  mb-3 mt-2" *ngFor="let item of pagesize">
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{item.CaseID}}">
               <label class="form-check-label" for="inlineCheckbox1"></label>
             </div>
             <h5 class="card-title">CaseID: {{item.CaseID}}</h5>
-            <h6 class="card-text">{{item.username}}</h6>
             <h6 class="card-text">Name: {{item.Name}}</h6>
-            <a href="https://www.google.co.in/" class="btn btn-sm btn-outline-primary ml-2"><i
-                class="fas fa-pencil-alt"></i></a>
-            <button class="btn btn-sm btn-outline-success ml-2" data-toggle="modal" onclick="openForm()"><i
-                class="fas fa-eye"></i></button>
-            <!-- <button class="open-button" onclick="openForm()">Open Form</button> -->
+            <h6 class="card-text">{{item.username}}</h6>
 
+            <input type="hidden" id="ID" name="ID">
 
-            <div class="form-popup" id="myForm">
-              <form class="form-container">
-                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <h6>hiii</h6>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-              </form>
-            </div>
-
+            <input type="hidden" value={{item.ID}}>
+            <input type="hidden" value={{item.Description}}>
+            <input type="hidden" value={{item.ReferenceNumber}}>
+            <input type="hidden" value={{item.DueDate}}>
+            <button href="#" class="btn btn-sm btn-outline-primary ml-2" (click)="onCustomAction($event,item,'edit')"><i class="fas fa-pencil-alt"></i></button>
+            <button class="btn btn-sm btn-outline-success ml-2" data-toggle="modal" (click)="openModal(editProfileModal, item)" data-target="exampleModal"><i class="fas fa-eye"></i></button>
           </div>
         </li>
       </div>
     </div>
   </div>
+
 
 
 
@@ -173,19 +137,90 @@
 
 <!-- Test -->
 
-<!-- <button class="open-button" onclick="openForm()">Open Form</button>
 
-<div class="form-popup" id="myForm">
-  <form action="/action_page.php" class="form-container">
-    <h1>Login</h1>
 
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
+<!-- Button trigger modal -->
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
 
-    <button type="submit" class="btn">Login</button>
-    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-  </form>
+<!-- Modal -->
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" *ngFor="let item of pagesize">
+        <h5 class="modal-title" id="exampleModalLabel">{{item.CaseID}}</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
 </div> -->
+
+
+
+<ng-template #editProfileModal let-modal>
+  <div class="modal-header">
+   <h5 class="modal-title" id="editProfileLabel">Edit Profile</h5>
+   <button type="button" class="close" (click)="modal.dismiss()" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+   </button>
+  </div>
+
+  <div class="modal-body">
+   <form [formGroup]="editProfileForm">
+    <div class="form-group row">
+     <label for="CaseID" class="col-sm-4 col-form-label pop-l-r">Case ID</label>
+     <div class="col-sm-8">
+      <input type="text" class="form-control hi" formControlName="CaseID" id="CaseID" readonly>
+     </div>
+    </div>
+
+    <div class="form-group row">
+     <label for="Name" class="col-sm-4 col-form-label pop-l-r">Name</label>
+     <div class="col-sm-8">
+      <input type="text" class="form-control hi" formControlName="Name" id="Name" readonly>
+     </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="ID" class="col-sm-4 col-form-label pop-l-r">ID</label>
+      <div class="col-sm-8">
+       <input type="text"  class="form-control hi" formControlName="ID" id="ID" readonly>
+      </div>
+     </div>
+
+     <div class="form-group row">
+      <label for="Description" class="col-sm-4 col-form-label pop-l-r">Description</label>
+      <div class="col-sm-8">
+       <input type="text"  class="form-control hi" formControlName="Description" id="Description" readonly>
+      </div>
+     </div>
+
+     <div class="form-group row">
+      <label for="ReferenceNumber" class="col-sm-4 col-form-label pop-l-r">Reference Number</label>
+      <div class="col-sm-8">
+       <input type="text"  class="form-control hi" formControlName="ReferenceNumber" id="ReferenceNumber" readonly>
+      </div>
+     </div>
+
+     <div class="form-group row">
+      <label for="DueDate" class="col-sm-4 col-form-label pop-l-r">Due Date</label>
+      <div class="col-sm-8">
+       <input type="text"  class="form-control hi" formControlName="DueDate" id="DueDate" readonly>
+      </div>
+     </div>
+
+    <div class="modal-footer">
+     <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Close</button>
+    </div>
+
+   </form>
+  </div>
+ </ng-template>
+
+
+ <select class="form-select" aria-label="Default select example">
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
