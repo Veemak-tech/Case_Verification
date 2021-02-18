@@ -1,6 +1,6 @@
 const { validationResult, body } = require("express-validator");
 const paginate = require('jw-paginate');
-
+const assignments =require("../models/assignments")
 const casedetails = require("../models/casedetails");
 const Address = require("../models/address");
 const insurerdetails = require("../models/insurerdetails");
@@ -19,6 +19,48 @@ exports.fetchAll = async (req, res, next) => {
     next(err);
   }
 };
+//assigining table
+exports.assignments = async (req, res, next) => {
+  console.log(" its work");
+  
+   
+    
+   const CaseID=req.body.CaseID;
+   const AppUserID = req.body.AppUserID;
+   const CreatedBy = 1; //req.body.CreatedBy;
+  //  const CreatedDate=req.body.CreatedDate;
+   const LastModifiedBy = 2; // req.body.LastModifiedBy;
+  //  const LastModifiedDate=req.body.LastModifiedDate;
+   try {
+     
+ 
+     const Assign = {
+      CaseID :CaseID,
+      AppUserID : AppUserID,
+      CreatedBy : CreatedBy,
+      // CreatedDate :CreatedDate,
+      LastModifiedBy : LastModifiedBy,
+      // LastModifiedDate:LastModifiedDate,
+       
+     };
+ 
+     const result = await assignments.save(Assign);
+ 
+     res.status(201).json({ message: 'User Assigned!' });
+   } catch (err) {
+     if (!err.statusCode) {
+       err.statusCode = 500;
+     }
+     next(err);
+   }
+ };
+
+
+
+
+
+
+
 
 exports.getpaging = async (req, res, next) => {
   // debugger;

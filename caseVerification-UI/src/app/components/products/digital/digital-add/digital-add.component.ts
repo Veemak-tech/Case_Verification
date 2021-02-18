@@ -80,6 +80,15 @@ export class DigitalAddComponent implements OnInit {
      });
 
 }
+public onAssign(event){
+
+  debugger;
+  var caseid=12;
+  var userid= 19;
+  debugger;
+  console.log("i am inside assignment");
+}
+
 
 
 ////
@@ -100,17 +109,8 @@ openModal(targetModal, item) {
   });
  }
 
- ////
-
-public onAssign(event){
-
-  debugger;
-  var caseid=127;
-  var userid= event.value;
-  console.log("i am inside assignment");
-}
-
-
+ 
+ 
 
 public onCustomAction(event,item,action) {
   debugger;
