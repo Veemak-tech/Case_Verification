@@ -6,22 +6,22 @@
     </div>
 
 
+<<<<<<< HEAD
     <div class="col-sm-2">
       <select class="form-select btn btn-outline-info btn-sm" id="assignto" onselect="onAssign($event)">
 
+=======
+    <div class="col-sm-3">
+      <select class="form-select btn btn-outline-info btn-sm btn-height" id="assignto" (onchange)="onAssign($event)">
+>>>>>>> 31f4af7296d6c6fe45916065ed05b0bd1ed3377d
         <option *ngFor="let item of name" value="{{item.id}}"  >{{item.name}}</option>
-
       </select>
+      <button class="btn btn-outline-primary btn-sm ml-1" type="button">
+        <i class="fas fa-user-plus"></i>
+      </button>
     </div>
-    <div class="col-sm-2">
-      <div class="btn-group">
-        <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Assign to Agent
-        </button>
+    <div class="col-sm-1">
 
-
-      </div>
     </div>
 
 
@@ -218,10 +218,13 @@
  </ng-template>
 
 
+<<<<<<< HEAD
  <select class="form-select" aria-label="Default select example">
   <option selected>Open this select menu</option>
   <option value="1">One</option>
   <option value="2">Two</option>
   <option value="3">Three</option>
 </select>
+=======
+>>>>>>> 31f4af7296d6c6fe45916065ed05b0bd1ed3377d
 
