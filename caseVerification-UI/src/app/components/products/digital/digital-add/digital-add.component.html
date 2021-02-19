@@ -6,16 +6,22 @@
     </div>
 
 
-    <div class="col-sm-3">
-      <select class="form-select btn btn-outline-info btn-sm btn-height" id="assignto" (onchange)="onAssign($event)">
-        <option *ngFor="let item of name" value="{{item.id}}"  >{{item.name}}</option>
-      </select>
-      <button class="btn btn-outline-primary btn-sm ml-1" type="button">
-        <i class="fas fa-user-plus"></i>
-      </button>
-    </div>
-    <div class="col-sm-1">
+    <div class="col-sm-2">
+      <select class="form-select btn btn-outline-info btn-sm" id="assignto" (onchange)="onAssign($event)">
 
+        <option *ngFor="let item of name" value="{{item.id}}"  >{{item.name}}</option>
+
+      </select>
+    </div>
+    <div class="col-sm-2">
+      <div class="btn-group">
+        <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Assign to Agent
+        </button>
+
+
+      </div>
     </div>
 
 
@@ -94,8 +100,8 @@
             <input type="hidden" value={{item.Description}}>
             <input type="hidden" value={{item.ReferenceNumber}}>
             <input type="hidden" value={{item.DueDate}}>
-            <button href="#" class="btn btn-sm btn-outline-primary ml-2" (click)="onCustomAction($event,item,'edit')"><i class="fas fa-pencil-alt"></i></button>
-            <button class="btn btn-sm btn-outline-success ml-2" data-toggle="modal" (click)="openModal(editProfileModal, item)" data-target="exampleModal"><i class="fas fa-eye"></i></button>
+            <button href="#" class="btn btn-sm btn-outline-primary ml-2" (click)="onCustomAction($event,item,'viewrecord')"><i class="fas fa-pencil-alt"></i></button>
+            <button class="btn btn-sm btn-outline-success ml-2" (click)="onCustomAction($event,item,'edit')"><i class="fas fa-eye"></i></button>
           </div>
         </li>
       </div>

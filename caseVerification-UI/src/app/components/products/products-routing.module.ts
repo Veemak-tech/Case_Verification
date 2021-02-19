@@ -1,3 +1,4 @@
+import { CaseViewComponent } from './digital/case-view/case-view.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CategoryComponent } from './physical/category/category.component';
@@ -11,6 +12,7 @@ import { DigitalAddComponent } from './digital/digital-add/digital-add.component
 import { ProductDetailComponent } from './physical/product-detail/product-detail.component';
 import {CaseEditComponent} from './digital/case-edit/case-edit.component';
 import { AuthGuard } from 'src/app/services/auth-guard.service'
+
 
 
 const routes: Routes = [
@@ -102,6 +104,14 @@ const routes: Routes = [
         data:{
           title:"Case Edit",
           breadcrump: "Case Edit"
+        }
+      },
+      {
+        path: 'digital/case-view',
+        component: CaseViewComponent,
+        data:{
+          title:"Case View",
+          breadcrump: "Case View"
         }
       }
     ]
