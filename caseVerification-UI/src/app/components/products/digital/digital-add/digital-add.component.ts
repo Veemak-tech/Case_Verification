@@ -59,7 +59,8 @@ export class DigitalAddComponent implements OnInit {
     private router: Router,
 
   ) {
-    debugger
+    // debugger
+    // for get agent name
     this.userName.getName().subscribe((data) => {
       console.warn(data);
       console.log("user is working")

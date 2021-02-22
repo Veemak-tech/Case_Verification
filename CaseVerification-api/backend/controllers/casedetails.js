@@ -26,7 +26,7 @@ exports.getpaging = async (req, res, next) => {
      // get page from query params or default to first page
      const pageno = parseInt(req.query.pageno) || 1;
     
-    const [pagining] = await casedetails.getpaging(pageno, 10);
+    const [pagining] = await casedetails.getpaging(pageno, 50);
  
     const pageOfItems = pagining[0];
     const pager = paginate(100, pageno,10);
@@ -169,7 +169,7 @@ exports.deletePost = async (req, res, next) => {
 //------------------------------------------------Case Details Update---------------------------------------------
 exports.putCasedetails = async (req, res, next) => {
   try {
-    // debugger;
+     debugger;
     const putResponse = {
       CaseID: req.body.CaseID,
       Name: req.body.Name,
@@ -179,6 +179,7 @@ exports.putCasedetails = async (req, res, next) => {
       ReferenceNumber: req.body.ReferenceNumber,
       DueDate: req.body.DueDate,
       LastModifiedBy: req.body.LastModifiedBy,
+      ID:req.body.insDetails.ID
     };
 
     const result = await casedetails.update(putResponse);

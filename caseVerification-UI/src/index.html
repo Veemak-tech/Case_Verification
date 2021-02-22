@@ -45,23 +45,13 @@ $(document).ready(function(){
 });
 </script>
 
-<script>
-  $(document).ready(function(){
-    $("#myInput").on("keyup", function() {
-      var value = $(this).val().toLowerCase();
-      $(".dropdown-menu li").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-      });
-    });
-  });
-  </script>
 
 <script type="text/javascript">
   $(".chosen").chosen();
   </script>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-<script src="choosen.js"></script>
+
 
 
 
@@ -70,6 +60,48 @@ $(document).ready(function(){
   var myApp = angular.module('myApp', ['angular.filter']);
 
 </script>
+
+
+<script>
+ $(document).ready(function() {
+  // Setup - add a text input to each footer cell
+  $('#example tfoot th').each( function () {
+      var title = $(this).text();
+      $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+  } );
+
+  // DataTable
+  var table = $('#example').DataTable({
+      initComplete: function () {
+          // Apply the search
+          this.api().columns().every( function () {
+              var that = this;
+
+              $( 'input', this.footer() ).on( 'keyup change clear', function () {
+                  if ( that.search() !== this.value ) {
+                      that
+                          .search( this.value )
+                          .draw();
+                  }
+              } );
+          } );
+      }
+  });
+
+} );
+</script>
+
+
+<link rel="stylesheet" type="text/css" href="./src/assets/DataTables/datatables.min.css"/>
+
+<script type="text/javascript" src="./src/assets/DataTables/datatables.min.js"></script>
+
+
+
+
+
+
+
 
 
 

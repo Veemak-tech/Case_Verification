@@ -39,7 +39,7 @@ module.exports = class casedetails {
   }
 
   static getpaging(pageno,pagesize){
-    // debugger
+     
     return db.execute ("call getallcasedetailByPage(?,?)",[pageno,pagesize]);
   }
 
@@ -68,13 +68,10 @@ module.exports = class casedetails {
 
 
   // Update Method
-  static update(
-    putResponse
-    
-  ) {
-     // debugger;
+  static update(putResponse) {
+      debugger;
     return db.execute(
-      "UPDATE casedetails SET Name=?, Description=?, InsurerVerificationNotes=?, T_VerificationNotes=?, ReferenceNumber=?, DueDate=?,LastModifiedBy=? WHERE CaseID=?",
+      "UPDATE casedetails SET Name=?, Description=?, InsurerVerificationNotes=?, T_VerificationNotes=?, ReferenceNumber=?, DueDate=?,LastModifiedBy=?, CaseID=? WHERE ID=?",
       [
        putResponse.Name,
        putResponse.Description,
@@ -84,6 +81,7 @@ module.exports = class casedetails {
        putResponse.DueDate,
        putResponse.LastModifiedBy,
        putResponse.CaseID,
+       putResponse.ID
       ]
     );
   }

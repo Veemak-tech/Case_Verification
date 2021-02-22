@@ -14,7 +14,7 @@ router.get('/:ID', casedetailsController.fetchById);
 
 router.get('/:pageno/:pagesize', casedetailsController.getpaging);
 
-router.put('/',auth, casedetailsController.putCasedetails);
+router.put('/', casedetailsController.putCasedetails);
 
 router.post(
   '/',
