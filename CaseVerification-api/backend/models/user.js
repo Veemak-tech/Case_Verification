@@ -10,16 +10,18 @@ module.exports = class User {
     
   }
   static fetchAll() {
+    debugger
     return db.execute('SELECT * FROM users ');
   }
 static fetchbyId(id){
+  debugger
 
   return db.execute( 'SELECT * FROM users  WHERE id=?',[id]);
 
 }
 static fetchbyname(RoleID){
-//debugger
-  return db.execute( 'SELECT name, id FROM users  WHERE  RoleID!=1 order by name ASC',[RoleID]);
+debugger
+  return db.execute( 'SELECT name, id FROM users  WHERE  RoleID=2 order by name ASC',[RoleID]);
 }
 
   static update(update){

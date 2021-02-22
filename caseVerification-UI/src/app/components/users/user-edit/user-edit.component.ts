@@ -33,13 +33,13 @@ export class UserEditComponent implements OnInit {
     // const id:number = Number( this.route.snapshot.paramMap.get('id'));
     var id: number;
 
-    // debugger;
+     debugger;
     this.route.queryParams.subscribe((params) => {
       id = params['id'];
     });
 
     this.user.getDatabyID(id).subscribe((data: User) => {
-      //debugger;
+      debugger;
       console.warn(data);
       this.userdetail = data[0];
       this.EditForm = new FormGroup({

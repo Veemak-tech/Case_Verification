@@ -32,9 +32,9 @@ router.post('/admin',authController.Adminlogin);
 router.post('/login',authController.login);
 // debugger
 router.get('/',auth, authController.fetchAll);
-router.get('/:RoleID',authController.fetchbyname)
+router.get('/roleid/:RoleID',authController.fetchbyname)
 router.put('/',auth,authController.Update );
 // debugger;
-router.get('/:id',auth,authController.fetchbyId)
+router.get('/:id', authController.fetchbyId)
 
 module.exports = router;

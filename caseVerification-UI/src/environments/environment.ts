@@ -5,10 +5,11 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:3000/casedetails',
+ // apigetid:'http://localhost:3000/auth/:id',
   apiauth:'http://localhost:3000/auth',
   apiauthsignup: 'http://localhost:3000/auth/signup',
   apiauthlogin: 'http://localhost:3000/auth/admin',
-  getname:'http://localhost:3000/auth/RoleID:2'
+  getname:'http://localhost:3000/auth/roleid/RoleID:2'
 
 };
 

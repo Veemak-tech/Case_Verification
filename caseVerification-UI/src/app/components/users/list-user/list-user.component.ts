@@ -25,7 +25,7 @@ export class ListUserComponent implements OnInit {
 
   // custom action
   public onCustomAction(event) {
-    // debugger;
+     debugger;
     switch (event.action) {
       case 'viewrecord':
         this.viewRecord(event.data);
@@ -42,7 +42,7 @@ export class ListUserComponent implements OnInit {
         id: rowdata.id,
       },
     };
-    //debugger;
+    debugger;
 
     this.router.navigate(['/users/user-edit'], navigationExtras);
     this.sendValues.emit(rowdata.id);
@@ -61,7 +61,7 @@ export class ListUserComponent implements OnInit {
         id: rowdata.id,
       },
     };
-    //debugger;
+    debugger;
     this.router.navigate(['/users/user-edit'], navigationExtras);
     this.sendValues.emit(rowdata.id);
   }
