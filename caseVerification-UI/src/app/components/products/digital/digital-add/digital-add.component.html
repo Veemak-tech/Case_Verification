@@ -8,25 +8,24 @@
 
     <div class="col-sm-2">
 
-<input class="form-control" id="myInput" type="text" placeholder="Search..">
-      <select class="form-select btn btn-outline-info btn-sm" id="assignto" (onchange)="onAssign($event)">
-
-        <option *ngFor="let item of name" value="{{item.id}}"  >{{item.name}}</option>
-
-
+<!-- <input class="form-control" id="myInput" type="text" placeholder="Search.."> -->
+      <select class="form-select btn btn-outline-info btn-sm " id="assignto" (onchange)="onAssign($event)">
+<optgroup>
+        <option *ngFor="let item of name" value="{{item.id}}" style="max-height: 50px;">{{item.name}}</option>
+      </optgroup>
       </select>
     </div>
 
 
     <div class="col-sm-2">
-      <div class="btn-group">
+      <!-- <div class="btn-group">
         <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           Assign to Agent
         </button>
 
 
-      </div>
+      </div> -->
     </div>
 
 
@@ -223,7 +222,7 @@
 
 
 
- <div style="width:520px;margin:0px auto;margin-top:30px;">
+ <!-- <div style="width:520px;margin:0px auto;margin-top:30px;">
   <h2>Select Box with Search Option Jquery</h2>
   <select class="chosen" style="width:500px;">
   <option>Html</option>
@@ -240,7 +239,7 @@
   <option>Json</option>
   <option>Angular Js</option>
   </select>
-  </div>
+  </div> -->
 
 
 

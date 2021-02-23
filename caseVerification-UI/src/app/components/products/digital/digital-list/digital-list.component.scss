@@ -4,8 +4,11 @@
 }
 
 :host ::ng-deep .ng2-smart-actions {
-
   width: 5%;
+}
 
+:host ::ng-deep input[type=checkbox]{
+  height: 20px;
+  width: 20px;
 }
 

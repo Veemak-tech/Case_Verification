@@ -52,6 +52,8 @@ export class DigitalListComponent implements OnInit {
     });
 
   }
+
+
   ngOnInit(): void {
     this._route.paramMap.subscribe(parameterMap => {
       const CaseID = +parameterMap.get('CaseID');
@@ -126,6 +128,7 @@ export class DigitalListComponent implements OnInit {
     this.router.navigate(['/products/digital/case-edit'], navigationExtras);
     this.sendValues.emit(rowdata.ID);
   }
+
 
 
   public viewRecord(formData:any){
