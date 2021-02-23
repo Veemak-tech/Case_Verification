@@ -33,7 +33,7 @@ export class UserEditComponent implements OnInit {
     // const id:number = Number( this.route.snapshot.paramMap.get('id'));
     var id: number;
 
-    debugger;
+     debugger;
     this.route.queryParams.subscribe((params) => {
       id = params['id'];
     });

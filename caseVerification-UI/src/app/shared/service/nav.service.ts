@@ -42,23 +42,23 @@ export class NavService {
 		// },
 		{
 			title: 'Insurance', icon: 'box', type: 'sub', active: true, children: [
-				/*{
+				{
 					title: 'Physical', type: 'sub', children: [
 						{ path: '/products/physical/category', title: 'Category', type: 'link' },
-						{ path: '/products/physical/sub-category', title: 'Sub Category', type: 'link' },
-						{ path: '/products/physical/product-list', title: 'Product List', type: 'link' },
-						{ path: '/products/physical/product-detail', title: 'Product Detail', type: 'link' },
+					//	{ path: '/products/physical/sub-category', title: 'Sub Category', type: 'link' },
+					//	{ path: '/products/physical/product-list', title: 'Product List', type: 'link' },
+					//	{ path: '/products/physical/product-detail', title: 'Product Detail', type: 'link' },
 
 						// { path: '/products/physical/add-product', title: 'Add Product', type: 'link' },
 					]
-				},*/
+				},
 				{
 					title: 'Case', type: 'sub', children: [
 						{ path: '/products/digital/digital-category', title: 'Case Creation', type: 'link' },
 						{ path: '/products/digital/digital-sub-category', title: 'Case Verification', type: 'link' },
 						{ path: '/products/digital/digital-product-list', title: 'Case List', type: 'link' },
 
-						 { path: '/products/digital/digital-add-product', title: 'CaseCreation', type: 'link' },
+						 { path: '/products/digital/digital-add-product', title: 'Case View', type: 'link' },
 					]
 				},
 			]

@@ -16,12 +16,17 @@ import { multicast } from 'rxjs/operators';
   styleUrls: ['./digital-list.component.scss'],
 })
 export class DigitalListComponent implements OnInit {
+
+  pagesize = [];
+  pageno: any = {};
+
   public caseList: any;
   deleteID: string;
   CasedetailsService: any;
   Casedetails:casedetails;
   data: any;
   name: string;
+  source: any;
 
   // Get data
   constructor(
@@ -29,7 +34,8 @@ export class DigitalListComponent implements OnInit {
     private httpClient: HttpClient,
     private router: Router,
     private _route:ActivatedRoute,
-    private userName: AuthService
+    private userName: AuthService,
+
   ) {
     this.user.getData().subscribe((data1) => {
       console.warn(data1);
@@ -46,6 +52,8 @@ export class DigitalListComponent implements OnInit {
     });
 
   }
+
+
   ngOnInit(): void {
     this._route.paramMap.subscribe(parameterMap => {
       const CaseID = +parameterMap.get('CaseID');
@@ -54,13 +62,24 @@ export class DigitalListComponent implements OnInit {
 
 
 
-      // this.userName.passname.subscribe((result) => {
-      //   console.warn( result );
-      //   this.data = result;
+    this._route.queryParams.subscribe(result => this.loadPage(result.page || 1));
 
-      // });
 
   }
+
+
+  private loadPage(page) {
+    // debugger;
+    // get page of items from api
+    this.httpClient.get<any>(`http://localhost:3000/casedetails/${page}/${10}`).subscribe(result => {
+        this.pageno = result.pager;
+        this.pagesize = result.pageOfItems;
+  // debugger;
+        console.log(result.pagining)
+    });
+  }
+
+
 
   private getCasedetails(ID:number) {
     if(ID === 0) {
@@ -111,6 +130,7 @@ export class DigitalListComponent implements OnInit {
   }
 
 
+
   public viewRecord(formData:any){
 
     let rowdata = formData;
@@ -132,9 +152,9 @@ export class DigitalListComponent implements OnInit {
   }
 
   public caselistSettings = {
-    actions: {
+    selectMode: 'multi',
 
-      selectMode: 'multi',
+    actions: {
 
       columnTitle: 'Action',
       add: false,
@@ -142,8 +162,10 @@ export class DigitalListComponent implements OnInit {
       delete: false,
       rowSelect: true,
       custom: [
+
         {
           name: 'editrecord',
+          width: '5%',
           title:
             '<i class="ng2-smart-action ng2-smart-action-edit-edit ng-star-inserted"></i>&nbsp;&nbsp;',
         },
@@ -152,71 +174,44 @@ export class DigitalListComponent implements OnInit {
 
       position: 'left',
     },
-
     columns: {
       CaseID: {
         title: 'Case ID',
         type: 'html',
+        width: '8%'
+      },
+      InsurerName: {
+        title: 'Insurer Name',
+        width: '18%'
       },
       Name: {
-        title: 'Name',
+        title: 'Agent Name',
+        width: '18%',
       },
-      // Description: {
-      //   title: 'Description',
-      // },
-      // InsurerName: {
-      //   title: 'InsurerName',
-      // },
-      ID: {
-        title: 'ID'
-      }
+      DueDate: {
+        title: 'Due Date',
+        width: '10%',
+      },
 
-      // InsurerVerificationNotes: {
-      //   title: 'Insurer Verification Notes',
+      // username: {
+      //   title: 'Status'
       // },
-      // T_VerificationNotes: {
-      //   title: 'Thirdparty Verification Notes',
-      // },
-      // CreatedBy: {
-      //   title: 'Created By',
-      // },
-      // CreatedDate: {
-      //   title: 'Created Date',
-      // },
+
+      username: {
+        title: 'Status',
+        filter: {
+          type: 'checkbox',
+          config: {
+            true: 'Aravinth',
+            false: 'Not Assigned',
+            resetText: 'clear',
+          },
+        },
+        width: '15%'
+      },
     },
+    attr: {
+        class: 'table table-bordered'
+      }
   };
 }
-
-
-
-// settings: {
-//   columns: {
-//      age: {
-//        title: 'Age',
-//        editor: {
-//          type: 'list',
-//          config: {
-//            selectText: 'Select',
-//            list: [
-//              {value: '1', title:'Option 1'},
-//              {value: '2', title:'Option 2'},
-//              {value: '3', title:'Option 3'},
-//              {value: '4', title:'Option 4'},
-//            ],
-//          },
-//        }
-//        filter: {
-//          type: 'list',
-//          config: {
-//            selectText: 'Select',
-//            list: [
-//              {value: '1', title:'Option 1'},
-//              {value: '2', title:'Option 2'},
-//              {value: '3', title:'Option 3'},
-//              {value: '4', title:'Option 4'},
-//            ],
-//          },
-//        },
-//      },
-//   }
-// }

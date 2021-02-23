@@ -10,6 +10,8 @@ import { CasedetailsService } from './../../../../services/casedetails.service';
 import {JwPaginationModule} from 'jw-angular-pagination'
 import {NgbModal, ModalDismissReasons, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { Data } from '@angular/router';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 
 
@@ -58,7 +60,8 @@ selecteditems2:string[];
     private router: Router,
 
   ) {
-    debugger
+    // debugger
+    // for get agent name
     this.userName.getName().subscribe((data) => {
       console.warn(data);
       console.log("user is working")
@@ -133,7 +136,17 @@ public onCustomAction(event,item,action) {
   debugger;
   switch (action){
     case 'viewrecord':
-      this.viewRecord(event.data);
+      let rowdata2=item;
+      let navigationExtras2:NavigationExtras={
+
+        queryParams:
+        {
+
+          'ID':rowdata2.ID,
+        }
+      }
+      this.router.navigate(['/products/digital/case-edit'], navigationExtras2);
+      this.sendValues.emit(rowdata2.ID);
       break;
     case 'edit':
 
@@ -144,11 +157,12 @@ public onCustomAction(event,item,action) {
         },
       };
       debugger;
-      this.router.navigate(['/products/digital/case-edit'], navigationExtras);
+      this.router.navigate(['/products/digital/case-view'], navigationExtras);
       this.sendValues.emit(rowdata.ID);
       break;
     default:
       break;
+
 
   }
 }

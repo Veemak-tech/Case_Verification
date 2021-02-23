@@ -27,6 +27,8 @@ import { UserComponent } from './digital/user/user.component';
 import { CaseEditComponent } from './digital/case-edit/case-edit.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { JwPaginationModule } from 'jw-angular-pagination';
+import { CaseViewComponent } from './digital/case-view/case-view.component';
+
 
 
 
@@ -38,7 +40,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
 
 
 @NgModule({
-  declarations: [CategoryComponent, SubCategoryComponent, ProductListComponent, AddProductComponent, DigitalCategoryComponent, DigitalSubCategoryComponent, DigitalListComponent, DigitalAddComponent, ProductDetailComponent, UserComponent, CaseEditComponent],
+  declarations: [CategoryComponent, SubCategoryComponent, ProductListComponent, AddProductComponent, DigitalCategoryComponent, DigitalSubCategoryComponent, DigitalListComponent, DigitalAddComponent, ProductDetailComponent, UserComponent, CaseEditComponent, CaseViewComponent],
   imports: [
     CommonModule,
     FormsModule,

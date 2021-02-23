@@ -56,6 +56,7 @@ exports.fetchAll = async (req, res, next) => {
 
 exports.fetchbyId = async (req, res, next) => {
   try {
+    debugger
     console.log(" fetch is works"+req.params.id);
     const [allPosts] = await User.fetchbyId(req.params.id);
     console.log(allPosts);
@@ -70,7 +71,7 @@ exports.fetchbyId = async (req, res, next) => {
 };
 exports.fetchbyname = async (req, res, next) => {
   try {
-    // debugger
+     debugger
     console.log(" fetch is works"+req.params.RoleID);
     const [allname] = await User.fetchbyname(req.params.RoleID);
     console.log(allname);

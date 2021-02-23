@@ -70,7 +70,6 @@ import {NgxPaginationModule} from 'ngx-pagination';
     NgxPaginationModule,
      JwPaginationModule
 
-
   ],
 
   schemas:[CUSTOM_ELEMENTS_SCHEMA],

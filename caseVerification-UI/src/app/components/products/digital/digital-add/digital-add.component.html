@@ -69,16 +69,14 @@
 
 
   <!-- <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name"> -->
+  <div class="card-body">
+    <input class="form-control" id="myInput" type="text" placeholder="Search..">
 
-  <div class="card-body" id="gridcaselist">
-
-    <div class="collection-grid-view" *ngIf="layoutView == 'grid-view'">
-
+    <div class="collection-grid-view" *ngIf="layoutView == 'grid-view'" >
 
       <div class="card pad" id="myTable">
-
-        <li style="list-style-type: none;">
-          <div class="card-body column column-m bordercol button two  mb-3 mt-2" *ngFor="let item of pagesize">
+        <li style="list-style-type: none;" >
+          <div class="card-body column column-m bordercol button two  mb-3 mt-2" *ngFor="let item of pagesize" >
             <div class="form-check form-check-inline">
               <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{item.CaseID}}"(change)=CheckID($event,item.CaseID)>
               <label class="form-check-label" for="inlineCheckbox1"></label>
@@ -86,6 +84,7 @@
             <h5 class="card-title">CaseID: {{item.CaseID}}</h5>
             <h6 class="card-text">Name: {{item.Name}}</h6>
             <h6 class="card-text">{{item.username}}</h6>
+            <h6 class="card-text">{{item.InsurerName}}</h6>
 
             <input type="hidden" id="ID" name="ID">
 
@@ -93,8 +92,8 @@
             <input type="hidden" value={{item.Description}}>
             <input type="hidden" value={{item.ReferenceNumber}}>
             <input type="hidden" value={{item.DueDate}}>
-            <button href="#" class="btn btn-sm btn-outline-primary ml-2" (click)="onCustomAction($event,item,'edit')"><i class="fas fa-pencil-alt"></i></button>
-            <button class="btn btn-sm btn-outline-success ml-2" data-toggle="modal" (click)="openModal(editProfileModal, item)" data-target="exampleModal"><i class="fas fa-eye"></i></button>
+            <button href="#" class="btn btn-sm btn-outline-primary ml-2" (click)="onCustomAction($event,item,'viewrecord')"><i class="fas fa-pencil-alt"></i></button>
+            <button class="btn btn-sm btn-outline-success ml-2" (click)="onCustomAction($event,item,'edit')"><i class="fas fa-eye"></i></button>
           </div>
         </li>
       </div>
@@ -150,7 +149,7 @@
 
 
 
-<ng-template #editProfileModal let-modal>
+<!-- <ng-template #editProfileModal let-modal>
   <div class="modal-header">
    <h5 class="modal-title" id="editProfileLabel">Edit Profile</h5>
    <button type="button" class="close" (click)="modal.dismiss()" aria-label="Close">
@@ -208,6 +207,7 @@
 
    </form>
   </div>
+<<<<<<< HEAD
  </ng-template>
 
 
@@ -221,3 +221,71 @@
 =======
 >>>>>>> 31f4af7296d6c6fe45916065ed05b0bd1ed3377d
 
+=======
+ </ng-template> -->
+
+
+
+ <!-- <div style="width:520px;margin:0px auto;margin-top:30px;">
+  <h2>Select Box with Search Option Jquery</h2>
+  <select class="chosen" style="width:500px;">
+  <option>Html</option>
+  <option>Css</option>
+  <option>Css3</option>
+  <option>Php</option>
+  <option>MySql</option>
+  <option>Javascript</option>
+  <option>Jquery</option>
+  <option>Html5</option>
+  <option>Wordpress</option>
+  <option>Joomla</option>
+  <option>Druple</option>
+  <option>Json</option>
+  <option>Angular Js</option>
+  </select>
+  </div> -->
+
+
+
+
+
+ <!-- <div class="container">
+  <h2>Filterable Table</h2>
+  <p>Type something in the input field to search the table for first names, last names or emails:</p>
+
+  <br>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody id="myTable">
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@mail.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@greatstuff.com</td>
+      </tr>
+      <tr>
+        <td>Anja</td>
+        <td>Ravendale</td>
+        <td>a_r@test.com</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Note that we start the search in tbody, to prevent filtering the table headers.</p>
+</div> -->
+>>>>>>> 7a573a9fa8e973c5f157986a70f0fe3f74475841

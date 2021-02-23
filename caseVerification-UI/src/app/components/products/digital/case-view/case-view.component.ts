@@ -24,14 +24,11 @@ import swal from 'sweetalert';
 
 
 @Component({
-  selector: 'app-case-edit',
-  templateUrl: './case-edit.component.html',
-  styleUrls: ['./case-edit.component.scss'],
+  selector: 'app-case-view',
+  templateUrl: './case-view.component.html',
+  styleUrls: ['./case-view.component.scss']
 })
-// @Injectable({
-//   providedIn: 'root'
-// })
-export class CaseEditComponent implements OnInit {
+export class CaseViewComponent implements OnInit {
   private selectCaseID: number;
   @Input() Casedetails: casedetails;
   @Input() searchTerm: string;
@@ -56,7 +53,6 @@ export class CaseEditComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       ID = params['ID'];
     });
-
 
     this.caseservice.getByID(ID).subscribe((data: casedetails) => {
       console.log(data);
@@ -107,14 +103,10 @@ export class CaseEditComponent implements OnInit {
       });
     });
 
-   }
-
-// update
-
-  ngOnInit(): void {
-
   }
 
+  ngOnInit(): void {
+  }
 
   casedetailsupdate(){
     // debugger;
@@ -141,6 +133,5 @@ export class CaseEditComponent implements OnInit {
 
     });
   }
+
 }
-
-

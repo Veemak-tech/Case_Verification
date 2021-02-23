@@ -11,9 +11,6 @@
   color: #98acf8;
 }
 
-// .row{
-//   text-align: right;
-// }
 
 .text-align{
   text-align: right;
@@ -25,15 +22,21 @@
   border-radius: 20px;
 }
 
+// card heading underline removal and font size
 .cardsizeAdjust{
   text-decoration: none;
   font-size: 20px;
 }
 
-
+// small card width and height in hidden view
 .padsize{
   padding: 0.5rem;
 }
+
+.padsizebody{
+  padding: 0.2rem;
+}
+
 
 ////////////////////////////////////
 
@@ -56,6 +59,8 @@
 }
 ////////////////////////////////////
 
+
+// for mobile screen------------------------------------------------------------------------
 
 @media only screen and (max-width: 600px) {
   .text-align{
@@ -81,20 +86,21 @@
 }
 
 
-// .inputborder{
-//   border: none;
-//   outline: none;
-//   border: none;
-//   background-color: transparent;
-//   resize: none;
-// }
+// input boxes no border
+.inputborder{
+  border: none;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  resize: none;
+}
 
-// .inputborder:focus{
-//   border: none;
-//   outline: none;
-//   border: none;
-//   background-color: transparent;
-//   resize: none;
-// }
+.inputborder:focus{
+  border: none;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  resize: none;
+}
 
 
