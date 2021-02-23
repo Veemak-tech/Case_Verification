@@ -68,20 +68,25 @@
 
 
 
-  <!-- <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name"> -->
-  <div class="card-body">
-    <input class="form-control" id="myInput" type="text" placeholder="Search..">
+  <div class="card-body" id="myDropdown">
+    <input class="form-control" id="myInput" type="text" placeholder="Search.." onkeyup="filterFunction()">
+
 
     <div class="collection-grid-view" *ngIf="layoutView == 'grid-view'" >
 
-      <div class="card pad" id="myTable">
-        <li style="list-style-type: none;" >
-          <div class="card-body column column-m bordercol button two  mb-3 mt-2" *ngFor="let item of pagesize" >
+
+      <div class="card pad" id="myTable" >
+
+        <li style="list-style-type: none;"  >
+
+          <div class="card-body column column-m bordercol button two  mb-3 mt-2 hide" *ngFor="let item of pagesize" >
+
             <div class="form-check form-check-inline">
               <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{item.CaseID}}"(change)=CheckID($event,item.CaseID)>
               <label class="form-check-label" for="inlineCheckbox1"></label>
             </div>
-            <h5 class="card-title">CaseID: {{item.CaseID}}</h5>
+
+            <h6 class="card-title">CaseID: {{item.CaseID}}</h6>
             <h6 class="card-text">Name: {{item.Name}}</h6>
             <h6 class="card-text">{{item.username}}</h6>
             <h6 class="card-text">{{item.InsurerName}}</h6>
@@ -95,10 +100,13 @@
             <button href="#" class="btn btn-sm btn-outline-primary ml-2" (click)="onCustomAction($event,item,'viewrecord')"><i class="fas fa-pencil-alt"></i></button>
             <button class="btn btn-sm btn-outline-success ml-2" (click)="onCustomAction($event,item,'edit')"><i class="fas fa-eye"></i></button>
           </div>
+
         </li>
+
       </div>
     </div>
-  </div>
+    </div>
+
 
 
 
@@ -288,4 +296,4 @@
 
   <p>Note that we start the search in tbody, to prevent filtering the table headers.</p>
 </div> -->
->>>>>>> 7a573a9fa8e973c5f157986a70f0fe3f74475841
+

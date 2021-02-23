@@ -40,7 +40,7 @@ export class CreateUserComponent implements OnInit {
       });
       console.log("user registerd");
       this.router.navigate(['/users/list-user']);
-    
+
     });
   }
 }

@@ -1,0 +1,36 @@
+.padAndMargin{
+ // padding: 0rem;
+ // margin: 0rem;
+  //border-radius: 20px;
+  border-color: #f8f8f9;
+  width: 18.5rem;
+}
+
+.padsize{
+  background-color: #f8f8f9;
+
+}
+
+
+
+
+//////////////////////////////////@at-root
+#demo {
+  -webkit-transition: width 2s ease;
+  -moz-transition: width 2s ease;
+  -o-transition: width 2s ease;
+  transition: width 2s ease;
+
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  background: yellow;
+  vertical-align: middle;
+  line-height: 30px;
+  height: 30px;
+
+  width: 0px;
+}
+#demo.in {
+  width: 220px;
+}

@@ -17,7 +17,10 @@
                       <label for="validationCustom0" class="col-xl-3 col-md-4"><span>*</span>
                         Name</label>
                       <input class="form-control col-xl-8 col-md-7" id="validationCustom0" type="text"
-                        formControlName="name" required="">
+                        formControlName="name" required=""    [ngClass]="{'is-invalid':RegisterForm.get('name').touched && RegisterForm.get('name').invalid}">
+                        <div class="invalid-feedback" style="margin-left: 50%">
+                          Enter a Name
+                        </div>
                     </div>
                     <!-- <div class="form-group row">
                                             <label for="validationCustom1" class="col-xl-3 col-md-4"><span>*</span> Last
@@ -29,13 +32,20 @@
                       <label for="validationCustom2" class="col-xl-3 col-md-4"><span>*</span>
                         Email</label>
                       <input class="form-control col-xl-8 col-md-7" id="validationCustom2" type="text"
-                        formControlName="email" required="">
+                        formControlName="email" required="" [ngClass]="{'is-invalid':RegisterForm.get('email').touched && RegisterForm.get('email').invalid}">
+                        <div *ngIf="RegisterForm.get('email').touched && RegisterForm.get('email').invalid" class="invalid-feedback" style="margin-left: 50%">
+                          <div *ngIf=" RegisterForm.get('email').errors.required">email is required</div>
+                          <div *ngIf=" RegisterForm.get('email').errors.email">enter valid email</div>
+                        </div>
                     </div>
                     <div class="form-group row">
                       <label for="validationCustom3"  class="col-xl-3 col-md-4"><span>*</span>
                         Password</label>
                       <input class="form-control col-xl-8 col-md-7" id="typepass"  type="password"
-                        formControlName="password" required="">
+                        formControlName="password" required="" [ngClass]="{'is-invalid':RegisterForm.get('password').touched && RegisterForm.get('password').invalid}">
+                        <div class="invalid-feedback" style="margin-left: 50%">
+                          Enter Password
+                        </div>
                         <input type="checkbox" onclick="Toggle()">
     <b>Show Password</b>
                     </div>
