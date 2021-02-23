@@ -2,25 +2,58 @@
 <div class="form-group row">
   <label for="validationCustom2" class="col-xl-3 col-md-4"><span>*</span>
       Name</label>
-  <input class="form-control col-xl-8 col-md-7" id="validationCustom2"
-      type="text" formControlName="name"    required="">
+  <input class="form-control col-xl-5 col-md-5" id="validationCustom2"
+      type="text" formControlName="name"   [ngClass]="{'is-invalid':EditForm.get('name').touched && EditForm.get('name').invalid}">
+      <div class="invalid-feedback" style="margin-left: 50%">
+        enter a Name
+      </div>
+      
 </div>
+
 <div class="form-group row">
     <label for="validationCustom2" class="col-xl-3 col-md-4"><span>*</span>
      email   </label>
-    <input class="form-control col-xl-8 col-md-7" id="validationCustom2"
-        type="text" formControlName="email"  required="" readonly>
-  </div>
+    <input class="form-control col-xl-5 col-md-5" id="validationCustom2"
+        type="text" formControlName="email"  [ngClass]="{'is-invalid':EditForm.get('email').touched && EditForm.get('email').invalid}">
+        <div *ngIf="EditForm.get('email').touched && EditForm.get('email').invalid" class="invalid-feedback" style="margin-left: 50%">
+          <div *ngIf=" EditForm.get('email').errors.required">email is required</div>
+          <div *ngIf=" EditForm.get('email').errors.email">enter valid email</div>
+        </div>
+</div>
+      
   <div class="form-group row">
     <label for="validationCustom3" class="col-xl-3 col-md-4"><span>*</span>
         Role</label>
-    <select class="form-control col-xl-8 col-md-7" id="validationCustom3" formControlName="RoleID">
+    <select class="form-control col-xl-5 col-md-5" id="validationCustom3" formControlName="RoleID">
       <option value="1">Admin</option>
       <option value="2">Agent</option>
       <option value="3">Reviewer</option>
       
     </select>
 </div>
+<div id="accordion">
+  <div class="card" class="col-xl-3 col-md-4">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          reset password
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+      <div  class="col-xl1 col-md-11">
+        <div class="form-group row">
+          <label for="validationCustom3" class="col-xl-3 col-md-4"><span>*</span>
+            Password</label>
+          <input class="form-control col-xl-8 col-md-7" id="validationCustom3" type="password"
+            formControlName="password" required="">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
   <!-- <div class="form-group row">
     <label for="validationCustom2" class="col-xl-3 col-md-4"><span>*</span>
         RoleID</label>

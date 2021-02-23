@@ -33,20 +33,22 @@ export class UserEditComponent implements OnInit {
     // const id:number = Number( this.route.snapshot.paramMap.get('id'));
     var id: number;
 
-    // debugger;
+    debugger;
     this.route.queryParams.subscribe((params) => {
       id = params['id'];
     });
 
     this.user.getDatabyID(id).subscribe((data: User) => {
-      //debugger;
+      debugger;
       console.warn(data);
       this.userdetail = data[0];
       this.EditForm = new FormGroup({
         id: new FormControl(this.userdetail['id']),
-        name: new FormControl(this.userdetail['name']),
-        email: new FormControl(this.userdetail['email']),
-        password: new FormControl(this.userdetail['password']),
+        name: new FormControl(this.userdetail['name'],[Validators.required,Validators.minLength(5)]),
+        email: new FormControl(this.userdetail['email'],[Validators.email,Validators.required]),
+        password: new FormControl(this.userdetail['password'], [
+          Validators.required,
+          Validators.minLength(7),]),
         RoleID: new FormControl(this.userdetail['RoleID']),
       });
     });

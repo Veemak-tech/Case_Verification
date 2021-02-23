@@ -33,7 +33,7 @@ router.post('/login',authController.login);
 // debugger
 router.get('/',auth, authController.fetchAll);
 router.get('/:RoleID',authController.fetchbyname)
-router.put('/',auth,authController.Update );
+router.put('/',authController.Update );
 // debugger;
 router.get('/:id',auth,authController.fetchbyId)
 

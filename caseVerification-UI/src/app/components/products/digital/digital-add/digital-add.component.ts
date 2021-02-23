@@ -36,7 +36,8 @@ export class DigitalAddComponent implements OnInit {
   pageno: any = {};
   data :[];
   public caseList: any;
-
+selecteditems:string[];
+selecteditems2:string[];
 
   public paginate : any;
   viewRecord: any;
@@ -79,17 +80,33 @@ export class DigitalAddComponent implements OnInit {
       DueDate:['']
      });
 
+     this.selecteditems = new Array<string>();
+     this.selecteditems2 = new Array<string>();
 }
-public onAssign(event){
-
-  debugger;
-  var caseid=12;
-  var userid= 19;
-  debugger;
-  console.log("i am inside assignment");
+selectID(e:any){
+  console.log(e[e.selectedIndex].id);
 }
 
 
+  CheckID(e:any,id:string){
+
+  if(e.target.checked)
+  {
+    console.log(id+'checked');
+    this.selecteditems.push(id);
+  }
+  else
+  {
+     console.log(id+'unchecked');
+this.selecteditems =this.selecteditems.filter(m=>m!=id);
+  }
+  console.log(this.selecteditems)
+}
+
+submit()
+{
+  
+}
 
 ////
 
