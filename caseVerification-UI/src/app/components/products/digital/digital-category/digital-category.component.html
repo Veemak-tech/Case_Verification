@@ -15,7 +15,7 @@
       <div class="row">
 
 
-        <form #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value)">
+        <form #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value)" autocomplete="off">
           <h3 class="subhead2">Case Details</h3>
           <div class="col-md-12 row">
 
@@ -23,7 +23,7 @@
               <div class="col-sm-2"></div>
               <label for="name" class="col-form-label col-sm-3 text-align">Case ID:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input type="text" ngModel class="form-control" id="name" name="CaseID" minlength="5" maxlength=20 placeholder="Enter Case ID" required="">
+                <input type="search" ngModel class="form-control" id="CaseID" name="CaseID" minlength="5" maxlength=20 placeholder="Enter Case ID" required="" autocomplete="off">
               </div>
             </div>
 
@@ -31,7 +31,7 @@
               <div class="col-sm-2"></div>
               <label for="name" class="col-form-label col-sm-4 text-align">Ref Number:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input type="text" ngModel class="form-control" id="name" name="ReferenceNumber" maxlength="20" placeholder="Reference Number" required="">
+                <input type="search" ngModel class="form-control" id="ReferenceNumber" name="ReferenceNumber" maxlength="20" placeholder="Reference Number" required="" autocomplete="off">
               </div>
             </div>
           </div>
@@ -52,7 +52,7 @@
               <div class="col-sm-2"></div>
               <label for="name" class="col-form-label col-sm-4 text-align">Agent Name:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input type="text" ngModel class="form-control" name="Name" maxlength="45" id="name" placeholder="Agent Name" required="">
+                <input type="search" ngModel class="form-control" name="Name" maxlength="45" id="name" placeholder="Agent Name" required="">
               </div>
             </div>
           </div>
@@ -76,7 +76,7 @@
               <div class="col-sm-1"></div>
               <label for="InsurerName" class="col-form-label col-sm-4 text-align">Insurer Name:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input type="text" ngModel class="form-control" maxlength="45" placeholder="Enter Insurer Name" name="InsurerName" id="">
+                <input type="search" ngModel class="form-control" maxlength="45" placeholder="Enter Insurer Name" name="InsurerName" id="">
               </div>
             </div>
 
@@ -84,7 +84,7 @@
               <div class="col-sm-2"></div>
               <label for="PhoneNumber" class="col-form-label col-sm-4 text-align">Phone Number:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input type="text" ngModel class="form-control" maxlength="20" placeholder="Phone Number" name="PhoneNumber" id="">
+                <input type="search" ngModel class="form-control" maxlength="20" placeholder="Phone Number" name="PhoneNumber" id="">
               </div>
 
             </div>
@@ -112,10 +112,10 @@
             <div class="col-sm-1 ml-4"></div>
             <!-- </div> -->
             <div class="col-sm-4 form-group">
-              <input type="text" ngModel class="form-control" maxlength="256" placeholder="AddressLine 1" name="AddressLine1" id="" placeholder="AddressLine 1">
+              <input type="search" ngModel class="form-control" maxlength="256" placeholder="AddressLine 1" name="AddressLine1" id="" placeholder="AddressLine 1">
             </div>
             <div class="col-sm-5 form-group">
-              <input type="text" ngModel class="form-control" maxlength="256" placeholder="AddressLine 2" name="AddressLine2" id="" placeholder="AddressLine 2">
+              <input type="search" ngModel class="form-control" maxlength="256" placeholder="AddressLine 2" name="AddressLine2" id="" placeholder="AddressLine 2">
             </div>
             <!-- <div class="col-sm-2"></div> -->
           </div>
@@ -125,16 +125,16 @@
             <!-- <div style="width: 110px;"></div> -->
 
             <div class="col-sm-2 ml-1 form-group">
-              <input type="text" ngModel class="form-control" maxlength="20" name="City" id="" placeholder="City">
+              <input type="search" ngModel class="form-control" maxlength="20" name="City" id="" placeholder="City">
             </div>
             <div class="col-sm-2 form-group">
-              <input type="text" ngModel class="form-control" maxlength="20" name="State" id="" placeholder="State">
+              <input type="search" ngModel class="form-control" maxlength="20" name="State" id="" placeholder="State">
             </div>
             <div class="col-sm-2 form-group">
-              <input type="text" ngModel class="form-control" maxlength="10" name="Pincode" id="" placeholder="Pincode">
+              <input type="search" ngModel class="form-control" maxlength="10" name="Pincode" id="" placeholder="Pincode">
             </div>
             <div class="col-sm-3 form-group">
-              <input type="text" ngModel class="form-control" maxlength="256" name="Landmark" id="" placeholder="Landmark">
+              <input type="search" ngModel class="form-control" maxlength="256" name="Landmark" id="" placeholder="Landmark">
             </div>
             <!-- <div class="col-sm-2"></div> -->
 
@@ -175,7 +175,7 @@
               <!-- <div class="col-sm-1"></div> -->
               <label for="InsurerName" class="col-form-label col-sm-5 text-align">Thirdparty Name:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input ngModel type="text" class="form-control" maxlength="45" placeholder="Thirdparty Name" name="ThirdpartyName" id="">
+                <input ngModel type="search" class="form-control" maxlength="45" placeholder="Thirdparty Name" name="ThirdpartyName" id="">
               </div>
             </div>
 
@@ -183,7 +183,7 @@
               <div class="col-sm-2"></div>
               <label for="PhoneNumber" class="col-form-label col-sm-4 text-align">Phone Number:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input ngModel type="text" class="form-control" maxlength="20" placeholder="Phone Number" name="T_PhoneNumber" id="">
+                <input ngModel type="search" class="form-control" maxlength="20" placeholder="Phone Number" name="T_PhoneNumber" id="">
               </div>
 
             </div>
@@ -211,10 +211,10 @@
             <!-- <div style="width: 110px;">
                           </div> -->
             <div class="col-sm-4 form-group">
-              <input ngModel type="text" class="form-control" maxlength="256" name="T_AddressLine1" id="" placeholder="AddressLine 1">
+              <input ngModel type="search" class="form-control" maxlength="256" name="T_AddressLine1" id="" placeholder="AddressLine 1">
             </div>
             <div class="col-sm-5 form-group">
-              <input ngModel type="text" class="form-control" maxlength="256" name="T_AddressLine2" id="" placeholder="AddressLine 2">
+              <input ngModel type="search" class="form-control" maxlength="256" name="T_AddressLine2" id="" placeholder="AddressLine 2">
             </div>
             <!-- <div class="col-sm-2"></div> -->
           </div>
@@ -224,16 +224,16 @@
             <!-- <div style="width: 110px;"></div> -->
 
             <div class="col-sm-2 ml-1 form-group">
-              <input ngModel type="text" class="form-control" maxlength="20" name="T_City" id="" placeholder="City">
+              <input ngModel type="search" class="form-control" maxlength="20" name="T_City" id="" placeholder="City">
             </div>
             <div class="col-sm-2 form-group">
-              <input ngModel type="text" class="form-control" maxlength="20" name="T_State" id="" placeholder="State">
+              <input ngModel type="search" class="form-control" maxlength="20" name="T_State" id="" placeholder="State">
             </div>
             <div class="col-sm-2 form-group">
-              <input ngModel type="text" class="form-control" maxlength="10" name="T_Pincode" id="" placeholder="Pincode">
+              <input ngModel type="search" class="form-control" maxlength="10" name="T_Pincode" id="" placeholder="Pincode">
             </div>
             <div class="col-sm-3 form-group">
-              <input ngModel type="text" class="form-control" maxlength="256" name="T_Landmark" id="" placeholder="Landmark">
+              <input ngModel type="search" class="form-control" maxlength="256" name="T_Landmark" id="" placeholder="Landmark">
             </div>
             <!-- <div class="col-sm-2"></div> -->
 
