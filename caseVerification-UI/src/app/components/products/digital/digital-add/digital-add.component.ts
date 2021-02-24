@@ -10,7 +10,7 @@ import { CasedetailsService } from './../../../../services/casedetails.service';
 import {JwPaginationModule} from 'jw-angular-pagination'
 import {NgbModal, ModalDismissReasons, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { Data } from '@angular/router';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 
 

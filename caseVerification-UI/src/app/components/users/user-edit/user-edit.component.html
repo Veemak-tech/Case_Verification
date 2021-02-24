@@ -1,4 +1,4 @@
-<form [formGroup]="EditForm" (ngSubmit)="update( )" novalidate>
+<form [formGroup]="EditForm"  novalidate>
 <div class="form-group row">
   <label for="validationCustom2" class="col-xl-3 col-md-4"><span>*</span>
       Name</label>
@@ -56,7 +56,7 @@
 
 
 
-  <div class="form-group row">
+  <!-- <div class="form-group row">
     <label for="validationCustom2" class="col-xl-3 col-md-4"><span>*</span>
         RoleID</label>
     <input class="form-control col-xl-8 col-md-7" id="validationCustom2"
@@ -68,7 +68,7 @@
     <input class="form-control col-xl-8 col-md-7" id="validationCustom2"
         type="text" formControlName="date" readonly required="">
   </div>
-
+ -->
   <div id="accordion">
     <div class="card" class="col-xl-3 col-md-4">
       <div class="card-header" id="headingOne">
@@ -94,6 +94,6 @@
 
 
   <div class="form-group row" style="margin-left: 50%;">
-  <input type="button" type="submit" class="btn btn-primary" value="update" > </div>
+  <input type="button" type="submit" class="btn btn-primary" (ngSubmit)="update( )" value="update" > </div>
 
 </form>
