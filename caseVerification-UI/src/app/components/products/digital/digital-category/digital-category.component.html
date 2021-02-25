@@ -50,10 +50,14 @@
 
             <div class="col-md-6 form-group row p-adjust-mob">
               <div class="col-sm-2"></div>
-              <label for="name" class="col-form-label col-sm-4 text-align">Agent Name:</label>
-              <div class="col-sm-6 p-adjust-mob">
+              <label for="name" class="col-form-label col-sm-4 text-align mr-3">Agent Name:</label>
+              <!-- <div class="col-sm-6 p-adjust-mob">
                 <input type="search" ngModel class="form-control" name="Name" maxlength="45" id="name" placeholder="Agent Name" required="" autocomplete="off">
-              </div>
+              </div> -->
+              <select class="form-select form-control btn btn-success btn-sm btn-height col-md-5 p-adjust-mob" id="assignto"  >
+                <option [(ngModel)]="item.title" class="form-control" name="name" *ngFor="let item of name" [value]="item.name">{{item.name}}</option>
+              </select>
+
             </div>
           </div>
 
@@ -195,7 +199,7 @@
               <div class="col-sm-1"></div>
               <label for="InsurerName" class="col-form-label col-sm-4 text-align">Email:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input ngModel type="search" class="form-control" maxlength="45" name="T_EmailID" id="" autocomplete="off">
+                <input ngModel type="search" class="form-control" maxlength="45" name="T_EmailID" id="" autocomplete="off" placeholder="Enter EmailID">
               </div>
             </div>
           </div>

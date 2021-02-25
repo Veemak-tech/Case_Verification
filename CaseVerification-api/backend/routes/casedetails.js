@@ -19,7 +19,7 @@ router.put('/', casedetailsController.putCasedetails);
 router.post(
   '/',
   [
-     auth,
+     
     
     body('CaseID').trim().not().isEmpty(),
     body('Name').trim().not().isEmpty(),

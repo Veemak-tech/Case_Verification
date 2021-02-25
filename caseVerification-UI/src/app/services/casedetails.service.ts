@@ -44,7 +44,7 @@ export class CasedetailsService {
         `${environment.apiUrl}`,
         {
           CaseID: formData.CaseID,
-          Name: formData.Name,
+          name: formData.name,
           Description: formData.Description,
           InsurerVerificationNotes: formData.InsurerVerificationNotes,
           T_VerificationNotes: formData.T_VerificationNotes,

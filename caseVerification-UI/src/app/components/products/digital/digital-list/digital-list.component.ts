@@ -85,7 +85,7 @@ export class DigitalListComponent implements OnInit {
     if(ID === 0) {
       this.Casedetails = {
         CaseID: null,
-        Name: null,
+        name: null,
         Description: null,
         InsurerVerificationNotes: null,
         T_VerificationNotes: null,
