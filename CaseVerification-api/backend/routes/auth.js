@@ -31,9 +31,10 @@ router.post(
 router.post('/admin',authController.Adminlogin);
 router.post('/login',authController.login);
 // debugger
-router.get('/',auth, authController.fetchAll);
+router.get('/', authController.fetchAll);
 router.get('/roleid/:RoleID',authController.fetchbyname)
-router.put('/',auth,authController.Update );
+router.put('/',authController.Update );
+router.put('/password', authController.updatepassword);
 // debugger;
 router.get('/:id', authController.fetchbyId)
 
