@@ -101,11 +101,12 @@ exports.fetchById = async (req, res, next) => {
 
 // case details
 exports.postcasedetails = async (req, res, next) => {
+  debugger
   const errors = validationResult(req);
 
   // if (!errors.isEmpty()) return;
   const CaseID = req.body.CaseID;
-  const Name = req.body.Name;
+  const Name = req.body.name;
   const Description = req.body.Description;
   const InsurerVerificationNotes = req.body.InsurerVerificationNotes;
   const T_VerificationNotes = req.body.T_VerificationNotes;

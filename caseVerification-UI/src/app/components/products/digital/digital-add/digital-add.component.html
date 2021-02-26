@@ -8,7 +8,7 @@
 
     <div class="col-sm-3">
       <select class="form-select btn btn-outline-info btn-sm btn-height" id="assignto" onchange="selectID($event)" >
-        <option  *ngFor="let item of name" value="{{item.id}}" >{{item.name}}</option>
+        <option name="name" *ngFor="let item of name" value="{{item.id}}" >{{item.name}}</option>
       </select>
       <button class="btn btn-outline-primary btn-sm ml-1" type="button"  >
         <i class="fas fa-user-plus"></i>

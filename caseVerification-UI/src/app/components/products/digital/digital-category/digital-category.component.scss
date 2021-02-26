@@ -11,7 +11,7 @@
   padding: .25em !important;
   margin-left: .1em;
   margin-right: .1em;
-  color: white !important;
+  color: black !important;
   font-size: x-small;
 }
 
@@ -36,7 +36,10 @@
 
   .p-adjust-mob{
     padding-right: 0 !important;
+    background-color: blue;
   }
+
+
 
   .case-textarea{
     margin-left: 1.9rem !important;

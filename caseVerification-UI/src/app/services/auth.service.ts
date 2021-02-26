@@ -42,7 +42,7 @@ export class AuthService {
   }
 
   getName(){
-    debugger
+    // debugger
     return this.http.get(`${environment.getname}`);
   }
 

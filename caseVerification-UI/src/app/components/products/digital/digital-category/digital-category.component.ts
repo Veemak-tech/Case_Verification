@@ -1,11 +1,11 @@
-import { Router } from '@angular/router';
+import { Router, Data } from '@angular/router';
 import { CasedetailsService } from './../../../../services/casedetails.service';
 import { AddressService } from './../../../../services/address.service';
 import { address } from './../../../../models/address';
-import { casedetails} from './../../../../models/casedetails';
+import { casedetails } from './../../../../models/casedetails';
 import { first } from 'rxjs/operators';
-import { FormControl, FormGroup,Validators,NgForm } from '@angular/forms';
-import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
+import { FormControl, FormGroup, Validators, NgForm } from '@angular/forms';
+import { Component, OnInit, ViewChild, Output, EventEmitter, Input } from '@angular/core';
 import { digitalCategoryDB } from 'src/app/shared/tables/digital-category';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
@@ -20,8 +20,10 @@ import { faUserCheck } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./digital-category.component.scss'],
 })
 export class DigitalCategoryComponent implements OnInit {
-  @ViewChild ("userPost") userPost: NgForm;
+  @ViewChild("userPost") userPost: NgForm;
   @Output() create: EventEmitter<any> = new EventEmitter();
+  @Input() agents;
+
 
   form: FormGroup;
   faUserCheck = faUserCheck;
@@ -35,40 +37,41 @@ export class DigitalCategoryComponent implements OnInit {
     private modalService: NgbModal,
     private http: HttpClient,
     private authService: AuthService,
-    private router : Router
+    private router: Router
   ) {
     this.digital_categories = digitalCategoryDB.digital_category;
+
+    this.authService.getName().subscribe((data) => {
+      console.warn(data);
+      console.log('user is working');
+      this.agents = data;
+    });
   }
+
 
   public closeResult: string;
   public digital_categories = [];
 
 
 
+//-------------------------------------------Create case details----------------------------------
 
-onSubmit(formData): void {
-  debugger;
+  onSubmit(formData): void {
+    // debugger;
+    this.CasedetailsService.createPost(formData, this.authService.userId).pipe(first()).subscribe(() => { this.create.emit(null); });
+    swal({
+      icon: "success",
+      title: "Submitted Successfully",
+      buttons: [false],
+      timer: 1500,
+    });
+    // debugger;
+    this.router.navigate(['/products/digital/digital-product-list']);
+    // this.form.reset();
+    // this.userPost.resetForm();
+  }
 
 
-this.CasedetailsService
-
-  .createPost(formData, this.authService.userId)
-  .pipe(first())
-  .subscribe(() => {
-    this.create.emit(null);
-  });
-
-  swal( {
-    icon:"success",
-    title:"Submitted Successfully",
-    buttons: [false],
-    timer: 1500,
-  });
-  // debugger;
-  this.router.navigate(['/products/digital/digital-product-list']);
-  // this.form.reset();
-  // this.userPost.resetForm();
-}
 
   // -----------------------------------------pre default codes...(dont change below )-----------------------------------------------------
 
@@ -120,5 +123,5 @@ this.CasedetailsService
     },
   };
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

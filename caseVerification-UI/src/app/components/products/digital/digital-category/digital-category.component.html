@@ -50,10 +50,14 @@
 
             <div class="col-md-6 form-group row p-adjust-mob">
               <div class="col-sm-2"></div>
-              <label for="name" class="col-form-label col-sm-4 text-align">Agent Name:</label>
-              <div class="col-sm-6 p-adjust-mob">
-                <input type="search" ngModel class="form-control" name="Name" maxlength="45" id="name" placeholder="Agent Name" required="">
-              </div>
+              <label for="name" class="col-form-label col-sm-4 text-align mr-3">Agent Name:</label>
+              <!-- <div class="col-sm-6 p-adjust-mob">
+                <input type="search" ngModel class="form-control" name="Name" maxlength="45" id="name" placeholder="Agent Name" required="" autocomplete="off">
+              </div> -->
+              <select class="form-select form-control custom-select btn-sm btn-height col-md-5 p-adjust-mob" [(ngModel)]="agents" id="assignto" name="name">
+                <option  class="form-control" *ngFor="let item of agents" [value]="item.name">{{item.name}}</option>
+              </select>
+
             </div>
           </div>
 
@@ -65,7 +69,7 @@
           <div class=" row" >
             <div class="col-sm-1 ml-4"></div>
             <div class="col-sm-1 ml-3"></div>
-            <textarea ngModel class="form-control col-sm-8 ml-2 case-textarea" maxlength="256" name="Description" rows="3" placeholder="Write Your Notes"></textarea>
+            <textarea ngModel class="form-control col-sm-8 ml-2 case-textarea" maxlength="256" name="Description" rows="3" placeholder="Write Your Notes" autocomplete="off"></textarea>
             <div class="col-sm-2"></div>
           </div>
 
@@ -76,7 +80,7 @@
               <div class="col-sm-1"></div>
               <label for="InsurerName" class="col-form-label col-sm-4 text-align">Insurer Name:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input type="search" ngModel class="form-control" maxlength="45" placeholder="Enter Insurer Name" name="InsurerName" id="">
+                <input type="search" ngModel class="form-control" maxlength="45" placeholder="Enter Insurer Name" name="InsurerName" id="" autocomplete="off">
               </div>
             </div>
 
@@ -84,7 +88,7 @@
               <div class="col-sm-2"></div>
               <label for="PhoneNumber" class="col-form-label col-sm-4 text-align">Phone Number:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input type="search" ngModel class="form-control" maxlength="20" placeholder="Phone Number" name="PhoneNumber" id="">
+                <input type="search" ngModel class="form-control" maxlength="20" placeholder="Phone Number" name="PhoneNumber" id="" autocomplete="off">
               </div>
 
             </div>
@@ -96,7 +100,7 @@
               <div class="col-sm-1"></div>
               <label for="InsurerName" class="col-form-label col-sm-4 text-align">Email:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input type="email" ngModel class="form-control" maxlength="45" placeholder="Email ID" name="EmailID" id="">
+                <input type="search" ngModel class="form-control" maxlength="45" placeholder="Email ID" name="EmailID" id="" autocomplete="off">
               </div>
             </div>
           </div>
@@ -112,10 +116,10 @@
             <div class="col-sm-1 ml-4"></div>
             <!-- </div> -->
             <div class="col-sm-4 form-group">
-              <input type="search" ngModel class="form-control" maxlength="256" placeholder="AddressLine 1" name="AddressLine1" id="" placeholder="AddressLine 1">
+              <input type="search" ngModel class="form-control" maxlength="256" placeholder="AddressLine 1" name="AddressLine1" id="" placeholder="AddressLine 1" autocomplete="off">
             </div>
             <div class="col-sm-5 form-group">
-              <input type="search" ngModel class="form-control" maxlength="256" placeholder="AddressLine 2" name="AddressLine2" id="" placeholder="AddressLine 2">
+              <input type="search" ngModel class="form-control" maxlength="256" placeholder="AddressLine 2" name="AddressLine2" id="" placeholder="AddressLine 2" autocomplete="off">
             </div>
             <!-- <div class="col-sm-2"></div> -->
           </div>
@@ -125,16 +129,16 @@
             <!-- <div style="width: 110px;"></div> -->
 
             <div class="col-sm-2 ml-1 form-group">
-              <input type="search" ngModel class="form-control" maxlength="20" name="City" id="" placeholder="City">
+              <input type="search" ngModel class="form-control" maxlength="20" name="City" id="" placeholder="City" autocomplete="off">
             </div>
             <div class="col-sm-2 form-group">
-              <input type="search" ngModel class="form-control" maxlength="20" name="State" id="" placeholder="State">
+              <input type="search" ngModel class="form-control" maxlength="20" name="State" id="" placeholder="State" autocomplete="off">
             </div>
             <div class="col-sm-2 form-group">
-              <input type="search" ngModel class="form-control" maxlength="10" name="Pincode" id="" placeholder="Pincode">
+              <input type="search" ngModel class="form-control" maxlength="10" name="Pincode" id="" placeholder="Pincode" autocomplete="off">
             </div>
             <div class="col-sm-3 form-group">
-              <input type="search" ngModel class="form-control" maxlength="256" name="Landmark" id="" placeholder="Landmark">
+              <input type="search" ngModel class="form-control" maxlength="256" name="Landmark" id="" placeholder="Landmark" autocomplete="off">
             </div>
             <!-- <div class="col-sm-2"></div> -->
 
@@ -163,7 +167,7 @@
           <div class=" row">
             <div class="col-sm-2 ml-5"></div>
             <!-- <div style="width: 135px;"></div> -->
-            <textarea ngModel class="form-control col-sm-8 case-textarea" maxlength="256" name="InsurerVerificationNotes" rows="6" placeholder="Insurer Questions"></textarea>
+            <textarea ngModel class="form-control col-sm-8 case-textarea" maxlength="256" name="InsurerVerificationNotes" rows="6" placeholder="Insurer Questions" autocomplete="off"></textarea>
             <div class="col-sm-1"></div>
           </div>
 
@@ -175,7 +179,7 @@
               <!-- <div class="col-sm-1"></div> -->
               <label for="InsurerName" class="col-form-label col-sm-5 text-align">Thirdparty Name:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input ngModel type="search" class="form-control" maxlength="45" placeholder="Thirdparty Name" name="ThirdpartyName" id="">
+                <input ngModel type="search" class="form-control" maxlength="45" placeholder="Thirdparty Name" name="ThirdpartyName" id="" autocomplete="off">
               </div>
             </div>
 
@@ -183,7 +187,7 @@
               <div class="col-sm-2"></div>
               <label for="PhoneNumber" class="col-form-label col-sm-4 text-align">Phone Number:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input ngModel type="search" class="form-control" maxlength="20" placeholder="Phone Number" name="T_PhoneNumber" id="">
+                <input ngModel type="search" class="form-control" maxlength="20" placeholder="Phone Number" name="T_PhoneNumber" id="" autocomplete="off">
               </div>
 
             </div>
@@ -195,7 +199,7 @@
               <div class="col-sm-1"></div>
               <label for="InsurerName" class="col-form-label col-sm-4 text-align">Email:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input ngModel type="email" class="form-control" maxlength="45" name="T_EmailID" id="">
+                <input ngModel type="search" class="form-control" maxlength="45" name="T_EmailID" id="" autocomplete="off" placeholder="Enter EmailID">
               </div>
             </div>
           </div>
@@ -211,10 +215,10 @@
             <!-- <div style="width: 110px;">
                           </div> -->
             <div class="col-sm-4 form-group">
-              <input ngModel type="search" class="form-control" maxlength="256" name="T_AddressLine1" id="" placeholder="AddressLine 1">
+              <input ngModel type="search" class="form-control" maxlength="256" name="T_AddressLine1" id="" placeholder="AddressLine 1" autocomplete="off">
             </div>
             <div class="col-sm-5 form-group">
-              <input ngModel type="search" class="form-control" maxlength="256" name="T_AddressLine2" id="" placeholder="AddressLine 2">
+              <input ngModel type="search" class="form-control" maxlength="256" name="T_AddressLine2" id="" placeholder="AddressLine 2" autocomplete="off">
             </div>
             <!-- <div class="col-sm-2"></div> -->
           </div>
@@ -224,16 +228,16 @@
             <!-- <div style="width: 110px;"></div> -->
 
             <div class="col-sm-2 ml-1 form-group">
-              <input ngModel type="search" class="form-control" maxlength="20" name="T_City" id="" placeholder="City">
+              <input ngModel type="search" class="form-control" maxlength="20" name="T_City" id="" placeholder="City" autocomplete="off">
             </div>
             <div class="col-sm-2 form-group">
-              <input ngModel type="search" class="form-control" maxlength="20" name="T_State" id="" placeholder="State">
+              <input ngModel type="search" class="form-control" maxlength="20" name="T_State" id="" placeholder="State" autocomplete="off">
             </div>
             <div class="col-sm-2 form-group">
-              <input ngModel type="search" class="form-control" maxlength="10" name="T_Pincode" id="" placeholder="Pincode">
+              <input ngModel type="search" class="form-control" maxlength="10" name="T_Pincode" id="" placeholder="Pincode" autocomplete="off">
             </div>
             <div class="col-sm-3 form-group">
-              <input ngModel type="search" class="form-control" maxlength="256" name="T_Landmark" id="" placeholder="Landmark">
+              <input ngModel type="search" class="form-control" maxlength="256" name="T_Landmark" id="" placeholder="Landmark" autocomplete="off">
             </div>
             <!-- <div class="col-sm-2"></div> -->
 
@@ -256,7 +260,7 @@
           <div class=" row">
             <div class="col-sm-2 ml-5"></div>
             <!-- <div style="width: 135px;"></div> -->
-            <textarea ngModel class="form-control col-sm-8 case-textarea" maxlength="256" name="T_VerificationNotes" rows="6" placeholder="Thirdparty Questions"></textarea>
+            <textarea ngModel class="form-control col-sm-8 case-textarea" maxlength="256" name="T_VerificationNotes" rows="6" placeholder="Thirdparty Questions" autocomplete="off"></textarea>
             <div class="col-sm-1"></div>
           </div>
           <br>

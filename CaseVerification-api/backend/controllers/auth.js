@@ -71,7 +71,7 @@ exports.fetchbyId = async (req, res, next) => {
 };
 exports.fetchbyname = async (req, res, next) => {
   try {
-     debugger
+     
     console.log(" fetch is works"+req.params.RoleID);
     const [allname] = await User.fetchbyname(req.params.RoleID);
     console.log(allname);
@@ -199,6 +199,8 @@ exports.login = async (req, res, next) => {
       const storedUser = user[0][0];
   
       const isEqual = await bcrypt.compare(password, storedUser.password);
+      console.log(password,storedUser.password);
+
   
       if (!isEqual) {
         const error = new Error('Wrong password!');
