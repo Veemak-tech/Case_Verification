@@ -22,7 +22,7 @@ import { faUserCheck } from '@fortawesome/free-solid-svg-icons';
 export class DigitalCategoryComponent implements OnInit {
   @ViewChild("userPost") userPost: NgForm;
   @Output() create: EventEmitter<any> = new EventEmitter();
-  @Input() name;
+  @Input() agents;
 
 
   form: FormGroup;
@@ -44,7 +44,7 @@ export class DigitalCategoryComponent implements OnInit {
     this.authService.getName().subscribe((data) => {
       console.warn(data);
       console.log('user is working');
-      this.name = data;
+      this.agents = data;
     });
   }
 
@@ -57,7 +57,7 @@ export class DigitalCategoryComponent implements OnInit {
 //-------------------------------------------Create case details----------------------------------
 
   onSubmit(formData): void {
-    debugger;
+    // debugger;
     this.CasedetailsService.createPost(formData, this.authService.userId).pipe(first()).subscribe(() => { this.create.emit(null); });
     swal({
       icon: "success",

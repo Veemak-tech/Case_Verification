@@ -54,8 +54,8 @@
               <!-- <div class="col-sm-6 p-adjust-mob">
                 <input type="search" ngModel class="form-control" name="Name" maxlength="45" id="name" placeholder="Agent Name" required="" autocomplete="off">
               </div> -->
-              <select class="form-select form-control btn btn-success btn-sm btn-height col-md-5 p-adjust-mob" id="assignto"  >
-                <option [(ngModel)]="item.title" class="form-control" name="name" *ngFor="let item of name" [value]="item.name">{{item.name}}</option>
+              <select class="form-select form-control custom-select btn-sm btn-height col-md-5 p-adjust-mob" [(ngModel)]="agents" id="assignto" name="name">
+                <option  class="form-control" *ngFor="let item of agents" [value]="item.name">{{item.name}}</option>
               </select>
 
             </div>

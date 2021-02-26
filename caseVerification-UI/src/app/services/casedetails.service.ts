@@ -53,7 +53,6 @@ export class CasedetailsService {
           CreatedBy: formData.CreatedBy,
           LastModifiedBy: userid,
 
-
           insAddress: {
             AddressLine1: formData.AddressLine1,
             AddressLine2: formData.AddressLine2,
