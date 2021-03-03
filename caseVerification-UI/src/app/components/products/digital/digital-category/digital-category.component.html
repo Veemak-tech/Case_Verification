@@ -72,6 +72,12 @@
             <textarea ngModel class="form-control col-sm-8 ml-2 case-textarea" maxlength="256" name="Description" rows="3" placeholder="Write Your Notes" autocomplete="off"></textarea>
             <div class="col-sm-2"></div>
           </div>
+          <div class="form-group row">
+            <label for="img" class=" col-sm-3 col-form-label" style="text-align: right;">Image file</label>
+            <div class="col-sm-9">
+              <input ngModel type="file" id="img" name="file" accept="image/*" (change)="onSelectFile($event)">
+            </div>
+            </div>
 
           <hr>
           <h3 class="subhead2">Insurer Details</h3>

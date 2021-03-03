@@ -23,6 +23,8 @@ const insurerdetailsRoutes = require('./routes/insurerdetails');
 const casecreationRoutes = require('./routes/casecreation')
 
 const errorController = require('./controllers/error');
+
+const webRoutes = require('./routes/web');
 // const casedetails = require('./models/casedetails');
 // const thirdpartydetails = require('./models/thirdpartydetails');
 
@@ -65,6 +67,8 @@ app.use((req, res, next) => {
   app.use('/casedetails', casedetailsRoutes);
 
  app.use('/insurerdetails', insurerdetailsRoutes);
+
+ app.use('/web', webRoutes);
 
 //  app.use('/thirdpartydetails', thirdpartydetailsRoutes);
 

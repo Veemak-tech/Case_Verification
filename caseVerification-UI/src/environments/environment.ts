@@ -4,13 +4,13 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://ec2-52-86-55-47.compute-1.amazonaws.com/api/casedetails',
+  apiUrl: 'http://localhost:3000/casedetails',
  // apigetid:'http://localhost:3000/auth/:id',
-  apiauth:'http://ec2-52-86-55-47.compute-1.amazonaws.com/api/auth',
-  apiauthsignup: 'http://ec2-52-86-55-47.compute-1.amazonaws.com/api/auth/signup',
-  apiauthlogin: 'http://ec2-52-86-55-47.compute-1.amazonaws.com/api/auth/admin',
-  getname:'http://ec2-52-86-55-47.compute-1.amazonaws.com/api/auth/roleid/RoleID:2',
-  apiauthpassword:'http://ec2-52-86-55-47.compute-1.amazonaws.com/api/auth/password',
+  apiauth:'http://localhost:3000/auth',
+  apiauthsignup: 'http://localhost:3000/auth/signup',
+  apiauthlogin: 'http://localhost:3000/auth/admin',
+  getname:'http://localhost:3000/auth/roleid/RoleID:2',
+  apiauthpassword:'http://localhost:3000/auth/password',
 
 };
 

@@ -38,6 +38,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss",
               "src/assets/scss/style.scss",
               "./node_modules/font-awesome/scss/font-awesome.scss",
@@ -55,8 +56,6 @@
               "node_modules/animate.css/animate.css",
               "node_modules/angular-bootstrap-md/scss/bootstrap/bootstrap.scss",
               "node_modules/angular-bootstrap-md/scss/mdb-free.scss"
-
-
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.slim.min.js",
@@ -128,6 +127,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []

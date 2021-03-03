@@ -7,7 +7,7 @@ import { first } from 'rxjs/operators';
 import { FormControl, FormGroup, Validators, NgForm } from '@angular/forms';
 import { Component, OnInit, ViewChild, Output, EventEmitter, Input } from '@angular/core';
 import { digitalCategoryDB } from 'src/app/shared/tables/digital-category';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/services/auth.service';
 import swal from 'sweetalert';
@@ -30,6 +30,9 @@ export class DigitalCategoryComponent implements OnInit {
 
 
   isOpen = false;
+  files: [];
+  name: []
+  url: string | ArrayBuffer = '';
 
   constructor(
     private AddressService: AddressService,
@@ -39,6 +42,8 @@ export class DigitalCategoryComponent implements OnInit {
     private authService: AuthService,
     private router: Router
   ) {
+    this.files = [];
+
     this.digital_categories = digitalCategoryDB.digital_category;
 
     this.authService.getName().subscribe((data) => {
@@ -54,10 +59,16 @@ export class DigitalCategoryComponent implements OnInit {
 
 
 
-//-------------------------------------------Create case details----------------------------------
+//-------------------------------------------Create Case----------------------------------
+
+
 
   onSubmit(formData): void {
-    // debugger;
+     debugger;
+     for (const fl of this.files) {
+       formData.append('image', fl,fl);
+       console.log(File.name, fl)
+  }
     this.CasedetailsService.createPost(formData, this.authService.userId).pipe(first()).subscribe(() => { this.create.emit(null); });
     swal({
       icon: "success",
@@ -69,6 +80,18 @@ export class DigitalCategoryComponent implements OnInit {
     this.router.navigate(['/products/digital/digital-product-list']);
     // this.form.reset();
     // this.userPost.resetForm();
+  }
+
+  onSelectFile(event) {
+    debugger
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      this.files = event.target.files;
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+      reader.onload = (event) => { // called once readAsDataURL is completed
+        this.url = event.target.result;
+      }
+    }
   }
 
 
