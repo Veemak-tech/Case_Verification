@@ -37,7 +37,8 @@ export class CasedetailsService {
     private router:Router
   ) {}
 
-  createPost(formData, userId: Pick<User, 'id'>): Observable<casedetails> {
+  createPost(formData,fd,userId: Pick<User, 'id'>): Observable<casedetails> {
+    debugger
      let userid = localStorage.getItem("id");
     return this.http
       .post<casedetails>(
@@ -52,6 +53,8 @@ export class CasedetailsService {
           DueDate: formData.DueDate,
           CreatedBy: formData.CreatedBy,
           LastModifiedBy: userid,
+          filename: formData.file,
+          file: formData.filename,
 
           insAddress: {
             AddressLine1: formData.AddressLine1,

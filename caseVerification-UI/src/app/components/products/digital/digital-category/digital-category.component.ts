@@ -34,6 +34,8 @@ export class DigitalCategoryComponent implements OnInit {
   name: []
   url: string | ArrayBuffer = '';
 
+  selectedFile : File = null;
+
   constructor(
     private AddressService: AddressService,
     private CasedetailsService: CasedetailsService,
@@ -64,12 +66,21 @@ export class DigitalCategoryComponent implements OnInit {
 
 
   onSubmit(formData): void {
-     debugger;
-     for (const fl of this.files) {
-       formData.append('image', fl,fl);
-       console.log(File.name, fl)
-  }
-    this.CasedetailsService.createPost(formData, this.authService.userId).pipe(first()).subscribe(() => { this.create.emit(null); });
+debugger
+    const fd = new FormData();
+    fd.append('image',this.selectedFile, this.selectedFile.name)
+    // this.http.post('http://localhost:3000/web/upload',fd)
+    // .subscribe(res =>{
+    //   console.log(res);
+    // });
+
+// ashok anna code
+  //    debugger;
+  //    for (const fl of this.files) {
+  //      formData.append('image', fl,fl);
+  //      console.log(File.name, fl)
+  // }
+    this.CasedetailsService.createPost(formData,this.selectedFile.name, this.authService.userId).pipe(first()).subscribe(() => { this.create.emit(null); });
     swal({
       icon: "success",
       title: "Submitted Successfully",
@@ -78,20 +89,32 @@ export class DigitalCategoryComponent implements OnInit {
     });
     // debugger;
     this.router.navigate(['/products/digital/digital-product-list']);
-    // this.form.reset();
-    // this.userPost.resetForm();
+
   }
 
   onSelectFile(event) {
+    console.log(event)
     debugger
-    if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
-      this.files = event.target.files;
-      reader.readAsDataURL(event.target.files[0]); // read file as data url
-      reader.onload = (event) => { // called once readAsDataURL is completed
-        this.url = event.target.result;
-      }
-    }
+    // if (event.target.files && event.target.files[0]) {
+    //   var reader = new FileReader();
+    //   this.files = event.target.files;
+    //   reader.readAsDataURL(event.target.files[0]); // read file as data url
+    //   reader.onload = (event) => { // called once readAsDataURL is completed
+    //     this.url = event.target.result;
+    //   }
+    // }
+
+    this.selectedFile = <File>  event.target.files[0];
+  }
+
+  onUpload(){
+    debugger
+    // const fd = new FormData();
+    // fd.append('image',this.selectedFile, this.selectedFile.name)
+    // this.http.post('http://localhost:3000/web/upload',fd)
+    // .subscribe(res =>{
+    //   console.log(res);
+    // });
   }
 
 

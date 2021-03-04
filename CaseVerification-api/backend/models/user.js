@@ -20,7 +20,7 @@ static fetchbyId(id){
 
 }
 static fetchbyname(RoleID){
-debugger
+
   return db.execute( 'SELECT name, id FROM users  WHERE  RoleID=2 order by name ASC',[RoleID]);
 }
 
