@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { casedetails } from './../../../../models/casedetails';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
@@ -7,6 +7,7 @@ import { digitalListDB } from 'src/app/shared/tables/digital-list';
 import { HttpClient } from '@angular/common/http';
 import { allIcons } from 'ngx-bootstrap-icons';
 import { multicast } from 'rxjs/operators';
+
 
 
 @Component({
@@ -26,6 +27,7 @@ export class CaseAssignComponent implements OnInit {
   data: any;
   name: string;
   source: any;
+  @Input() Agentname;
 
   // Get data
   constructor(
@@ -40,7 +42,14 @@ export class CaseAssignComponent implements OnInit {
       console.warn(data1);
       this.caseList = data1;
     });
-    debugger;
+
+
+     // for get agent name
+     this.userName.getName().subscribe((data) => {
+      console.warn(data);
+      console.log('user is working');
+      this.Agentname = data;
+    });
 
 
 
