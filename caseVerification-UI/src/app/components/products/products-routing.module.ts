@@ -12,6 +12,7 @@ import { DigitalAddComponent } from './digital/digital-add/digital-add.component
 import { ProductDetailComponent } from './physical/product-detail/product-detail.component';
 import {CaseEditComponent} from './digital/case-edit/case-edit.component';
 import { AuthGuard } from 'src/app/services/auth-guard.service'
+import {CaseAssignComponent} from './digital/case-assign/case-assign.component'
 
 
 
@@ -112,6 +113,14 @@ const routes: Routes = [
         data:{
           title:"Case View",
           breadcrump: "Case View"
+        }
+      },
+      {
+        path: 'digital/case-assign',
+        component: CaseAssignComponent,
+        data:{
+          title:"Case Assign",
+          breadcrump: "Case Assign"
         }
       }
     ]
