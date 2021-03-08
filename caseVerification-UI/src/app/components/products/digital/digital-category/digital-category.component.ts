@@ -8,11 +8,30 @@ import { FormControl, FormGroup, Validators, NgForm } from '@angular/forms';
 import { Component, OnInit, ViewChild, Output, EventEmitter, Input } from '@angular/core';
 import { digitalCategoryDB } from 'src/app/shared/tables/digital-category';
 import { NgbModal, ModalDismissReasons, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 import { AuthService } from 'src/app/services/auth.service';
 import swal from 'sweetalert';
 import { faUserCheck } from '@fortawesome/free-solid-svg-icons';
+import { FileUploader, FileLikeObject } from 'ng2-file-upload';
+import { Observable } from 'rxjs';
 
+const URL = './src/assets/images';
+
+function readBase64(file): Promise<any> {
+  var reader  = new FileReader();
+  var future = new Promise((resolve, reject) => {
+    reader.addEventListener("load", function () {
+      resolve(reader.result);
+    }, false);
+
+    reader.addEventListener("error", function (event) {
+      reject(event);
+    }, false);
+
+    reader.readAsDataURL(file);
+  });
+  return future;
+}
 
 @Component({
   selector: 'app-digital-category',
@@ -20,6 +39,50 @@ import { faUserCheck } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./digital-category.component.scss'],
 })
 export class DigitalCategoryComponent implements OnInit {
+
+  selectedFiles: FileList;
+  currentFile: File;
+  progress = 0;
+  message = '';
+
+  fileInfos: Observable<any>;
+
+  ngOnInit(): void {
+    this.fileInfos = this.CasedetailsService.getFiles();
+  }
+
+  selectFile(event): void {
+    this.selectedFiles = event.target.files;
+  }
+
+  upload(): void {
+    this.progress = 0;
+
+    this.currentFile = this.selectedFiles.item(0);
+    this.CasedetailsService.upload(this.currentFile).subscribe(
+      event => {
+        if (event.type === HttpEventType.UploadProgress) {
+          this.progress = Math.round(100 * event.loaded / event.total);
+        } else if (event instanceof HttpResponse) {
+          this.message = event.body.message;
+          this.fileInfos = this.CasedetailsService.getFiles();
+        }
+      },
+      err => {
+        this.progress = 0;
+        this.message = 'Could not upload the file!';
+        this.currentFile = undefined;
+      });
+
+    this.selectedFiles = undefined;
+  }
+
+
+
+
+
+
+
   @ViewChild("userPost") userPost: NgForm;
   @Output() create: EventEmitter<any> = new EventEmitter();
   @Input() agents;
@@ -33,8 +96,6 @@ export class DigitalCategoryComponent implements OnInit {
   files: [];
   name: []
   url: string | ArrayBuffer = '';
-
-  selectedFile : File = null;
 
   constructor(
     private AddressService: AddressService,
@@ -66,21 +127,12 @@ export class DigitalCategoryComponent implements OnInit {
 
 
   onSubmit(formData): void {
-debugger
-    const fd = new FormData();
-    fd.append('image',this.selectedFile, this.selectedFile.name)
-    // this.http.post('http://localhost:3000/web/upload',fd)
-    // .subscribe(res =>{
-    //   console.log(res);
-    // });
-
-// ashok anna code
-  //    debugger;
-  //    for (const fl of this.files) {
-  //      formData.append('image', fl,fl);
-  //      console.log(File.name, fl)
-  // }
-    this.CasedetailsService.createPost(formData,this.selectedFile.name, this.authService.userId).pipe(first()).subscribe(() => { this.create.emit(null); });
+     debugger;
+     for (const fl of this.files) {
+       formData.append('image', fl,fl);
+       console.log(File.name, fl)
+  }
+    this.CasedetailsService.createPost(formData, this.authService.userId).pipe(first()).subscribe(() => { this.create.emit(null); });
     swal({
       icon: "success",
       title: "Submitted Successfully",
@@ -89,33 +141,21 @@ debugger
     });
     // debugger;
     this.router.navigate(['/products/digital/digital-product-list']);
-
+    // this.form.reset();
+    // this.userPost.resetForm();
   }
 
-  onSelectFile(event) {
-    console.log(event)
-    debugger
-    // if (event.target.files && event.target.files[0]) {
-    //   var reader = new FileReader();
-    //   this.files = event.target.files;
-    //   reader.readAsDataURL(event.target.files[0]); // read file as data url
-    //   reader.onload = (event) => { // called once readAsDataURL is completed
-    //     this.url = event.target.result;
-    //   }
-    // }
-
-    this.selectedFile = <File>  event.target.files[0];
-  }
-
-  onUpload(){
-    debugger
-    // const fd = new FormData();
-    // fd.append('image',this.selectedFile, this.selectedFile.name)
-    // this.http.post('http://localhost:3000/web/upload',fd)
-    // .subscribe(res =>{
-    //   console.log(res);
-    // });
-  }
+  // onSelectFile(event) {
+  //   debugger
+  //   if (event.target.files && event.target.files[0]) {
+  //     var reader = new FileReader();
+  //     this.files = event.target.files;
+  //     reader.readAsDataURL(event.target.files[0]); // read file as data url
+  //     reader.onload = (event) => { // called once readAsDataURL is completed
+  //       this.url = event.target.result;
+  //     }
+  //   }
+  // }
 
 
 
@@ -169,5 +209,5 @@ debugger
     },
   };
 
-  ngOnInit() { }
+
 }

@@ -11,6 +11,7 @@ export const environment = {
   apiauthlogin: 'http://localhost:3000/auth/admin',
   getname:'http://localhost:3000/auth/roleid/RoleID:2',
   apiauthpassword:'http://localhost:3000/auth/password',
+  apicaasefileupload: 'http://localhost:3000'
 
 };
 

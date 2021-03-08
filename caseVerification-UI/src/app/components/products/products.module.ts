@@ -28,6 +28,8 @@ import { CaseEditComponent } from './digital/case-edit/case-edit.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { JwPaginationModule } from 'jw-angular-pagination';
 import { CaseViewComponent } from './digital/case-view/case-view.component';
+import { CaseAssignComponent } from './digital/case-assign/case-assign.component';
+import {FileUploadModule} from 'ng2-file-upload';
 
 
 
@@ -39,7 +41,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
 
 
 @NgModule({
-  declarations: [CategoryComponent, SubCategoryComponent, ProductListComponent, AddProductComponent, DigitalCategoryComponent, DigitalSubCategoryComponent, DigitalListComponent, DigitalAddComponent, ProductDetailComponent, UserComponent, CaseEditComponent, CaseViewComponent],
+  declarations: [CategoryComponent, SubCategoryComponent, ProductListComponent, AddProductComponent, DigitalCategoryComponent, DigitalSubCategoryComponent, DigitalListComponent, DigitalAddComponent, ProductDetailComponent, UserComponent, CaseEditComponent, CaseViewComponent, CaseAssignComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -52,6 +54,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     GalleryModule.forRoot(),
     NgxPaginationModule,
     JwPaginationModule,
+    FileUploadModule
 
   ],
   providers: [

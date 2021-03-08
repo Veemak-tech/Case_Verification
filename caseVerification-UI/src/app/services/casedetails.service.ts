@@ -7,7 +7,7 @@ import { DigitalListComponent } from '../components/products/digital/digital-lis
 import { User } from './../models/User';
 import { catchError, first } from 'rxjs/operators';
 import {Observable, BehaviorSubject, throwError } from 'rxjs';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders,HttpRequest, HttpEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 
@@ -21,6 +21,36 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class CasedetailsService {
+
+
+  //private baseUrl = 'http://localhost:3000/upload';
+
+
+
+  upload(file: File): Observable<HttpEvent<any>> {
+    debugger
+    const formData: FormData = new FormData();
+
+    formData.append('file', file);
+
+    const req = new HttpRequest('POST', `${environment.apicaasefileupload}/upload`, formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+
+    return this.http.request(req);
+  }
+
+  getFiles(): Observable<any> {
+    return this.http.get(`${environment.apicaasefileupload}/files`);
+  }
+
+
+
+
+
+
+
 
 
 
@@ -37,7 +67,7 @@ export class CasedetailsService {
     private router:Router
   ) {}
 
-  createPost(formData,fd,userId: Pick<User, 'id'>): Observable<casedetails> {
+  createPost(formData, userId: Pick<User, 'id'>): Observable<casedetails> {
     debugger
      let userid = localStorage.getItem("id");
     return this.http
@@ -53,8 +83,6 @@ export class CasedetailsService {
           DueDate: formData.DueDate,
           CreatedBy: formData.CreatedBy,
           LastModifiedBy: userid,
-          filename: formData.file,
-          file: formData.filename,
 
           insAddress: {
             AddressLine1: formData.AddressLine1,
