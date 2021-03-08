@@ -103,6 +103,12 @@ export class CaseAssignComponent implements OnInit {
       this.Casedetails = this.CasedetailsService.getCasedetails(ID);
     }
   }
+  //select event
+  public onUserRowSelect(event) {
+    debugger;
+    var selectedRows = event.selected;
+    console.log(selectedRows);
+  }
 
   // custom action
   public onCustomAction(event) {

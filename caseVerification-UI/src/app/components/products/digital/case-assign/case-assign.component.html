@@ -100,7 +100,7 @@
           <div id="batchDelete" class="custom-datatable vendor-list">
               <div class="table-responsive ">
 
-                      <ng2-smart-table  [settings]="caselistSettings" [source]="pagesize" (custom)="onCustomAction($event)" ></ng2-smart-table>
+                      <ng2-smart-table  [settings]="caselistSettings" [source]="pagesize" (custom)="onCustomAction($event)" (userRowSelect)="onUserRowSelect($event)" ></ng2-smart-table>
               </div>
           </div>
       </div>

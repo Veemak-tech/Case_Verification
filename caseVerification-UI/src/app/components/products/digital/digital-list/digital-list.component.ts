@@ -151,7 +151,7 @@ export class DigitalListComponent implements OnInit {
     this.router.navigate(['/products/digital/case-edit'], navigationExtras);
     this.sendValues.emit(rowdata.CaseID);
   }
-
+  
   public caselistSettings = {
     selectMode: 'multi',
 
@@ -162,6 +162,7 @@ export class DigitalListComponent implements OnInit {
       edit: false,
       delete: false,
       rowSelect: true,
+      select:true,
       custom: [
 
         {
