@@ -5,7 +5,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { CKEditorModule } from 'ngx-ckeditor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import {  FileUploadModule} from 'ng2-file-upload';
 import { ProductsRoutingModule } from './products-routing.module';
 import { CategoryComponent } from './physical/category/category.component';
 import { SubCategoryComponent } from './physical/sub-category/sub-category.component';

@@ -38,10 +38,11 @@ export class DigitalListComponent implements OnInit {
 
   ) {
     this.user.getData().subscribe((data1) => {
+      debugger
       console.warn(data1);
       this.caseList = data1;
     });
-    debugger;
+   
 
 
 
@@ -182,7 +183,7 @@ export class DigitalListComponent implements OnInit {
       },
       InsurerName: {
         title: 'Insurer Name',
-        width: '18%'
+        //width: '18%'
       },
       Name: {
         title: 'Agent Name',
