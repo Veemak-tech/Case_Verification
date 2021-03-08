@@ -113,23 +113,23 @@ exports.Update = async (req, res, next) => {
    const id =req.body.id;
    const name = req.body.name;
    const email = req.body.email;
-   const password = req.body.password;
+  //  const password = req.body.password;
    const RoleID=req.body.RoleID;
-   console.log("tyuio")
+   
  
    try {
      
-     const hashedPassword = await bcrypt.hash(password, 12);
+    //  const hashedPassword = await bcrypt.hash(password, 12);
  
      const userDetails = {
        id: id,
        name: name,
        email: email,
-       password: hashedPassword,
+      //  password: hashedPassword,
        RoleID: RoleID,
      };
  
-     const result = await User.update(userDetails);
+     const result = await User.updateuser(userDetails);
      console.log("user updated")
  
      res.status(201).json({ message: 'User updated!' });
@@ -140,6 +140,42 @@ exports.Update = async (req, res, next) => {
      next(err);
    }
  }; 
+
+
+ exports.updatepassword = async (req, res, next) => {
+   debugger
+  console.log(" its work545455212");
+
+  const id = req.body.id;
+  const password = req.body.password;
+
+  try{
+    const hashedPassword = await bcrypt.hash(password, 12);
+
+      const userdetailspassword = {
+        id:id,
+        password:hashedPassword,
+      };
+
+      const result1 = await User.passwordupdateModel(userdetailspassword);
+
+      res.status(201).json({message: 'user password updated!!'});
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+
+    next (err);
+  }
+};
+
+
+
+
+
+
+
+
 
 
 exports.login = async (req, res, next) => {

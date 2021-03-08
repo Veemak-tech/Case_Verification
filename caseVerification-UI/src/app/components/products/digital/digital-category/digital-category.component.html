@@ -44,7 +44,7 @@
               <div class="col-sm-2"></div>
               <label for="name" class="col-form-label col-sm-3 text-align">Due date:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input type="date" ngModel class="form-control" name="DueDate" id="name" required="">
+                <input type="date" value="12-12-2012" ngModel class="form-control" name="DueDate" id="name" required="">
               </div>
             </div>
 
@@ -72,6 +72,62 @@
             <textarea ngModel class="form-control col-sm-8 ml-2 case-textarea" maxlength="256" name="Description" rows="3" placeholder="Write Your Notes" autocomplete="off"></textarea>
             <div class="col-sm-2"></div>
           </div>
+          <div class="form-group row mb-0">
+            <div class="col-md-2"></div>
+            <!-- <label for="img" class=" col-sm-3 col-form-label" style="text-align: right;">Image file</label> -->
+            <div class="col-md-5" style="padding: 0.4rem 3rem;">
+              <!-- <input ngModel type="file" id="img" name="file" accept="image/*" (change)="onSelectFile($event)"> -->
+
+              <div *ngIf="currentFile" class="progress" >
+                <div
+                  class="progress-bar progress-bar-info progress-bar-striped"
+                  role="progressbar"
+                  attr.aria-valuenow="{{ progress }}"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  [ngStyle]="{ width: progress + '%' }"
+                >
+                  {{ progress }}%
+                </div>
+              </div>
+
+              <div>
+
+                <div class="input-group mb-3">
+                  <div class="custom-file">
+                    <input type="file"  class="custom-file-input" (change)="selectFile($event)" id="inputGroupFile01">
+                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                  </div>
+                </div>
+              <!-- <label class="btn btn-default"> -->
+                <!-- <input type="file"  class="btn"/> -->
+              <!-- </label> -->
+            </div>
+          </div>
+
+            <div class="col-md-3 pt-2">
+              <!-- <button class="btn btn-success" [disabled]="!selectedFiles" >
+                Upload
+              </button> -->
+            </div>
+              <!-- <div class="card">
+                <div class="card-header">List of Files</div>
+                <ul
+                  class="list-group list-group-flush"
+                  *ngFor="let file of fileInfos | async"
+                >
+                  <li class="list-group-item">
+                    <a href="{{ file.url }}">{{ file.name }}</a>
+                  </li>
+                </ul>
+              </div> -->
+
+            </div>
+            <div class="row">
+              <div class="col-md-2"></div>
+              <div class="alert alert-light ml-4" role="alert">{{ message }}</div>
+            </div>
+
 
           <hr>
           <h3 class="subhead2">Insurer Details</h3>
@@ -265,7 +321,7 @@
           </div>
           <br>
           <div class="text-center">
-            <button type="submit" class="btn btn-outline-primary ml-5 btn-mob-adjust"><i class="fas fa-user-check mr-2"></i>Submit</button>
+            <button type="submit" (click)="upload()"  class="btn btn-outline-primary ml-5 btn-mob-adjust"><i class="fas fa-user-check mr-2"></i>Submit</button>
           </div>
 
         </form>

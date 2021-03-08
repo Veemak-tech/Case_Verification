@@ -2,6 +2,8 @@ const express = require('express');
 
 const bodyParser = require('body-parser');
 
+
+
 const authRoutes = require('./routes/auth');
 
 const addressRoutes = require('./routes/address');
@@ -23,6 +25,10 @@ const insurerdetailsRoutes = require('./routes/insurerdetails');
 const casecreationRoutes = require('./routes/casecreation')
 
 const errorController = require('./controllers/error');
+
+const webroutes = require("./routes/web");
+
+global.__basedir = __dirname;
 // const casedetails = require('./models/casedetails');
 // const thirdpartydetails = require('./models/thirdpartydetails');
 
@@ -49,6 +55,8 @@ app.use((req, res, next) => {
   next();
 });
 
+
+
 //debugger
  app.use('/auth', authRoutes);
 
@@ -65,6 +73,9 @@ app.use((req, res, next) => {
   app.use('/casedetails', casedetailsRoutes);
 
  app.use('/insurerdetails', insurerdetailsRoutes);
+
+ app.use(express.urlencoded({ extended: true }));
+webroutes(app);
 
 //  app.use('/thirdpartydetails', thirdpartydetailsRoutes);
 

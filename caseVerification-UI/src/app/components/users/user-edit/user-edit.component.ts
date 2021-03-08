@@ -23,6 +23,7 @@ import swal from 'sweetalert';
 export class UserEditComponent implements OnInit {
   userdetail: User;
   EditForm: FormGroup;
+  passwordupdate: FormGroup;
 
   constructor(
     private user: AuthService,
@@ -46,11 +47,23 @@ export class UserEditComponent implements OnInit {
         id: new FormControl(this.userdetail['id']),
         name: new FormControl(this.userdetail['name'],[Validators.required,Validators.minLength(5)]),
         email: new FormControl(this.userdetail['email'],[Validators.email,Validators.required]),
-        password: new FormControl(this.userdetail['password'], [
-          Validators.required,
-          Validators.minLength(7),]),
+        //
         RoleID: new FormControl(this.userdetail['RoleID']),
       });
+
+
+      this.userdetail = data[0];
+    this.passwordupdate= new FormGroup(
+      {
+        id: new FormControl(this.userdetail['id']),
+        password: new FormControl(this.userdetail[''], [
+             Validators.required,
+           Validators.minLength(7),]),
+
+      }
+    )
+
+
     });
   }
 
@@ -70,5 +83,18 @@ export class UserEditComponent implements OnInit {
        // debugger;
         this.router.navigate(['/users/list-user']);
       });
+  }
+
+  updatepassword(){
+    this.user.updatepassword(this.route.queryParams, this.passwordupdate.value).subscribe((result)=>{
+      console.log(result);
+      swal({
+        icon:"success",
+        title:"Password Updated Succesfully!!",
+        buttons: [false],
+        timer: 1500,
+      });
+      this.router.navigate(['/users/list-user']);
+    })
   }
 }

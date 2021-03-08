@@ -55,8 +55,6 @@
               "node_modules/animate.css/animate.css",
               "node_modules/angular-bootstrap-md/scss/bootstrap/bootstrap.scss",
               "node_modules/angular-bootstrap-md/scss/mdb-free.scss"
-
-
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.slim.min.js",
@@ -65,7 +63,9 @@
               "./node_modules/sweetalert2/dist/sweetalert2.js",
               "node_modules/chart.js/dist/Chart.js",
               "node_modules/hammerjs/hammer.min.js",
-              "src/assets/js/search.js"
+              "src/assets/js/search.js",
+              "src/assets/js/dropzone-amd-module.js"
+
             ]
           },
           "configurations": {
@@ -128,6 +128,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []

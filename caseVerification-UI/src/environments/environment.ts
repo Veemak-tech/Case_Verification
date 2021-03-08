@@ -9,7 +9,9 @@ export const environment = {
   apiauth:'http://localhost:3000/auth',
   apiauthsignup: 'http://localhost:3000/auth/signup',
   apiauthlogin: 'http://localhost:3000/auth/admin',
-  getname:'http://localhost:3000/auth/roleid/RoleID:2'
+  getname:'http://localhost:3000/auth/roleid/RoleID:2',
+  apiauthpassword:'http://localhost:3000/auth/password',
+  apicaasefileupload: 'http://localhost:3000'
 
 };
 

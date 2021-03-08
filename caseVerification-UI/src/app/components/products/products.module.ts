@@ -32,7 +32,6 @@ import { CaseAssignComponent } from './digital/case-assign/case-assign.component
 
 
 
-
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   maxFilesize: 50,
   url: 'https://httpbin.org/post',
@@ -53,7 +52,9 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     DropzoneModule,
     GalleryModule.forRoot(),
     NgxPaginationModule,
-    JwPaginationModule
+    JwPaginationModule,
+    FileUploadModule
+
   ],
   providers: [
     {

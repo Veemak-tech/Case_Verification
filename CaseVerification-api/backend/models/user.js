@@ -16,7 +16,7 @@ module.exports = class User {
 static fetchbyId(id){
   debugger
 
-  return db.execute( 'SELECT * FROM users  WHERE id=?',[id]);
+  return db.execute( 'SELECT name,id,email,RoleID FROM users  WHERE id=?',[id]);
 
 }
 static fetchbyname(RoleID){
@@ -24,9 +24,15 @@ static fetchbyname(RoleID){
   return db.execute( 'SELECT name, id FROM users  WHERE  RoleID=2 order by name ASC',[RoleID]);
 }
 
-  static update(update){
-    return db.execute('UPDATE users SET name = ? ,email = ?,password = ?,RoleID= ? WHERE id= ?',
-    [update.name,update.email,update.password,update.RoleID,update.id]);
+  static updateuser(update){
+    return db.execute('UPDATE users SET name = ? ,email = ?,RoleID= ? WHERE id= ?',
+    [update.name,update.email,update.RoleID,update.id]);
+  }
+
+  static passwordupdateModel(userdetailspassword){
+    debugger
+    return db.execute('UPDATE users SET password = ? WHERE id= ?',
+    [userdetailspassword.password,userdetailspassword.id]);
   }
 
   static find(email) {

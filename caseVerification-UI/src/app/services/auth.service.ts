@@ -63,10 +63,16 @@ export class AuthService {
       );
   }
   update(id: Observable<Params> ,data: any){
-    // debugger
+     debugger
 return this.http.put(`${environment.apiauth}`,data);
 
   }
+
+  updatepassword(id: Observable<Params>, data:any){
+    debugger
+    return this.http.put(`${environment.apiauthpassword}`,data)
+  }
+
 
 
   login(

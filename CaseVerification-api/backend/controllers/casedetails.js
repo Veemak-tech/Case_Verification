@@ -114,6 +114,7 @@ exports.postcasedetails = async (req, res, next) => {
   const LastModifiedBy = 2; // req.body.LastModifiedBy;
   const ReferenceNumber = req.body.ReferenceNumber;
   const DueDate = req.body.DueDate;
+  
 
   try {
     const case1 = {
@@ -126,6 +127,7 @@ exports.postcasedetails = async (req, res, next) => {
       LastModifiedBy: LastModifiedBy,
       ReferenceNumber: ReferenceNumber,
       DueDate: DueDate,
+
     };
 
     const result = await casedetails.save(case1);

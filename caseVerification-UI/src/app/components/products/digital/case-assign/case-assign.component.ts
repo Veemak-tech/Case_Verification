@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { casedetails } from './../../../../models/casedetails';
@@ -8,6 +9,9 @@ import { HttpClient } from '@angular/common/http';
 import { allIcons } from 'ngx-bootstrap-icons';
 import { multicast } from 'rxjs/operators';
 
+=======
+import { Component, OnInit } from '@angular/core';
+>>>>>>> b2152f290111af34d2337a51b88eca89767ff8e6
 
 @Component({
   selector: 'app-case-assign',
