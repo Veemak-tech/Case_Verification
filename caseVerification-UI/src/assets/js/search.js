@@ -140,17 +140,17 @@ function sortTable(n) {
 
 //test
 
-$(function(){
-  $('#filter').keyup(function(){
-      var val = $(this).val().toUpperCase();
-      $('#example > tbody > tr').each(function(index , element){
-          if($(this).text().toUpperCase().indexOf(val)<0)
-              $(this).hide();
-          else
-              $(this).show();
-      });
-  });
-});
+// $(function(){
+//   $('#filter').keyup(function(){
+//       var val = $(this).val().toUpperCase();
+//       $('#example > tbody > tr').each(function(index , element){
+//           if($(this).text().toUpperCase().indexOf(val)<0)
+//               $(this).hide();
+//           else
+//               $(this).show();
+//       });
+//   });
+// });
 
 
 
@@ -158,15 +158,15 @@ $(function(){
 
 
 
-$(function () {
-  $('[data-toggle="popover"]').popover()
-})
+// $(function () {
+//   $('[data-toggle="popover"]').popover()
+// })
 
-$(function () {
-  $('.example-popover').popover({
-    container: 'body'
-  })
-})
+// $(function () {
+//   $('.example-popover').popover({
+//     container: 'body'
+//   })
+// })
 
 
 

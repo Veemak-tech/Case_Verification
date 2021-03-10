@@ -22,6 +22,7 @@ import {
   NgbActiveModal,
 } from '@ng-bootstrap/ng-bootstrap';
 import { Data } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-digital-add',
@@ -163,7 +164,7 @@ export class DigitalAddComponent implements OnInit {
     // debugger;
     // get page of items from api
     this.httpClient
-      .get<any>(`http://localhost:3000/casedetails/${page}/${10}`)
+      .get<any>(`${environment.apiUrl}/${page}/${10}`)
       .subscribe((result) => {
         this.pageno = result.pager;
         this.pagesize = result.pageOfItems;

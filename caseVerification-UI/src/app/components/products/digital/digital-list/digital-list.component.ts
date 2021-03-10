@@ -7,6 +7,7 @@ import { digitalListDB } from 'src/app/shared/tables/digital-list';
 import { HttpClient } from '@angular/common/http';
 import { allIcons } from 'ngx-bootstrap-icons';
 import { multicast } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -42,7 +43,7 @@ export class DigitalListComponent implements OnInit {
       console.warn(data1);
       this.caseList = data1;
     });
-   
+
 
 
 
@@ -70,9 +71,9 @@ export class DigitalListComponent implements OnInit {
 
 
   private loadPage(page) {
-    // debugger;
+     debugger;
     // get page of items from api
-    this.httpClient.get<any>(`http://localhost:3000/casedetails/${page}/${10}`).subscribe(result => {
+    this.httpClient.get<any>(`${environment.apiUrl}/${page}/${10}`).subscribe(result => {
         this.pageno = result.pager;
         this.pagesize = result.pageOfItems;
   // debugger;
@@ -151,7 +152,7 @@ export class DigitalListComponent implements OnInit {
     this.router.navigate(['/products/digital/case-edit'], navigationExtras);
     this.sendValues.emit(rowdata.CaseID);
   }
-  
+
   public caselistSettings = {
     selectMode: 'multi',
 

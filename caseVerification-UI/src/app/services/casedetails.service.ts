@@ -23,7 +23,7 @@ const httpOptions = {
 export class CasedetailsService {
 
 
-  //private baseUrl = 'http://localhost:3000/upload';
+
 
 
 

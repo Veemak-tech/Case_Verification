@@ -1,6 +1,5 @@
 import { Router, Data } from '@angular/router';
 import { CasedetailsService } from './../../../../services/casedetails.service';
-import { AddressService } from './../../../../services/address.service';
 import { address } from './../../../../models/address';
 import { casedetails } from './../../../../models/casedetails';
 import { first } from 'rxjs/operators';
@@ -98,7 +97,6 @@ export class DigitalCategoryComponent implements OnInit {
   url: string | ArrayBuffer = '';
 
   constructor(
-    private AddressService: AddressService,
     private CasedetailsService: CasedetailsService,
     private modalService: NgbModal,
     private http: HttpClient,
@@ -111,7 +109,7 @@ export class DigitalCategoryComponent implements OnInit {
 
     this.authService.getName().subscribe((data) => {
       console.warn(data);
-      console.log('user is working');
+      console.log('Agent name Fetch Working!!');
       this.agents = data;
     });
   }

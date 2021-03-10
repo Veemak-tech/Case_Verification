@@ -52,8 +52,9 @@ export class CaseEditComponent implements OnInit {
     private toastrService: ToastrService
   ) {
     var ID: number;
-    // debugger;
+
     this.route.queryParams.subscribe((params) => {
+      debugger
       ID = params['ID'];
     });
 
@@ -119,7 +120,7 @@ export class CaseEditComponent implements OnInit {
   casedetailsupdate(){
     // debugger;
     this.caseservice.update(this.route.queryParams,this.EditForm.value).subscribe((result)=>{
-      console.log("Cd updated!");
+      console.log("Case Details updated!");
 
       // this.toastrService.success('Case Details Updated');
       // window.alert("success")

@@ -89,17 +89,78 @@
 </div> -->
 
 
-<div class="row ml-1 mb-2">
-  <div class="col-md-1" >
-<label class="col-form-label" for="cars">Assign to:</label>
+<!-- <div class="row">
+  <div class="col-xs-9 col-md-7" style="background-color:red;">.col-xs-9 .col-md-7</div>
+  <div class="col-xs-3 col-md-5" style="background-color:lavender;">.col-xs-3 .col-md-5</div>
 </div>
+<div class="row">
+  <div class="col-xs-6 col-md-10" style="background-color:lavenderblush;">.col-xs-6 .col-md-10</div>
+  <div class="col-xs-6 col-md-2" style="background-color:lightgrey;">.col-xs-6 .col-md-2</div>
+</div>
+<div class="row" style="background-color:lightcyan;">
+  <div class="col-xs-6">.col-xs-6</div>
+  <div class="col-xs-6">.col-xs-6</div>
+</div> -->
 
-<div class="col-md-3">
-<select id="cars" class="form-control" >
-  <option *ngFor="let item of Agentname">{{item.name}}</option>
-</select>
-</div>
-</div>
+
+
+
+
+
+<!-- <div class="row">
+  <div class="col-4 col-md-4">
+    <label for="">Assign to:</label>
+  </div>
+  <div class="col-4 col-md-4">
+    <select name="" id="" class="form-group col-xs-4  form-control">
+      <option value="">Siva</option>
+      <option value="">Siva1</option>
+      <option value="">Siva2</option>
+    </select>
+  </div>
+  <div class="col-4 col-md-4">
+    <button type="button" class="btn btn-sm btn-primary">Submit</button>
+  </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row ml-1 mb-2">
+  <div class="col-3 col-md-1">
+    <label class="col-form-label" for="cars">Assign to:</label>
+  </div>
+
+
+    <div class="col-3 col-md-3">
+      <select id="cars" class="form-control scroll">
+        <option *ngFor="let item of Agentname">{{item.name}}</option>
+      </select>
+    </div>
+    <div class="col-1 col-md-1 pl-0">
+      <button class="btn btn-outline-primary btn-md " type="button" style="height: 37px;">
+        <i class="fas fa-plus"></i>
+      </button>
+    </div>
+  </div>
+
+
 
 
 
@@ -107,18 +168,19 @@
 <div class="container-fluid">
 
   <div class="card">
-      <!-- <div class="card-header">
+    <!-- <div class="card-header">
           <h5>Case Details List</h5>
           <i class="fas fa-user-edit"></i>
       </div> -->
-      <div class="card-body vendor-table">
-          <div id="batchDelete" class="custom-datatable vendor-list">
-              <div class="table-responsive ">
+    <div class="card-body vendor-table">
+      <div id="batchDelete" class="custom-datatable vendor-list">
+        <div class="table-responsive ">
 
-                      <ng2-smart-table  [settings]="caselistSettings" [source]="pagesize" (custom)="onCustomAction($event)" (userRowSelect)="onUserRowSelect($event)" ></ng2-smart-table>
-              </div>
-          </div>
+          <ng2-smart-table [settings]="caselistSettings" [source]="pagesize" (custom)="onCustomAction($event)"
+            (userRowSelect)="onUserRowSelect($event)"></ng2-smart-table>
+        </div>
       </div>
+    </div>
   </div>
 
 
@@ -126,5 +188,3 @@
     <p>{{userName.name}}</p>
   </div> -->
 </div>
-
-

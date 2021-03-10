@@ -17,7 +17,7 @@ import { ErrorHandlerService } from "./error-handler.service";
 export class AuthService {
 
 
-  private url = "http://localhost:3000/auth";
+ // private url = "http://localhost:3000/auth";
 
   isUserLoggedIn$ = new BehaviorSubject<boolean>(false);
   userId: Pick<User, "id">;

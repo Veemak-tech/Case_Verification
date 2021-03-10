@@ -1,5 +1,4 @@
 import { Comments } from './classes/comments';
-import { FreeapiserviceService } from './services/freeapiservice.service';
 import { Component } from '@angular/core';
 
 
@@ -14,16 +13,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'multikart-backend';
 
-  constructor (private _FreeapiserviceService: FreeapiserviceService){
+  constructor (){
   }
 
-    lstcomments:Comments[];
-  ngOnInit(){
-    this._FreeapiserviceService.getcomments()
-    .subscribe(
-      data=> {
-        this.lstcomments = data;
-      }
-    );
-  }
 }

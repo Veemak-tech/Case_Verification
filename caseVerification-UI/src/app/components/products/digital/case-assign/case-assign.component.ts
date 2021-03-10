@@ -7,6 +7,8 @@ import { digitalListDB } from 'src/app/shared/tables/digital-list';
 import { HttpClient } from '@angular/common/http';
 import { allIcons } from 'ngx-bootstrap-icons';
 import { multicast } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+
 
 
 
@@ -79,7 +81,7 @@ export class CaseAssignComponent implements OnInit {
   private loadPage(page) {
     // debugger;
     // get page of items from api
-    this.httpClient.get<any>(`http://localhost:3000/casedetails/${page}/${10}`).subscribe(result => {
+    this.httpClient.get<any>(`${environment.apiUrl}/${page}/${10}`).subscribe(result => {
         this.pageno = result.pager;
         this.pagesize = result.pageOfItems;
   // debugger;
@@ -175,16 +177,16 @@ export class CaseAssignComponent implements OnInit {
       edit: false,
       delete: false,
       rowSelect: true,
-      custom: [
+      // custom: [
 
-        {
-          name: 'editrecord',
-          width: '5%',
-          title:
-            '<i class="ng2-smart-action ng2-smart-action-edit-edit ng-star-inserted"></i>&nbsp;&nbsp;',
-        },
-         // { name: 'viewrecord', title: '<i class="ng2-smart-action ng2-smart-action-edit-edit ng-star-inserted"></i>' }
-      ],
+      //   {
+      //     name: 'editrecord',
+      //     width: '5%',
+      //     title:
+      //       '<i class="ng2-smart-action ng2-smart-action-edit-edit ng-star-inserted"></i>&nbsp;&nbsp;',
+      //   },
+      //    // { name: 'viewrecord', title: '<i class="ng2-smart-action ng2-smart-action-edit-edit ng-star-inserted"></i>' }
+      // ],
 
       position: 'left',
     },
@@ -198,14 +200,20 @@ export class CaseAssignComponent implements OnInit {
         title: 'Insurer Name',
         width: '18%'
       },
-      Name: {
-        title: 'Agent Name',
-        width: '18%',
+
+      CreatedDate: {
+        title: 'Creation Date',
+        width: '18%'
       },
       DueDate: {
         title: 'Due Date',
         width: '10%',
       },
+      Name: {
+        title: 'Agent Name',
+        width: '18%',
+      },
+
 
       // username: {
       //   title: 'Status'
