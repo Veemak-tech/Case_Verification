@@ -23,8 +23,6 @@ exports.fetchAll = async (req, res, next) => {
 exports.assignments = async (req, res, next) => {
   console.log(" its work");
   
-   
-    
    const CaseID=req.body.CaseID;
    const AppUserID = req.body.AppUserID;
    const CreatedBy = 1; //req.body.CreatedBy;
@@ -63,7 +61,7 @@ exports.assignments = async (req, res, next) => {
 
 
 exports.getpaging = async (req, res, next) => {
-  // debugger;
+   
   try {
      // get page from query params or default to first page
      const pageno = parseInt(req.query.pageno) || 1;
@@ -85,12 +83,14 @@ exports.getpaging = async (req, res, next) => {
 
 
 exports.fetchById = async (req, res, next) => {
-  // debugger;
+   debugger;
   try {
     const [SinglePost] = await casedetails.fetchById(req.params.ID);
 
-    res.status(200).json(SinglePost);
-    console.log("paging works!!")
+    const data = SinglePost[0];
+    res.status(200).json(data);
+    console.log(SinglePost)
+
   } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;

@@ -45,8 +45,9 @@ module.exports = class casedetails {
 
 
   static fetchById(ID){
+    debugger
     console.log("Get by id Casedetails works!!")
-  return db.execute ("CALL getbyid(?)", [ID])
+  return db.execute ("call getbyid(?)", [ID]);
   }
 
 
