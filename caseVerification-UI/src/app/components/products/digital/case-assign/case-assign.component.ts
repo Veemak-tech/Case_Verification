@@ -104,11 +104,13 @@ export class CaseAssignComponent implements OnInit {
     }
   }
   //select event
-  public onUserRowSelect(event) {
+  public onUserRowSelect(event){
     debugger;
-    var selectedRows = event.selected;
-    console.log(selectedRows);
-  }
+
+var selectedRows = event.selected;
+   console.log(selectedRows);
+    
+ }  
 
   // custom action
   public onCustomAction(event) {
