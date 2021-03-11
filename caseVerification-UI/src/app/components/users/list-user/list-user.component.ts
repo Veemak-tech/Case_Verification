@@ -18,7 +18,7 @@ export class ListUserComponent implements OnInit {
     private router: Router
   ) {
     this.user.getData().subscribe((data) => {
-      console.warn(data);
+      console.log(data);
       this.userlist = data;
     });
   }

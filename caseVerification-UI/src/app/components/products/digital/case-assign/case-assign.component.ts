@@ -48,14 +48,14 @@ export class CaseAssignComponent implements OnInit {
 
   ) {
     this.user.getData().subscribe((data1) => {
-      console.warn(data1);
+      console.log(data1);
       this.caseList = data1;
     });
 
 
      // for get agent name
      this.userName.getName().subscribe((data) => {
-      console.warn(data);
+      console.log(data);
       console.log('user is working');
       this.Agentname = data;
     });
@@ -121,11 +121,21 @@ export class CaseAssignComponent implements OnInit {
       this.Casedetails = this.CasedetailsService.getCasedetails(ID);
     }
   }
+//assign
+  submit()
+  {
+    debugger
+    console.log(this.selectedRows);
+
+
+  }
   //select event
   public onUserRowSelect(event){
     debugger;
-    var selectedRows = event.selected.CaseID;
-   // console.log(selectedRows);
+    var selectedRows = event.selected[0].CaseID;
+
+    console.log(selectedRows);
+
   }
 
   selectChange() {
@@ -133,7 +143,7 @@ export class CaseAssignComponent implements OnInit {
     this.selectedValue = this.user.getDropDownText(this.mySelect, this.Agentname)[0].name;
 
     var myselected = this.selectedValue
-    //console.log(myselected + "name")
+    console.log(myselected + " name")
 }
 
 

@@ -40,7 +40,7 @@ export class DigitalListComponent implements OnInit {
   ) {
     this.user.getData().subscribe((data1) => {
       debugger
-      console.warn(data1);
+      console.log(data1);
       this.caseList = data1;
     });
 

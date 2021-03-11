@@ -41,7 +41,7 @@ export class UserEditComponent implements OnInit {
 
     this.user.getDatabyID(id).subscribe((data: User) => {
       debugger;
-      console.warn(data);
+      console.log(data);
       this.userdetail = data[0];
       this.EditForm = new FormGroup({
         id: new FormControl(this.userdetail['id']),

@@ -108,7 +108,7 @@ export class DigitalCategoryComponent implements OnInit {
     this.digital_categories = digitalCategoryDB.digital_category;
 
     this.authService.getName().subscribe((data) => {
-      console.warn(data);
+      console.log(data);
       console.log('Agent name Fetch Working!!');
       this.agents = data;
     });
