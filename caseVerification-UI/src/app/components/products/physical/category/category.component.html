@@ -1,34 +1,11 @@
-<div *ngIf="currentFile" class="progress">
-  <div
-    class="progress-bar progress-bar-info progress-bar-striped"
-    role="progressbar"
-    attr.aria-valuenow="{{ progress }}"
-    aria-valuemin="0"
-    aria-valuemax="100"
-    [ngStyle]="{ width: progress + '%' }"
-  >
-    {{ progress }}%
+<form class="form-inline">
+  <div class="form-group mb-2">
+    <label for="staticEmail2" class="sr-only">Email</label>
+    <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="email@example.com">
   </div>
-</div>
-
-<label class="btn btn-default">
-  <input type="file" (change)="selectFile($event)" />
-</label>
-
-<button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">
-  Upload
-</button>
-
-<div class="alert alert-light" role="alert">{{ message }}</div>
-
-<div class="card">
-  <div class="card-header">List of Files</div>
-  <ul
-    class="list-group list-group-flush"
-    *ngFor="let file of fileInfos | async"
-  >
-    <li class="list-group-item">
-      <a href="{{ file.url }}">{{ file.name }}</a>
-    </li>
-  </ul>
-</div>
+  <div class="form-group mx-sm-3 mb-2">
+    <label for="inputPassword2" class="sr-only">Password</label>
+    <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+  </div>
+  <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>
+</form>

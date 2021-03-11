@@ -26,7 +26,6 @@ import { AuthModule } from './components/auth/auth.module';
 import { Test1Component } from './components/test1/test1.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AuthInterceptorService } from "./services/auth-interceptor.service";
-import {FreeapiserviceService} from "./services/freeapiservice.service"
 import { ToastrModule } from 'ngx-toastr';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { JwPaginationModule } from 'jw-angular-pagination';
@@ -75,7 +74,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
 
   providers: [
-    FreeapiserviceService,
+
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,

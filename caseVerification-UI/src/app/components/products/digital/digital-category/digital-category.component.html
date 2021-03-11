@@ -1,12 +1,12 @@
 
-<head>
+<!-- <head>
 
 
 <link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
 <script src="../../../../../assets/bootstrap-maxlength.min.js"></script>
   <script src="../../../../../assets/bootstrap-maxlength.js"></script>
 
-</head>
+</head> -->
 
 <section class=" contact-page section-b-space">
   <div class="container">
@@ -54,7 +54,7 @@
               <!-- <div class="col-sm-6 p-adjust-mob">
                 <input type="search" ngModel class="form-control" name="Name" maxlength="45" id="name" placeholder="Agent Name" required="" autocomplete="off">
               </div> -->
-              <select class="form-select form-control custom-select btn-sm btn-height col-md-5 p-adjust-mob" [(ngModel)]="agents" id="assignto" name="name">
+              <select class="form-select form-control custom-select btn-sm btn-height col-md-5 p-adjust-mob mar-left" [(ngModel)]="agents" id="assignto" name="name">
                 <option  class="form-control" *ngFor="let item of agents" [value]="item.name">{{item.name}}</option>
               </select>
 
@@ -75,7 +75,7 @@
           <div class="form-group row mb-0">
             <div class="col-md-2"></div>
             <!-- <label for="img" class=" col-sm-3 col-form-label" style="text-align: right;">Image file</label> -->
-            <div class="col-md-5" style="padding: 0.4rem 3rem;">
+            <div class="col-md-5 " style="margin-left: 19px;" >
               <!-- <input ngModel type="file" id="img" name="file" accept="image/*" (change)="onSelectFile($event)"> -->
 
               <div *ngIf="currentFile" class="progress" >
@@ -93,7 +93,7 @@
 
               <div>
 
-                <div class="input-group mb-3">
+                <div class="input-group mb-3 col-md-8 col-8 file-margin">
                   <div class="custom-file">
                     <input type="file"  class="custom-file-input" (change)="selectFile($event)" id="inputGroupFile01">
                     <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
@@ -136,7 +136,7 @@
               <div class="col-sm-1"></div>
               <label for="InsurerName" class="col-form-label col-sm-4 text-align">Insurer Name:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input type="search" ngModel class="form-control" maxlength="45" placeholder="Enter Insurer Name" name="InsurerName" id="" autocomplete="off">
+                <input type="search" ngModel class="form-control" maxlength="45" placeholder="Enter Insurer Name" name="InsurerName" id="InsurerName" autocomplete="off">
               </div>
             </div>
 
@@ -144,7 +144,7 @@
               <div class="col-sm-2"></div>
               <label for="PhoneNumber" class="col-form-label col-sm-4 text-align">Phone Number:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input type="search" ngModel class="form-control" maxlength="20" placeholder="Phone Number" name="PhoneNumber" id="" autocomplete="off">
+                <input type="search" ngModel class="form-control" maxlength="20" placeholder="Phone Number" name="PhoneNumber" id="PhoneNumber" autocomplete="off">
               </div>
 
             </div>
@@ -156,7 +156,7 @@
               <div class="col-sm-1"></div>
               <label for="InsurerName" class="col-form-label col-sm-4 text-align">Email:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input type="search" ngModel class="form-control" maxlength="45" placeholder="Email ID" name="EmailID" id="" autocomplete="off">
+                <input type="search" ngModel class="form-control" maxlength="45" placeholder="Email ID" name="EmailID" id="EmailID" autocomplete="off">
               </div>
             </div>
           </div>
@@ -172,10 +172,10 @@
             <div class="col-sm-1 ml-4"></div>
             <!-- </div> -->
             <div class="col-sm-4 form-group">
-              <input type="search" ngModel class="form-control" maxlength="256" placeholder="AddressLine 1" name="AddressLine1" id="" placeholder="AddressLine 1" autocomplete="off">
+              <input type="search" ngModel class="form-control" maxlength="256" placeholder="AddressLine 1" name="AddressLine1" id="AddressLine1" placeholder="AddressLine 1" autocomplete="off">
             </div>
             <div class="col-sm-5 form-group">
-              <input type="search" ngModel class="form-control" maxlength="256" placeholder="AddressLine 2" name="AddressLine2" id="" placeholder="AddressLine 2" autocomplete="off">
+              <input type="search" ngModel class="form-control" maxlength="256" placeholder="AddressLine 2" name="AddressLine2" id="AddressLine2" placeholder="AddressLine 2" autocomplete="off">
             </div>
             <!-- <div class="col-sm-2"></div> -->
           </div>
@@ -185,16 +185,16 @@
             <!-- <div style="width: 110px;"></div> -->
 
             <div class="col-sm-2 ml-1 form-group">
-              <input type="search" ngModel class="form-control" maxlength="20" name="City" id="" placeholder="City" autocomplete="off">
+              <input type="search" ngModel class="form-control" maxlength="20" name="City" id="City" placeholder="City" autocomplete="off">
             </div>
             <div class="col-sm-2 form-group">
-              <input type="search" ngModel class="form-control" maxlength="20" name="State" id="" placeholder="State" autocomplete="off">
+              <input type="search" ngModel class="form-control" maxlength="20" name="State" id="State" placeholder="State" autocomplete="off">
             </div>
             <div class="col-sm-2 form-group">
-              <input type="search" ngModel class="form-control" maxlength="10" name="Pincode" id="" placeholder="Pincode" autocomplete="off">
+              <input type="search" ngModel class="form-control" maxlength="10" name="Pincode" id="Pincode" placeholder="Pincode" autocomplete="off">
             </div>
             <div class="col-sm-3 form-group">
-              <input type="search" ngModel class="form-control" maxlength="256" name="Landmark" id="" placeholder="Landmark" autocomplete="off">
+              <input type="search" ngModel class="form-control" maxlength="256" name="Landmark" id="Landmark" placeholder="Landmark" autocomplete="off">
             </div>
             <!-- <div class="col-sm-2"></div> -->
 
@@ -235,7 +235,7 @@
               <!-- <div class="col-sm-1"></div> -->
               <label for="InsurerName" class="col-form-label col-sm-5 text-align">Thirdparty Name:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input ngModel type="search" class="form-control" maxlength="45" placeholder="Thirdparty Name" name="ThirdpartyName" id="" autocomplete="off">
+                <input ngModel type="search" class="form-control" maxlength="45" placeholder="Thirdparty Name" name="ThirdpartyName" id="ThirdpartyName" autocomplete="off">
               </div>
             </div>
 
@@ -243,7 +243,7 @@
               <div class="col-sm-2"></div>
               <label for="PhoneNumber" class="col-form-label col-sm-4 text-align">Phone Number:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input ngModel type="search" class="form-control" maxlength="20" placeholder="Phone Number" name="T_PhoneNumber" id="" autocomplete="off">
+                <input ngModel type="search" class="form-control" maxlength="20" placeholder="Phone Number" name="T_PhoneNumber" id="T_PhoneNumber" autocomplete="off">
               </div>
 
             </div>
@@ -255,7 +255,7 @@
               <div class="col-sm-1"></div>
               <label for="InsurerName" class="col-form-label col-sm-4 text-align">Email:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input ngModel type="search" class="form-control" maxlength="45" name="T_EmailID" id="" autocomplete="off" placeholder="Enter EmailID">
+                <input ngModel type="search" class="form-control" maxlength="45" name="T_EmailID" id="T_EmailID" autocomplete="off" placeholder="Enter EmailID">
               </div>
             </div>
           </div>
@@ -271,10 +271,10 @@
             <!-- <div style="width: 110px;">
                           </div> -->
             <div class="col-sm-4 form-group">
-              <input ngModel type="search" class="form-control" maxlength="256" name="T_AddressLine1" id="" placeholder="AddressLine 1" autocomplete="off">
+              <input ngModel type="search" class="form-control" maxlength="256" name="T_AddressLine1" id="T_AddressLine1" placeholder="AddressLine 1" autocomplete="off">
             </div>
             <div class="col-sm-5 form-group">
-              <input ngModel type="search" class="form-control" maxlength="256" name="T_AddressLine2" id="" placeholder="AddressLine 2" autocomplete="off">
+              <input ngModel type="search" class="form-control" maxlength="256" name="T_AddressLine2" id="T_AddressLine2" placeholder="AddressLine 2" autocomplete="off">
             </div>
             <!-- <div class="col-sm-2"></div> -->
           </div>
@@ -284,16 +284,16 @@
             <!-- <div style="width: 110px;"></div> -->
 
             <div class="col-sm-2 ml-1 form-group">
-              <input ngModel type="search" class="form-control" maxlength="20" name="T_City" id="" placeholder="City" autocomplete="off">
+              <input ngModel type="search" class="form-control" maxlength="20" name="T_City" id="T_City" placeholder="City" autocomplete="off">
             </div>
             <div class="col-sm-2 form-group">
-              <input ngModel type="search" class="form-control" maxlength="20" name="T_State" id="" placeholder="State" autocomplete="off">
+              <input ngModel type="search" class="form-control" maxlength="20" name="T_State" id="T_State" placeholder="State" autocomplete="off">
             </div>
             <div class="col-sm-2 form-group">
-              <input ngModel type="search" class="form-control" maxlength="10" name="T_Pincode" id="" placeholder="Pincode" autocomplete="off">
+              <input ngModel type="search" class="form-control" maxlength="10" name="T_Pincode" id="T_Pincode" placeholder="Pincode" autocomplete="off">
             </div>
             <div class="col-sm-3 form-group">
-              <input ngModel type="search" class="form-control" maxlength="256" name="T_Landmark" id="" placeholder="Landmark" autocomplete="off">
+              <input ngModel type="search" class="form-control" maxlength="256" name="T_Landmark" id="T_Landmark" placeholder="Landmark" autocomplete="off">
             </div>
             <!-- <div class="col-sm-2"></div> -->
 
