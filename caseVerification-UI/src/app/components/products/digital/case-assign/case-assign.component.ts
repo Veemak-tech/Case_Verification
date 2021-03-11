@@ -122,7 +122,7 @@ export class CaseAssignComponent implements OnInit {
     }
   }
   //select event
-  public onUserRowSelect(event) {
+  public onUserRowSelect(event){
     debugger;
     var selectedRows = event.selected.CaseID;
    // console.log(selectedRows);
