@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { allIcons } from 'ngx-bootstrap-icons';
 import { multicast } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { selectRows } from '@swimlane/ngx-datatable';
 
 
 
@@ -30,6 +31,12 @@ export class CaseAssignComponent implements OnInit {
   name: string;
   source: any;
   @Input() Agentname;
+  selectedValue: any;
+  mySelect: any;
+  myselected: any;
+  selectedRows: any;
+
+
 
   // Get data
   constructor(
@@ -117,9 +124,23 @@ export class CaseAssignComponent implements OnInit {
   //select event
   public onUserRowSelect(event) {
     debugger;
-    var selectedRows = event.selected;
-    console.log(selectedRows);
+    var selectedRows = event.selected.CaseID;
+   // console.log(selectedRows);
   }
+
+  selectChange() {
+    debugger
+    this.selectedValue = this.user.getDropDownText(this.mySelect, this.Agentname)[0].name;
+
+    var myselected = this.selectedValue
+    //console.log(myselected + "name")
+}
+
+
+
+
+
+
 
   // custom action
   public onCustomAction(event) {

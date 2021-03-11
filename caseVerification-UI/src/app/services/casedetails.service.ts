@@ -9,6 +9,7 @@ import { catchError, first } from 'rxjs/operators';
 import {Observable, BehaviorSubject, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse, HttpHeaders,HttpRequest, HttpEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import * as _ from 'lodash';
 
 
 
@@ -22,6 +23,12 @@ const httpOptions = {
 })
 export class CasedetailsService {
 
+  getDropDownText(id, object){
+    const selObj = _.filter(object, function (o) {
+        return (_.includes(id,o.id));
+    });
+    return selObj;
+  }
 
 
 
@@ -44,7 +51,6 @@ export class CasedetailsService {
   getFiles(): Observable<any> {
     return this.http.get(`${environment.apicaasefileupload}/files`);
   }
-
 
 
 

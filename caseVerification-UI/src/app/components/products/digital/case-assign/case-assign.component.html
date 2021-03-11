@@ -149,15 +149,19 @@
 
 
     <div class="col-3 col-md-3">
-      <select id="cars" class="form-control scroll">
-        <option *ngFor="let item of Agentname">{{item.name}}</option>
+      <select id="cars" class="form-control scroll" [(ngModel)]="mySelect" (change)="selectChange()">
+        <option *ngFor="let item of Agentname" value="{{item.id}}">{{item.name}}</option>
       </select>
     </div>
     <div class="col-1 col-md-1 pl-0">
-      <button class="btn btn-outline-primary btn-md " type="button" style="height: 37px;">
+      <button class="btn btn-outline-primary btn-md" type="button" style="height: 37px;">
         <i class="fas fa-plus"></i>
       </button>
     </div>
+  </div>
+
+  <div>
+    Selected: {{selectedValue}}
   </div>
 
 
