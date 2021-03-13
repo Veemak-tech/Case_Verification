@@ -187,13 +187,18 @@ export class DigitalListComponent implements OnInit {
         title: 'Insurer Name',
         //width: '18%'
       },
-      Name: {
-        title: 'Agent Name',
-        width: '18%',
+      CreatedDate: {
+        title: 'Creation Date',
+        width: '25%'
       },
       DueDate: {
         title: 'Due Date',
         width: '10%',
+      },
+
+      Name: {
+        title: 'Agent Name',
+        width: '18%',
       },
 
       // username: {

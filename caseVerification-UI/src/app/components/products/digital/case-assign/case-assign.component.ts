@@ -234,7 +234,7 @@ export class CaseAssignComponent implements OnInit {
 
       CreatedDate: {
         title: 'Creation Date',
-        width: '18%'
+        width: '25%'
       },
       DueDate: {
         title: 'Due Date',
@@ -242,7 +242,7 @@ export class CaseAssignComponent implements OnInit {
       },
       Name: {
         title: 'Agent Name',
-        width: '18%',
+        width: '15%',
       },
 
 
