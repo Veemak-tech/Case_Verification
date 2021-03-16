@@ -1,15 +1,18 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { casedetails } from './../../../../models/casedetails';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { CasedetailsService } from './../../../../services/casedetails.service';
+import { assignments} from 'src/app/models/assignments'
 import { digitalListDB } from 'src/app/shared/tables/digital-list';
 import { HttpClient } from '@angular/common/http';
 import { allIcons } from 'ngx-bootstrap-icons';
 import { multicast } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { selectRows } from '@swimlane/ngx-datatable';
-
+import { first } from 'rxjs/operators';
+import { NgForm } from '@angular/forms';
+import swal from 'sweetalert';
 
 
 
@@ -35,6 +38,12 @@ export class CaseAssignComponent implements OnInit {
   mySelect: any;
   myselected: any;
   selectedRows: any;
+  @ViewChild("userPost") userassign: NgForm;
+  @Output() create: EventEmitter<any> = new EventEmitter();
+  @Input() agents;
+
+
+
 
 
 
@@ -45,7 +54,8 @@ export class CaseAssignComponent implements OnInit {
     private router: Router,
     private _route:ActivatedRoute,
     private userName: AuthService,
-
+   
+ 
   ) {
     this.user.getData().subscribe((data1) => {
       console.log(data1);
@@ -121,29 +131,35 @@ export class CaseAssignComponent implements OnInit {
       this.Casedetails = this.CasedetailsService.getCasedetails(ID);
     }
   }
-//assign
-  submit()
-  {
-    debugger
-    console.log(this.selectedRows);
+// Submit
+
+ submit(formData) :void{
+debugger;
+this.user.caseassign(formData,this.selectedRows).pipe(first()).subscribe(() => { this.create.emit(null); });
+swal({
+  icon: "success",
+  title: "Submitted Successfully",
+  buttons: [false],
+  timer: 1500,
+});
 
 
-  }
+
+ }
   //select event
   public onUserRowSelect(event){
-    debugger;
-    var selectedRows = event.selected[0].CaseID;
-
-    console.log(selectedRows);
-
+    
+     this.selectedRows = event.selected[0].CaseID;
+   
+    
   }
 
   selectChange() {
     debugger
-    this.selectedValue = this.user.getDropDownText(this.mySelect, this.Agentname)[0].name;
+    this.selectedValue = this.user.getDropDownText(this.mySelect, this.Agentname)[0].id;
 
-    var myselected = this.selectedValue
-    console.log(myselected + " name")
+    
+    //console.log(myselected + "name")
 }
 
 

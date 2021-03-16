@@ -118,6 +118,23 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<form  #userassign="ngForm"(ngSubmit)="submit(userassign.value)">
+
+
 <div class="row ml-1 mb-2">
   <div class="col-3 col-md-1">
     <label class="col-form-label" for="cars">Assign to:</label>
@@ -125,12 +142,12 @@
 
 
     <div class="col-3 col-md-3">
-      <select id="cars" class="form-control scroll" [(ngModel)]="mySelect" (change)="selectChange()">
+      <select id="cars" class="form-control scroll" [(ngModel)]="mySelect" (change)="selectChange()" name="AppUserID" >
         <option *ngFor="let item of Agentname" value="{{item.id}}">{{item.name}}</option>
       </select>
     </div>
     <div class="col-1 col-md-1 pl-0">
-      <button class="btn btn-outline-primary btn-md" (click)="submit()" type="submit" style="height: 37px;">
+      <button class="btn btn-outline-primary btn-md"  type="submit" style="height: 37px;">
         <i class="fas fa-plus"></i>
       </button>
     </div>
@@ -152,7 +169,7 @@
         <div class="table-responsive ">
 
           <ng2-smart-table [settings]="caselistSettings" [source]="pagesize" (custom)="onCustomAction($event)"
-            (userRowSelect)="onUserRowSelect($event)"></ng2-smart-table>
+            (userRowSelect)="onUserRowSelect($event)" ></ng2-smart-table>
         </div>
       </div>
     </div>
@@ -163,3 +180,4 @@
     <p>{{userName.name}}</p>
   </div> -->
 </div>
+</form>
