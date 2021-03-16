@@ -87,9 +87,9 @@ exports.fetchById = async (req, res, next) => {
   try {
     const [SinglePost] = await casedetails.fetchById(req.params.ID);
 
-    const data = SinglePost[0];
-    res.status(200).json(data);
-    console.log(SinglePost)
+    const getbyiddata = SinglePost[0];
+    res.status(200).json(getbyiddata);
+    console.log( getbyiddata )
 
   } catch (err) {
     if (!err.statusCode) {

@@ -225,11 +225,11 @@ export class CaseAssignComponent implements OnInit {
       CaseID: {
         title: 'Case ID',
         type: 'html',
-        width: '8%'
+        width: '10%'
       },
       InsurerName: {
         title: 'Insurer Name',
-        width: '18%'
+        width: '20%'
       },
 
       CreatedDate: {
@@ -244,11 +244,6 @@ export class CaseAssignComponent implements OnInit {
         title: 'Agent Name',
         width: '15%',
       },
-
-
-      // username: {
-      //   title: 'Status'
-      // },
 
       username: {
         title: 'Status',
