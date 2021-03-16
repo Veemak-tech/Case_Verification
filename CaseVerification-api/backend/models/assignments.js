@@ -22,6 +22,7 @@ module.exports = class assignments {
   }
   
   static save(post) {
+    debugger
     return db.execute(
       'INSERT INTO assignments (CaseID,AppUserID,CreatedBy,LastModifiedBy) VALUES (?,?,?,?)',
       [post.CaseID,post.AppUserID,post.CreatedBy,post.LastModifiedBy]

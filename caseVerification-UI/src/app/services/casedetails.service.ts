@@ -10,6 +10,7 @@ import {Observable, BehaviorSubject, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse, HttpHeaders,HttpRequest, HttpEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
+import { assignments } from '../models/assignments';
 
 
 
@@ -219,6 +220,21 @@ export class CasedetailsService {
   }
 
 
+
+
+//case assign
+  caseassign(formData,selectedRows:Pick<assignments, 'CaseID'>): Observable<assignments> {
+debugger
+    return this.http
+      .post<assignments>(
+        `${environment.apiassign}`,
+        {
+          CaseID: selectedRows,
+          AppUserID:formData.AppUserID
+
+        }
+      )}
+  
   // To catch error
   errorMgmt(error: HttpErrorResponse) {
     let errorMessage = '';

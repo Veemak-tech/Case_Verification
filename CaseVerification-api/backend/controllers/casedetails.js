@@ -21,6 +21,8 @@ exports.fetchAll = async (req, res, next) => {
 };
 //assigining table
 exports.assignments = async (req, res, next) => {
+
+  debugger
   console.log(" its work");
   
    const CaseID=req.body.CaseID;

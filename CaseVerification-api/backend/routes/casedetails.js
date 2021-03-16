@@ -16,6 +16,8 @@ router.get('/:pageno/:pagesize', casedetailsController.getpaging);
 
 router.put('/', casedetailsController.putCasedetails);
 
+router.post('/caseassign',casedetailsController.assignments)
+
 router.post(
   '/',
   [
