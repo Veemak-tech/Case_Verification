@@ -69,7 +69,7 @@ export class DigitalAddComponent implements OnInit {
     // debugger
     // for get agent name
     this.userName.getName().subscribe((data) => {
-      console.warn(data);
+      console.log(data);
       console.log('user is working');
       this.name = data;
     });

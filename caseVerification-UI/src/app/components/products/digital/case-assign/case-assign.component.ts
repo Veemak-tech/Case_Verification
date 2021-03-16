@@ -58,14 +58,14 @@ export class CaseAssignComponent implements OnInit {
  
   ) {
     this.user.getData().subscribe((data1) => {
-      console.warn(data1);
+      console.log(data1);
       this.caseList = data1;
     });
 
 
      // for get agent name
      this.userName.getName().subscribe((data) => {
-      console.warn(data);
+      console.log(data);
       console.log('user is working');
       this.Agentname = data;
     });
@@ -250,7 +250,7 @@ swal({
 
       CreatedDate: {
         title: 'Creation Date',
-        width: '18%'
+        width: '25%'
       },
       DueDate: {
         title: 'Due Date',
@@ -258,7 +258,7 @@ swal({
       },
       Name: {
         title: 'Agent Name',
-        width: '18%',
+        width: '15%',
       },
 
 
