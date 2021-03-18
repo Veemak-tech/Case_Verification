@@ -234,7 +234,7 @@ debugger
 
         }
       )}
-  
+
   // To catch error
   errorMgmt(error: HttpErrorResponse) {
     let errorMessage = '';

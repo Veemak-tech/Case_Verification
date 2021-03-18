@@ -32,7 +32,7 @@ router.post('/admin',authController.Adminlogin);
 router.post('/login',authController.login);
 // debugger
 router.get('/', authController.fetchAll);
-router.get('/roleid/:RoleID',authController.fetchbyname)
+router.get('/roleid/:RoleID',authController.fetchbyname);
 router.put('/',authController.Update );
 router.put('/password', authController.updatepassword);
 // debugger;

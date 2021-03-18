@@ -54,8 +54,8 @@ export class CaseAssignComponent implements OnInit {
     private router: Router,
     private _route:ActivatedRoute,
     private userName: AuthService,
-   
- 
+
+
   ) {
     this.user.getData().subscribe((data1) => {
       console.log(data1);
@@ -148,17 +148,17 @@ swal({
  }
   //select event
   public onUserRowSelect(event){
-    
+
      this.selectedRows = event.selected[0].CaseID;
-   
-    
+
+
   }
 
   selectChange() {
     debugger
     this.selectedValue = this.user.getDropDownText(this.mySelect, this.Agentname)[0].id;
 
-    
+
     //console.log(myselected + "name")
 }
 
@@ -262,12 +262,12 @@ swal({
       },
 
       username: {
-        title: 'Status',
+        title: 'Assign to',
         filter: {
           type: 'checkbox',
           config: {
-            true: 'Aravinth',
-            false: 'Not Assigned',
+            true: 'Not Assigned',
+            false: '',
             resetText: 'clear',
           },
         },
@@ -276,6 +276,6 @@ swal({
     },
     attr: {
         class: 'table table-bordered'
-      }
+    }
   };
 }
