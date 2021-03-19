@@ -30,16 +30,19 @@ exports.assignments = async (req, res, next) => {
    const CreatedBy = 1; //req.body.CreatedBy;
   //  const CreatedDate=req.body.CreatedDate;
    const LastModifiedBy = 2; // req.body.LastModifiedBy;
+   const StatusID = 2;
   //  const LastModifiedDate=req.body.LastModifiedDate;
    try {
      
  
      const Assign = {
+       
       CaseID :CaseID,
       AppUserID : AppUserID,
       CreatedBy : CreatedBy,
       // CreatedDate :CreatedDate,
       LastModifiedBy : LastModifiedBy,
+      StatusID : StatusID
       // LastModifiedDate:LastModifiedDate,
        
      };

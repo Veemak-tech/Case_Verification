@@ -1,25 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CasedetailsService } from 'src/app/services/casedetails.service';
-import { HttpEventType, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
-// const URL = 'http://localhost:3000/upload';
-
-// function readBase64(file): Promise<any> {
-//   var reader  = new FileReader();
-//   var future = new Promise((resolve, reject) => {
-//     reader.addEventListener("load", function () {
-//       resolve(reader.result);
-//     }, false);
-
-//     reader.addEventListener("error", function (event) {
-//       reject(event);
-//     }, false);
-
-//     reader.readAsDataURL(file);
-//   });
-//   return future;
-// }
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-category',
@@ -27,42 +7,66 @@ import { Observable } from 'rxjs';
   styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent {
-  selectedFiles: FileList;
-  currentFile: File;
-  progress = 0;
-  message = '';
 
-  fileInfos: Observable<any>;
 
-  constructor(private casedetailservice: CasedetailsService) { }
 
-  ngOnInit(): void {
-    this.fileInfos = this.casedetailservice.getFiles();
-  }
+  dynamicForm: FormGroup;
+  submitted = false;
 
-  selectFile(event): void {
-    this.selectedFiles = event.target.files;
-  }
+  constructor(private formBuilder: FormBuilder) { }
 
-  upload(): void {
-    this.progress = 0;
-
-    this.currentFile = this.selectedFiles.item(0);
-    this.casedetailservice.upload(this.currentFile).subscribe(
-      event => {
-        if (event.type === HttpEventType.UploadProgress) {
-          this.progress = Math.round(100 * event.loaded / event.total);
-        } else if (event instanceof HttpResponse) {
-          this.message = event.body.message;
-          this.fileInfos = this.casedetailservice.getFiles();
-        }
-      },
-      err => {
-        this.progress = 0;
-        this.message = 'Could not upload the file!';
-        this.currentFile = undefined;
+  ngOnInit() {
+      this.dynamicForm = this.formBuilder.group({
+          numberOfTickets: ['', Validators.required],
+          tickets: new FormArray([])
       });
-
-    this.selectedFiles = undefined;
   }
+
+  // convenience getters for easy access to form fields
+  get f() { return this.dynamicForm.controls; }
+  get t() { return this.f.tickets as FormArray; }
+
+  onChangeTickets(e) {
+    debugger
+      const numberOfTickets = e.target.value || 0;
+      if (this.t.length < numberOfTickets) {
+          for (let i = this.t.length; i < numberOfTickets; i++) {
+              this.t.push(this.formBuilder.group({
+                  name: ['', Validators.required],
+                  email: ['', [Validators.required, Validators.email]]
+              }));
+          }
+      } else {
+          for (let i = this.t.length; i >= numberOfTickets; i--) {
+              this.t.removeAt(i);
+          }
+      }
+  }
+
+  onSubmit() {
+      this.submitted = true;
+
+      // stop here if form is invalid
+      if (this.dynamicForm.invalid) {
+          return;
+      }
+
+      // display form values on success
+      alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.dynamicForm.value, null, 4));
+  }
+
+  onReset() {
+      // reset whole form back to initial state
+      this.submitted = false;
+      this.dynamicForm.reset();
+      this.t.clear();
+  }
+
+  onClear() {
+      // clear errors and reset ticket fields
+      this.submitted = false;
+      this.t.reset();
+  }
+
+
 }

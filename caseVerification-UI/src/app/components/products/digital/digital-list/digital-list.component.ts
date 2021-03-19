@@ -56,6 +56,19 @@ export class DigitalListComponent implements OnInit {
   }
 
 
+  // reload page
+
+  reloadComponent() {
+    debugger
+
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigate([currentUrl]);
+        console.log(currentUrl);
+    });
+    }
+
+
   ngOnInit(): void {
     this._route.paramMap.subscribe(parameterMap => {
       const CaseID = +parameterMap.get('CaseID');

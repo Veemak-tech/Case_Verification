@@ -69,7 +69,17 @@
 
 
   <div class="card-body" id="myDropdown">
+    <div class="col-md-12 col-12 row">
+      <div class="col-md-5 col-5">
     <input class="form-control mb-2" id="myInput" type="text" placeholder="Search Case ID.." style="width: 15rem;" onkeyup="filterFunction()">
+  </div>
+
+    <div class="col-7 col-md-7 pl-0 mb-1">
+      <button class="btn btn-outline-primary btn-md"  type="button" style="height: 37px;" (click)="reloadComponent()">
+      <i class="fa fa-refresh" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
 
 
     <div class="collection-grid-view" *ngIf="layoutView == 'grid-view'" >
@@ -89,7 +99,8 @@
             <h6 class="card-title">CaseID: {{item.CaseID}}</h6>
             <h6 class="card-text">Name: {{item.Name}}</h6>
             <h6 class="card-text">{{item.username}}</h6>
-            <h6 class="card-text">{{item.InsurerName}}</h6>
+            <h6 class="card-text">Insurer Name: {{item.InsurerName}}</h6>
+            <h6 class="card-text">Status: {{item.StatusName}}</h6>
 
             <input type="hidden" id="ID" name="ID">
 

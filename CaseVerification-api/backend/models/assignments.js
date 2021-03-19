@@ -7,6 +7,7 @@ module.exports = class assignments {
       CreatedBy,
     //   CreatedDate,
       LastModifiedBy,
+      StatusID
     //   LastModifiedDate
 
   ) {
@@ -17,6 +18,7 @@ module.exports = class assignments {
     this.CreatedBy = CreatedBy;
     // this.CreatedDate=CreatedDate;
     this.LastModifiedBy = LastModifiedBy;
+    this.StatusID = StatusID;
     // this.LastModifiedDate=LastModifiedDate;
     
   }
@@ -24,8 +26,8 @@ module.exports = class assignments {
   static save(post) {
     debugger
     return db.execute(
-      'INSERT INTO assignments (CaseID,AppUserID,CreatedBy,LastModifiedBy) VALUES (?,?,?,?)',
-      [post.CaseID,post.AppUserID,post.CreatedBy,post.LastModifiedBy]
+      'INSERT INTO assignments (CaseID,AppUserID,CreatedBy,LastModifiedBy,StatusID) VALUES (?,?,?,?,?)',
+      [post.CaseID,post.AppUserID,post.CreatedBy,post.LastModifiedBy,post.StatusID]
     );
   }
 }

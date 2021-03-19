@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild, Inject } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { casedetails } from './../../../../models/casedetails';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
@@ -13,6 +13,7 @@ import { selectRows } from '@swimlane/ngx-datatable';
 import { first } from 'rxjs/operators';
 import { NgForm } from '@angular/forms';
 import swal from 'sweetalert';
+import { DOCUMENT } from '@angular/common';
 
 
 
@@ -54,8 +55,7 @@ export class CaseAssignComponent implements OnInit {
     private router: Router,
     private _route:ActivatedRoute,
     private userName: AuthService,
-
-
+    @Inject(DOCUMENT) private _document: Document
   ) {
     this.user.getData().subscribe((data1) => {
       console.log(data1);
@@ -78,7 +78,19 @@ export class CaseAssignComponent implements OnInit {
       name = params['name'];
     });
 
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
+
+  reloadComponent() {
+    //this._document.defaultView.location.reload();
+
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigate([currentUrl]);
+        console.log(currentUrl);
+    });
+    }
+
 
 
   ngOnInit(): void {
@@ -273,6 +285,34 @@ swal({
         },
         width: '15%'
       },
+
+      // StatusName:{
+      //   title: "Status"
+      // },
+      StatusName: {
+        title: 'Current Status',
+        filter: {
+          type: 'list',
+          config: {
+            selectText: 'Select...',
+            list: [
+              { value: 'Assigned', title:'Assigned' },
+              { value: 'In Progress', title:'In Progress'},
+              { value:'Pending', title:'Pending'}
+            ],
+          },
+        },
+      },
+
+      // movie: {
+      //   title: 'Movie',
+      //   type: 'list',
+      //   config: {
+      //     list: [{title: 'Lion King', value: '1'}, {title: 'The Matrix', value: '2'}]
+      //   }
+      // }
+
+
     },
     attr: {
         class: 'table table-bordered'

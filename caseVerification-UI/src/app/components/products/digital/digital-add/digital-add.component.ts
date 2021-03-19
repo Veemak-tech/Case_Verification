@@ -75,6 +75,20 @@ export class DigitalAddComponent implements OnInit {
     });
   }
 
+  // reload page
+
+  // reload page
+
+  reloadComponent() {
+
+
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigate([currentUrl]);
+        console.log(currentUrl);
+    });
+    }
+
   ngOnInit() {
     this.route.queryParams.subscribe((result) =>
       this.loadPage(result.page || 1)

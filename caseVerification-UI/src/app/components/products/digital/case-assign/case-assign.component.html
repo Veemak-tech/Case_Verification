@@ -131,7 +131,7 @@
 
 
 
-
+<br>
 <form  #userassign="ngForm"(ngSubmit)="submit(userassign.value)">
 
 
@@ -146,12 +146,20 @@
         <option *ngFor="let item of Agentname" value="{{item.id}}">{{item.name}}</option>
       </select>
     </div>
-    <div class="col-1 col-md-1 pl-0">
+    <div class="col-1 col-md-1 pl-0 pr-0">
       <button class="btn btn-outline-primary btn-md"  type="submit" style="height: 37px;">
         <i class="fas fa-plus"></i>
       </button>
     </div>
+
+    <div class="col-1 col-md-1 pl-0">
+      <button class="btn btn-outline-primary btn-md"  type="button" style="height: 37px;" (click)="reloadComponent()">
+      <i class="fa fa-refresh" aria-hidden="true"></i>
+      </button>
+    </div>
   </div>
+
+
 
   <!-- <div>
     Selected: {{selectedValue}}
