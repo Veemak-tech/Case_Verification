@@ -11,6 +11,8 @@ import { environment } from 'src/environments/environment';
 
 
 
+
+
 @Component({
   selector: 'app-digital-list',
   templateUrl: './digital-list.component.html',
@@ -28,6 +30,7 @@ export class DigitalListComponent implements OnInit {
   data: any;
   name: string;
   source: any;
+  formula:string = "Formula 1";
 
   // Get data
   constructor(
@@ -54,6 +57,27 @@ export class DigitalListComponent implements OnInit {
     });
 
   }
+
+//--------------
+// downloadcsv () {
+// var options = {
+//   title: 'User Details',
+//   fieldSeparator: ',',
+//   quoteStrings: '"',
+//   decimalseparator: '.',
+//   showLabels: true,
+//   showTitle: true,
+//   useBom: true,
+//   headers: ['CaseID', 'InsurerName']
+// };
+
+// new Angular2Csv(this.caseList, this.formula, options);
+// }
+
+
+
+
+
 
 
   // reload page
@@ -167,11 +191,11 @@ export class DigitalListComponent implements OnInit {
   }
 
   public caselistSettings = {
-    selectMode: 'multi',
+    //selectMode: 'multi',
 
     actions: {
 
-      columnTitle: 'Action',
+      columnTitle: '',
       add: false,
       edit: false,
       delete: false,

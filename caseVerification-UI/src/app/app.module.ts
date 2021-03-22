@@ -30,6 +30,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { JwPaginationModule } from 'jw-angular-pagination';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { Angular2CsvModule } from 'angular2-csv';
+
 
 
 
@@ -67,7 +69,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     //NgxBootstrapIconsModule.pick(allIcons),
     ToastrModule.forRoot(),
     NgxPaginationModule,
-     JwPaginationModule
+     JwPaginationModule,
+     Angular2CsvModule
 
   ],
 

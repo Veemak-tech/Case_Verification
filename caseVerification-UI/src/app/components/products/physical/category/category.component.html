@@ -1,95 +1,30 @@
-<form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
-  <div class="card m-3">
-      <h5 class="card-header">Angular 8 Dynamic Reactive Forms Example</h5>
-      <div class="card-body">
-          <div class="form-row">
-              <div class="form-group">
-                  <label>Number of Tickets</label>
-                  <select formControlName="numberOfTickets" class="form-control" (change)="onChangeTickets($event)" [ngClass]="{ 'is-invalid': submitted && f.numberOfTickets.errors }">
-                      <option value=""></option>
-                      <option *ngFor="let i of [1,2]">{{i}}</option>
-                  </select>
-                  <div *ngIf="submitted && f.numberOfTickets.errors" class="invalid-feedback">
-                      <div *ngIf="f.numberOfTickets.errors.required">Number of tickets is required</div>
-                  </div>
-              </div>
-          </div>
-      </div>
-
-
-      <div *ngFor="let ticket of t.controls; let i = index" class="list-group list-group-flush">
-
-        <div class="card">
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="inputEmail4">Email</label>
-            <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="inputPassword4">Password</label>
-            <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="inputAddress">Address</label>
-          <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-        </div>
-        <div class="form-group">
-          <label for="inputAddress2">Address 2</label>
-          <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="inputCity">City</label>
-            <input type="text" class="form-control" id="inputCity">
-          </div>
-          <div class="form-group col-md-4">
-            <label for="inputState">State</label>
-            <select id="inputState" class="form-control">
-              <option selected>Choose...</option>
-              <option>...</option>
-            </select>
-          </div>
-          <div class="form-group col-md-2">
-            <label for="inputZip">Zip</label>
-            <input type="text" class="form-control" id="inputZip">
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck">
-            <label class="form-check-label" for="gridCheck">
-              Check me out
-            </label>
-          </div>
-        </div>
-        <br>
-        <hr>
-      </div>
-
-      </div>
-
-
-
-
-
-      <!-- //2 -->
-
-
-
-
-
-
-
-
-
-
-      <div class="card-footer text-center">
-          <button class="btn btn-primary mr-1">Buy Tickets</button>
-          <button class="btn btn-secondary mr-1" type="reset" (click)="onReset()">Reset</button>
-          <button class="btn btn-secondary" type="button" (click)="onClear()">Clear</button>
-      </div>
+<div class="div-champs">
+  <p id="champs">Type
+    <span id="required">*</span>
+  </p>
+  <div class="select-style ">
+    <select [(ngModel)]="selectedOption" name="type" >
+           <option style="display:none">
+           <option [value]="o.name" *ngFor="let o of options">
+              {{o.name}}
+           </option>
+       </select>
   </div>
-</form>
+</div>
+<div *ngIf="selectedOption == 'two'">
+  <p id="champs">Appears
+    <input type="appears" class="form-control" name="appears">
+  </p>
+  <p id="champs">Appears
+    <input type="appears" class="form-control" name="name">
+  </p>
+  <p id="champs">Appears
+    <input type="appears" class="form-control" name="name2">
 
-
+  </p>
+</div>
+<div>
+  <p id="champs" *ngIf="selectedOption == 'first'">Appears
+    <input type="button" class="form-control" name="appears">
+  </p>
+</div>
