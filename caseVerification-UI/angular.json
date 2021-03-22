@@ -53,7 +53,7 @@
               "node_modules/angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss",
               "node_modules/angular-bootstrap-md/assets/scss/mdb.scss",
               "node_modules/animate.css/animate.css"
-
+              
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.slim.min.js",
