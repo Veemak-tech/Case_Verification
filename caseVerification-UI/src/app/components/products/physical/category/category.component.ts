@@ -66,7 +66,7 @@ public handle() {
     debugger
     console.log(data);
     console.log('user is working');
-    this.questiondata = data;
+    this.questiondata = data[0];
 debugger
     this.applyformdata = new FormGroup({
 
