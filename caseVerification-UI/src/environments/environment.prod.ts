@@ -1,6 +1,8 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://veemak.online/api/casedetails',
+  apiUrl: 'http://veemak.online/api/casedetails/getall',
+  apiUrlpostcase: 'http://localhost:3000/casedetails',
+  apicasegetbyid: 'http://localhost:3000/casedetails/case',
   apiauth:'http://veemak.online/api/auth',
   apiauthsignup: 'http://veemak.online/api/auth/signup',
   apiauthlogin: 'http://veemak.online/api/auth/admin',

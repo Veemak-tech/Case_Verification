@@ -3,24 +3,36 @@
     <span id="required">*</span>
   </p>
   <div class="select-style col-md-4">
-    <select class="form-control" [(ngModel)]="selectedOption" name="type">
-      <option style="display:none">
-      <option [value]="o.name" *ngFor="let o of options">
+    <select  class="form-control" [(ngModel)]="selectedOption" name="type"  >
+
+    <option  [value]="o.name" *ngFor="let o of options">
         {{o.name}}
       </option>
+    </select>
+
+    <!-- <select id="cars" class="form-control scroll"  [(ngModel)]="mySelect"  (change)="selectChange($event)" name="AppUserID" >
+      <option  [value]="1">Insurer</option>
+      <option  [value]="2">Thirdparty</option>
+      <option  [value]="3">Common</option>
+    </select> -->
+
+    <select [(ngModel)]="selectedValue" (change)="handle();">
+      <option [ngValue]="1">Insurer</option>
+      <option [ngValue]="2">Thirdparty</option>
+      <option  [ngValue]="3">Common</option>
     </select>
   </div>
 </div>
 
 
 <!-- Child -->
-
+<br>
 <div *ngIf="selectedOption == 'Child'">
-  <form [formGroup]="form" action="">
+  <form [formGroup]="applyformdata" action="">
     <div class="form-group row">
       <label for="childage" class="col-sm-2 col-form-label">Age</label>
       <div class="col-sm-10">
-        <input type="number" maxlength="2" formControlName="age" class="form-control">
+        <input type="number" maxlength="2" name="questionid" formControlName="questionid" class="form-control">
       </div>
     </div>
 
@@ -62,7 +74,7 @@
 
 
 <!-- adult -->
-
+<br>
   <div *ngIf="selectedOption == 'Adult'">
     <form [formGroup]="form" action="">
       <div class="form-group row">
@@ -113,6 +125,8 @@
             <option value="1">Healthy</option>
             <option value="2">Not Healthy</option>
           </select>
+
+
         </div>
       </div>
 
@@ -136,7 +150,7 @@
 
 
     <!-- senior citizen -->
-
+<br>
       <div>
         <div *ngIf="selectedOption == 'SeniorCitizen'">
           <form [formGroup]="form" action="">

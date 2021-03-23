@@ -31,6 +31,13 @@ export class CasedetailsService {
     return selObj;
   }
 
+  getidforquestions(id, object){
+    const selObj = _.filter(object, function (o) {
+        return (_.includes(id,o.id));
+    });
+    return selObj;
+  }
+
 
 
 
@@ -79,7 +86,7 @@ export class CasedetailsService {
      let userid = localStorage.getItem("id");
     return this.http
       .post<casedetails>(
-        `${environment.apiUrl}`,
+        `${environment.apiUrlpostcase}`,
         {
           CaseID: formData.CaseID,
           name: formData.name,
@@ -147,26 +154,31 @@ export class CasedetailsService {
     return this.http.get(`${environment.apiUrl}`);
   }
 
+  getquestions(selectedid:any){
+    debugger;
+    return this.http.get(`${environment.apigetquestion}/${selectedid}`)
+  }
+
   getpaging(pageno:number){
     debugger;
-    return this.http.get(`${environment.apiUrl}/${pageno}/${10}`)
+    return this.http.get(`${environment.apiUrlpostcase}/${pageno}/${10}`)
   }
 
   getByID(ID:number){
    // let url = "http://localhost:3000/casedetails/"+CaseID;
-    return this.http.get(`${environment.apiUrl}/${ID}`);
+    return this.http.get(`${environment.apicasegetbyid}/${ID}`);
   }
   // delete
 
   deletecasedetails(id: number): Observable<DigitalListComponent> {
-    const url = `${environment.apiUrl}/${id}`;
+    const url = `${environment.apiUrlpostcase}/${id}`;
     return this.http.delete<DigitalListComponent>(url, this.httpOptions);
   }
 
 
   update(CaseID:Observable<Params>,data:any){
     debugger;
-    return this.http.put<casedetails>(`${environment.apiUrl}`,{
+    return this.http.put<casedetails>(`${environment.apiUrlpostcase}`,{
       CaseID: data.CaseID,
       Name: data.Name,
       Description: data.Description,

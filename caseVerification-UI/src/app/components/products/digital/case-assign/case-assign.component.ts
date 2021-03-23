@@ -110,7 +110,7 @@ export class CaseAssignComponent implements OnInit {
   private loadPage(page) {
     // debugger;
     // get page of items from api
-    this.httpClient.get<any>(`${environment.apiUrl}/${page}/${10}`).subscribe(result => {
+    this.httpClient.get<any>(`${environment.apiUrlpostcase}/${page}/${10}`).subscribe(result => {
         this.pageno = result.pager;
         this.pagesize = result.pageOfItems;
   // debugger;
@@ -158,7 +158,7 @@ swal({
 
 
  }
-  //select event
+  //select events
   public onUserRowSelect(event){
 
      this.selectedRows = event.selected[0].CaseID;

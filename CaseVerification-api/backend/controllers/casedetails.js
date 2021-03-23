@@ -58,8 +58,28 @@ exports.assignments = async (req, res, next) => {
    }
  };
 
+// getgroupid
 
-
+exports.getquestions = async (req, res, next) => {
+  debugger
+  try {
+    const [allquestions] = await casedetails.getgroupquestions(req.params.groupid);
+    if(allquestions.length > 0)
+    {
+      res.status(200).json(allquestions[0]);
+    } 
+    else
+    {
+      res.status(500).json("no data found");
+    }
+   // res.status(200).json(allquestions);
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};
 
 
 

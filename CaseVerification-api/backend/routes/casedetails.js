@@ -8,15 +8,17 @@ const auth = require('../middleware/auth');
 
 const router = express.Router();
 
-router.get('/',  casedetailsController.fetchAll);
+router.get('/getall',  casedetailsController.fetchAll);
 
-router.get('/:ID', casedetailsController.fetchById);
+router.get('/case/:ID', casedetailsController.fetchById);
 
 router.get('/:pageno/:pagesize', casedetailsController.getpaging);
 
 router.put('/', casedetailsController.putCasedetails);
 
-router.post('/caseassign',casedetailsController.assignments)
+router.post('/caseassign',casedetailsController.assignments);
+
+router.get ('/group/questions/:groupid', casedetailsController.getquestions);
 
 router.post(
   '/',

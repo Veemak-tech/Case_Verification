@@ -24,6 +24,14 @@ module.exports = class casedetails {
     this.LastModifiedBy = LastModifiedBy;
   }
 
+  // get questions
+  static getgroupquestions(groupid){
+    
+    console.log("Get all casedetails works!!")
+  return db.execute ("CALL getquestionsbygroupid(?)", [groupid])
+  }
+
+
 
   // static fetchAll() {
   //   console.log("fetchAll works!!");
