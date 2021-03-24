@@ -1,7 +1,5 @@
-import { FormData } from './../../../../shared/interface/form-data';
-import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { MockForm } from 'src/app/shared/mock/mock-data';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-product',
@@ -9,21 +7,40 @@ import { MockForm } from 'src/app/shared/mock/mock-data';
   styleUrls: ['./add-product.component.scss']
 })
 export class AddProductComponent implements OnInit {
-  form: FormGroup;
-  data = MockForm;
+  registerForm: FormGroup;
+    submitted = false;
 
-  @Input()formData: FormData[];
+    constructor(private formBuilder: FormBuilder) { }
 
-  constructor() {}
+    ngOnInit() {
+        this.registerForm = this.formBuilder.group({
+            title: ['', Validators.required],
+            firstName: ['', Validators.required],
+            lastName: ['', Validators.required],
+            email: ['', [Validators.required, Validators.email]],
+            password: ['', [Validators.required, Validators.minLength(6)]],
+            confirmPassword: ['', Validators.required],
+            acceptTerms: [false, Validators.requiredTrue]
+        });
+    }
 
-  /** Setting up our form **/
-  ngOnInit() {
-    const formGroup = {};
+    // convenience getter for easy access to form fields
+    get f() { return this.registerForm.controls; }
 
-    this.formData.forEach(formControl => {
-      formGroup[formControl.controlName] = new FormControl('');
-    });
+    onSubmit() {
+        this.submitted = true;
 
-    this.form = new FormGroup(formGroup);
-}
+        // stop here if form is invalid
+        if (this.registerForm.invalid) {
+            return;
+        }
+
+        // display form values on success
+        alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
+    }
+
+    onReset() {
+        this.submitted = false;
+        this.registerForm.reset();
+    }
 }

@@ -45,12 +45,14 @@ export class DigitalCategoryComponent implements OnInit {
   progress = 0;
   message = '';
 
+
   dynamicformarray : any;
   dynamicformarray2 :any;
 
   fileInfos: Observable<any>;
 
   ngOnInit(): void {
+
 
     var selectedid1 = 1;
 
@@ -68,6 +70,8 @@ export class DigitalCategoryComponent implements OnInit {
 
     this.fileInfos = this.CasedetailsService.getFiles();
   }
+
+
 
   selectFile(event): void {
     this.selectedFiles = event.target.files;

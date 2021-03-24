@@ -14,7 +14,7 @@
       <div class="row">
 
 
-        <form #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value)" autocomplete="off">
+        <form #userPost="ngForm"  (ngSubmit)="onSubmit(userPost.value)" autocomplete="off">
           <h3 class="subhead2">Case Details</h3>
           <div class="col-md-12 row">
 
@@ -23,7 +23,8 @@
               <label for="name" class="col-form-label col-sm-3 text-align">Case ID:</label>
               <div class="col-sm-6 p-adjust-mob">
                 <input type="search" ngModel class="form-control" id="CaseID" name="CaseID" minlength="5" maxlength=20
-                  placeholder="Enter Case ID" required="" autocomplete="off">
+                  placeholder="Enter Case ID" required="" autocomplete="off"
+                 >
               </div>
             </div>
 
