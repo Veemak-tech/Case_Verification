@@ -1,5 +1,6 @@
 import { Comments } from './classes/comments';
 import { Component } from '@angular/core';
+import {MockForm} from './shared/mock/mock-data'
 
 
 
@@ -13,6 +14,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'multikart-backend';
 
+  data = MockForm;
   constructor (){
   }
 

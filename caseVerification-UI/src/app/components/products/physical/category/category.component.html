@@ -1,225 +1,52 @@
-<div class="div-champs">
-  <p id="champs">Type
-    <span id="required">*</span>
-  </p>
-  <div class="select-style col-md-4">
-    <select  class="form-control" [(ngModel)]="selectedOption" name="type"  >
-
-    <option  [value]="o.name" *ngFor="let o of options">
-        {{o.name}}
-      </option>
-    </select>
-
-    <!-- <select id="cars" class="form-control scroll"  [(ngModel)]="mySelect"  (change)="selectChange($event)" name="AppUserID" >
-      <option  [value]="1">Insurer</option>
-      <option  [value]="2">Thirdparty</option>
-      <option  [value]="3">Common</option>
-    </select> -->
-
-    <select [(ngModel)]="selectedValue" (change)="handle();">
-      <option [ngValue]="1">Insurer</option>
-      <option [ngValue]="2">Thirdparty</option>
-      <option  [ngValue]="3">Common</option>
-    </select>
-  </div>
+<div class="">
+  <h1>Resgistration Form</h1>
 </div>
 
+<section>
+  <form id="form">
+    <div class="row form">
 
-<!-- Child -->
+      <h4>1</h4>
+      <div class="col-md-12" *ngFor="let control of dynamicformarray">
+        <div [ngSwitch]="control.controltype" >
+          <div *ngSwitchCase = "'text'">
+            <div class="col-md-4">
+              <label class="{{control.labelcss}}">{{control.questionname}}</label>
+            </div>
+            <div class="col-md-6">
+            <input type="{{control.controltype}}" class="{{control.controlcss}}" aria-describedby="passwordHelpBlock" readonly value="{{control.questiondisplaytext}}">
+              <small id="passwordHelpBlock" class="form-text text-muted">
+                {{control.helptext}}
+              </small>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
 <br>
-<div *ngIf="selectedOption == 'Child'">
-  <form [formGroup]="applyformdata" action="">
-    <div class="form-group row">
-      <label for="childage" class="col-sm-2 col-form-label">Age</label>
-      <div class="col-sm-10">
-        <input type="number" maxlength="2" name="questionid" formControlName="questionid" class="form-control">
+
+      <!-- ------------------------------------------2 ------------------------------------->
+
+      <h4>2</h4>
+      <div class="col-md-12" *ngFor="let control of dynamicformarray2">
+        <div [ngSwitch]="control.controltype" >
+          <div *ngSwitchCase = "'text'">
+            <div class="col-md-4">
+              <label class="{{control.labelcss}}">{{control.questionname}}</label>
+            </div>
+            <div class="col-md-6">
+            <input type="{{control.controltype}}" class="{{control.controlcss}}" aria-describedby="passwordHelpBlock" readonly value="{{control.questiondisplaytext}}">
+              <small id="passwordHelpBlock" class="form-text text-muted">
+                {{control.helptext}}
+              </small>
+            </div>
+          </div>
+
+
+        </div>
       </div>
+
     </div>
-
-    <div class="form-group row">
-      <label for="childname" class="col-sm-2 col-form-label">Name</label>
-      <div class="col-sm-10">
-        <input type="text" maxlength="100" formControlName="cname" name="cname" class="form-control">
-      </div>
-    </div>
-
-
-    <div class="form-group row">
-      <label for="childeducation" class="col-sm-2 col-form-label">Education</label>
-      <div class="col-sm-10">
-        <input type="text" maxlength="100" formControlName="ceducation" name="ceducation" class="form-control">
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="childehealth" class="col-sm-2 col-form-label">Education</label>
-      <div class="col-sm-10">
-        <input type="text" maxlength="200" formControlName="chealth" name="chealth" class="form-control">
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="childeducation" class="col-sm-2 col-form-label">Type of Insurance</label>
-      <div class="col-sm-10">
-        <select name="typeofins" class="form-control" id="">
-          <option value="1">Life Insurance</option>
-          <option value="2">Health Insurance</option>
-        </select>
-      </div>
-    </div>
-
   </form>
-
-</div>
-
-
-<!-- adult -->
-<br>
-  <div *ngIf="selectedOption == 'Adult'">
-    <form [formGroup]="form" action="">
-      <div class="form-group row">
-        <label for="adultage" class="col-sm-2 col-form-label">Age</label>
-        <div class="col-sm-10">
-          <input type="text" maxlength="2" formControlName="age" class="form-control">
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="adultname" class="col-sm-2 col-form-label">Name</label>
-        <div class="col-sm-10">
-          <input type="text" maxlength="100" formControlName="aname" name="aname" class="form-control">
-        </div>
-      </div>
-
-
-      <div class="form-group row">
-        <label for="adulteducation" class="col-sm-2 col-form-label">Education</label>
-        <div class="col-sm-10">
-          <input type="text" maxlength="100" formControlName="adulteducation" name="adulteducation"
-            class="form-control">
-        </div>
-      </div>
-
-      <div class="row">
-        <label for="adulthealthstatus" class="col-sm-2 col-form-label">Marital Status</label>
-
-        <div class="form-check form-check-inline ml-3">
-          <input class="form-check-input" type="radio" name="MaritalStatus" value="1">
-          <label class="form-check-label" for="adultmaritial">
-            Married
-          </label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="MaritalStatus" value="1" checked>
-          <label class="form-check-label" for="adultmaritial">
-            Single
-          </label>
-        </div>
-      </div>
-
-
-      <div class="form-group row">
-        <label for="adulthealthstatus" class="col-sm-2 col-form-label">Health Status</label>
-        <div class="col-sm-10">
-          <select name="ahealthstatus" class="form-control" id="">
-            <option value="1">Healthy</option>
-            <option value="2">Not Healthy</option>
-          </select>
-
-
-        </div>
-      </div>
-
-
-
-      <div class="form-group row">
-        <label for="adulteducation" class="col-sm-2 col-form-label">Type of Insurance</label>
-        <div class="col-sm-10">
-          <select name="typeofins" class="form-control" id="">
-            <option value="1">Life Insurance</option>
-            <option value="2">Health Insurance</option>
-            <option value="3">Motor Insurance</option>
-            <option value="4">Mobile Insurance</option>
-            <option value="5">Property Insurance</option>
-          </select>
-        </div>
-      </div>
-
-    </form>
-    </div>
-
-
-    <!-- senior citizen -->
-<br>
-      <div>
-        <div *ngIf="selectedOption == 'SeniorCitizen'">
-          <form [formGroup]="form" action="">
-            <div class="form-group row">
-              <label for="adultage" class="col-sm-2 col-form-label">Age</label>
-              <div class="col-sm-10">
-                <input type="text" maxlength="2" formControlName="age" class="form-control">
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label for="adultname" class="col-sm-2 col-form-label">Name</label>
-              <div class="col-sm-10">
-                <input type="text" maxlength="100" formControlName="aname" name="aname" class="form-control">
-              </div>
-            </div>
-
-
-            <div class="form-group row">
-              <label for="adulteducation" class="col-sm-2 col-form-label">Education</label>
-              <div class="col-sm-10">
-                <input type="text" maxlength="100" formControlName="adulteducation" name="adulteducation"
-                  class="form-control">
-              </div>
-            </div>
-
-            <div class="row">
-              <label for="adulthealthstatus" class="col-sm-2 col-form-label">Marital Status</label>
-
-              <div class="form-check form-check-inline ml-3">
-                <input class="form-check-input" type="radio" name="MaritalStatus" value="1">
-                <label class="form-check-label" for="adultmaritial">
-                  Married 👫
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="MaritalStatus" value="1" checked>
-                <label class="form-check-label" for="adultmaritial">
-                  Single 😎
-                </label>
-              </div>
-            </div>
-
-
-            <div class="form-group row">
-              <label for="adulthealthstatus" class="col-sm-2 col-form-label">Health Status</label>
-              <div class="col-sm-10">
-                <select name="ahealthstatus" class="form-control" id="">
-                  <option value="1">Healthy</option>
-                  <option value="2">Not Healthy</option>
-                </select>
-              </div>
-            </div>
-
-
-
-            <div class="form-group row">
-              <label for="adulteducation" class="col-sm-2 col-form-label">Type of Insurance</label>
-              <div class="col-sm-10">
-                <select name="typeofins" class="form-control" id="">
-                  <option value="1">Life Insurance</option>
-                  <option value="2">Health Insurance</option>
-                  <option value="3">Motor Insurance</option>
-                  <option value="4">Mobile Insurance</option>
-                  <option value="5">Property Insurance</option>
-                </select>
-              </div>
-            </div>
-          </form>
-          </div>
-          </div>
-
+</section>

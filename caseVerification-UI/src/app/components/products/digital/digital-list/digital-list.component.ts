@@ -8,6 +8,8 @@ import { HttpClient } from '@angular/common/http';
 import { allIcons } from 'ngx-bootstrap-icons';
 import { multicast } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { Angular5Csv } from 'angular5-csv/dist/Angular5-csv';
+
 
 
 
@@ -19,6 +21,9 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./digital-list.component.scss'],
 })
 export class DigitalListComponent implements OnInit {
+
+
+
 
   pagesize = [];
   pageno: any = {};
@@ -58,21 +63,27 @@ export class DigitalListComponent implements OnInit {
 
   }
 
-//--------------
-// downloadcsv () {
-// var options = {
-//   title: 'User Details',
-//   fieldSeparator: ',',
-//   quoteStrings: '"',
-//   decimalseparator: '.',
-//   showLabels: true,
-//   showTitle: true,
-//   useBom: true,
-//   headers: ['CaseID', 'InsurerName']
-// };
 
-// new Angular2Csv(this.caseList, this.formula, options);
-// }
+
+// csv------------------------
+
+  // public downloadCsv() {
+  // var options = {
+  //   fieldSeparator: ',',
+  //   quoteStrings: '"',
+  //   decimalseparator: '.',
+  //   showLabels: true,
+  //   showTitle: true,
+  //   title: 'Your title',
+  //   useBom: true,
+  //   noDownload: true,
+  //   headers: ["CaseID", "InsurerName"],
+  //   nullToEmptyString: true,
+  // };
+
+  // this.MYfile = new Angular5Csv(this.data, 'Report', options);
+  // }
+
 
 
 

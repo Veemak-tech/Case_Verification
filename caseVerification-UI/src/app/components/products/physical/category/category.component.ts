@@ -1,5 +1,5 @@
-import { insurerDetails } from './../../../../models/insurerDetails';
-import { address } from './../../../../models/address';
+import { HttpClient } from '@angular/common/http';
+import { FormData } from './../../../../shared/interface/form-data';
 import { Component, Input, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -8,16 +8,11 @@ import {
   Validators,
   FormControl,
 } from '@angular/forms';
-import { questions }from './../../../../models/questions'
-import { AuthService } from 'src/app/services/auth.service';
+import { questions } from './../../../../models/questions';
 import { casedetails } from './../../../../models/casedetails';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { CasedetailsService } from './../../../../services/casedetails.service';
-import { digitalListDB } from 'src/app/shared/tables/digital-list';
-import { HttpClient } from '@angular/common/http';
-import { allIcons } from 'ngx-bootstrap-icons';
-import { multicast } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-category',
@@ -25,62 +20,34 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./category.component.scss'],
 })
 export class CategoryComponent {
-  name = 'Angular';
 
-  form: FormGroup;
-  mySelect: any;
-  selectedValue: number;
-  @Input() questiontypename;
-  value:any;
+  dynamicformarray : any;
+  dynamicformarray2 :any;
 
-  public selectedOption: string;
-  selectedid: number;
-  questiondata:questions;
-  applyformdata:FormGroup;
+  constructor( private httpClient : HttpClient, private user: CasedetailsService){
 
-  constructor(
-    private route: ActivatedRoute,
-    private user: CasedetailsService
-  ) {
-
-    var ID: number;
-
-
-
-    // this.user.getquestions(this.selectedid).subscribe((data) => {
-    //   debugger
-    //   console.log(data);
-    //   console.log('user is working');
-    //   //this.Agentname = data;
-    // });
   }
+  ngOnInit(){
+    var selectedid1 = 1;
 
-
-
-public handle() {
-  debugger
-  var selectedid = this.selectedValue;
-  console.log(selectedid)
-
-  this.user.getquestions(selectedid).subscribe((data : questions) => {
-    debugger
-    console.log(data);
-    console.log('user is working');
-    this.questiondata = data[0];
-debugger
-    this.applyformdata = new FormGroup({
-
-      questionid:new FormControl(this.questiondata['questionid'])
+    this.user.getquestions(selectedid1).subscribe((data: questions) => {
+      this.dynamicformarray = data;
+      console.log(this.dynamicformarray);
     })
-  });
-  //alert("selected option's value is " + this.selectedValue);
+
+    var selectedid2 = 2;
+    this.user.getquestions(selectedid2).subscribe((data: questions) => {
+      this.dynamicformarray2 = data;
+      console.log(this.dynamicformarray);
+    })
+
+  }
 }
 
 
 
-  options = [
-    { name: 'Child', value: 1 },
-    { name: 'Adult', value: 2 },
-    { name: 'SeniorCitizen', value:3}
-  ];
-}
+
+// this.httpClient.get('/assets/json/dynamicform.json').subscribe(data => {
+//   this.dynamicformarray = data;
+//   console.log(this.dynamicformarray);
+// })
