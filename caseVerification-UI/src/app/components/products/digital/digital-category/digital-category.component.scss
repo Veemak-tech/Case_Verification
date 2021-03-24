@@ -20,6 +20,17 @@
   color: #98acf8;
 }
 
+.borderstyle{
+  border-style: outset;
+  box-shadow: 0 8px 6px -6px black;
+  border-radius: 15px;
+}
+
+.input-nostyle{
+  //background-color: white;
+  border-color: white;
+}
+
 // .row{
 //   text-align: right;
 // }

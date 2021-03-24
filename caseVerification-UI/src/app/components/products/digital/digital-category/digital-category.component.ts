@@ -13,6 +13,7 @@ import swal from 'sweetalert';
 import { faUserCheck } from '@fortawesome/free-solid-svg-icons';
 import { FileUploader, FileLikeObject } from 'ng2-file-upload';
 import { Observable } from 'rxjs';
+import { questions } from 'src/app/models/questions';
 
 const URL = './src/assets/images';
 
@@ -44,9 +45,27 @@ export class DigitalCategoryComponent implements OnInit {
   progress = 0;
   message = '';
 
+  dynamicformarray : any;
+  dynamicformarray2 :any;
+
   fileInfos: Observable<any>;
 
   ngOnInit(): void {
+
+    var selectedid1 = 1;
+
+    this.CasedetailsService.getquestions(selectedid1).subscribe((data: questions) => {
+      this.dynamicformarray = data;
+      console.log(this.dynamicformarray);
+    })
+
+    var selectedid2 = 2;
+    this.CasedetailsService.getquestions(selectedid2).subscribe((data: questions) => {
+      this.dynamicformarray2 = data;
+      console.log(this.dynamicformarray);
+    })
+
+
     this.fileInfos = this.CasedetailsService.getFiles();
   }
 

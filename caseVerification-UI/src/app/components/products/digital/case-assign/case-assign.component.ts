@@ -14,6 +14,7 @@ import { first } from 'rxjs/operators';
 import { NgForm } from '@angular/forms';
 import swal from 'sweetalert';
 import { DOCUMENT } from '@angular/common';
+import { questions } from 'src/app/models/questions';
 
 
 
@@ -42,6 +43,8 @@ export class CaseAssignComponent implements OnInit {
   @ViewChild("userPost") userassign: NgForm;
   @Output() create: EventEmitter<any> = new EventEmitter();
   @Input() agents;
+
+
 
 
 
@@ -102,6 +105,7 @@ export class CaseAssignComponent implements OnInit {
 
 
     this._route.queryParams.subscribe(result => this.loadPage(result.page || 1));
+
 
 
   }
