@@ -36,6 +36,7 @@ import { Angular2CsvModule } from 'angular2-csv';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +71,8 @@ import { Angular2CsvModule } from 'angular2-csv';
     ToastrModule.forRoot(),
     NgxPaginationModule,
      JwPaginationModule,
-     Angular2CsvModule
+     Angular2CsvModule,
+
 
   ],
 

@@ -12,6 +12,7 @@ import { questions } from './../../../../models/questions';
 import { casedetails } from './../../../../models/casedetails';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { CasedetailsService } from './../../../../services/casedetails.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -24,7 +25,8 @@ export class CategoryComponent {
   dynamicformarray : any;
   dynamicformarray2 :any;
 
-  constructor( private httpClient : HttpClient, private user: CasedetailsService){
+  constructor( private httpClient : HttpClient, private user: CasedetailsService
+    ,private toastr: ToastrService){
 
   }
   ngOnInit(){
@@ -42,7 +44,18 @@ export class CategoryComponent {
     })
 
   }
+
+  showSuccess() {
+    this.toastr.success('Hello world!', 'Toastr fun!');
+  }
+
+
+
+
+
 }
+
+
 
 
 

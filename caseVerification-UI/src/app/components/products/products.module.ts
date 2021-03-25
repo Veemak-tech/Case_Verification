@@ -30,6 +30,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { JwPaginationModule } from 'jw-angular-pagination';
 import { CaseViewComponent } from './digital/case-view/case-view.component';
 import { CaseAssignComponent } from './digital/case-assign/case-assign.component';
+import { ToastrModule } from 'ngx-toastr';
+
+
 
 
 
@@ -58,6 +61,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     JwPaginationModule,
     FileUploadModule,
     NgxDatatableModule,
+    ToastrModule.forRoot(),
 
 
   ],
