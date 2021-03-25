@@ -48,7 +48,7 @@ export class AuthService {
 
   getDatabyID(id : number){
     debugger;
-    // let url="http://localhost:3000/auth/"+id;
+    // let url="http://localhost:30200/auth/"+id;
     return this.http.get(`${environment.apiauth}/${id}`);
 
   }

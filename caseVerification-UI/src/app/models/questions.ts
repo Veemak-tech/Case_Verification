@@ -1,5 +1,5 @@
 export interface questions {
-  questionid :string,
+questionid :string,
 questionname :string,
 questiondisplaytext :string,
 helptext :string,

@@ -44,6 +44,7 @@ export class DigitalCategoryComponent implements OnInit {
   currentFile: File;
   progress = 0;
   message = '';
+  RegisterForm: FormGroup;
 
 
   dynamicformarray : any;
@@ -53,6 +54,7 @@ export class DigitalCategoryComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.RegisterForm= this.createFormGroup();
 
     var selectedid1 = 1;
 
@@ -69,6 +71,15 @@ export class DigitalCategoryComponent implements OnInit {
 
 
     this.fileInfos = this.CasedetailsService.getFiles();
+  }
+
+  createFormGroup(): FormGroup {
+    return new FormGroup({
+      CaseID: new FormControl("", [Validators.required, Validators.minLength(3)]),
+      ReferenceNumber: new FormControl("", [Validators.required, Validators.minLength(3)]),
+      DueDate: new FormControl("", [Validators.required]),
+      Description: new FormControl("", Validators.required)
+    });
   }
 
 
