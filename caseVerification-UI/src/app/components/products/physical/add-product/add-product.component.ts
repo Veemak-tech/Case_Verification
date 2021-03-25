@@ -86,15 +86,19 @@ export class AddProductComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
 
-    this.CasedetailsService.createPost("user",this.RegisterForm.value).subscribe((msg) => {
+
     // stop here if form is invalid
     if (this.RegisterForm.invalid) {
         return;
     }
+    else{
+      this.CasedetailsService.createPost("user",this.RegisterForm.value).subscribe((msg) => {
+      })
+    }
 
     // display form values on success
    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.RegisterForm.value, null, 4));
-})
+
 
 
 }
