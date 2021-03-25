@@ -7,6 +7,8 @@ import { digitalCategoryDB } from 'src/app/shared/tables/digital-category';
 import { NgbModal, ModalDismissReasons, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 import { AuthService } from 'src/app/services/auth.service';
+import swal from 'sweetalert';
+import { first } from 'rxjs/operators';
 
 
 const URL = './src/assets/images';
@@ -24,6 +26,7 @@ export class AddProductComponent implements OnInit {
   form: FormGroup
   submitted = false;
   @Input() agents;
+  @Output() create: EventEmitter<any> = new EventEmitter();
 
   constructor(
     private CasedetailsService: CasedetailsService,
@@ -83,16 +86,17 @@ export class AddProductComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
 
-
-
+    this.CasedetailsService.createPost("user",this.RegisterForm.value).subscribe((msg) => {
     // stop here if form is invalid
     if (this.RegisterForm.invalid) {
         return;
     }
 
     // display form values on success
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.RegisterForm.value, null, 4));
-}
+   // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.RegisterForm.value, null, 4));
+})
 
+
+}
 
 }
