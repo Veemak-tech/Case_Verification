@@ -164,7 +164,7 @@ export class DigitalCategoryComponent implements OnInit {
        formData.append('image', fl,fl);
        console.log(File.name, fl)
   }
-    this.CasedetailsService.createPost(formData, this.authService.userId).pipe(first()).subscribe(() => { this.create.emit(null); });
+    this.CasedetailsService.createPost(formData).pipe(first()).subscribe(() => { this.create.emit(null); });
     swal({
       icon: "success",
       title: "Submitted Successfully",

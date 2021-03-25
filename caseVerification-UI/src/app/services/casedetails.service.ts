@@ -81,62 +81,62 @@ export class CasedetailsService {
     private router:Router
   ) {}
 
-  createPost(formData, userId: Pick<User, 'id'>): Observable<casedetails> {
+  createPost(RegisterForm): Observable<casedetails> {
     debugger
      let userid = localStorage.getItem("id");
     return this.http
       .post<casedetails>(
         `${environment.apiUrlpostcase}`,
         {
-          CaseID: formData.CaseID,
-          name: formData.name,
-          Description: formData.Description,
-          InsurerVerificationNotes: formData.InsurerVerificationNotes,
-          T_VerificationNotes: formData.T_VerificationNotes,
-          ReferenceNumber: formData.ReferenceNumber,
-          DueDate: formData.DueDate,
-          CreatedBy: formData.CreatedBy,
+          CaseID: RegisterForm.CaseID,
+          name: RegisterForm.name,
+          Description: RegisterForm.Description,
+          InsurerVerificationNotes: RegisterForm.InsurerVerificationNotes,
+          T_VerificationNotes: RegisterForm.T_VerificationNotes,
+          ReferenceNumber: RegisterForm.ReferenceNumber,
+          DueDate: RegisterForm.DueDate,
+          CreatedBy: RegisterForm.CreatedBy,
           LastModifiedBy: userid,
 
           insAddress: {
-            AddressLine1: formData.AddressLine1,
-            AddressLine2: formData.AddressLine2,
-            City: formData.City,
-            Landmark: formData.Landmark,
-            State: formData.State,
-            Pincode: formData.Pincode,
+            AddressLine1: RegisterForm.AddressLine1,
+            AddressLine2: RegisterForm.AddressLine2,
+            City: RegisterForm.City,
+            Landmark: RegisterForm.Landmark,
+            State: RegisterForm.State,
+            Pincode: RegisterForm.Pincode,
           },
 
           insDetails:{
-            CaseID: formData.CaseID,
-            InsurerName: formData.InsurerName,
-            PhoneNumber: formData.PhoneNumber,
-            AlternativePhoneNumber: formData.AlternativePhoneNumber,
-            EmailID: formData.EmailID,
-            AddressID: formData.AddressID
+            CaseID: RegisterForm.CaseID,
+            InsurerName: RegisterForm.InsurerName,
+            PhoneNumber: RegisterForm.PhoneNumber,
+            AlternativePhoneNumber: RegisterForm.AlternativePhoneNumber,
+            EmailID: RegisterForm.EmailID,
+            AddressID: RegisterForm.AddressID
           },
 
           tpartyAddress: {
-            AddressLine1: formData.T_AddressLine1,
-            AddressLine2: formData.T_AddressLine2,
-            City: formData.T_City,
-            Landmark: formData.T_Landmark,
-            State: formData.T_State,
-            Pincode: formData.T_Pincode,
+            AddressLine1: RegisterForm.T_AddressLine1,
+            AddressLine2: RegisterForm.T_AddressLine2,
+            City: RegisterForm.T_City,
+            Landmark: RegisterForm.T_Landmark,
+            State: RegisterForm.T_State,
+            Pincode: RegisterForm.T_Pincode,
           },
 
           tpartyDetails: {
-            CaseID: formData.CaseID,
-            ThirdpartyName: formData.ThirdpartyName,
-            T_PhoneNumber: formData.T_PhoneNumber,
-            T_AlternativePhoneNumber: formData.T_AlternativePhoneNumber,
-            T_EmailID: formData.T_EmailID,
-            T_AddressID: formData.T_AddressID,
-            T_PhotoDocID: formData.T_PhotoDocID,
-            T_AudioDocID: formData.T_AudioDocID,
-            T_VideoDocID: formData.T_VideoDocID,
-            T_PhotoWithSelfieDocID: formData.T_PhotoWithSelfieDocID,
-            T_VerificationNotes: formData.T_VerificationNotes,
+            CaseID: RegisterForm.CaseID,
+            ThirdpartyName: RegisterForm.ThirdpartyName,
+            T_PhoneNumber: RegisterForm.T_PhoneNumber,
+            T_AlternativePhoneNumber: RegisterForm.T_AlternativePhoneNumber,
+            T_EmailID: RegisterForm.T_EmailID,
+            T_AddressID: RegisterForm.T_AddressID,
+            T_PhotoDocID: RegisterForm.T_PhotoDocID,
+            T_AudioDocID: RegisterForm.T_AudioDocID,
+            T_VideoDocID: RegisterForm.T_VideoDocID,
+            T_PhotoWithSelfieDocID: RegisterForm.T_PhotoWithSelfieDocID,
+            T_VerificationNotes: RegisterForm.T_VerificationNotes,
           }
 
         },
