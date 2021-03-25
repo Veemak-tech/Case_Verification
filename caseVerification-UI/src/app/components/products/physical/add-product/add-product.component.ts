@@ -7,8 +7,6 @@ import { digitalCategoryDB } from 'src/app/shared/tables/digital-category';
 import { NgbModal, ModalDismissReasons, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 import { AuthService } from 'src/app/services/auth.service';
-import swal from 'sweetalert';
-import { first } from 'rxjs/operators';
 
 
 const URL = './src/assets/images';
@@ -26,7 +24,6 @@ export class AddProductComponent implements OnInit {
   form: FormGroup
   submitted = false;
   @Input() agents;
-  @Output() create: EventEmitter<any> = new EventEmitter();
 
   constructor(
     private CasedetailsService: CasedetailsService,
@@ -84,24 +81,8 @@ export class AddProductComponent implements OnInit {
   }
 
   onSubmit() {
-    debugger
     this.submitted = true;
 
-
-  //     debugger;
-  //     for (const fl of this.files) {
-  //       RegisterForm.value.append('image', fl,fl);
-  //       console.log(File.name, fl)
-  //  }
-     this.CasedetailsService.createPost(this.RegisterForm.value, this.authService.userId).pipe(first()).subscribe(() => { this.create.emit(null); });
-     swal({
-       icon: "success",
-       title: "Submitted Successfully",
-       buttons: [false],
-       timer: 1500,
-     });
-
-     this.router.navigate(['/products/digital/digital-product-list']);
 
 
     // stop here if form is invalid
@@ -109,7 +90,8 @@ export class AddProductComponent implements OnInit {
         return;
     }
 
-
+    // display form values on success
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.RegisterForm.value, null, 4));
 }
 
 
