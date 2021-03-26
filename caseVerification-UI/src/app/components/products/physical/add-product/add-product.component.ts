@@ -1,3 +1,4 @@
+import { questions } from './../../../../models/questions';
 import { Router, Data } from '@angular/router';
 import { CasedetailsService } from './../../../../services/casedetails.service';
 import { FormControl, FormGroup, Validators, NgForm, FormBuilder,} from '@angular/forms';
@@ -21,6 +22,8 @@ export class AddProductComponent implements OnInit {
   submitted = false;
   @Input() agents;
   @Output() create: EventEmitter<any> = new EventEmitter();
+  ins_questionsarray : any;
+  t_questionsarray:any;
 
   constructor(
     private CasedetailsService: CasedetailsService,
@@ -70,6 +73,23 @@ export class AddProductComponent implements OnInit {
       T_Landmark: ['', Validators.required],
       T_VerificationNotes: ['', Validators.required],
     });
+
+    // to get Questions
+    // Ins question
+    var selectedid = 1;
+    this.CasedetailsService.getquestions(selectedid).subscribe ((questionsdata :questions) => {
+      this.ins_questionsarray = questionsdata;
+      console.log(this.t_questionsarray);
+
+    // t party questions
+    var selectedid2 = 2;
+    this.CasedetailsService.getquestions(selectedid2).subscribe((t_questionsdata : questions) => {
+      this.t_questionsarray = t_questionsdata;
+      console.log(this.t_questionsarray);
+    })
+
+
+    })
   }
 
   onSubmit() {

@@ -31,6 +31,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { JwPaginationModule } from 'jw-angular-pagination';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { Angular2CsvModule } from 'angular2-csv';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -72,6 +73,7 @@ import { Angular2CsvModule } from 'angular2-csv';
     NgxPaginationModule,
      JwPaginationModule,
      Angular2CsvModule,
+     CommonModule
 
 
   ],

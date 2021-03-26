@@ -69,7 +69,7 @@ export class DigitalCategoryComponent implements OnInit {
       console.log(this.dynamicformarray);
     })
 
-
+    // get uploaded file infos
     this.fileInfos = this.CasedetailsService.getFiles();
   }
 

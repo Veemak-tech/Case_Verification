@@ -296,9 +296,9 @@
             <div class="col-sm-2 ml-4"></div>
             <!-- <div style="width: 135px;"></div> -->
 
-            <!-- ins question -->
-            <!-- <div class="col-sm-8 ml-4 pb-2 borderstyle">
-              <div class="col-md-12 pl-0" *ngFor="let control of dynamicformarray">
+             <!-- ins question -->
+             <div class="col-sm-8 ml-4 pb-2 borderstyle">
+              <div class="col-md-12 pl-0" *ngFor="let control of ins_questionsarray">
                 <div [ngSwitch]="control.controltype">
                   <div *ngSwitchCase="'text'">
                     <div class="col-md-12 pl-">
@@ -316,20 +316,26 @@
 
                 </div>
               </div>
-            </div> -->
-            <div class="col-sm-8 case-i-textarea txt-area pr-0">
-            <textarea  class="form-control " maxlength="256" name="InsurerVerificationNotes" rows="6"
-             placeholder="Insurer Questions" autocomplete="off" formControlName="InsurerVerificationNotes" required
-             [ngClass]="{ 'is-invalid': submitted && f.InsurerVerificationNotes.errors }"></textarea>
-             <div *ngIf="submitted && f.InsurerVerificationNotes.errors" class="invalid-feedback">
-              <div *ngIf="f.InsurerVerificationNotes.errors.required">Insurer Verification Notes is required</div>
             </div>
-          </div>
+
 
             <div class="col-sm-1"></div>
           </div>
 
+          <div class="row mt-3">
+            <div class="col-sm-2 ml-4"></div>
+            <div class="col-sm-8 case-i-textarea txt-area pr-0">
+              <textarea  class="form-control " maxlength="256" name="InsurerVerificationNotes" rows="6"
+               placeholder="Insurer Questions" autocomplete="off" formControlName="InsurerVerificationNotes" required
+               [ngClass]="{ 'is-invalid': submitted && f.InsurerVerificationNotes.errors }"></textarea>
+               <div *ngIf="submitted && f.InsurerVerificationNotes.errors" class="invalid-feedback">
+                <div *ngIf="f.InsurerVerificationNotes.errors.required">Insurer Verification Notes is required</div>
+              </div>
+            </div>
+          </div>
 
+
+          <!-- -------------------------------------------------------thirdparty---------------------------------------- -->
           <hr>
           <h3 class="subhead2">Thirdparty Details</h3>
           <div class="col-md-12 row">
@@ -464,31 +470,37 @@
             <div class="col-sm-2 ml-4"></div>
             <!-- <div style="width: 135px;"></div> -->
 
-            <!-- tpart question -->
-            <!-- <div class="col-sm-8 ml-4 pb-2 borderstyle">
-              <div class="col-md-12 pl-0" *ngFor="let control of dynamicformarray2">
-                <div class="form-group">
-                <div [ngSwitch]="control.controltype">
-                  <div *ngSwitchCase="'text'">
-
-                    <div class="col-md-12 pl-">
-                      <label class="{{control.labelcss}}">{{control.questiondisplaytext}}</label>
-                    </div>
-                    <div class="col-md-12">
-                      <input type="{{control.controltype}}" [formControlName]= "{{control.questionname}}" class="{{control.controlcss}} input-nostyle"
-                        aria-describedby="passwordHelpBlock" readonly >
-                      <small id="passwordHelpBlock" class="form-text text-muted">
-                        {{control.helptext}}
-                      </small>
-                    </div>
+           <!-- tpart question -->
+           <div class="col-sm-8 ml-4 pb-2 borderstyle">
+            <div class="col-md-12 pl-0" *ngFor="let control of t_questionsarray">
+              <div [ngSwitch]="control.controltype">
+                <div *ngSwitchCase="'text'">
+                  <div class="col-md-12 pl-">
+                    <label class="{{control.labelcss}}">{{control.questionname}}</label>
                   </div>
-
-
+                  <div class="col-md-12">
+                    <input type="{{control.controltype}}" class="{{control.controlcss}}" class="input-nostyle"
+                      aria-describedby="passwordHelpBlock" readonly value="{{control.questiondisplaytext}}">
+                    <small id="passwordHelpBlock" class="form-text text-muted">
+                      {{control.helptext}}
+                    </small>
+                  </div>
                 </div>
+
+
               </div>
             </div>
-            </div> -->
-            <div class="col-sm-8 case-i-textarea txt-area pr-0">
+          </div>
+
+
+
+
+            <div class="col-sm-1" ></div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-sm-2 ml-4"></div>
+          <div class="col-sm-8 case-i-textarea txt-area pr-0">
             <textarea  class="form-control " maxlength="256" name="T_VerificationNotes" rows="6"
             placeholder="Thirdparty Questions" autocomplete="off" formControlName="T_VerificationNotes" required
             [ngClass]="{ 'is-invalid': submitted && f.T_VerificationNotes.errors }"></textarea>
@@ -496,10 +508,8 @@
               <div *ngIf="f.T_VerificationNotes.errors.required">Third Party VerificationNotes is required</div>
             </div>
             </div>
-
-
-            <div class="col-sm-1" ></div>
           </div>
+
           <br>
           <div class="text-center">
             <button type="submit" class="btn btn-outline-primary ml-5 btn-mob-adjust" >
