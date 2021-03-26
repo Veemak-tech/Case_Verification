@@ -15,6 +15,8 @@ import { NgForm } from '@angular/forms';
 import swal from 'sweetalert';
 import { DOCUMENT } from '@angular/common';
 import { questions } from 'src/app/models/questions';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { FormsModule }   from '@angular/forms';
 
 
 
@@ -40,6 +42,7 @@ export class CaseAssignComponent implements OnInit {
   mySelect: any;
   myselected: any;
   selectedRows: any;
+  selectedRowsAID:any
   @ViewChild("userPost") userassign: NgForm;
   @Output() create: EventEmitter<any> = new EventEmitter();
   @Input() agents;
@@ -151,7 +154,7 @@ export class CaseAssignComponent implements OnInit {
 
  submit(formData) :void{
 debugger;
-this.user.caseassign(formData,this.selectedRows).pipe(first()).subscribe(() => { this.create.emit(null); });
+this.user.caseassign(formData,this.selectedRowsAID,this.selectedRows).pipe(first()).subscribe(() => { this.create.emit(null); });
 swal({
   icon: "success",
   title: "Submitted Successfully",
@@ -164,8 +167,9 @@ swal({
  }
   //select events
   public onUserRowSelect(event){
-
+debugger
      this.selectedRows = event.selected[0].CaseID;
+     this.selectedRowsAID = event.selected[0].AssignmentID;
 
 
   }
@@ -223,6 +227,7 @@ swal({
     let navigationExtras: NavigationExtras = {
       queryParams: {
         "CaseID": rowdata.CaseID,
+        "AssignmentID": rowdata.AssignmentID
       },
     };
     //debugger;
@@ -275,6 +280,11 @@ swal({
       Name: {
         title: 'Agent Name',
         width: '15%',
+      },
+
+      AssignmentID:{
+        title: 'Assignment ID',
+        hide: true
       },
 
       username: {

@@ -27,6 +27,7 @@ exports.assignments = async (req, res, next) => {
   
    const CaseID=req.body.CaseID;
    const AppUserID = req.body.AppUserID;
+   const AssignmentID = req.body.AssignmentID
    const CreatedBy = 1; //req.body.CreatedBy;
   //  const CreatedDate=req.body.CreatedDate;
    const LastModifiedBy = 2; // req.body.LastModifiedBy;
@@ -40,6 +41,7 @@ exports.assignments = async (req, res, next) => {
       CaseID :CaseID,
       AppUserID : AppUserID,
       CreatedBy : CreatedBy,
+      AssignmentID: AssignmentID,
       // CreatedDate :CreatedDate,
       LastModifiedBy : LastModifiedBy,
       StatusID : StatusID
