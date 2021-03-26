@@ -1,9 +1,27 @@
 import { questions } from './../../../../models/questions';
 import { Router, Data } from '@angular/router';
 import { CasedetailsService } from './../../../../services/casedetails.service';
-import { FormControl, FormGroup, Validators, NgForm, FormBuilder,} from '@angular/forms';
-import { Component, OnInit, ViewChild, Output, EventEmitter, Input,} from '@angular/core';
-import { NgbModal, ModalDismissReasons, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import {
+  FormControl,
+  FormGroup,
+  Validators,
+  NgForm,
+  FormsModule,
+  FormBuilder,
+} from '@angular/forms';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  Output,
+  EventEmitter,
+  Input,
+} from '@angular/core';
+import {
+  NgbModal,
+  ModalDismissReasons,
+  NgbActiveModal,
+} from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 import { AuthService } from 'src/app/services/auth.service';
 import swal from 'sweetalert';
@@ -22,8 +40,8 @@ export class AddProductComponent implements OnInit {
   submitted = false;
   @Input() agents;
   @Output() create: EventEmitter<any> = new EventEmitter();
-  ins_questionsarray : any;
-  t_questionsarray:any;
+  ins_questionsarray: any;
+  t_questionsarray: any;
 
   constructor(
     private CasedetailsService: CasedetailsService,
@@ -77,19 +95,21 @@ export class AddProductComponent implements OnInit {
     // to get Questions
     // Ins question
     var selectedid = 1;
-    this.CasedetailsService.getquestions(selectedid).subscribe ((questionsdata :questions) => {
-      this.ins_questionsarray = questionsdata;
-      console.log(this.t_questionsarray);
+    this.CasedetailsService.getquestions(selectedid).subscribe(
+      (questionsdata: questions) => {
+        this.ins_questionsarray = questionsdata;
+        console.log(this.t_questionsarray);
 
-    // t party questions
-    var selectedid2 = 2;
-    this.CasedetailsService.getquestions(selectedid2).subscribe((t_questionsdata : questions) => {
-      this.t_questionsarray = t_questionsdata;
-      console.log(this.t_questionsarray);
-    })
-
-
-    })
+        // t party questions
+        var selectedid2 = 2;
+        this.CasedetailsService.getquestions(selectedid2).subscribe(
+          (t_questionsdata: questions) => {
+            this.t_questionsarray = t_questionsdata;
+            console.log(this.t_questionsarray);
+          }
+        );
+      }
+    );
   }
 
   onSubmit() {
@@ -99,7 +119,9 @@ export class AddProductComponent implements OnInit {
     if (this.RegisterForm.invalid) {
       return;
     } else {
-      this.CasedetailsService.createPost( this.RegisterForm.value ).subscribe((msg) => {});
+      this.CasedetailsService.createPost(
+        this.RegisterForm.value
+      ).subscribe((msg) => {});
     }
 
     // display form values on success
