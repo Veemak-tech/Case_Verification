@@ -48,12 +48,19 @@
   padding-left: 0;
 }
 
+.mob-helptext{
+  margin-left: 1rem;
+}
 
 
 
 @media only screen and (max-width: 600px) {
   .text-align{
     text-align: left;
+  }
+
+  .mob-helptext{
+    margin-left: 0;
   }
 
   .p-adjust-mob{

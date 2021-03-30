@@ -39,6 +39,18 @@
   text-align: right;
 }
 
+.txt-area{
+  padding-left: 25px;
+}
+
+.agent-select-size{
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.mob-helptext{
+  margin-left: 1rem;
+}
 
 
 
@@ -47,13 +59,17 @@
     text-align: left;
   }
 
+  .mob-helptext{
+    margin-left: 0;
+  }
+
   .p-adjust-mob{
     padding-right: 0 !important;
     //background-color: blue;
   }
 
   .mar-left{
-    margin-left: 15px;
+    margin-left: 0.9rem;
   }
 
   .file-margin{
@@ -64,6 +80,13 @@
     margin-left: 1.9rem !important;
     margin-right: 3.6rem !important;
   }
+
+
+  .case-i-textarea{
+    padding-left: 2rem;
+    width: 405px;
+  }
+
 
   .btn-mob-adjust{
     margin-right: 3rem;

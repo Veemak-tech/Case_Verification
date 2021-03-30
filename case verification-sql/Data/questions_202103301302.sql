@@ -1,0 +1,6 @@
+INSERT INTO caseverificationdb.questions (questionname,questiondisplaytext,helptext,labelcss,controlcss,maxlength,controltype,groupid,displayorderno,CreatedBy,CreatedDate,LastModifiedBy,LastModifiedDate) VALUES
+	 ('IsAlive','Is Person is alive ?','Alive','col-sm-2 col-form-label','form-control',45,'text',1,1,'karthik','2021-03-23 11:38:47','karthik','2021-03-23 11:38:47'),
+	 ('Age','What is Insurer Age ?','Age','col-sm-2 col-form-label','form-control',45,'text',1,1,'karthik','2021-03-23 11:38:47','karthik','2021-03-23 11:38:47'),
+	 ('Distance','What is the distance from Insurer home ?','Distance in meters ','col-sm-2 col-form-label','form-control',45,'text',2,2,'karthik','2021-03-23 11:39:40','karthik','2021-03-23 11:39:40'),
+	 ('Relation','Are you relation to Insurer?','Relation type','col-sm-2 col-form-label','form-control',45,'text',2,2,'karthik','2021-03-23 11:39:40','karthik','2021-03-23 11:39:40'),
+	 ('Gender','Are you Male , Female or Other ? ','Male or Female','col-sm-2 col-form-label','form-control',45,'text',1,1,'Karthi','2021-03-26 10:56:55','Karthik','2021-03-26 10:56:55');

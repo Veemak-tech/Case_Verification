@@ -62,12 +62,6 @@ export class CasedetailsService {
 
 
 
-
-
-
-
-
-
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   // public url = 'http://localhost:3000/casedetails';
 
@@ -82,6 +76,7 @@ export class CasedetailsService {
   ) {}
 
   createPost(RegisterForm): Observable<casedetails> {
+
     debugger
      let userid = localStorage.getItem("id");
     return this.http
@@ -139,14 +134,10 @@ export class CasedetailsService {
             T_VerificationNotes: RegisterForm.T_VerificationNotes,
           }
 
-        },
-        this.httpOptions
-      )
-      .pipe(first(),
-        catchError(
-          this.errorHandlerService.handleError<casedetails>('create Address')
-        )
-      );
+
+
+        }, this.httpOptions).pipe(first(),
+        catchError(this.errorHandlerService.handleError<casedetails>('create Address')));
   }
 
   getData(){

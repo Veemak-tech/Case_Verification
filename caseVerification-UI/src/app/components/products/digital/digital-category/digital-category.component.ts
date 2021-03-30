@@ -1,37 +1,34 @@
+import { questions } from './../../../../models/questions';
 import { Router, Data } from '@angular/router';
 import { CasedetailsService } from './../../../../services/casedetails.service';
-import { address } from './../../../../models/address';
-import { casedetails } from './../../../../models/casedetails';
-import { first } from 'rxjs/operators';
-import { FormControl, FormGroup, Validators, NgForm } from '@angular/forms';
-import { Component, OnInit, ViewChild, Output, EventEmitter, Input } from '@angular/core';
-import { digitalCategoryDB } from 'src/app/shared/tables/digital-category';
-import { NgbModal, ModalDismissReasons, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import {
+  FormControl,
+  FormGroup,
+  Validators,
+  NgForm,
+  FormsModule,
+  FormBuilder,
+} from '@angular/forms';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  Output,
+  EventEmitter,
+  Input,
+} from '@angular/core';
+import {
+  NgbModal,
+  ModalDismissReasons,
+  NgbActiveModal,
+} from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 import { AuthService } from 'src/app/services/auth.service';
 import swal from 'sweetalert';
-import { faUserCheck } from '@fortawesome/free-solid-svg-icons';
-import { FileUploader, FileLikeObject } from 'ng2-file-upload';
+import { first } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { questions } from 'src/app/models/questions';
 
 const URL = './src/assets/images';
-
-function readBase64(file): Promise<any> {
-  var reader  = new FileReader();
-  var future = new Promise((resolve, reject) => {
-    reader.addEventListener("load", function () {
-      resolve(reader.result);
-    }, false);
-
-    reader.addEventListener("error", function (event) {
-      reject(event);
-    }, false);
-
-    reader.readAsDataURL(file);
-  });
-  return future;
-}
 
 @Component({
   selector: 'app-digital-category',
@@ -40,55 +37,97 @@ function readBase64(file): Promise<any> {
 })
 export class DigitalCategoryComponent implements OnInit {
 
+  RegisterForm: FormGroup;
+  form: FormGroup;
+  submitted = false;
+  @Input() agents;
+  @Output() create: EventEmitter<any> = new EventEmitter();
+  ins_questionsarray: any;
+  t_questionsarray: any;
+
   selectedFiles: FileList;
+  filename : string;
+  filesize : any;
+  filesizeinkb :any;
   currentFile: File;
   progress = 0;
   message = '';
-  RegisterForm: FormGroup;
-
-
-  dynamicformarray : any;
-  dynamicformarray2 :any;
-
   fileInfos: Observable<any>;
 
-  ngOnInit(): void {
+  closeResult: string;
 
-    this.RegisterForm= this.createFormGroup();
-
-    var selectedid1 = 1;
-
-    this.CasedetailsService.getquestions(selectedid1).subscribe((data: questions) => {
-      this.dynamicformarray = data;
-      console.log(this.dynamicformarray);
-    })
-
-    var selectedid2 = 2;
-    this.CasedetailsService.getquestions(selectedid2).subscribe((data: questions) => {
-      this.dynamicformarray2 = data;
-      console.log(this.dynamicformarray);
-    })
-
-    // get uploaded file infos
-    this.fileInfos = this.CasedetailsService.getFiles();
-  }
-
-  createFormGroup(): FormGroup {
-    return new FormGroup({
-      CaseID: new FormControl("", [Validators.required, Validators.minLength(3)]),
-      ReferenceNumber: new FormControl("", [Validators.required, Validators.minLength(3)]),
-      DueDate: new FormControl("", [Validators.required]),
-      Description: new FormControl("", Validators.required)
+  constructor(
+    private CasedetailsService: CasedetailsService,
+    private modalService: NgbModal,
+    private http: HttpClient,
+    private authService: AuthService,
+    private router: Router,
+    private formBuilder: FormBuilder
+  ) {
+    // Agents name
+    this.authService.getName().subscribe((data) => {
+      console.log(data);
+      console.log('Agent name Fetch Working!!');
+      this.agents = data;
     });
   }
 
+  get f() {
+    return this.RegisterForm.controls;
+  }
 
+  ngOnInit(): void {
+    this.RegisterForm = this.formBuilder.group({
+      CaseID: ['', Validators.required],
+      name: ['', Validators.required],
+      ReferenceNumber: ['', Validators.required],
+      DueDate: ['', Validators.required],
+      Description: ['', Validators.required],
+      InsurerName: ['', Validators.required],
+      PhoneNumber: ['', Validators.required],
+      EmailID: ['', [Validators.required, Validators.email]],
+      AddressLine1: ['', Validators.required],
+      AddressLine2: ['', Validators.required],
+      City: ['', Validators.required],
+      State: ['', Validators.required],
+      Pincode: ['', Validators.required],
+      Landmark: ['', Validators.required],
+      InsurerVerificationNotes: ['', Validators.required],
+      ThirdpartyName: ['', Validators.required],
+      T_PhoneNumber: ['', Validators.required],
+      T_EmailID: ['', Validators.required],
+      T_AddressLine1: ['', Validators.required],
+      T_AddressLine2: ['', Validators.required],
+      T_City: ['', Validators.required],
+      T_State: ['', Validators.required],
+      T_Pincode: ['', Validators.required],
+      T_Landmark: ['', Validators.required],
+      T_VerificationNotes: ['', Validators.required],
+      FileUpload:['',Validators.required]
+    });
 
-  selectFile(event): void {
-    this.selectedFiles = event.target.files;
+    // to get Questions
+    // Ins question
+    var selectedid = 1;
+    this.CasedetailsService.getquestions(selectedid).subscribe(
+      (questionsdata: questions) => {
+        this.ins_questionsarray = questionsdata;
+        console.log(this.t_questionsarray);
+
+        // t party questions
+        var selectedid2 = 2;
+        this.CasedetailsService.getquestions(selectedid2).subscribe(
+          (t_questionsdata: questions) => {
+            this.t_questionsarray = t_questionsdata;
+            console.log(this.t_questionsarray);
+          }
+        );
+      }
+    );
   }
 
   upload(): void {
+    debugger
     this.progress = 0;
 
     this.currentFile = this.selectedFiles.item(0);
@@ -110,84 +149,64 @@ export class DigitalCategoryComponent implements OnInit {
     this.selectedFiles = undefined;
   }
 
+  selectFile(event): void {
+    debugger
+    this.selectedFiles = event.target.files;
+    this.filename = event.target.files[0].name;
+    this.filesizeinkb = event.target.files[0].size;
+    this.filesize = this.filesizeinkb/1024;
+    this.currentFile = this.selectedFiles.item(0);
+
+    console.log(this.filename)
+    console.log(this.selectedFiles)
+  }
+
+  onSubmit() {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.RegisterForm.invalid) {
+      return;
+    } else {
+      this.CasedetailsService.createPost(
+        this.RegisterForm.value
+      ).subscribe((msg) => {});
+
+      this.currentFile = this.selectedFiles.item(0);
+    this.CasedetailsService.upload(this.currentFile).subscribe(
+      event => {
+        if (event.type === HttpEventType.UploadProgress) {
+          this.progress = Math.round(100 * event.loaded / event.total);
+        } else if (event instanceof HttpResponse) {
+          this.message = event.body.message;
+          this.fileInfos = this.CasedetailsService.getFiles();
+        }
+      },
+      err => {
+        this.progress = 0;
+        this.message = 'Could not upload the file!';
+        this.currentFile = undefined;
+      });
 
 
 
 
+      swal({
+        icon: "success",
+        title: "Created Successfully",
+        buttons: [false],
+        timer: 1500,
+      });
+      this.router.navigate(['/products/digital/digital-product-list']);
+    }
 
-
-  @ViewChild("userPost") userPost: NgForm;
-  @Output() create: EventEmitter<any> = new EventEmitter();
-  @Input() agents;
-
-
-  form: FormGroup;
-  faUserCheck = faUserCheck;
-
-
-  isOpen = false;
-  files: [];
-  name: []
-  url: string | ArrayBuffer = '';
-
-  constructor(
-    private CasedetailsService: CasedetailsService,
-    private modalService: NgbModal,
-    private http: HttpClient,
-    private authService: AuthService,
-    private router: Router
-  ) {
-    this.files = [];
-
-    this.digital_categories = digitalCategoryDB.digital_category;
-
-    this.authService.getName().subscribe((data) => {
-      console.log(data);
-      console.log('Agent name Fetch Working!!');
-      this.agents = data;
-    });
+    // display form values on success
+    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.RegisterForm.value, null, 4));
   }
 
 
-  public closeResult: string;
-  public digital_categories = [];
 
 
-
-//-------------------------------------------Create Case----------------------------------
-
-
-
-  onSubmit(formData): void {
-     debugger;
-     for (const fl of this.files) {
-       formData.append('image', fl,fl);
-       console.log(File.name, fl)
-  }
-    this.CasedetailsService.createPost(formData).pipe(first()).subscribe(() => { this.create.emit(null); });
-    swal({
-      icon: "success",
-      title: "Submitted Successfully",
-      buttons: [false],
-      timer: 1500,
-    });
-    // debugger;
-    this.router.navigate(['/products/digital/digital-product-list']);
-    // this.form.reset();
-    // this.userPost.resetForm();
-  }
-
-  // onSelectFile(event) {
-  //   debugger
-  //   if (event.target.files && event.target.files[0]) {
-  //     var reader = new FileReader();
-  //     this.files = event.target.files;
-  //     reader.readAsDataURL(event.target.files[0]); // read file as data url
-  //     reader.onload = (event) => { // called once readAsDataURL is completed
-  //       this.url = event.target.result;
-  //     }
-  //   }
-  // }
 
 
 

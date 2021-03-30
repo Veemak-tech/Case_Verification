@@ -14,7 +14,7 @@
       <div class="row">
 
 
-        <form #userPost="ngForm"  (ngSubmit)="onSubmit(userPost.value)" autocomplete="off">
+        <form [formGroup]="RegisterForm" autocomplete="off" (ngSubmit)="onSubmit()">
           <h3 class="subhead2">Case Details</h3>
           <div class="col-md-12 row">
 
@@ -22,8 +22,12 @@
               <div class="col-sm-2"></div>
               <label for="name" class="col-form-label col-sm-3 text-align">Case ID:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input type="search" ngModel class="form-control" id="CaseID" name="CaseID" minlength="5" maxlength=20
-                  placeholder="Enter Case ID"  autocomplete="off" required>
+                <input type="search" class="form-control" id="CaseID" name="CaseID" minlength="5" maxlength=20
+                  placeholder="Enter Case ID" autocomplete="off" formControlName="CaseID" required
+                  [ngClass]="{ 'is-invalid': submitted && f.CaseID.errors }">
+                <div *ngIf="submitted && f.CaseID.errors" class="invalid-feedback">
+                  <div *ngIf="f.CaseID.errors.required">Case ID is required</div>
+                </div>
               </div>
             </div>
 
@@ -34,8 +38,12 @@
               <div class="col-sm-2"></div>
               <label for="name" class="col-form-label col-sm-4 text-align">Ref Number:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input type="search" ngModel class="form-control" id="ReferenceNumber" name="ReferenceNumber"
-                  maxlength="20" placeholder="Reference Number" required="" autocomplete="off">
+                <input type="search" class="form-control" id="ReferenceNumber" minlength="5" name="ReferenceNumber"
+                  maxlength="20" placeholder="Reference Number" formControlName="ReferenceNumber" autocomplete="off"
+                  required [ngClass]="{ 'is-invalid': submitted && f.ReferenceNumber.errors }">
+                <div *ngIf="submitted && f.ReferenceNumber.errors" class="invalid-feedback">
+                  <div *ngIf="f.ReferenceNumber.errors.required">ReferenceNumber is required</div>
+                </div>
               </div>
             </div>
           </div>
@@ -48,7 +56,11 @@
               <div class="col-sm-2"></div>
               <label for="name" class="col-form-label col-sm-3 text-align">Due date:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input type="date" value="12-12-2012" ngModel class="form-control" name="DueDate" id="name" required="">
+                <input type="date" value="12-12-2012" class="form-control" formControlName="DueDate" name="DueDate"
+                  id="name" required [ngClass]="{ 'is-invalid': submitted && f.DueDate.errors }">
+                <div *ngIf="submitted && f.DueDate.errors" class="invalid-feedback">
+                  <div *ngIf="f.DueDate.errors.required">DueDate is required</div>
+                </div>
               </div>
             </div>
 
@@ -58,10 +70,15 @@
               <!-- <div class="col-sm-6 p-adjust-mob">
                 <input type="search" ngModel class="form-control" name="Name" maxlength="45" id="name" placeholder="Agent Name" required="" autocomplete="off">
               </div> -->
-              <select class="form-select form-control custom-select btn-sm btn-height col-md-5 p-adjust-mob mar-left"
-                [(ngModel)]="agents" id="assignto" name="name">
-                <option class="form-control" *ngFor="let item of agents" [value]="item.name">{{item.name}}</option>
-              </select>
+              <div class="col-md-5 p-adjust-mob mar-left agent-select-size">
+                <select formControlName="name" class="form-select form-control custom-select btn-sm btn-height"
+                  id="assignto" name="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                  <option class="form-control" *ngFor="let item of agents" [value]="item.name">{{item.name}}</option>
+                </select>
+                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                  <div *ngIf="f.name.errors.required">Name is required</div>
+                </div>
+              </div>
 
             </div>
           </div>
@@ -74,32 +91,54 @@
           <div class=" row">
             <div class="col-sm-1 ml-4"></div>
             <div class="col-sm-1 ml-3"></div>
-            <textarea ngModel class="form-control col-sm-8 ml-2 case-textarea" maxlength="256" name="Description"
-              rows="3" placeholder="Write Your Notes" autocomplete="off"></textarea>
+            <div class="col-sm-8 ml-2 pl-0 pr-0 case-textarea">
+              <textarea class="form-control " maxlength="256" minlength="10" name="Description" rows="3"
+                placeholder="Write Your Notes" autocomplete="off" formControlName="Description" required
+                [ngClass]="{ 'is-invalid': submitted && f.Description.errors }"></textarea>
+              <div *ngIf="submitted && f.Description.errors" class="invalid-feedback">
+                <div *ngIf="f.Description.errors.required">Description is required</div>
+              </div>
+            </div>
             <div class="col-sm-2"></div>
           </div>
+
           <div class="form-group row mb-0">
             <div class="col-md-2"></div>
             <!-- <label for="img" class=" col-sm-3 col-form-label" style="text-align: right;">Image file</label> -->
             <div class="col-md-5 " style="margin-left: 19px;">
               <!-- <input ngModel type="file" id="img" name="file" accept="image/*" (change)="onSelectFile($event)"> -->
 
-              <div *ngIf="currentFile" class="progress">
+              <!-- <div *ngIf="currentFile" class="progress">
                 <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
                   attr.aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100"
                   [ngStyle]="{ width: progress + '%' }">
                   {{ progress }}%
                 </div>
-              </div>
+              </div> -->
 
               <div>
 
                 <div class="input-group mb-3 col-md-8 col-8 file-margin">
                   <div class="custom-file">
-                    <input type="file" class="custom-file-input" (change)="selectFile($event)" id="inputGroupFile01">
-                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+
+                    <input type="file" class="custom-file-input" id="FileUpload" (change)="selectFile($event)"
+                      formControlName=FileUpload id="inputGroupFile01"
+                      [ngClass]="{ 'is-invalid': submitted && f.FileUpload.errors }">
+
+                      <label class="custom-file-label" for="inputGroupFile01"></label>
+                    <div *ngIf="submitted && f.FileUpload.errors" class="invalid-feedback">
+                      <div *ngIf="f.FileUpload.errors.required">File is required</div>
+                    </div>
                   </div>
+
                 </div>
+                <div class="mob-helptext">
+                <small class="form-text text-muted  ">Choose the image file below 6 MB</small>
+                <div>
+                <div class="text-muted form-text">{{filename}}</div>
+                <div class="text-muted form-text">{{filesize}}</div>
+              </div>
+              </div>
                 <!-- <label class="btn btn-default"> -->
                 <!-- <input type="file"  class="btn"/> -->
                 <!-- </label> -->
@@ -137,8 +176,12 @@
               <div class="col-sm-1"></div>
               <label for="InsurerName" class="col-form-label col-sm-4 text-align">Insurer Name:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input type="search" ngModel class="form-control" maxlength="45" placeholder="Enter Insurer Name"
-                  name="InsurerName" id="InsurerName" autocomplete="off">
+                <input type="search" class="form-control" maxlength="45" minlength="3" placeholder="Enter Insurer Name"
+                  name="InsurerName" id="InsurerName" autocomplete="off" formControlName="InsurerName" required
+                  [ngClass]="{ 'is-invalid': submitted && f.InsurerName.errors }">
+                <div *ngIf="submitted && f.InsurerName.errors" class="invalid-feedback">
+                  <div *ngIf="f.InsurerName.errors.required">Insurer Name is required</div>
+                </div>
               </div>
             </div>
 
@@ -146,8 +189,12 @@
               <div class="col-sm-2"></div>
               <label for="PhoneNumber" class="col-form-label col-sm-4 text-align">Phone Number:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input type="search" ngModel class="form-control" maxlength="20" placeholder="Phone Number"
-                  name="PhoneNumber" id="PhoneNumber" autocomplete="off">
+                <input type="search" class="form-control" minlength="10" maxlength="20" placeholder="Phone Number"
+                  name="PhoneNumber" id="PhoneNumber" autocomplete="off" formControlName="PhoneNumber" required
+                  [ngClass]="{ 'is-invalid': submitted && f.PhoneNumber.errors }">
+                <div *ngIf="submitted && f.PhoneNumber.errors" class="invalid-feedback">
+                  <div *ngIf="f.PhoneNumber.errors.required">Phone Number is required</div>
+                </div>
               </div>
 
             </div>
@@ -159,8 +206,13 @@
               <div class="col-sm-1"></div>
               <label for="InsurerName" class="col-form-label col-sm-4 text-align">Email:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input type="search" ngModel class="form-control" maxlength="45" placeholder="Email ID" name="EmailID"
-                  id="EmailID" autocomplete="off">
+                <input type="search" class="form-control" maxlength="45" placeholder="Email ID" name="EmailID"
+                  id="EmailID" autocomplete="off" formControlName="EmailID" required
+                  [ngClass]="{ 'is-invalid': submitted && f.EmailID.errors }">
+                <div *ngIf="submitted && f.EmailID.errors" class="invalid-feedback">
+                  <div *ngIf="f.EmailID.errors.required">Email is required</div>
+                  <div *ngIf="f.EmailID.errors.email">Email must be a valid email address</div>
+                </div>
               </div>
             </div>
           </div>
@@ -176,12 +228,20 @@
             <div class="col-sm-1 ml-4"></div>
             <!-- </div> -->
             <div class="col-sm-4 form-group">
-              <input type="search" ngModel class="form-control" maxlength="256" placeholder="AddressLine 1"
-                name="AddressLine1" id="AddressLine1" placeholder="AddressLine 1" autocomplete="off">
+              <input type="search" class="form-control" maxlength="256" placeholder="AddressLine 1" name="AddressLine1"
+                id="AddressLine1" placeholder="AddressLine 1" autocomplete="off" formControlName="AddressLine1" required
+                [ngClass]="{ 'is-invalid': submitted && f.AddressLine1.errors }">
+              <div *ngIf="submitted && f.AddressLine1.errors" class="invalid-feedback">
+                <div *ngIf="f.AddressLine1.errors.required">Address Line 1 is required</div>
+              </div>
             </div>
             <div class="col-sm-5 form-group">
-              <input type="search" ngModel class="form-control" maxlength="256" placeholder="AddressLine 2"
-                name="AddressLine2" id="AddressLine2" placeholder="AddressLine 2" autocomplete="off">
+              <input type="search" class="form-control" maxlength="256" placeholder="AddressLine 2" name="AddressLine2"
+                id="AddressLine2" placeholder="AddressLine 2" autocomplete="off" formControlName="AddressLine2" required
+                [ngClass]="{ 'is-invalid': submitted && f.AddressLine2.errors }">
+              <div *ngIf="submitted && f.AddressLine2.errors" class="invalid-feedback">
+                <div *ngIf="f.AddressLine2.errors.required">Address Line 2 is required</div>
+              </div>
             </div>
             <!-- <div class="col-sm-2"></div> -->
           </div>
@@ -191,20 +251,36 @@
             <!-- <div style="width: 110px;"></div> -->
 
             <div class="col-sm-2 ml-1 form-group">
-              <input type="search" ngModel class="form-control" maxlength="20" name="City" id="City" placeholder="City"
-                autocomplete="off">
+              <input type="search" class="form-control" maxlength="20" name="City" id="City" placeholder="City"
+                autocomplete="off" formControlName="City" required
+                [ngClass]="{ 'is-invalid': submitted && f.City.errors }">
+              <div *ngIf="submitted && f.City.errors" class="invalid-feedback">
+                <div *ngIf="f.City.errors.required">City is required</div>
+              </div>
             </div>
             <div class="col-sm-2 form-group">
-              <input type="search" ngModel class="form-control" maxlength="20" name="State" id="State"
-                placeholder="State" autocomplete="off">
+              <input type="search" class="form-control" maxlength="20" name="State" id="State" placeholder="State"
+                autocomplete="off" formControlName="State" required
+                [ngClass]="{ 'is-invalid': submitted && f.State.errors }">
+              <div *ngIf="submitted && f.State.errors" class="invalid-feedback">
+                <div *ngIf="f.State.errors.required">State is required</div>
+              </div>
             </div>
             <div class="col-sm-2 form-group">
-              <input type="search" ngModel class="form-control" maxlength="10" name="Pincode" id="Pincode"
-                placeholder="Pincode" autocomplete="off">
+              <input type="search" class="form-control" maxlength="10" name="Pincode" id="Pincode" placeholder="Pincode"
+                autocomplete="off" formControlName="Pincode" required
+                [ngClass]="{ 'is-invalid': submitted && f.Pincode.errors }">
+              <div *ngIf="submitted && f.Pincode.errors" class="invalid-feedback">
+                <div *ngIf="f.Pincode.errors.required">Pincode is required</div>
+              </div>
             </div>
             <div class="col-sm-3 form-group">
-              <input type="search" ngModel class="form-control" maxlength="256" name="Landmark" id="Landmark"
-                placeholder="Landmark" autocomplete="off">
+              <input type="search" class="form-control" maxlength="256" name="Landmark" id="Landmark"
+                placeholder="Landmark" autocomplete="off" formControlName="Landmark" required
+                [ngClass]="{ 'is-invalid': submitted && f.Landmark.errors }">
+              <div *ngIf="submitted && f.Landmark.errors" class="invalid-feedback">
+                <div *ngIf="f.Landmark.errors.required">Landmark is required</div>
+              </div>
             </div>
             <!-- <div class="col-sm-2"></div> -->
 
@@ -236,7 +312,7 @@
 
             <!-- ins question -->
             <div class="col-sm-8 ml-4 pb-2 borderstyle">
-              <div class="col-md-12 pl-0" *ngFor="let control of dynamicformarray">
+              <div class="col-md-12 pl-0" *ngFor="let control of ins_questionsarray">
                 <div [ngSwitch]="control.controltype">
                   <div *ngSwitchCase="'text'">
                     <div class="col-md-12 pl-">
@@ -244,9 +320,10 @@
                     </div>
                     <div class="col-md-12">
                       <input type="{{control.controltype}}" class="{{control.controlcss}}"
-                        aria-describedby="passwordHelpBlock" readonly value="{{control.questiondisplaytext}}" class="input-nostyle">
+                        aria-describedby="passwordHelpBlock" readonly value="{{control.questiondisplaytext}}"
+                        class="input-nostyle">
                       <small id="passwordHelpBlock" class="form-text text-muted">
-                      {{control.helptext}}
+                        {{control.helptext}}
                       </small>
                     </div>
                   </div>
@@ -256,11 +333,24 @@
               </div>
             </div>
 
-            <!-- <textarea ngModel class="form-control col-sm-8 case-textarea" maxlength="256" name="InsurerVerificationNotes" rows="6" placeholder="Insurer Questions" autocomplete="off"></textarea> -->
+
             <div class="col-sm-1"></div>
           </div>
 
+          <div class="row mt-3">
+            <div class="col-sm-2 ml-4"></div>
+            <div class="col-sm-8 case-i-textarea txt-area pr-0">
+              <textarea class="form-control " maxlength="256" name="InsurerVerificationNotes" rows="6"
+                placeholder="Insurer Questions" autocomplete="off" formControlName="InsurerVerificationNotes" required
+                [ngClass]="{ 'is-invalid': submitted && f.InsurerVerificationNotes.errors }"></textarea>
+              <div *ngIf="submitted && f.InsurerVerificationNotes.errors" class="invalid-feedback">
+                <div *ngIf="f.InsurerVerificationNotes.errors.required">Insurer Verification Notes is required</div>
+              </div>
+            </div>
+          </div>
 
+
+          <!-- -------------------------------------------------------thirdparty---------------------------------------- -->
           <hr>
           <h3 class="subhead2">Thirdparty Details</h3>
           <div class="col-md-12 row">
@@ -268,8 +358,12 @@
               <!-- <div class="col-sm-1"></div> -->
               <label for="InsurerName" class="col-form-label col-sm-5 text-align">Thirdparty Name:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input ngModel type="search" class="form-control" maxlength="45" placeholder="Thirdparty Name"
-                  name="ThirdpartyName" id="ThirdpartyName" autocomplete="off">
+                <input type="search" class="form-control" maxlength="45" placeholder="Thirdparty Name"
+                  name="ThirdpartyName" id="ThirdpartyName" autocomplete="off" formControlName="ThirdpartyName" required
+                  [ngClass]="{ 'is-invalid': submitted && f.ThirdpartyName.errors }">
+                <div *ngIf="submitted && f.ThirdpartyName.errors" class="invalid-feedback">
+                  <div *ngIf="f.ThirdpartyName.errors.required">Thirdparty Name is required</div>
+                </div>
               </div>
             </div>
 
@@ -277,8 +371,12 @@
               <div class="col-sm-2"></div>
               <label for="PhoneNumber" class="col-form-label col-sm-4 text-align">Phone Number:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input ngModel type="search" class="form-control" maxlength="20" placeholder="Phone Number"
-                  name="T_PhoneNumber" id="T_PhoneNumber" autocomplete="off">
+                <input type="search" class="form-control" maxlength="20" placeholder="Phone Number" name="T_PhoneNumber"
+                  id="T_PhoneNumber" autocomplete="off" formControlName="T_PhoneNumber" required
+                  [ngClass]="{ 'is-invalid': submitted && f.T_PhoneNumber.errors }">
+                <div *ngIf="submitted && f.T_PhoneNumber.errors" class="invalid-feedback">
+                  <div *ngIf="f.T_PhoneNumber.errors.required">Third party PhoneNumber is required</div>
+                </div>
               </div>
 
             </div>
@@ -290,8 +388,12 @@
               <div class="col-sm-1"></div>
               <label for="InsurerName" class="col-form-label col-sm-4 text-align">Email:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input ngModel type="search" class="form-control" maxlength="45" name="T_EmailID" id="T_EmailID"
-                  autocomplete="off" placeholder="Enter EmailID">
+                <input type="search" class="form-control" maxlength="45" name="T_EmailID" id="T_EmailID"
+                  autocomplete="off" placeholder="Enter EmailID" formControlName="T_EmailID" required
+                  [ngClass]="{ 'is-invalid': submitted && f.T_EmailID.errors }">
+                <div *ngIf="submitted && f.T_EmailID.errors" class="invalid-feedback">
+                  <div *ngIf="f.T_EmailID.errors.required">Third Party Email ID is required</div>
+                </div>
               </div>
             </div>
           </div>
@@ -307,12 +409,20 @@
             <!-- <div style="width: 110px;">
                           </div> -->
             <div class="col-sm-4 form-group">
-              <input ngModel type="search" class="form-control" maxlength="256" name="T_AddressLine1"
-                id="T_AddressLine1" placeholder="AddressLine 1" autocomplete="off">
+              <input type="search" class="form-control" maxlength="256" name="T_AddressLine1" id="T_AddressLine1"
+                placeholder="AddressLine 1" autocomplete="off" formControlName="T_AddressLine1" required
+                [ngClass]="{ 'is-invalid': submitted && f.T_AddressLine1.errors }">
+              <div *ngIf="submitted && f.T_AddressLine1.errors" class="invalid-feedback">
+                <div *ngIf="f.T_AddressLine1.errors.required">Address Line 1 is required</div>
+              </div>
             </div>
             <div class="col-sm-5 form-group">
-              <input ngModel type="search" class="form-control" maxlength="256" name="T_AddressLine2"
-                id="T_AddressLine2" placeholder="AddressLine 2" autocomplete="off">
+              <input type="search" class="form-control" maxlength="256" name="T_AddressLine2" id="T_AddressLine2"
+                placeholder="AddressLine 2" autocomplete="off" formControlName="T_AddressLine2" required
+                [ngClass]="{ 'is-invalid': submitted && f.T_AddressLine2.errors }">
+              <div *ngIf="submitted && f.T_AddressLine2.errors" class="invalid-feedback">
+                <div *ngIf="f.T_AddressLine2.errors.required">Address Line 2 is required</div>
+              </div>
             </div>
             <!-- <div class="col-sm-2"></div> -->
           </div>
@@ -322,20 +432,36 @@
             <!-- <div style="width: 110px;"></div> -->
 
             <div class="col-sm-2 ml-1 form-group">
-              <input ngModel type="search" class="form-control" maxlength="20" name="T_City" id="T_City"
-                placeholder="City" autocomplete="off">
+              <input type="search" class="form-control" maxlength="20" name="T_City" id="T_City" placeholder="City"
+                autocomplete="off" formControlName="T_City" required
+                [ngClass]="{ 'is-invalid': submitted && f.T_City.errors }">
+              <div *ngIf="submitted && f.T_City.errors" class="invalid-feedback">
+                <div *ngIf="f.T_City.errors.required">City is required</div>
+              </div>
             </div>
             <div class="col-sm-2 form-group">
-              <input ngModel type="search" class="form-control" maxlength="20" name="T_State" id="T_State"
-                placeholder="State" autocomplete="off">
+              <input type="search" class="form-control" maxlength="20" name="T_State" id="T_State" placeholder="State"
+                autocomplete="off" formControlName="T_State" required
+                [ngClass]="{ 'is-invalid': submitted && f.T_State.errors }">
+              <div *ngIf="submitted && f.T_State.errors" class="invalid-feedback">
+                <div *ngIf="f.T_State.errors.required">State is required</div>
+              </div>
             </div>
             <div class="col-sm-2 form-group">
-              <input ngModel type="search" class="form-control" maxlength="10" name="T_Pincode" id="T_Pincode"
-                placeholder="Pincode" autocomplete="off">
+              <input type="search" class="form-control" maxlength="10" name="T_Pincode" id="T_Pincode"
+                placeholder="Pincode" autocomplete="off" formControlName="T_Pincode" required
+                [ngClass]="{ 'is-invalid': submitted && f.T_Pincode.errors }">
+              <div *ngIf="submitted && f.T_Pincode.errors" class="invalid-feedback">
+                <div *ngIf="f.T_Pincode.errors.required">Pincode is required</div>
+              </div>
             </div>
             <div class="col-sm-3 form-group">
-              <input ngModel type="search" class="form-control" maxlength="256" name="T_Landmark" id="T_Landmark"
-                placeholder="Landmark" autocomplete="off">
+              <input type="search" class="form-control" maxlength="256" name="T_Landmark" id="T_Landmark"
+                placeholder="Landmark" autocomplete="off" formControlName="T_Landmark" required
+                [ngClass]="{ 'is-invalid': submitted && f.T_Landmark.errors }">
+              <div *ngIf="submitted && f.T_Landmark.errors" class="invalid-feedback">
+                <div *ngIf="f.T_Landmark.errors.required">Landmark is required</div>
+              </div>
             </div>
             <!-- <div class="col-sm-2"></div> -->
 
@@ -361,7 +487,7 @@
 
             <!-- tpart question -->
             <div class="col-sm-8 ml-4 pb-2 borderstyle">
-              <div class="col-md-12 pl-0" *ngFor="let control of dynamicformarray2">
+              <div class="col-md-12 pl-0" *ngFor="let control of t_questionsarray">
                 <div [ngSwitch]="control.controltype">
                   <div *ngSwitchCase="'text'">
                     <div class="col-md-12 pl-">
@@ -380,13 +506,29 @@
                 </div>
               </div>
             </div>
-            <!-- <textarea ngModel class="form-control col-sm-8 case-textarea" maxlength="256" name="T_VerificationNotes" rows="6" placeholder="Thirdparty Questions" autocomplete="off"></textarea> -->
+
+
+
+
             <div class="col-sm-1"></div>
           </div>
+
+          <div class="row mt-3">
+            <div class="col-sm-2 ml-4"></div>
+            <div class="col-sm-8 case-i-textarea txt-area pr-0">
+              <textarea class="form-control " maxlength="256" name="T_VerificationNotes" rows="6"
+                placeholder="Thirdparty Questions" autocomplete="off" formControlName="T_VerificationNotes" required
+                [ngClass]="{ 'is-invalid': submitted && f.T_VerificationNotes.errors }"></textarea>
+              <div *ngIf="submitted && f.T_VerificationNotes.errors" class="invalid-feedback">
+                <div *ngIf="f.T_VerificationNotes.errors.required">Third Party VerificationNotes is required</div>
+              </div>
+            </div>
+          </div>
+
           <br>
           <div class="text-center">
-            <button type="submit" (click)="upload()" class="btn btn-outline-primary ml-5 btn-mob-adjust"><i
-                class="fas fa-user-check mr-2"></i>Submit</button>
+            <button type="submit" class="btn btn-outline-primary ml-5 btn-mob-adjust" >
+              <i class="fas fa-user-check mr-2"></i>Submit</button>
           </div>
 
         </form>

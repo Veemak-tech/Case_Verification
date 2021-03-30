@@ -237,7 +237,7 @@ export class DigitalListComponent implements OnInit {
       },
       CreatedDate: {
         title: 'Creation Date',
-        width: '25%'
+        width: '2%'
       },
       DueDate: {
         title: 'Due Date',

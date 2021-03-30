@@ -9,7 +9,9 @@ export const environment = {
   getname:'http://veemak.online/api/auth/roleid/RoleID:2',
   apiauthpassword:'http://veemak.online/api/auth/password',
   apicaasefileupload: 'http://veemak.online/',
-  apiassign:'http://veemak.online/api/casedetails/caseassign'
+  apiassign:'http://veemak.online/api/casedetails/caseassign',
+  apigetquestion: 'http://veemak.online/api/casedetails/group/questions'
+
 
 
 

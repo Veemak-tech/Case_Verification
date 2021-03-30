@@ -26,6 +26,7 @@ import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 import { AuthService } from 'src/app/services/auth.service';
 import swal from 'sweetalert';
 import { first } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 const URL = './src/assets/images';
 
@@ -42,6 +43,16 @@ export class AddProductComponent implements OnInit {
   @Output() create: EventEmitter<any> = new EventEmitter();
   ins_questionsarray: any;
   t_questionsarray: any;
+
+  selectedFiles: FileList;
+  filename : string;
+  filesize : any;
+  filesizeinkb :any;
+  currentFile: File;
+  progress = 0;
+  message = '';
+  fileInfos: Observable<any>;
+
 
   constructor(
     private CasedetailsService: CasedetailsService,
@@ -90,6 +101,7 @@ export class AddProductComponent implements OnInit {
       T_Pincode: ['', Validators.required],
       T_Landmark: ['', Validators.required],
       T_VerificationNotes: ['', Validators.required],
+      FileUpload:['',Validators.required]
     });
 
     // to get Questions
@@ -112,6 +124,40 @@ export class AddProductComponent implements OnInit {
     );
   }
 
+  upload(): void {
+    debugger
+    this.progress = 0;
+
+    this.currentFile = this.selectedFiles.item(0);
+    this.CasedetailsService.upload(this.currentFile).subscribe(
+      event => {
+        if (event.type === HttpEventType.UploadProgress) {
+          this.progress = Math.round(100 * event.loaded / event.total);
+        } else if (event instanceof HttpResponse) {
+          this.message = event.body.message;
+          this.fileInfos = this.CasedetailsService.getFiles();
+        }
+      },
+      err => {
+        this.progress = 0;
+        this.message = 'Could not upload the file!';
+        this.currentFile = undefined;
+      });
+
+    this.selectedFiles = undefined;
+  }
+
+  selectFile(event): void {
+    debugger
+    this.selectedFiles = event.target.files;
+    this.filename = event.target.files[0].name;
+    this.filesizeinkb = event.target.files[0].size;
+    this.filesize = this.filesizeinkb/1024;
+
+    console.log(this.filename)
+    console.log(this.selectedFiles)
+  }
+
   onSubmit() {
     this.submitted = true;
 
@@ -119,9 +165,15 @@ export class AddProductComponent implements OnInit {
     if (this.RegisterForm.invalid) {
       return;
     } else {
-      this.CasedetailsService.createPost(
-        this.RegisterForm.value
-      ).subscribe((msg) => {});
+      // this.CasedetailsService.createPost(
+      //   this.RegisterForm.value
+      // ).subscribe((msg) => {});
+      // swal({
+      //   icon: "success",
+      //   title: "Submitted Successfully",
+      //   buttons: [false],
+      //   timer: 1500,
+      // });
     }
 
     // display form values on success
