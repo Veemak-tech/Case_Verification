@@ -255,14 +255,15 @@ export class DigitalListComponent implements OnInit {
 
       username: {
         title: 'Status',
-        filter: {
-          type: 'checkbox',
-          config: {
-            true: 'Aravinth',
-            false: 'Not Assigned',
-            resetText: 'clear',
-          },
-        },
+
+        // filter: {
+        //   type: 'checkbox',
+        //   config: {
+        //     true: '',
+        //     false: 'Not Assigned',
+        //     resetText: 'clear',
+        //   },
+        // },
         width: '15%'
       },
     },

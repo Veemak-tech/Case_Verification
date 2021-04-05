@@ -169,6 +169,7 @@
           </div>
 
 
+
           <hr>
           <h3 class="subhead2">Insurer Details</h3>
           <div class="col-md-12 row">
@@ -314,7 +315,8 @@
             <div class="col-sm-8 ml-4 pb-2 borderstyle">
               <div class="col-md-12 pl-0" *ngFor="let control of ins_questionsarray">
                 <div [ngSwitch]="control.controltype">
-                  <div *ngSwitchCase="'text'">
+                  <!-- text -->
+                  <div class="mb-2" *ngSwitchCase="'text'">
                     <div class="col-md-12 pl-">
                       <label class="{{control.labelcss}}">{{control.questionname}}</label>
                     </div>
@@ -327,6 +329,38 @@
                       </small>
                     </div>
                   </div>
+                  <!-- radio -->
+                  <div *ngSwitchCase="'radio'">
+                    <div class="col-md-12 mb-3">
+
+                      <label for="gender" >{{control.questionname}}</label>
+
+                      <div class="col-md-12 row">
+                    <div class="form-check mr-3" *ngFor="let val of control.questiondisplaytext.split(',')">
+                      <label class="form-check-label" for="flexRadioDefault1">
+                        <input type="radio" name="flexRadioDefault" id="flexRadioDefault1" class="form-check-input"
+                        value="{{val}}">{{val}}
+                      </label>
+                    </div>
+                  </div>
+                  </div>
+                  </div>
+                  <!-- select -->
+                  <div *ngSwitchCase="'select'">
+                    <div class="col-md-12">
+
+                      <label for="city" >{{control.questiondisplaytext}}</label>
+
+                      <div class="col-md-12 row pl-0">
+                    <div class="form-check mr-3" >
+                      <select class="custom-select" name="city" id="city">
+                        <option *ngFor="let val of control.questionname.split(',')" value="{{val}}">{{val}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  </div>
+                  </div>
+
 
 
                 </div>

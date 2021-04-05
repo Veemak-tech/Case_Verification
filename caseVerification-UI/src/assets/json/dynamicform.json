@@ -20,5 +20,12 @@
     "Type": "date",
     "value": "",
     "cssclass": "form-control ml-1"
+  },
+  {
+    "ID":"Gender",
+    "Label":"Gender",
+    "Type": "Select",
+    "value": "Male,Female",
+    "cssclass": "form-control ml-1"
   }
 ]
