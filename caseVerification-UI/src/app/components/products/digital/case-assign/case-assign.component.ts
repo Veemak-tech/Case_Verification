@@ -165,14 +165,21 @@ swal({
 
 
  }
+
+
+
+   
+ 
+
+ 
   //select events
   public onUserRowSelect(event){
-debugger
-     this.selectedRows = event.selected[0].CaseID;
-     this.selectedRowsAID = event.selected[0].AssignmentID;
+ debugger
+      this.selectedRows = event.selected[0].CaseID;
+      this.selectedRowsAID = event.selected[0].AssignmentID;
 
 
-  }
+ }
 
   selectChange() {
     debugger
