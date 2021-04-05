@@ -150,6 +150,11 @@ export class CasedetailsService {
     return this.http.get(`${environment.apigetquestion}/${selectedid}`)
   }
 
+  getquestionoptions(selectedid:any){
+    debugger;
+    return this.http.get(`${environment.apigetquestionoptions}/${selectedid}`)
+  }
+
   getpaging(pageno:number){
     debugger;
     return this.http.get(`${environment.apiUrlpostcase}/${pageno}/${10}`)

@@ -31,6 +31,13 @@ module.exports = class casedetails {
   return db.execute ("CALL getquestionsbygroupid(?)", [groupid])
   }
 
+  // get questionoptions 
+
+  static getquestionoptions (ingroupid){
+    debugger
+    return db.execute ("CALL getquestionoptions(?)", [ingroupid])
+  }
+
 
 
   // static fetchAll() {

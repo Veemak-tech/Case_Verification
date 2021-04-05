@@ -13,6 +13,10 @@
     width: 20px;
   }
 
+  :host ::ng-deep .ng2-smart-th {
+    text-align: center;
+  }
+
 
 .scroll{
   overflow: scroll;

@@ -24,6 +24,7 @@ export class CategoryComponent {
 
   dynamicformarray : any;
   dynamicformarray2 :any;
+  dynamicformarray3: any;
 
   constructor( private httpClient : HttpClient, private user: CasedetailsService
     ,private toastr: ToastrService){
@@ -40,7 +41,13 @@ export class CategoryComponent {
     var selectedid2 = 2;
     this.user.getquestions(selectedid2).subscribe((data: questions) => {
       this.dynamicformarray2 = data;
-      console.log(this.dynamicformarray);
+      console.log(this.dynamicformarray2);
+    })
+
+    var selectedid3 = 3;
+    this.user.getquestions(selectedid3).subscribe((data: questions) => {
+      this.dynamicformarray3 = data;
+      console.log(this.dynamicformarray3);
     })
 
   }

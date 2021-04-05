@@ -271,7 +271,7 @@ debugger
 
       CreatedDate: {
         title: 'Creation Date',
-        width: '25%'
+        width: '11%'
       },
       DueDate: {
         title: 'Due Date',
@@ -312,7 +312,8 @@ debugger
             list: [
               { value: 'Assigned', title:'Assigned' },
               { value: 'In Progress', title:'In Progress'},
-              { value:'Pending', title:'Pending'}
+              { value:'Pending', title:'Pending'},
+              { value:'Not Assigned', title:'Not Assigned'}
             ],
           },
         },

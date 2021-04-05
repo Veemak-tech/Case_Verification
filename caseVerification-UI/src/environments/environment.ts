@@ -15,7 +15,8 @@ export const environment = {
    apiauthpassword:'http://localhost:3000/auth/password',
    apicaasefileupload: 'http://localhost:3000',
    apiassign:'http://localhost:3000/casedetails/caseassign',
-   apigetquestion: 'http://localhost:3000/casedetails/group/questions'
+   apigetquestion: 'http://localhost:3000/casedetails/group/questions',
+   apigetquestionoptions : 'http://localhost:3000/casedetails/group/questionoptions'
 
 };
 

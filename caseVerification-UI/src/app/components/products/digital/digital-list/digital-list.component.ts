@@ -125,7 +125,7 @@ export class DigitalListComponent implements OnInit {
         this.pageno = result.pager;
         this.pagesize = result.pageOfItems;
   // debugger;
-        console.log(result.pagining)
+        console.log(this.pagesize)
     });
   }
 
@@ -233,11 +233,11 @@ export class DigitalListComponent implements OnInit {
       },
       InsurerName: {
         title: 'Insurer Name',
-        //width: '18%'
+        width: '15%'
       },
       CreatedDate: {
         title: 'Creation Date',
-        width: '2%'
+        width: '8%'
       },
       DueDate: {
         title: 'Due Date',

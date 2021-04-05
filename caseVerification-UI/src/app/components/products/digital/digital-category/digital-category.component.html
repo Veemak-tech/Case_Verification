@@ -22,11 +22,13 @@
               <div class="col-sm-2"></div>
               <label for="name" class="col-form-label col-sm-3 text-align">Case ID:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input type="search" class="form-control" id="CaseID" name="CaseID" minlength="5" maxlength=20
+                <input type="search" class="form-control" id="CaseID" name="CaseID" minLength="5" maxlength=20
                   placeholder="Enter Case ID" autocomplete="off" formControlName="CaseID" required
                   [ngClass]="{ 'is-invalid': submitted && f.CaseID.errors }">
-                <div *ngIf="submitted && f.CaseID.errors" class="invalid-feedback">
+                <div *ngIf="submitted && f.CaseID.errors" class="invalid-feedback" >
                   <div *ngIf="f.CaseID.errors.required">Case ID is required</div>
+                  <div *ngIf="f.CaseID.errors.minlength"> Min 5 Characters </div>
+                  <div *ngIf="f.CaseID.errors.maxlength">Case ID should be less than 10 </div>
                 </div>
               </div>
             </div>
@@ -43,6 +45,8 @@
                   required [ngClass]="{ 'is-invalid': submitted && f.ReferenceNumber.errors }">
                 <div *ngIf="submitted && f.ReferenceNumber.errors" class="invalid-feedback">
                   <div *ngIf="f.ReferenceNumber.errors.required">ReferenceNumber is required</div>
+                  <div *ngIf="f.ReferenceNumber.errors.minlength"> Min 5 Characters </div>
+                  <div *ngIf="f.ReferenceNumber.errors.maxlength">Ref Number should be less than 10 </div>
                 </div>
               </div>
             </div>
@@ -97,6 +101,8 @@
                 [ngClass]="{ 'is-invalid': submitted && f.Description.errors }"></textarea>
               <div *ngIf="submitted && f.Description.errors" class="invalid-feedback">
                 <div *ngIf="f.Description.errors.required">Description is required</div>
+                <div *ngIf="f.Description.errors.minlength"> Min 5 Characters </div>
+                  <div *ngIf="f.Description.errors.maxlength">Description should be less than 256 </div>
               </div>
             </div>
             <div class="col-sm-2"></div>
@@ -135,8 +141,8 @@
                 <div class="mob-helptext">
                 <small class="form-text text-muted  ">Choose the image file below 6 MB</small>
                 <div>
-                <div class="text-muted form-text">{{filename}}</div>
-                <div class="text-muted form-text">{{filesize}}</div>
+                <div class="text-muted form-text">File Name: {{filename}}</div>
+                <div class="text-muted form-text">File Size (KB): {{filesize}}</div>
               </div>
               </div>
                 <!-- <label class="btn btn-default"> -->
@@ -182,6 +188,8 @@
                   [ngClass]="{ 'is-invalid': submitted && f.InsurerName.errors }">
                 <div *ngIf="submitted && f.InsurerName.errors" class="invalid-feedback">
                   <div *ngIf="f.InsurerName.errors.required">Insurer Name is required</div>
+                  <div *ngIf="f.InsurerName.errors.minlength"> Min 2 Characters </div>
+                  <div *ngIf="f.InsurerName.errors.maxlength">Insurer Name should be less than 20 </div>
                 </div>
               </div>
             </div>
@@ -195,6 +203,8 @@
                   [ngClass]="{ 'is-invalid': submitted && f.PhoneNumber.errors }">
                 <div *ngIf="submitted && f.PhoneNumber.errors" class="invalid-feedback">
                   <div *ngIf="f.PhoneNumber.errors.required">Phone Number is required</div>
+                  <div *ngIf="f.PhoneNumber.errors.minlength"> Min 10 Characters </div>
+                  <div *ngIf="f.PhoneNumber.errors.maxlength">Phone Number should be less than 13 </div>
                 </div>
               </div>
 
@@ -212,7 +222,7 @@
                   [ngClass]="{ 'is-invalid': submitted && f.EmailID.errors }">
                 <div *ngIf="submitted && f.EmailID.errors" class="invalid-feedback">
                   <div *ngIf="f.EmailID.errors.required">Email is required</div>
-                  <div *ngIf="f.EmailID.errors.email">Email must be a valid email address</div>
+                  <div *ngIf="f.EmailID.errors.email">Email must be a valid</div>
                 </div>
               </div>
             </div>
@@ -234,6 +244,8 @@
                 [ngClass]="{ 'is-invalid': submitted && f.AddressLine1.errors }">
               <div *ngIf="submitted && f.AddressLine1.errors" class="invalid-feedback">
                 <div *ngIf="f.AddressLine1.errors.required">Address Line 1 is required</div>
+                <div *ngIf="f.AddressLine1.errors.minlength"> Min 5 Characters </div>
+                  <div *ngIf="f.AddressLine1.errors.maxlength">Address Line 1 should be less than 50 </div>
               </div>
             </div>
             <div class="col-sm-5 form-group">
@@ -242,6 +254,8 @@
                 [ngClass]="{ 'is-invalid': submitted && f.AddressLine2.errors }">
               <div *ngIf="submitted && f.AddressLine2.errors" class="invalid-feedback">
                 <div *ngIf="f.AddressLine2.errors.required">Address Line 2 is required</div>
+                <div *ngIf="f.AddressLine2.errors.minlength"> Min 5 Characters </div>
+                  <div *ngIf="f.AddressLine2.errors.maxlength">Address Line 2 should be less than 50 </div>
               </div>
             </div>
             <!-- <div class="col-sm-2"></div> -->
@@ -257,6 +271,8 @@
                 [ngClass]="{ 'is-invalid': submitted && f.City.errors }">
               <div *ngIf="submitted && f.City.errors" class="invalid-feedback">
                 <div *ngIf="f.City.errors.required">City is required</div>
+                <div *ngIf="f.City.errors.minlength"> Min 3 Characters </div>
+                  <div *ngIf="f.City.errors.maxlength">City should be less than 20 </div>
               </div>
             </div>
             <div class="col-sm-2 form-group">
@@ -265,6 +281,8 @@
                 [ngClass]="{ 'is-invalid': submitted && f.State.errors }">
               <div *ngIf="submitted && f.State.errors" class="invalid-feedback">
                 <div *ngIf="f.State.errors.required">State is required</div>
+                <div *ngIf="f.State.errors.minlength"> Min 3 Characters </div>
+                  <div *ngIf="f.State.errors.maxlength">State should be less than 20 </div>
               </div>
             </div>
             <div class="col-sm-2 form-group">
@@ -273,6 +291,8 @@
                 [ngClass]="{ 'is-invalid': submitted && f.Pincode.errors }">
               <div *ngIf="submitted && f.Pincode.errors" class="invalid-feedback">
                 <div *ngIf="f.Pincode.errors.required">Pincode is required</div>
+                <div *ngIf="f.Pincode.errors.minlength"> Min 6 Characters </div>
+                  <div *ngIf="f.Pincode.errors.maxlength">Pincode should be less than 7 </div>
               </div>
             </div>
             <div class="col-sm-3 form-group">
@@ -281,6 +301,8 @@
                 [ngClass]="{ 'is-invalid': submitted && f.Landmark.errors }">
               <div *ngIf="submitted && f.Landmark.errors" class="invalid-feedback">
                 <div *ngIf="f.Landmark.errors.required">Landmark is required</div>
+                <div *ngIf="f.Landmark.errors.minlength"> Min 5 Characters </div>
+                  <div *ngIf="f.Landmark.errors.maxlength">Landmark should be less than 50 </div>
               </div>
             </div>
             <!-- <div class="col-sm-2"></div> -->
@@ -337,9 +359,8 @@
 
                       <div class="col-md-12 row">
                     <div class="form-check mr-3" *ngFor="let val of control.questiondisplaytext.split(',')">
-                      <label class="form-check-label" for="flexRadioDefault1">
-                        <input type="radio" name="flexRadioDefault" id="flexRadioDefault1" class="form-check-input"
-                        value="{{val}}">{{val}}
+                      <label class="form-check-label" >
+                        <input type="radio"  class="form-check-input" value="{{val}}">{{val}}
                       </label>
                     </div>
                   </div>
@@ -379,6 +400,8 @@
                 [ngClass]="{ 'is-invalid': submitted && f.InsurerVerificationNotes.errors }"></textarea>
               <div *ngIf="submitted && f.InsurerVerificationNotes.errors" class="invalid-feedback">
                 <div *ngIf="f.InsurerVerificationNotes.errors.required">Insurer Verification Notes is required</div>
+                <div *ngIf="f.InsurerVerificationNotes.errors.minlength"> Min 5 Characters </div>
+                  <div *ngIf="f.InsurerVerificationNotes.errors.maxlength">Insurer Verification Notes should be less than 250 </div>
               </div>
             </div>
           </div>
@@ -397,6 +420,8 @@
                   [ngClass]="{ 'is-invalid': submitted && f.ThirdpartyName.errors }">
                 <div *ngIf="submitted && f.ThirdpartyName.errors" class="invalid-feedback">
                   <div *ngIf="f.ThirdpartyName.errors.required">Thirdparty Name is required</div>
+                  <div *ngIf="f.ThirdpartyName.errors.minlength"> Min 2 Characters </div>
+                  <div *ngIf="f.ThirdpartyName.errors.maxlength">Thirdparty Name should be less than 30 </div>
                 </div>
               </div>
             </div>
@@ -410,6 +435,8 @@
                   [ngClass]="{ 'is-invalid': submitted && f.T_PhoneNumber.errors }">
                 <div *ngIf="submitted && f.T_PhoneNumber.errors" class="invalid-feedback">
                   <div *ngIf="f.T_PhoneNumber.errors.required">Third party PhoneNumber is required</div>
+                  <div *ngIf="f.T_PhoneNumber.errors.minlength"> Min 10 Characters </div>
+                  <div *ngIf="f.T_PhoneNumber.errors.maxlength">PhoneNumber should be less than 12 </div>
                 </div>
               </div>
 
@@ -427,6 +454,7 @@
                   [ngClass]="{ 'is-invalid': submitted && f.T_EmailID.errors }">
                 <div *ngIf="submitted && f.T_EmailID.errors" class="invalid-feedback">
                   <div *ngIf="f.T_EmailID.errors.required">Third Party Email ID is required</div>
+                  <div *ngIf="f.T_EmailID.errors.email">Email must be a valid</div>
                 </div>
               </div>
             </div>
@@ -448,6 +476,8 @@
                 [ngClass]="{ 'is-invalid': submitted && f.T_AddressLine1.errors }">
               <div *ngIf="submitted && f.T_AddressLine1.errors" class="invalid-feedback">
                 <div *ngIf="f.T_AddressLine1.errors.required">Address Line 1 is required</div>
+                <div *ngIf="f.T_AddressLine1.errors.minlength"> Min 5 Characters </div>
+                  <div *ngIf="f.T_AddressLine1.errors.maxlength">Address Line 1 should be less than 50 </div>
               </div>
             </div>
             <div class="col-sm-5 form-group">
@@ -456,6 +486,8 @@
                 [ngClass]="{ 'is-invalid': submitted && f.T_AddressLine2.errors }">
               <div *ngIf="submitted && f.T_AddressLine2.errors" class="invalid-feedback">
                 <div *ngIf="f.T_AddressLine2.errors.required">Address Line 2 is required</div>
+                <div *ngIf="f.T_AddressLine2.errors.minlength"> Min 5 Characters </div>
+                  <div *ngIf="f.T_AddressLine2.errors.maxlength">Address Line 2 should be less than 50 </div>
               </div>
             </div>
             <!-- <div class="col-sm-2"></div> -->
@@ -471,6 +503,8 @@
                 [ngClass]="{ 'is-invalid': submitted && f.T_City.errors }">
               <div *ngIf="submitted && f.T_City.errors" class="invalid-feedback">
                 <div *ngIf="f.T_City.errors.required">City is required</div>
+                <div *ngIf="f.T_City.errors.minlength"> Min 3 Characters </div>
+                  <div *ngIf="f.T_City.errors.maxlength">City should be less than 20 </div>
               </div>
             </div>
             <div class="col-sm-2 form-group">
@@ -479,6 +513,8 @@
                 [ngClass]="{ 'is-invalid': submitted && f.T_State.errors }">
               <div *ngIf="submitted && f.T_State.errors" class="invalid-feedback">
                 <div *ngIf="f.T_State.errors.required">State is required</div>
+                <div *ngIf="f.T_State.errors.minlength"> Min 3 Characters </div>
+                  <div *ngIf="f.T_State.errors.maxlength">State should be less than 25 </div>
               </div>
             </div>
             <div class="col-sm-2 form-group">
@@ -487,6 +523,8 @@
                 [ngClass]="{ 'is-invalid': submitted && f.T_Pincode.errors }">
               <div *ngIf="submitted && f.T_Pincode.errors" class="invalid-feedback">
                 <div *ngIf="f.T_Pincode.errors.required">Pincode is required</div>
+                <div *ngIf="f.T_Pincode.errors.minlength"> Min 6 Characters </div>
+                  <div *ngIf="f.T_Pincode.errors.maxlength">Pincode should be less than 7 </div>
               </div>
             </div>
             <div class="col-sm-3 form-group">
@@ -495,6 +533,8 @@
                 [ngClass]="{ 'is-invalid': submitted && f.T_Landmark.errors }">
               <div *ngIf="submitted && f.T_Landmark.errors" class="invalid-feedback">
                 <div *ngIf="f.T_Landmark.errors.required">Landmark is required</div>
+                <div *ngIf="f.T_Landmark.errors.minlength"> Min 5 Characters </div>
+                  <div *ngIf="f.T_Landmark.errors.maxlength">Landmark should be less than 50 </div>
               </div>
             </div>
             <!-- <div class="col-sm-2"></div> -->
@@ -555,6 +595,8 @@
                 [ngClass]="{ 'is-invalid': submitted && f.T_VerificationNotes.errors }"></textarea>
               <div *ngIf="submitted && f.T_VerificationNotes.errors" class="invalid-feedback">
                 <div *ngIf="f.T_VerificationNotes.errors.required">Third Party VerificationNotes is required</div>
+                <div *ngIf="f.T_VerificationNotes.errors.minlength"> Min 5 Characters </div>
+                  <div *ngIf="f.T_VerificationNotes.errors.maxlength">Third Party VerificationNotes should be less than 250 </div>
               </div>
             </div>
           </div>

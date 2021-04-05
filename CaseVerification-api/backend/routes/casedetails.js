@@ -20,6 +20,8 @@ router.post('/caseassign',casedetailsController.assignments);
 
 router.get ('/group/questions/:groupid', casedetailsController.getquestions);
 
+router.get ('/group/questionoptions/:ingroupid', casedetailsController.getquestionoptions);
+
 router.post(
   '/',
   [
