@@ -89,7 +89,7 @@
 
         <li style="list-style-type: none;"  >
 
-          <div class="card-body column column-m bordercol button two  mb-3 mt-2 hide" *ngFor="let item of pagesize" >
+          <div  class="card-body column column-m bordercol button two  mb-3 mt-2 hide" *ngFor="let item of paginateData" >
 
             <div class="form-check form-check-inline">
               <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{item.CaseID}}"(change)=CheckID($event,item.CaseID)>
@@ -117,194 +117,19 @@
       </div>
     </div>
     </div>
-
-
-
-
-
-
-  <div class="card-footer pb-0 pt-3">
-    <ul *ngIf="pageno.pages && pageno.pages.length" class="pagination">
-      <li [ngClass]="{disabled:pageno.currentPage === 1}" class="page-item first-item">
-        <a routerLink [queryParams]="{ page: 1 }" class="page-link">First</a>
-      </li>
-      <li [ngClass]="{disabled:pageno.currentPage === 1}" class="page-item previous-item">
-        <a routerLink [queryParams]="{ page: pageno.currentPage - 1 }" class="page-link">Previous</a>
-      </li>
-      <li *ngFor="let page of pageno.pages" [ngClass]="{active:pageno.currentPage === page}"
-        class="page-item number-item">
-        <a routerLink [queryParams]="{ page: page }" class="page-link">{{page}}</a>
-      </li>
-      <li [ngClass]="{disabled:pageno.currentPage === pageno.totalPages}" class="page-item next-item">
-        <a routerLink [queryParams]="{ page: pageno.currentPage + 1 }" class="page-link">Next</a>
-      </li>
-      <li [ngClass]="{disabled:pageno.currentPage === pageno.totalPages}" class="page-item last-item">
-        <a routerLink [queryParams]="{ page: pageno.totalPages }" class="page-link">Last</a>
-      </li>
-    </ul>
   </div>
+
+<div class="d-flex justify-content-between p-2">
+  <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="getPremiumData();">
+  </ngb-pagination>
+
+  <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="getPremiumData();">
+    <option [ngValue]="2">2 items per page</option>
+    <option [ngValue]="4">4 items per page</option>
+    <option [ngValue]="20">20 items per page</option>
+  </select>
 </div>
 
 
-<!-- Test -->
 
-
-
-<!-- Button trigger modal -->
-
-
-<!-- Modal -->
-<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header" *ngFor="let item of pagesize">
-        <h5 class="modal-title" id="exampleModalLabel">{{item.CaseID}}</h5>
-
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-
-
-<!-- <ng-template #editProfileModal let-modal>
-  <div class="modal-header">
-   <h5 class="modal-title" id="editProfileLabel">Edit Profile</h5>
-   <button type="button" class="close" (click)="modal.dismiss()" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-   </button>
-  </div>
-
-  <div class="modal-body">
-   <form [formGroup]="editProfileForm">
-    <div class="form-group row">
-     <label for="CaseID" class="col-sm-4 col-form-label pop-l-r">Case ID</label>
-     <div class="col-sm-8">
-      <input type="text" class="form-control hi" formControlName="CaseID" id="CaseID" readonly>
-     </div>
-    </div>
-
-    <div class="form-group row">
-     <label for="Name" class="col-sm-4 col-form-label pop-l-r">Name</label>
-     <div class="col-sm-8">
-      <input type="text" class="form-control hi" formControlName="Name" id="Name" readonly>
-     </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="ID" class="col-sm-4 col-form-label pop-l-r">ID</label>
-      <div class="col-sm-8">
-       <input type="text"  class="form-control hi" formControlName="ID" id="ID" readonly>
-      </div>
-     </div>
-
-     <div class="form-group row">
-      <label for="Description" class="col-sm-4 col-form-label pop-l-r">Description</label>
-      <div class="col-sm-8">
-       <input type="text"  class="form-control hi" formControlName="Description" id="Description" readonly>
-      </div>
-     </div>
-
-     <div class="form-group row">
-      <label for="ReferenceNumber" class="col-sm-4 col-form-label pop-l-r">Reference Number</label>
-      <div class="col-sm-8">
-       <input type="text"  class="form-control hi" formControlName="ReferenceNumber" id="ReferenceNumber" readonly>
-      </div>
-     </div>
-
-     <div class="form-group row">
-      <label for="DueDate" class="col-sm-4 col-form-label pop-l-r">Due Date</label>
-      <div class="col-sm-8">
-       <input type="text"  class="form-control hi" formControlName="DueDate" id="DueDate" readonly>
-      </div>
-     </div>
-
-    <div class="modal-footer">
-     <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Close</button>
-    </div>
-
-   </form>
-  </div>
-<<<<<<< HEAD
- </ng-template>
-
-
-<<<<<<< HEAD
- <select class="form-select" aria-label="Default select example">
-  <option selected>Open this select menu</option>
-  <option value="1">One</option>
-  <option value="2">Two</option>
-  <option value="3">Three</option>
-</select>
-=======
->>>>>>> 31f4af7296d6c6fe45916065ed05b0bd1ed3377d
-
-=======
- </ng-template> -->
-
-
-
- <!-- <div style="width:520px;margin:0px auto;margin-top:30px;">
-  <h2>Select Box with Search Option Jquery</h2>
-  <select class="chosen" style="width:500px;">
-  <option>Html</option>
-  <option>Css</option>
-  <option>Css3</option>
-  <option>Php</option>
-  <option>MySql</option>
-  <option>Javascript</option>
-  <option>Jquery</option>
-  <option>Html5</option>
-  <option>Wordpress</option>
-  <option>Joomla</option>
-  <option>Druple</option>
-  <option>Json</option>
-  <option>Angular Js</option>
-  </select>
-  </div> -->
-
-
-
-
-
- <!-- <div class="container">
-  <h2>Filterable Table</h2>
-  <p>Type something in the input field to search the table for first names, last names or emails:</p>
-
-  <br>
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
-      </tr>
-    </thead>
-    <tbody id="myTable">
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@mail.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@greatstuff.com</td>
-      </tr>
-      <tr>
-        <td>Anja</td>
-        <td>Ravendale</td>
-        <td>a_r@test.com</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>Note that we start the search in tbody, to prevent filtering the table headers.</p>
-</div> -->
 
