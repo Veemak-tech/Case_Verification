@@ -48,7 +48,7 @@ export class CasedetailsService {
 
     formData.append('file', file);
 
-    const req = new HttpRequest('POST', `${environment.apicaasefileupload}/upload`, formData, {
+    const req = new HttpRequest('POST', `${environment.rooturl}/upload`, formData, {
       reportProgress: true,
       responseType: 'json'
     });
@@ -57,7 +57,7 @@ export class CasedetailsService {
   }
 
   getFiles(): Observable<any> {
-    return this.http.get(`${environment.apicaasefileupload}/files`);
+    return this.http.get(`${environment.rooturl}/files`);
   }
 
 
@@ -81,7 +81,7 @@ export class CasedetailsService {
      let userid = localStorage.getItem("id");
     return this.http
       .post<casedetails>(
-        `${environment.apiUrlpostcase}`,
+        `${environment.rooturl}${environment.apiUrlpostcase}`,
         {
           CaseID: RegisterForm.CaseID,
           name: RegisterForm.name,
@@ -142,39 +142,39 @@ export class CasedetailsService {
 
   getData(){
     // let url = "http://localhost:3000/casedetails";
-    return this.http.get(`${environment.apiUrl}`);
+    return this.http.get(`${environment.rooturl}${environment.apiUrl}`);
   }
 
   getquestions(selectedid:any){
     debugger;
-    return this.http.get(`${environment.apigetquestion}/${selectedid}`)
+    return this.http.get(`${environment.rooturl}${environment.apigetquestion}/${selectedid}`)
   }
 
   getquestionoptions(selectedid:any){
     debugger;
-    return this.http.get(`${environment.apigetquestionoptions}/${selectedid}`)
+    return this.http.get(`${environment.rooturl}${environment.apigetquestionoptions}/${selectedid}`)
   }
 
   getpaging(pageno:number){
     debugger;
-    return this.http.get(`${environment.apiUrlpostcase}/${pageno}/${10}`)
+    return this.http.get(`${environment.rooturl}${environment.apiUrlpostcase}/${pageno}/${10}`)
   }
 
   getByID(ID:number){
    // let url = "http://localhost:3000/casedetails/"+CaseID;
-    return this.http.get(`${environment.apicasegetbyid}/${ID}`);
+    return this.http.get(`${environment.rooturl}${environment.apicasegetbyid}/${ID}`);
   }
   // delete
 
   deletecasedetails(id: number): Observable<DigitalListComponent> {
-    const url = `${environment.apiUrlpostcase}/${id}`;
+    const url = `${environment.rooturl}${environment.apiUrlpostcase}/${id}`;
     return this.http.delete<DigitalListComponent>(url, this.httpOptions);
   }
 
 
   update(CaseID:Observable<Params>,data:any){
     debugger;
-    return this.http.put<casedetails>(`${environment.apiUrlpostcase}`,{
+    return this.http.put<casedetails>(`${environment.rooturl}${environment.apiUrlpostcase}`,{
       CaseID: data.CaseID,
       Name: data.Name,
       Description: data.Description,
@@ -235,7 +235,7 @@ export class CasedetailsService {
 debugger
     return this.http
       .post<assignments>(
-        `${environment.apiassign}`,
+        `${environment.rooturl}${environment.apiassign}`,
         {
           CaseID: selectedRows,
           AppUserID:formData.AppUserID,

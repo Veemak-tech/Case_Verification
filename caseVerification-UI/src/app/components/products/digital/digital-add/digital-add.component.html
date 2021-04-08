@@ -7,12 +7,12 @@
 
 
     <div class="col-sm-3">
-      <select class="form-select btn btn-outline-info btn-sm btn-height" id="assignto" onchange="selectID($event)" >
+      <!-- <select class="form-select btn btn-outline-info btn-sm btn-height" id="assignto" onchange="selectID($event)" >
         <option name="name" *ngFor="let item of name" value="{{item.id}}" >{{item.name}}</option>
       </select>
       <button class="btn btn-outline-primary btn-sm ml-1" type="button"  >
         <i class="fas fa-user-plus"></i>
-      </button>
+      </button> -->
     </div>
     <div class="col-sm-1">
   </div>
@@ -21,7 +21,7 @@
 
     <div class="col-sm-2">
 
-      <div class="btn-group">
+      <!-- <div class="btn-group">
         <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           Filter By Assign
@@ -30,7 +30,7 @@
           <button class="dropdown-item" type="button">Assigned</button>
           <button class="dropdown-item" type="button">Un Assigned</button>
         </div>
-      </div>
+      </div> -->
 
     </div>
 
@@ -38,7 +38,7 @@
 
 
     <div class="col-sm-2">
-      <div class="btn-group">
+      <!-- <div class="btn-group">
         <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           Filter By Status
@@ -51,7 +51,7 @@
           <button class="dropdown-item" type="button">Rejected</button>
           <button class="dropdown-item" type="button">Archived</button>
         </div>
-      </div>
+      </div> -->
 
     </div>
 
@@ -115,20 +115,26 @@
         </li>
 
       </div>
+
+
+      <div class="d-flex justify-content-between p-2">
+        <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="getPremiumData();">
+        </ngb-pagination>
+
+        <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="getPremiumData();">
+          <option [ngValue]="5">5 items per page</option>
+          <option [ngValue]="10">10 items per page</option>
+          <option [ngValue]="20">20 items per page</option>
+        </select>
+      </div>
+
+
+
     </div>
     </div>
   </div>
 
-<div class="d-flex justify-content-between p-2">
-  <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="getPremiumData();">
-  </ngb-pagination>
 
-  <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="getPremiumData();">
-    <option [ngValue]="2">2 items per page</option>
-    <option [ngValue]="4">4 items per page</option>
-    <option [ngValue]="20">20 items per page</option>
-  </select>
-</div>
 
 
 

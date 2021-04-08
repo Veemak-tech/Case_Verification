@@ -1,4 +1,5 @@
 import { questions } from './../../../../models/questions';
+import { questionoptions } from './../../../../models/questionoptions';
 import { Router, Data } from '@angular/router';
 import { CasedetailsService } from './../../../../services/casedetails.service';
 import {
@@ -43,7 +44,7 @@ export class DigitalCategoryComponent implements OnInit {
   @Output() create: EventEmitter<any> = new EventEmitter();
   ins_questionsarray: any;
   t_questionsarray: any;
-  questionoptionsarray: any;
+  questionoptionsarray: questionoptions[];
 
   selectedFiles: FileList;
   filename: string;
@@ -66,7 +67,7 @@ export class DigitalCategoryComponent implements OnInit {
   ) {
     // Agents name
     this.authService.getName().subscribe((data) => {
-      console.log(data);
+     // console.log(data);
       console.log('Agent name Fetch Working!!');
       this.agents = data;
     });
@@ -78,31 +79,170 @@ export class DigitalCategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.RegisterForm = this.formBuilder.group({
-      CaseID: ['', [Validators.required,Validators.minLength(5),Validators.maxLength(10)]],
+      CaseID: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(10),
+        ],
+      ],
       name: ['', Validators.required],
-      ReferenceNumber: ['', [Validators.required,Validators.minLength(5),Validators.maxLength(10)]],
+      ReferenceNumber: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(10),
+        ],
+      ],
       DueDate: ['', Validators.required],
-      Description: ['', [Validators.required,Validators.minLength(5),Validators.maxLength(256)]],
-      InsurerName: ['', [Validators.required,Validators.minLength(2),Validators.maxLength(20)]],
-      PhoneNumber: ['', [Validators.required,Validators.minLength(10),Validators.maxLength(13)]],
+      Description: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(256),
+        ],
+      ],
+      InsurerName: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(20),
+        ],
+      ],
+      PhoneNumber: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(10),
+          Validators.maxLength(13),
+        ],
+      ],
       EmailID: ['', [Validators.required, Validators.email]],
-      AddressLine1: ['', [Validators.required,Validators.minLength(5),Validators.maxLength(50)]],
-      AddressLine2: ['', [Validators.required,Validators.minLength(5),Validators.maxLength(50)]],
-      City: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(20)]],
-      State: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(20)]],
-      Pincode: ['', [Validators.required,Validators.minLength(6),Validators.maxLength(7)]],
-      Landmark: ['', [Validators.required,Validators.minLength(5),Validators.maxLength(50)]],
-      InsurerVerificationNotes: ['', [Validators.required,Validators.minLength(5),Validators.maxLength(250)]],
-      ThirdpartyName: ['', [Validators.required,Validators.minLength(2),Validators.maxLength(30)]],
-      T_PhoneNumber: ['', [Validators.required,Validators.minLength(10),Validators.maxLength(12)]],
+      AddressLine1: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(50),
+        ],
+      ],
+      AddressLine2: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(50),
+        ],
+      ],
+      City: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(20),
+        ],
+      ],
+      State: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(20),
+        ],
+      ],
+      Pincode: [
+        '',
+        [Validators.required, Validators.minLength(6), Validators.maxLength(7)],
+      ],
+      Landmark: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(50),
+        ],
+      ],
+      InsurerVerificationNotes: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(250),
+        ],
+      ],
+      ThirdpartyName: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(30),
+        ],
+      ],
+      T_PhoneNumber: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(10),
+          Validators.maxLength(12),
+        ],
+      ],
       T_EmailID: ['', [Validators.required, Validators.email]],
-      T_AddressLine1: ['', [Validators.required,Validators.minLength(5),Validators.maxLength(50)]],
-      T_AddressLine2: ['', [Validators.required,Validators.minLength(5),Validators.maxLength(50)]],
-      T_City: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(20)]],
-      T_State: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(25)]],
-      T_Pincode: ['', [Validators.required,Validators.minLength(6),Validators.maxLength(7)]],
-      T_Landmark: ['', [Validators.required,Validators.minLength(5),Validators.maxLength(50)]],
-      T_VerificationNotes: ['', [Validators.required,Validators.minLength(5),Validators.maxLength(250)]],
+      T_AddressLine1: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(50),
+        ],
+      ],
+      T_AddressLine2: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(50),
+        ],
+      ],
+      T_City: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(20),
+        ],
+      ],
+      T_State: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(25),
+        ],
+      ],
+      T_Pincode: [
+        '',
+        [Validators.required, Validators.minLength(6), Validators.maxLength(7)],
+      ],
+      T_Landmark: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(50),
+        ],
+      ],
+      T_VerificationNotes: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(250),
+        ],
+      ],
       FileUpload: ['', Validators.required],
     });
 
@@ -120,16 +260,23 @@ export class DigitalCategoryComponent implements OnInit {
           (t_questionsdata: questions) => {
             this.t_questionsarray = t_questionsdata;
             // console.log(this.t_questionsarray);
+            var optionlist;
+            // question options
+            this.CasedetailsService.getquestionoptions(selectedid).subscribe(
+              (questionoptionslist: questionoptions) => {
+                 optionlist = questionoptionslist;
+                console.log(questionoptionslist);
+              }
+            );
+            debugger
+             this.questionoptionsarray = optionlist;
+            this.t_questionsarray.forEach(element => {
+              debugger
+              element.questionoptions = this.questionoptionsarray.filter(p => p.questionid === element.questionid)
+
+            });
           }
         );
-      }
-    );
-
-    // question options
-    this.CasedetailsService.getquestionoptions(selectedid).subscribe(
-      (questionoptions: questions) => {
-        this.questionoptionsarray = questionoptions;
-        console.log(this.questionoptionsarray);
       }
     );
   }
@@ -165,6 +312,14 @@ export class DigitalCategoryComponent implements OnInit {
     this.filesizeinkb = event.target.files[0].size;
     this.filesize = this.filesizeinkb / 1024;
     this.currentFile = this.selectedFiles.item(0);
+
+    if (this.filesizeinkb > 400000  )
+    {
+      alert("Select file below 4 MB");
+    }
+    else{
+
+    }
 
     console.log(this.filename);
     console.log(this.selectedFiles);

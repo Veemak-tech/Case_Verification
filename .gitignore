@@ -14,3 +14,6 @@ CaseVerification-api/backend/resources/static/assets/uploads/749807.png
 CaseVerification-api/backend/resources/static/assets/uploads/qwert.jpg
 CaseVerification-api/backend/resources/static/assets/uploads/qwert2.jpg
 CaseVerification-api/backend/resources/static/assets/uploads/witcher3_en_wallpaper_wallpaper_9_1920x1200_1433245987.png
+caseVerification-UI/src/app/components/products/digital/digital-category/digital-category.component.html
+CaseVerification-api/backend/resources/static/assets/uploads/favicon-32x32.png
+.gitignore

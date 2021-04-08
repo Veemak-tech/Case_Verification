@@ -4,20 +4,20 @@
 
 export const environment = {
   production: false,
-   apiUrl: 'http://localhost:3000/casedetails/getall',
-   apiUrlpostcase: 'http://localhost:3000/casedetails',
-   apicasegetbyid: 'http://localhost:3000/casedetails/case',
-   // apigetid:'http://localhost:3000/auth/:id',
-   apiauth:'http://localhost:3000/auth',
-   apiauthsignup: 'http://localhost:3000/auth/signup',
-   apiauthlogin: 'http://localhost:3000/auth/admin',
-   getname:'http://localhost:3000/auth/roleid/RoleID:2',
-   apiauthpassword:'http://localhost:3000/auth/password',
-   apicaasefileupload: 'http://localhost:3000',
-   apiassign:'http://localhost:3000/casedetails/caseassign',
-   apigetquestion: 'http://localhost:3000/casedetails/group/questions',
-   apigetquestionoptions : 'http://localhost:3000/casedetails/group/questionoptions'
-
+  rooturl: 'http://localhost:3000',
+  apiUrl: '/casedetails/getall',
+  apiUrlpostcase: '/casedetails',
+  apicasegetbyid: '/casedetails/case',
+  // apigetid:'http://localhost:3000/auth/:id',
+  apiauth: '/auth',
+  apiauthsignup: '/auth/signup',
+  apiauthlogin: '/auth/admin',
+  getname: '/auth/roleid/RoleID:2',
+  apiauthpassword: '/auth/password',
+  apicaasefileupload: 'http://localhost:3000',
+  apiassign: '/casedetails/caseassign',
+  apigetquestion: '/casedetails/group/questions',
+  apigetquestionoptions: '/casedetails/group/questionoptions',
 };
 
 /*

@@ -1,20 +1,17 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://veemak.online/api/casedetails/getall',
-  apiUrlpostcase: 'http://localhost:3000/casedetails',
-  apicasegetbyid: 'http://localhost:3000/casedetails/case',
-  apiauth:'http://veemak.online/api/auth',
-  apiauthsignup: 'http://veemak.online/api/auth/signup',
-  apiauthlogin: 'http://veemak.online/api/auth/admin',
-  getname:'http://veemak.online/api/auth/roleid/RoleID:2',
-  apiauthpassword:'http://veemak.online/api/auth/password',
-  apicaasefileupload: 'http://veemak.online/',
-  apiassign:'http://veemak.online/api/casedetails/caseassign',
-  apigetquestion: 'http://veemak.online/api/casedetails/group/questions',
-  apigetquestionoptions : 'http://veemak.online/api/casedetails/group/questionoptions'
-
-
-
-
-
+  rooturl: 'http://veemak.online/api',
+  apiUrl: '/casedetails/getall',
+  apiUrlpostcase: '/casedetails',
+  apicasegetbyid: '/casedetails/case',
+  // apigetid:'http://localhost:3000/auth/:id',
+  apiauth: '/auth',
+  apiauthsignup: '/auth/signup',
+  apiauthlogin: '/auth/admin',
+  getname: '/auth/roleid/RoleID:2',
+  apiauthpassword: '/auth/password',
+  apicaasefileupload: 'http://localhost:3000',
+  apiassign: '/casedetails/caseassign',
+  apigetquestion: '/casedetails/group/questions',
+  apigetquestionoptions: '/casedetails/group/questionoptions',
 };

@@ -184,7 +184,7 @@ export class DigitalAddComponent implements OnInit {
     // debugger;
     // get page of items from api
     this.httpClient
-      .get<any>(`${environment.apiUrlpostcase}/${page}/${10}`)
+      .get<any>(`${environment.rooturl}${environment.apiUrlpostcase}/${page}/${10}`)
       .subscribe((result) => {
         this.pageno = result.pager;
         this.pagesize = result.pageOfItems;
