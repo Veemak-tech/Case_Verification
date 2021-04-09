@@ -37,26 +37,26 @@ export class AuthService {
 
   getData(){
     //let url="http://localhost:3000/auth";
-    return this.http.get(`${environment.apiauth}`);
+    return this.http.get(`${environment.rooturl}${environment.apiauth}`);
 
   }
 
   getName(){
     // debugger
-    return this.http.get(`${environment.getname}`);
+    return this.http.get(`${environment.rooturl}${environment.getname}`);
   }
 
   getDatabyID(id : number){
     debugger;
     // let url="http://localhost:30200/auth/"+id;
-    return this.http.get(`${environment.apiauth}/${id}`);
+    return this.http.get(`${environment.rooturl}${environment.apiauth}/${id}`);
 
   }
 
 
   signup(user: Omit<User, "id">): Observable<User> {
     return this.http
-      .post<User>(`${environment.apiauthsignup}`, user, this.httpOptions)
+      .post<User>(`${environment.rooturl}${environment.apiauthsignup}`, user, this.httpOptions)
       .pipe(
         first(),
         catchError(this.errorHandlerService.handleError<User>("signup"))
@@ -64,13 +64,13 @@ export class AuthService {
   }
   update(id: Observable<Params> ,data: any){
      debugger
-return this.http.put(`${environment.apiauth}`,data);
+return this.http.put(`${environment.rooturl}${environment.apiauth}`,data);
 
   }
 
   updatepassword(id: Observable<Params>, data:any){
     debugger
-    return this.http.put(`${environment.apiauthpassword}`,data)
+    return this.http.put(`${environment.rooturl}${environment.apiauthpassword}`,data)
   }
 
 
@@ -83,7 +83,7 @@ return this.http.put(`${environment.apiauth}`,data);
     userId: Pick<User, "id">;
   }> {
 
-    return this.http.post(`${environment.apiauthlogin}`, { email, password }, this.httpOptions)
+    return this.http.post(`${environment.rooturl}${environment.apiauthlogin}`, { email, password }, this.httpOptions)
       .pipe(
         first(),
         tap((tokenObject: { token: string; userId: Pick<User, "id">; name:Pick<User, "name"> }) => {

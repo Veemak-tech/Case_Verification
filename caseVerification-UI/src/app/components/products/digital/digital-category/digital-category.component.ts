@@ -1,4 +1,5 @@
 import { questions } from './../../../../models/questions';
+import { questionoptions } from './../../../../models/questionoptions';
 import { Router, Data } from '@angular/router';
 import { CasedetailsService } from './../../../../services/casedetails.service';
 import {
@@ -36,7 +37,6 @@ const URL = './src/assets/images';
   styleUrls: ['./digital-category.component.scss'],
 })
 export class DigitalCategoryComponent implements OnInit {
-
   RegisterForm: FormGroup;
   form: FormGroup;
   submitted = false;
@@ -44,11 +44,12 @@ export class DigitalCategoryComponent implements OnInit {
   @Output() create: EventEmitter<any> = new EventEmitter();
   ins_questionsarray: any;
   t_questionsarray: any;
+  questionoptionsarray: questionoptions[];
 
   selectedFiles: FileList;
-  filename : string;
-  filesize : any;
-  filesizeinkb :any;
+  filename: string;
+  filesize: any;
+  filesizeinkb: any;
   currentFile: File;
   progress = 0;
   message = '';
@@ -66,7 +67,7 @@ export class DigitalCategoryComponent implements OnInit {
   ) {
     // Agents name
     this.authService.getName().subscribe((data) => {
-      console.log(data);
+     // console.log(data);
       console.log('Agent name Fetch Working!!');
       this.agents = data;
     });
@@ -78,32 +79,171 @@ export class DigitalCategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.RegisterForm = this.formBuilder.group({
-      CaseID: ['', Validators.required],
+      CaseID: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(10),
+        ],
+      ],
       name: ['', Validators.required],
-      ReferenceNumber: ['', Validators.required],
+      ReferenceNumber: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(10),
+        ],
+      ],
       DueDate: ['', Validators.required],
-      Description: ['', Validators.required],
-      InsurerName: ['', Validators.required],
-      PhoneNumber: ['', Validators.required],
+      Description: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(256),
+        ],
+      ],
+      InsurerName: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(20),
+        ],
+      ],
+      PhoneNumber: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(10),
+          Validators.maxLength(13),
+        ],
+      ],
       EmailID: ['', [Validators.required, Validators.email]],
-      AddressLine1: ['', Validators.required],
-      AddressLine2: ['', Validators.required],
-      City: ['', Validators.required],
-      State: ['', Validators.required],
-      Pincode: ['', Validators.required],
-      Landmark: ['', Validators.required],
-      InsurerVerificationNotes: ['', Validators.required],
-      ThirdpartyName: ['', Validators.required],
-      T_PhoneNumber: ['', Validators.required],
-      T_EmailID: ['', Validators.required],
-      T_AddressLine1: ['', Validators.required],
-      T_AddressLine2: ['', Validators.required],
-      T_City: ['', Validators.required],
-      T_State: ['', Validators.required],
-      T_Pincode: ['', Validators.required],
-      T_Landmark: ['', Validators.required],
-      T_VerificationNotes: ['', Validators.required],
-      FileUpload:['',Validators.required]
+      AddressLine1: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(50),
+        ],
+      ],
+      AddressLine2: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(50),
+        ],
+      ],
+      City: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(20),
+        ],
+      ],
+      State: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(20),
+        ],
+      ],
+      Pincode: [
+        '',
+        [Validators.required, Validators.minLength(6), Validators.maxLength(7)],
+      ],
+      Landmark: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(50),
+        ],
+      ],
+      InsurerVerificationNotes: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(250),
+        ],
+      ],
+      ThirdpartyName: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(30),
+        ],
+      ],
+      T_PhoneNumber: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(10),
+          Validators.maxLength(12),
+        ],
+      ],
+      T_EmailID: ['', [Validators.required, Validators.email]],
+      T_AddressLine1: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(50),
+        ],
+      ],
+      T_AddressLine2: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(50),
+        ],
+      ],
+      T_City: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(20),
+        ],
+      ],
+      T_State: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(25),
+        ],
+      ],
+      T_Pincode: [
+        '',
+        [Validators.required, Validators.minLength(6), Validators.maxLength(7)],
+      ],
+      T_Landmark: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(50),
+        ],
+      ],
+      T_VerificationNotes: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(250),
+        ],
+      ],
+      FileUpload: ['', Validators.required],
     });
 
     // to get Questions
@@ -112,14 +252,29 @@ export class DigitalCategoryComponent implements OnInit {
     this.CasedetailsService.getquestions(selectedid).subscribe(
       (questionsdata: questions) => {
         this.ins_questionsarray = questionsdata;
-        console.log(this.t_questionsarray);
+        //console.log(this.t_questionsarray);
 
         // t party questions
         var selectedid2 = 2;
         this.CasedetailsService.getquestions(selectedid2).subscribe(
           (t_questionsdata: questions) => {
             this.t_questionsarray = t_questionsdata;
-            console.log(this.t_questionsarray);
+            // console.log(this.t_questionsarray);
+            var optionlist;
+            // question options
+            this.CasedetailsService.getquestionoptions(selectedid).subscribe(
+              (questionoptionslist: questionoptions) => {
+                 optionlist = questionoptionslist;
+                console.log(questionoptionslist);
+              }
+            );
+            debugger
+             this.questionoptionsarray = optionlist;
+            this.t_questionsarray.forEach(element => {
+              debugger
+              element.questionoptions = this.questionoptionsarray.filter(p => p.questionid === element.questionid)
+
+            });
           }
         );
       }
@@ -127,38 +282,47 @@ export class DigitalCategoryComponent implements OnInit {
   }
 
   upload(): void {
-    debugger
+    debugger;
     this.progress = 0;
 
     this.currentFile = this.selectedFiles.item(0);
     this.CasedetailsService.upload(this.currentFile).subscribe(
-      event => {
+      (event) => {
         if (event.type === HttpEventType.UploadProgress) {
-          this.progress = Math.round(100 * event.loaded / event.total);
+          this.progress = Math.round((100 * event.loaded) / event.total);
         } else if (event instanceof HttpResponse) {
           this.message = event.body.message;
           this.fileInfos = this.CasedetailsService.getFiles();
         }
       },
-      err => {
+      (err) => {
         this.progress = 0;
         this.message = 'Could not upload the file!';
         this.currentFile = undefined;
-      });
+      }
+    );
 
     this.selectedFiles = undefined;
   }
 
   selectFile(event): void {
-    debugger
+    debugger;
     this.selectedFiles = event.target.files;
     this.filename = event.target.files[0].name;
     this.filesizeinkb = event.target.files[0].size;
-    this.filesize = this.filesizeinkb/1024;
+    this.filesize = this.filesizeinkb / 1024;
     this.currentFile = this.selectedFiles.item(0);
 
-    console.log(this.filename)
-    console.log(this.selectedFiles)
+    if (this.filesizeinkb > 400000  )
+    {
+      alert("Select file below 4 MB");
+    }
+    else{
+
+    }
+
+    console.log(this.filename);
+    console.log(this.selectedFiles);
   }
 
   onSubmit() {
@@ -173,27 +337,25 @@ export class DigitalCategoryComponent implements OnInit {
       ).subscribe((msg) => {});
 
       this.currentFile = this.selectedFiles.item(0);
-    this.CasedetailsService.upload(this.currentFile).subscribe(
-      event => {
-        if (event.type === HttpEventType.UploadProgress) {
-          this.progress = Math.round(100 * event.loaded / event.total);
-        } else if (event instanceof HttpResponse) {
-          this.message = event.body.message;
-          this.fileInfos = this.CasedetailsService.getFiles();
+      this.CasedetailsService.upload(this.currentFile).subscribe(
+        (event) => {
+          if (event.type === HttpEventType.UploadProgress) {
+            this.progress = Math.round((100 * event.loaded) / event.total);
+          } else if (event instanceof HttpResponse) {
+            this.message = event.body.message;
+            this.fileInfos = this.CasedetailsService.getFiles();
+          }
+        },
+        (err) => {
+          this.progress = 0;
+          this.message = 'Could not upload the file!';
+          this.currentFile = undefined;
         }
-      },
-      err => {
-        this.progress = 0;
-        this.message = 'Could not upload the file!';
-        this.currentFile = undefined;
-      });
-
-
-
+      );
 
       swal({
-        icon: "success",
-        title: "Created Successfully",
+        icon: 'success',
+        title: 'Created Successfully',
         buttons: [false],
         timer: 1500,
       });
@@ -204,14 +366,7 @@ export class DigitalCategoryComponent implements OnInit {
     // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.RegisterForm.value, null, 4));
   }
 
-
-
-
-
-
-
   // -----------------------------------------pre default codes...(dont change below )-----------------------------------------------------
-
 
   open(content) {
     this.modalService
@@ -259,6 +414,4 @@ export class DigitalCategoryComponent implements OnInit {
       },
     },
   };
-
-
 }

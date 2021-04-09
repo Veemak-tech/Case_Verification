@@ -48,6 +48,12 @@ export class DigitalAddComponent implements OnInit {
   public caseList: any;
   selecteditems: string[];
   selecteditems2: string[];
+  paginateData: any[] = [];
+
+  page=1;
+  pageSize=10;
+  collectionSize = 0;
+  premiumData : any[] = [];
 
   public paginate: any;
   viewRecord: any;
@@ -179,14 +185,22 @@ export class DigitalAddComponent implements OnInit {
     // debugger;
     // get page of items from api
     this.httpClient
-      .get<any>(`${environment.apiUrlpostcase}/${page}/${10}`)
+      .get<any>(`${environment.rooturl}${environment.apiUrlpostcase}/${page}/${10}`)
       .subscribe((result) => {
         this.pageno = result.pager;
         this.pagesize = result.pageOfItems;
+        this.collectionSize = this.pagesize.length;
         // debugger;
         console.log(result.pagining);
       });
   }
+
+  getPremiumData(){
+
+    this.paginateData =  this.pagesize
+     .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+
+   }
 
   setGridLayout(value: string) {
     this.setGrid.emit(value); // Set Grid Size
