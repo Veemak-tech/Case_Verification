@@ -7,7 +7,7 @@ import { assignments} from 'src/app/models/assignments'
 import { digitalListDB } from 'src/app/shared/tables/digital-list';
 import { HttpClient } from '@angular/common/http';
 import { allIcons } from 'ngx-bootstrap-icons';
-import { multicast } from 'rxjs/operators';
+import { filter, multicast } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { selectRows } from '@swimlane/ngx-datatable';
 import { first } from 'rxjs/operators';
@@ -41,11 +41,12 @@ export class CaseAssignComponent implements OnInit {
   selectedValue: any;
   mySelect: any;
   myselected: any;
-  selectedRows: any;
+  selectedRows:any
   selectedRowsAID:any
   @ViewChild("userPost") userassign: NgForm;
   @Output() create: EventEmitter<any> = new EventEmitter();
   @Input() agents;
+  caselistid: any[];
 
 
 
@@ -154,7 +155,7 @@ export class CaseAssignComponent implements OnInit {
 
  submit(formData) :void{
 debugger;
-this.user.caseassign(formData,this.selectedRowsAID,this.selectedRows).pipe(first()).subscribe(() => { this.create.emit(null); });
+this.user.caseassign(formData,this.caselistid,this.selectedRowsAID,this.selectedRows).pipe(first()).subscribe(() => { this.create.emit(null); });
 swal({
   icon: "success",
   title: "Submitted Successfully",
@@ -175,9 +176,25 @@ swal({
   //select events
   public onUserRowSelect(event){
  debugger
-      this.selectedRows = event.selected[0].CaseID;
-      this.selectedRowsAID = event.selected[0].AssignmentID;
-
+      
+ 
+ 
+let CaseIDList=[];
+this.caselistid=CaseIDList;
+this.selectedRows=event.selected; 
+for (let i = 0; i < this.selectedRows.length; i++) {
+    if (this.selectedRows[i].CaseID <700000) {
+        CaseIDList.push(this.selectedRows[i].CaseID);
+    }
+}
+console.log(CaseIDList);
+ 
+ 
+ //this.selectedRows = event.selected.map(event => console.log(event.selected.CaseID));
+      
+      //this.selectedRowsAID = event.selected.CaseID;
+    
+   //console.log(this.selectedRows)
 
  }
 

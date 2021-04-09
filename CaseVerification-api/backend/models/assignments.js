@@ -36,9 +36,17 @@ module.exports = class assignments {
 
   static save(post) {
     debugger
-    return db.execute(
-      'REPLACE INTO assignments (CaseID,AppUserID,CreatedBy,LastModifiedBy,StatusID,AssignmentID) VALUES (?,?,?,?,?,?)',
-      [post.CaseID,post.AppUserID,post.CreatedBy,post.LastModifiedBy,post.StatusID,post.AssignmentID]
-    );
+    post.CaseID.forEach(function(Id)
+     {
+       debugger;
+       console.log(Id);
+       db.execute(
+         'REPLACE INTO assignments (CaseID,AppUserID,CreatedBy,LastModifiedBy,StatusID,AssignmentID) VALUES (?,?,?,?,?,?)',
+         [Id,post.AppUserID,post.CreatedBy,post.LastModifiedBy,post.StatusID,post.AssignmentID]
+      );
+    } );
   }
-}
+  
+    
+     
+  }
