@@ -7,7 +7,7 @@ import { assignments} from 'src/app/models/assignments'
 import { digitalListDB } from 'src/app/shared/tables/digital-list';
 import { HttpClient } from '@angular/common/http';
 import { allIcons } from 'ngx-bootstrap-icons';
-import { multicast } from 'rxjs/operators';
+import { filter, multicast } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { selectRows } from '@swimlane/ngx-datatable';
 import { first } from 'rxjs/operators';
@@ -42,7 +42,7 @@ export class CaseAssignComponent implements OnInit {
   selectedValue: any;
   mySelect: any;
   myselected: any;
-  selectedRows: any;
+  selectedRows:any
   selectedRowsAID:any
   @ViewChild("userPost") userassign: NgForm;
   @Output() create: EventEmitter<any> = new EventEmitter();

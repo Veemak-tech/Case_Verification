@@ -117,6 +117,7 @@ export class DigitalAddComponent implements OnInit {
   }
 
   CheckID(e: any, id: string) {
+    debugger
     if (e.target.checked) {
       console.log(id + 'checked');
       this.selecteditems.push(id);
