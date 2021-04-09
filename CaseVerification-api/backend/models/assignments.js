@@ -38,6 +38,7 @@ module.exports = class assignments {
     debugger
     post.CaseID.forEach(function(Id)
      {
+    
        debugger;
        console.log(Id);
        db.execute(
