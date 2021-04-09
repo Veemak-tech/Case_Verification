@@ -231,13 +231,13 @@ export class CasedetailsService {
 
 
 //case assign
-  caseassign(formData,selectedRowsAID,selectedRows:Pick<assignments, 'CaseID'>): Observable<assignments> {
+  caseassign(formData,caseidlist,selectedRowsAID,selectedRows:Pick<assignments, 'CaseID'>): Observable<assignments> {
 debugger
     return this.http
       .post<assignments>(
         `${environment.rooturl}${environment.apiassign}`,
         {
-          CaseID: selectedRows,
+          CaseID: caseidlist,
           AppUserID:formData.AppUserID,
           AssignmentID:selectedRowsAID
 

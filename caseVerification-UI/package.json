@@ -48,6 +48,7 @@
     "datatables": "^1.10.18",
     "datatables.net": "^1.10.23",
     "datatables.net-bs4": "^1.10.23",
+    "export-to-csv": "^0.2.1",
     "express": "^4.15.2",
     "feather-icons": "^4.26.0",
     "flag-icons": "^2.0.0",

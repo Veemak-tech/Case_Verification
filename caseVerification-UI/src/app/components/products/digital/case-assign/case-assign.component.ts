@@ -20,6 +20,7 @@ import { FormsModule }   from '@angular/forms';
 
 
 
+
 @Component({
   selector: 'app-case-assign',
   templateUrl: './case-assign.component.html',
@@ -46,6 +47,8 @@ export class CaseAssignComponent implements OnInit {
   @ViewChild("userPost") userassign: NgForm;
   @Output() create: EventEmitter<any> = new EventEmitter();
   @Input() agents;
+  multicaseid: any;
+  caseidlist:any
 
 
 
@@ -153,8 +156,9 @@ export class CaseAssignComponent implements OnInit {
 // Submit
 
  submit(formData) :void{
+
 debugger;
-this.user.caseassign(formData,this.selectedRowsAID,this.selectedRows).pipe(first()).subscribe(() => { this.create.emit(null); });
+this.user.caseassign(formData,this.caseidlist,this.selectedRowsAID,this.selectedRows).pipe(first()).subscribe(() => { this.create.emit(null); });
 swal({
   icon: "success",
   title: "Submitted Successfully",
@@ -168,16 +172,21 @@ swal({
 
 
 
-
-
-
-
   //select events
   public onUserRowSelect(event){
  debugger
       this.selectedRows = event.selected[0].CaseID;
+      this.multicaseid = event.selected;
       this.selectedRowsAID = event.selected[0].AssignmentID;
 
+      let bigCities = [];
+       this.caseidlist = bigCities;
+for (let i = 0; i < this.multicaseid.length; i++) {
+    if (this.multicaseid[i].CaseID < 3000000) {
+        bigCities.push(this.multicaseid[i].CaseID);
+    }
+}
+console.log(bigCities);
 
  }
 
@@ -188,12 +197,6 @@ swal({
 
     //console.log(myselected + "name")
 }
-
-
-
-
-
-
 
   // custom action
   public onCustomAction(event) {
