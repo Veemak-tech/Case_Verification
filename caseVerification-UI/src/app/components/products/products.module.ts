@@ -32,6 +32,7 @@ import { CaseViewComponent } from './digital/case-view/case-view.component';
 import { CaseAssignComponent } from './digital/case-assign/case-assign.component';
 import { ToastrModule } from 'ngx-toastr';
 import { AssignmentDashboardComponent } from './digital/assignment-dashboard/assignment-dashboard.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 
@@ -63,7 +64,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     FileUploadModule,
     NgxDatatableModule,
     ToastrModule.forRoot(),
-
+    ChartsModule
 
   ],
   providers: [

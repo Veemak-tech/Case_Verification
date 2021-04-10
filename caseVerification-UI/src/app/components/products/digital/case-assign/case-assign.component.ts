@@ -32,6 +32,7 @@ export class CaseAssignComponent implements OnInit {
   pageno: any = {};
 
   public caseList: any;
+
   deleteID: string;
   CasedetailsService: any;
   Casedetails:casedetails;

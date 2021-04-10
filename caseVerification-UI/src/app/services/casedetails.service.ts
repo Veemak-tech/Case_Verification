@@ -1,3 +1,5 @@
+import { map } from 'rxjs/internal/operators';
+
 import { environment } from './../../environments/environment';
 import { casedetails } from './../models/casedetails';
 import { tap } from 'rxjs/operators';
@@ -142,13 +144,16 @@ export class CasedetailsService {
 
   getData(){
     // let url = "http://localhost:3000/casedetails";
-    return this.http.get(`${environment.rooturl}${environment.apiUrl}`);
+    return this.http.get(`${environment.rooturl}${environment.apiUrl}`)
+
   }
 
   // number of cases
   numberofcases(){
     return this.http.get(`${environment.rooturl}${environment.numberofcases}`)
   }
+
+
 
   getquestions(selectedid:any){
     debugger;
