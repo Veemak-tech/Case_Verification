@@ -188,7 +188,7 @@
                   [ngClass]="{ 'is-invalid': submitted && f.InsurerName.errors }">
                 <div *ngIf="submitted && f.InsurerName.errors" class="invalid-feedback">
                   <div *ngIf="f.InsurerName.errors.required">Insurer Name is required</div>
-                  <div *ngIf="f.InsurerName.errors.minlength"> Min 2 Characters </div>
+                  <div *ngIf="f.InsurerName.errors.minlength"> Min 3 Characters </div>
                   <div *ngIf="f.InsurerName.errors.maxlength">Insurer Name should be less than 20 </div>
                 </div>
               </div>

@@ -182,7 +182,7 @@ swal({
       let bigCities = [];
        this.caseidlist = bigCities;
 for (let i = 0; i < this.multicaseid.length; i++) {
-    if (this.multicaseid[i].CaseID < 3000000) {
+    if (this.multicaseid[i].CaseID > 0) {
         bigCities.push(this.multicaseid[i].CaseID);
     }
 }

@@ -1,3 +1,5 @@
+import { AssignmentDashboardComponent } from './digital/assignment-dashboard/assignment-dashboard.component';
+
 import { CaseViewComponent } from './digital/case-view/case-view.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -13,6 +15,7 @@ import { ProductDetailComponent } from './physical/product-detail/product-detail
 import {CaseEditComponent} from './digital/case-edit/case-edit.component';
 import { AuthGuard } from 'src/app/services/auth-guard.service'
 import {CaseAssignComponent} from './digital/case-assign/case-assign.component'
+
 
 
 
@@ -121,6 +124,13 @@ const routes: Routes = [
         data:{
           title:"Case Assign",
           breadcrump: "Case Assign"
+        }
+      },
+      {
+        path: 'case/assignmentDash',
+        component: AssignmentDashboardComponent,
+        data:{
+          title: 'Assignment Dashboard'
         }
       }
     ]

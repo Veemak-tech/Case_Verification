@@ -145,6 +145,11 @@ export class CasedetailsService {
     return this.http.get(`${environment.rooturl}${environment.apiUrl}`);
   }
 
+  // number of cases
+  numberofcases(){
+    return this.http.get(`${environment.rooturl}${environment.numberofcases}`)
+  }
+
   getquestions(selectedid:any){
     debugger;
     return this.http.get(`${environment.rooturl}${environment.apigetquestion}/${selectedid}`)
@@ -243,6 +248,8 @@ debugger
 
         }
       )}
+
+
 
   // To catch error
   errorMgmt(error: HttpErrorResponse) {

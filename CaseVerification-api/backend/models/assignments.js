@@ -71,6 +71,11 @@ module.exports = class assignments {
     }
    
     
+    // number of case assigned for user
+
+    static callnumberofcases (){
+      return db.execute ("call numberofcasesforuser")
+    }
   
 
 }
