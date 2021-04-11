@@ -44,6 +44,7 @@
     "bootstrap": "^4.6.0",
     "chart.js": "^2.9.4",
     "chartist": "^0.11.4",
+    "chartjs-plugin-datalabels": "^0.7.0",
     "classlist.js": "^1.1.20150312",
     "datatables": "^1.10.18",
     "datatables.net": "^1.10.23",
