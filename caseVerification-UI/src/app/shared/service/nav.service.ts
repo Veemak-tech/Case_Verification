@@ -60,7 +60,7 @@ export class NavService {
 
 						 { path: '/products/digital/digital-add-product', title: 'Case View', type: 'link' },
 						 { path: '/products/digital/case-assign', title: 'Case Assign', type: 'link' },
-
+            { path: '/products/case/assignmentDash', title: 'Assignment Dashboard', type: 'link'}
 					]
 				},
 			]

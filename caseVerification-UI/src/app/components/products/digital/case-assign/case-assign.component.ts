@@ -20,6 +20,7 @@ import { FormsModule }   from '@angular/forms';
 
 
 
+
 @Component({
   selector: 'app-case-assign',
   templateUrl: './case-assign.component.html',
@@ -31,6 +32,7 @@ export class CaseAssignComponent implements OnInit {
   pageno: any = {};
 
   public caseList: any;
+
   deleteID: string;
   CasedetailsService: any;
   Casedetails:casedetails;
@@ -46,7 +48,8 @@ export class CaseAssignComponent implements OnInit {
   @ViewChild("userPost") userassign: NgForm;
   @Output() create: EventEmitter<any> = new EventEmitter();
   @Input() agents;
-  caselistid: any[];
+  multicaseid: any;
+  caseidlist:any
 
 
 
@@ -154,8 +157,9 @@ export class CaseAssignComponent implements OnInit {
 // Submit
 
  submit(formData) :void{
+
 debugger;
-this.user.caseassign(formData,this.caselistid,this.selectedRowsAID,this.selectedRows).pipe(first()).subscribe(() => { this.create.emit(null); });
+this.user.caseassign(formData,this.caseidlist,this.selectedRowsAID,this.selectedRows).pipe(first()).subscribe(() => { this.create.emit(null); });
 swal({
   icon: "success",
   title: "Submitted Successfully",
@@ -169,32 +173,21 @@ swal({
 
 
 
-
-
-
-
   //select events
   public onUserRowSelect(event){
  debugger
-      
- 
- 
-let CaseIDList=[];
-this.caselistid=CaseIDList;
-this.selectedRows=event.selected; 
-for (let i = 0; i < this.selectedRows.length; i++) {
-    if (this.selectedRows[i].CaseID <700000) {
-        CaseIDList.push(this.selectedRows[i].CaseID);
+      this.selectedRows = event.selected[0].CaseID;
+      this.multicaseid = event.selected;
+      this.selectedRowsAID = event.selected[0].AssignmentID;
+
+      let bigCities = [];
+       this.caseidlist = bigCities;
+for (let i = 0; i < this.multicaseid.length; i++) {
+    if (this.multicaseid[i].CaseID > 0) {
+        bigCities.push(this.multicaseid[i].CaseID);
     }
 }
-console.log(CaseIDList);
- 
- 
- //this.selectedRows = event.selected.map(event => console.log(event.selected.CaseID));
-      
-      //this.selectedRowsAID = event.selected.CaseID;
-    
-   //console.log(this.selectedRows)
+console.log(bigCities);
 
  }
 
@@ -205,12 +198,6 @@ console.log(CaseIDList);
 
     //console.log(myselected + "name")
 }
-
-
-
-
-
-
 
   // custom action
   public onCustomAction(event) {

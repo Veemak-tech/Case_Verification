@@ -63,32 +63,29 @@ export class DigitalListComponent implements OnInit {
 
   }
 
+  // export csv
+  options = {
+    fieldSeparator: ',',
+    quoteStrings: '"',
+    decimalseparator: '.',
+    showLabels: true,
+    showTitle: true,
+    title: 'Your title',
+    useBom: true,
+    noDownload: false,
+    headers: ["CaseID", "InsurerName"]
+  };
+  datas = [
+    this.pagesize,
+    {
+    CaseID:"CaseID",
+    InsurerName:"InsurerName"
+  }
+];
 
-
-// csv------------------------
-
-  // public downloadCsv() {
-  // var options = {
-  //   fieldSeparator: ',',
-  //   quoteStrings: '"',
-  //   decimalseparator: '.',
-  //   showLabels: true,
-  //   showTitle: true,
-  //   title: 'Your title',
-  //   useBom: true,
-  //   noDownload: true,
-  //   headers: ["CaseID", "InsurerName"],
-  //   nullToEmptyString: true,
-  // };
-
-  // this.MYfile = new Angular5Csv(this.data, 'Report', options);
-  // }
-
-
-
-
-
-
+  export(){
+    new Angular5Csv(this.datas, 'My Report',this.options);
+  }
 
 
   // reload page

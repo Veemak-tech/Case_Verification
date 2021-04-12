@@ -1,3 +1,5 @@
+import { map } from 'rxjs/internal/operators';
+
 import { environment } from './../../environments/environment';
 import { casedetails } from './../models/casedetails';
 import { tap } from 'rxjs/operators';
@@ -142,8 +144,16 @@ export class CasedetailsService {
 
   getData(){
     // let url = "http://localhost:3000/casedetails";
-    return this.http.get(`${environment.rooturl}${environment.apiUrl}`);
+    return this.http.get(`${environment.rooturl}${environment.apiUrl}`)
+
   }
+
+  // number of cases
+  numberofcases(){
+    return this.http.get(`${environment.rooturl}${environment.numberofcases}`)
+  }
+
+
 
   getquestions(selectedid:any){
     debugger;
@@ -231,18 +241,20 @@ export class CasedetailsService {
 
 
 //case assign
-  caseassign(formData,caselistid,selectedRowsAID,selectedRows:Pick<assignments, 'CaseID'>): Observable<assignments> {
+  caseassign(formData,caseidlist,selectedRowsAID,selectedRows:Pick<assignments, 'CaseID'>): Observable<assignments> {
 debugger
     return this.http
       .post<assignments>(
         `${environment.rooturl}${environment.apiassign}`,
         {
-          CaseID: caselistid,
+          CaseID: caseidlist,
           AppUserID:formData.AppUserID,
           AssignmentID:selectedRowsAID
 
         }
       )}
+
+
 
   // To catch error
   errorMgmt(error: HttpErrorResponse) {

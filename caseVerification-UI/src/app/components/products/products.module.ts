@@ -31,6 +31,8 @@ import { JwPaginationModule } from 'jw-angular-pagination';
 import { CaseViewComponent } from './digital/case-view/case-view.component';
 import { CaseAssignComponent } from './digital/case-assign/case-assign.component';
 import { ToastrModule } from 'ngx-toastr';
+import { AssignmentDashboardComponent } from './digital/assignment-dashboard/assignment-dashboard.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 
@@ -46,7 +48,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
 
 
 @NgModule({
-  declarations: [CategoryComponent, SubCategoryComponent, ProductListComponent, AddProductComponent, DigitalCategoryComponent, DigitalSubCategoryComponent, DigitalListComponent, DigitalAddComponent, ProductDetailComponent, UserComponent, CaseEditComponent, CaseViewComponent, CaseAssignComponent],
+  declarations: [CategoryComponent, SubCategoryComponent, ProductListComponent, AddProductComponent, DigitalCategoryComponent, DigitalSubCategoryComponent, DigitalListComponent, DigitalAddComponent, ProductDetailComponent, UserComponent, CaseEditComponent, CaseViewComponent, CaseAssignComponent, AssignmentDashboardComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -62,7 +64,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     FileUploadModule,
     NgxDatatableModule,
     ToastrModule.forRoot(),
-
+    ChartsModule
 
   ],
   providers: [

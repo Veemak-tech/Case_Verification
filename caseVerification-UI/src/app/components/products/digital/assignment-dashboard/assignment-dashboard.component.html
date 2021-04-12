@@ -1,0 +1,20 @@
+<!-- <div *ngIf="chart">
+  <canvas id="canvas">{{ chart }}</canvas>
+</div> -->
+
+
+<div>
+  <div>
+    <div style="display: block" class="mt-5">
+      <canvas baseChart
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [plugins]="barChartPlugins"
+        [legend]="barChartLegend"
+        [chartType]="barChartType">
+      </canvas>
+    </div>
+    <!-- <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button> -->
+  </div>
+</div>

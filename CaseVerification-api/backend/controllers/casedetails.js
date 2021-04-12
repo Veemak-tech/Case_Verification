@@ -60,6 +60,27 @@ exports.assignments = async (req, res, next) => {
    }
  };
 
+ // get number of cases assigned to user
+
+ exports.getnumofcases = async (req, res, next) => {
+   debugger
+   try{
+     const [numberofcases] = await assignments.callnumberofcases();
+     if (numberofcases.length > 0){
+       res.status(200).json(numberofcases[0]);
+     }
+     else{
+       res.status(500).json("No Case Assigned")
+     }
+   }
+   catch (err){
+    if (!err.statusCode){
+      err.statusCode = 500;
+    }
+    next (err);
+   }
+ }
+
 // getgroupid
 
 exports.getquestions = async (req, res, next) => {
