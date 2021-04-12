@@ -23,6 +23,7 @@ export class AssignmentDashboardComponent implements OnInit {
     private caseservice : CasedetailsService
   ) { }
 //////////////////////////
+// bar chart options
 public barChartOptions: ChartOptions = {
   responsive: true,
   // We use these empty structures as placeholders for dynamic theming.
@@ -34,6 +35,21 @@ public barChartOptions: ChartOptions = {
     }
   }
 };
+
+// pie chart options
+public pieChartOptions: ChartOptions = {
+  responsive : true,
+  scales : { xAxes : [{}], yAxes : [{}] },
+  plugins : {
+    datalabels: {
+      anchor: 'end',
+      align: 'end',
+    }
+  }
+};
+
+
+// bar chart
 public barChartLabels: Label[] = [];
 public barChartType: ChartType = 'bar';
 public barChartLegend = true;
@@ -44,6 +60,19 @@ public barChartData: ChartDataSets[] = [
 
 ];
 
+// pie chart
+public pieChartLabels: Label[] = [];
+public pieChartType: ChartType = 'pie';
+public pieChartLegend = true;
+public pieChartPlugins = [pluginDataLabels];
+
+public pieChartData: ChartDataSets[] = [
+  { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' }
+
+];
+
+
+
 
 
 ///////////////////////////////
@@ -52,7 +81,7 @@ public barChartData: ChartDataSets[] = [
     let casecount = [];
     let names = [];
     debugger;
-    this.caseservice.numberofcases().subscribe(res =>{
+    this.caseservice.numberofcases().subscribe((res : any[]) =>{
       debugger
       this.assignedcasedata = res
       console.log(this.assignedcasedata)
@@ -62,10 +91,17 @@ public barChartData: ChartDataSets[] = [
         names.push(res[i].Name);
 
       }
+      // bar chart
       this.barChartLabels = names;
       this.barChartData = [
         {data : casecount, label: 'Assigned Cases' },
         //{data : [5,2,34], label: 'Assigned Cases2'}
+      ]
+
+      // pie chart
+      this.pieChartLabels = names;
+      this.pieChartData = [
+        {data : casecount, label : 'Assigned Cases'}
       ]
 
       console.log(names)
