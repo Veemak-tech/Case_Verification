@@ -200,7 +200,7 @@ export class CasedetailsService {
         PhoneNumber: data.PhoneNumber,
         EmailID: data.EmailID,
         I_AddressID: data.I_AddressID,
-        I_CaseID:data.I_CaseID
+        //I_CaseID:data.I_CaseID
       },
 
       insAddress: {

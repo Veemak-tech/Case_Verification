@@ -110,7 +110,7 @@ export class CaseEditComponent implements OnInit {
         PhoneNumber: new FormControl(this.case['PhoneNumber'], [Validators.required,Validators.minLength(1)]),
         T_PhoneNumber: new FormControl(this.case['T_PhoneNumber'], [Validators.required,Validators.minLength(1)]),
         ThirdpartyName: new FormControl(this.case['ThirdpartyName'], [Validators.required,Validators.minLength(2)]),
-        I_CaseID: new FormControl(this.case['I_CaseID']),
+       // I_CaseID: new FormControl(this.case['I_CaseID']),
         I_AddressLine1: new FormControl(this.case['I_AddressLine1'], [ Validators.required,Validators.minLength(1)]),
         I_AddressLine2: new FormControl(this.case['I_AddressLine2'], [Validators.required,Validators.minLength(1)]),
         I_City: new FormControl(this.case['I_City'], [Validators.required,Validators.minLength(2)]),
@@ -136,8 +136,8 @@ export class CaseEditComponent implements OnInit {
     this.submitted = true;
 
     if (this.EditForm.invalid) {
-
-      alert('invalid details');
+      return
+      //alert('invalid details');
     } else {
       debugger;
       //  alert("it's me !!")
