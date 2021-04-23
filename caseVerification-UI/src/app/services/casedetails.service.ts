@@ -10,7 +10,7 @@ import { User } from './../models/User';
 import { catchError, first } from 'rxjs/operators';
 import {Observable, BehaviorSubject, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse, HttpHeaders,HttpRequest, HttpEvent } from '@angular/common/http';
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable, EventEmitter  } from '@angular/core';
 import * as _ from 'lodash';
 import { assignments } from '../models/assignments';
 import { Subscription } from 'rxjs/internal/Subscription';
@@ -26,9 +26,13 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class CasedetailsService {
-
   invokeFirstComponentFunction = new EventEmitter();
   subsVar: Subscription;
+
+  onFirstComponentButtonClick() {
+    debugger
+    this.invokeFirstComponentFunction.emit();
+  }
 
   getDropDownText(id, object){
     const selObj = _.filter(object, function (o) {
@@ -183,11 +187,6 @@ export class CasedetailsService {
   deletecasedetails(id: number): Observable<DigitalListComponent> {
     const url = `${environment.rooturl}${environment.apiUrlpostcase}/${id}`;
     return this.http.delete<DigitalListComponent>(url, this.httpOptions);
-  }
-
-  onFirstComponentButtonClick() {
-    debugger
-    this.invokeFirstComponentFunction.emit();
   }
 
 
