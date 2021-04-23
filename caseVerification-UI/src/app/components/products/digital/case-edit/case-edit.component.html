@@ -1,627 +1,627 @@
 <!-- <div class="card text-center m-3">
   <h3 class="card-header">Case List</h3> -->
 
-  <form [formGroup]="EditForm" (ngSubmit)="alertthis()" novalidate>
+<form [formGroup]="EditForm" (ngSubmit)="alertthis()" novalidate>
 
-    <!-- accordion 1 start --------------------------------------------------->
-    <div class="accordion" id="accordionExample">
-      <div class="card padAndMargin">
-        <div class="card-header padsize hvr-grow-shadow" id="headingOne">
-          <h2 class="mb-0">
-            <button class="btn btn-link btn-block text-center cardsizeAdjust" type="button" data-toggle="collapse"
-              data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              Case Details
-            </button>
-          </h2>
-        </div>
+  <!-- accordion 1 start --------------------------------------------------->
+  <div class="accordion" id="accordionExample">
+    <div class="card padAndMargin">
+      <div class="card-header padsize hvr-grow-shadow" id="headingOne">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-center cardsizeAdjust" type="button" data-toggle="collapse"
+            data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Case Details
+          </button>
+        </h2>
+      </div>
 
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-          <div class="card-body">
-
-
+      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
 
 
-            <div class="col-md-12 row">
-
-              <div class="col-md-6 form-group row p-adjust-mob">
-                <div class="col-sm-2"></div>
-                <label for="CaseID" class="col-form-label col-sm-3 text-align">Case ID:</label>
-                <div class="col-sm-6 p-adjust-mob">
-                  <input type="text" class="form-control inputborder" minlength="2" formControlName="CaseID" required=""
-                    [ngClass]="{'is-invalid':EditForm.get('CaseID').touched && EditForm.get('CaseID').invalid}">
-                  <!-- <div class="invalid-feedback">
-                    Enter a Case ID
-                  </div> -->
-
-                  <div *ngIf="EditForm.get('CaseID').touched && EditForm.get('CaseID').invalid"
-              class="invalid-feedback">
-              <div *ngIf=" EditForm.get('CaseID').errors.required">CaseID is required</div>
-
-              <div *ngIf=" EditForm.get('CaseID').errors.minlength">Min 2 Numbers</div>
-            </div>
-
-                </div>
-              </div>
 
 
-              <!-- <div *ngIf="EditForm.get('EmailID').touched && EditForm.get('EmailID').invalid"
-              class="invalid-feedback">
-              <div *ngIf=" EditForm.get('EmailID').errors.required">Email ID is required</div>
-              <div *ngIf=" EditForm.get('EmailID').errors.email">Enter valid Email ID</div>
-            </div> -->
+          <div class="col-md-12 row">
 
-
-              <div class="col-md-6 form-group row p-adjust-mob">
-                <div class="col-sm-2"></div>
-                <label for="name" class="col-form-label col-sm-4 text-align">Ref Number:</label>
-                <div class="col-sm-6 p-adjust-mob">
-                  <input type="text" class="form-control inputborder" formControlName="ReferenceNumber"
-                    id="ReferenceNumber" name="ReferenceNumber" required=""
-                    [ngClass]="{'is-invalid':EditForm.get('ReferenceNumber').touched && EditForm.get('ReferenceNumber').invalid}">
-                  <!-- <div class="invalid-feedback">
-                    Enter a ReferenceNumber
-                  </div> -->
-
-                  <div *ngIf="EditForm.get('ReferenceNumber').touched && EditForm.get('ReferenceNumber').invalid"
-              class="invalid-feedback">
-              <div *ngIf=" EditForm.get('ReferenceNumber').errors.required">ReferenceNumber is required</div>
-
-              <div *ngIf=" EditForm.get('ReferenceNumber').errors.minlength">Min 1 Numbers</div>
-            </div>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="col-md-12 row">
-
-              <div class="col-md-6 form-group row p-adjust-mob">
-                <div class="col-sm-1"></div>
-                <label for="name" class="col-form-label col-sm-4 text-align">Due date:</label>
-                <div class="col-sm-6 p-adjust-mob">
-                  <input type="text" class="form-control inputborder" formControlName="DueDate" name="DueDate"
-                    id="DueDate" required
-                    [ngClass]="{'is-invalid':EditForm.get('DueDate').touched && EditForm.get('DueDate').invalid}">
-                  <div class="invalid-feedback">
-                    Enter a DueDate
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6 form-group row p-adjust-mob">
-                <div class="col-sm-2"></div>
-                <label for="Name" class="col-form-label col-sm-4 text-align">Agent Name:</label>
-                <div class="col-sm-6 p-adjust-mob">
-                  <input type="text" class="form-control inputborder" formControlName="Name" name="Name" id="AgentName"
-                    required="" [ngClass]="{'is-invalid':EditForm.get('Name').touched && EditForm.get('Name').invalid}">
-                  <!-- <div class="invalid-feedback">
-                    Enter a Name
-                  </div> -->
-                  <div *ngIf="EditForm.get('Name').touched && EditForm.get('Name').invalid"
-              class="invalid-feedback">
-              <div *ngIf=" EditForm.get('Name').errors.required">Name is required</div>
-
-              <div *ngIf=" EditForm.get('Name').errors.minlength">Min 2 Numbers</div>
-            </div>
-
-                </div>
-              </div>
-            </div>
-
-
-            <div class="row mt-0">
-              <div class="col-sm-2" style="margin-left: 31px;"></div>
-              <label for="notes" class="col-form-label col-sm-9 tarea-label ml-3" style="text-align: left;">Notes:</label>
-            </div>
-
-            <div class=" row">
-              <div class="col-sm-1 ml-4"></div>
-              <div class="col-sm-1 ml-3"></div>
-              <div class="col-sm-8 ml-2 case-textarea inputborder">
-                <textarea class="form-control " formControlName="Description" name="Description" rows="3"
-                  [ngClass]="{'is-invalid':EditForm.get('Description').touched && EditForm.get('Description').invalid}"></textarea>
-                <!-- <div class="invalid-feedback">
-                  Enter a Description
-                </div> -->
-                <div *ngIf="EditForm.get('Description').touched && EditForm.get('Description').invalid"
-              class="invalid-feedback">
-              <div *ngIf=" EditForm.get('Description').errors.required">Description is required</div>
-
-              <div *ngIf=" EditForm.get('Description').errors.minlength">Min 1 Numbers</div>
-            </div>
-
-              </div>
+            <div class="col-md-6 form-group row p-adjust-mob">
               <div class="col-sm-2"></div>
+              <label for="CaseID" class="col-form-label col-sm-3 text-align">Case ID:</label>
+              <div class="col-sm-6 p-adjust-mob">
+                <input type="text" class="form-control inputborder" minlength="2" formControlName="CaseID" required=""
+                  [ngClass]="{'is-invalid':EditForm.get('CaseID').touched && EditForm.get('CaseID').invalid}">
+                <!-- <div class="invalid-feedback">
+                  Enter a Case ID
+                </div> -->
+
+                <div *ngIf="EditForm.get('CaseID').touched && EditForm.get('CaseID').invalid"
+            class="invalid-feedback">
+            <div *ngIf=" EditForm.get('CaseID').errors.required">CaseID is required</div>
+
+            <div *ngIf=" EditForm.get('CaseID').errors.minlength">Min 2 Numbers</div>
+          </div>
+
+              </div>
             </div>
 
 
+            <!-- <div *ngIf="EditForm.get('EmailID').touched && EditForm.get('EmailID').invalid"
+            class="invalid-feedback">
+            <div *ngIf=" EditForm.get('EmailID').errors.required">Email ID is required</div>
+            <div *ngIf=" EditForm.get('EmailID').errors.email">Enter valid Email ID</div>
+          </div> -->
 
 
+            <div class="col-md-6 form-group row p-adjust-mob">
+              <div class="col-sm-2"></div>
+              <label for="name" class="col-form-label col-sm-4 text-align">Ref Number:</label>
+              <div class="col-sm-6 p-adjust-mob">
+                <input type="text" class="form-control inputborder" formControlName="ReferenceNumber"
+                  id="ReferenceNumber" name="ReferenceNumber" required=""
+                  [ngClass]="{'is-invalid':EditForm.get('ReferenceNumber').touched && EditForm.get('ReferenceNumber').invalid}">
+                <!-- <div class="invalid-feedback">
+                  Enter a ReferenceNumber
+                </div> -->
+
+                <div *ngIf="EditForm.get('ReferenceNumber').touched && EditForm.get('ReferenceNumber').invalid"
+            class="invalid-feedback">
+            <div *ngIf=" EditForm.get('ReferenceNumber').errors.required">ReferenceNumber is required</div>
+
+            <div *ngIf=" EditForm.get('ReferenceNumber').errors.minlength">Min 1 Numbers</div>
           </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-md-12 row">
+
+            <div class="col-md-6 form-group row p-adjust-mob">
+              <div class="col-sm-1"></div>
+              <label for="name" class="col-form-label col-sm-4 text-align">Due date:</label>
+              <div class="col-sm-6 p-adjust-mob">
+                <input type="text" class="form-control inputborder" formControlName="DueDate" name="DueDate"
+                  id="DueDate" required
+                  [ngClass]="{'is-invalid':EditForm.get('DueDate').touched && EditForm.get('DueDate').invalid}">
+                <div class="invalid-feedback">
+                  Enter a DueDate
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 form-group row p-adjust-mob">
+              <div class="col-sm-2"></div>
+              <label for="Name" class="col-form-label col-sm-4 text-align">Agent Name:</label>
+              <div class="col-sm-6 p-adjust-mob">
+                <input type="text" class="form-control inputborder" formControlName="Name" name="Name" id="AgentName"
+                  required="" [ngClass]="{'is-invalid':EditForm.get('Name').touched && EditForm.get('Name').invalid}">
+                <!-- <div class="invalid-feedback">
+                  Enter a Name
+                </div> -->
+                <div *ngIf="EditForm.get('Name').touched && EditForm.get('Name').invalid"
+            class="invalid-feedback">
+            <div *ngIf=" EditForm.get('Name').errors.required">Name is required</div>
+
+            <div *ngIf=" EditForm.get('Name').errors.minlength">Min 2 Numbers</div>
+          </div>
+
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row mt-0">
+            <div class="col-sm-2" style="margin-left: 31px;"></div>
+            <label for="notes" class="col-form-label col-sm-9 tarea-label ml-3" style="text-align: left;">Notes:</label>
+          </div>
+
+          <div class=" row">
+            <div class="col-sm-1 ml-4"></div>
+            <div class="col-sm-1 ml-3"></div>
+            <div class="col-sm-8 ml-2 case-textarea inputborder">
+              <textarea class="form-control " formControlName="Description" name="Description" rows="3"
+                [ngClass]="{'is-invalid':EditForm.get('Description').touched && EditForm.get('Description').invalid}"></textarea>
+              <!-- <div class="invalid-feedback">
+                Enter a Description
+              </div> -->
+              <div *ngIf="EditForm.get('Description').touched && EditForm.get('Description').invalid"
+            class="invalid-feedback">
+            <div *ngIf=" EditForm.get('Description').errors.required">Description is required</div>
+
+            <div *ngIf=" EditForm.get('Description').errors.minlength">Min 1 Numbers</div>
+          </div>
+
+            </div>
+            <div class="col-sm-2"></div>
+          </div>
+
+
+
+
         </div>
       </div>
     </div>
+  </div>
 
 
 
 
-    <!-- accordion 2 -->
-    <div class="accordion" id="accordionExample">
-      <div class="card padAndMargin">
-        <div class="card-header padsize hvr-grow-shadow" id="headingTwo">
-          <h2 class="mb-0">
-            <button class="btn btn-link btn-block text-center cardsizeAdjust" type="button" data-toggle="collapse"
-              data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-              Insurer Details
-            </button>
-          </h2>
-        </div>
+  <!-- accordion 2 -->
+  <div class="accordion" id="accordionExample">
+    <div class="card padAndMargin">
+      <div class="card-header padsize hvr-grow-shadow" id="headingTwo">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-center cardsizeAdjust" type="button" data-toggle="collapse"
+            data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            Insurer Details
+          </button>
+        </h2>
+      </div>
 
-        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
-          <div class="card-body">
+      <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div class="card-body">
 
 
 
-            <div class="col-md-12 row">
-              <div class="col-md-6 form-group row p-adjust-mob">
-                <div></div>
-                <label for="InsurerName" class="col-form-label col-sm-5 text-align">Insurer Name:</label>
-                <div class="col-sm-6 p-adjust-mob">
-                  <input type="text" class="form-control inputborder" formControlName="InsurerName" name="InsurerName"
-                    id="InsurerName"
-                    [ngClass]="{'is-invalid':EditForm.get('InsurerName').touched && EditForm.get('InsurerName').invalid}">
-                  <!-- <div class="invalid-feedback">
-                    Enter a InsurerName
-                  </div> -->
-
-                  <div *ngIf="EditForm.get('InsurerName').touched && EditForm.get('InsurerName').invalid"
-              class="invalid-feedback">
-              <div *ngIf=" EditForm.get('InsurerName').errors.required">InsurerName is required</div>
-
-              <div *ngIf=" EditForm.get('InsurerName').errors.minlength">Min 2 Numbers</div>
-            </div>
-                </div>
-              </div>
-
-              <div class="col-md-6 form-group row p-adjust-mob">
-                <div class="col-sm-1"></div>
-                <label for="PhoneNumber" class="col-form-label col-sm-5 text-align">Phone Number:</label>
-                <div class="col-sm-6 p-adjust-mob">
-                  <input type="text" class="form-control inputborder" formControlName="PhoneNumber" name="PhoneNumber"
-                    id="PhoneNumber"
-                    [ngClass]="{'is-invalid':EditForm.get('PhoneNumber').touched && EditForm.get('PhoneNumber').invalid}">
-                  <!-- <div class="invalid-feedback">
-                    Enter a Phone Number
-                  </div> -->
-                  <div *ngIf="EditForm.get('PhoneNumber').touched && EditForm.get('PhoneNumber').invalid"
-              class="invalid-feedback">
-              <div *ngIf=" EditForm.get('PhoneNumber').errors.required">Phone Number is required</div>
-
-              <div *ngIf=" EditForm.get('PhoneNumber').errors.minlength">Min 1 Numbers</div>
-            </div>
-
-                </div>
-
-              </div>
-            </div>
-
-            <div class="col-md-12 row">
-              <div class="col-md-6 form-group row p-adjust-mob">
-                <div class="col-sm-1"></div>
-                <label for="EmailID" class="col-form-label col-sm-4 text-align">Email:</label>
-                <div class="col-sm-6 p-adjust-mob">
-                  <input type="email" class="form-control inputborder" formControlName="EmailID" name="EmailID"
-                    id="EmailID"
-                    [ngClass]="{'is-invalid':EditForm.get('EmailID').touched && EditForm.get('EmailID').invalid}">
-                  <div *ngIf="EditForm.get('EmailID').touched && EditForm.get('EmailID').invalid"
-                    class="invalid-feedback">
-                    <div *ngIf=" EditForm.get('EmailID').errors.required">Email Address is required</div>
-                    <div *ngIf=" EditForm.get('EmailID').errors.email">Enter a Valid Email Address</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-12 row">
-              <div class="col-sm-1 ml-1"></div>
-              <!-- <div style="width: 110px;"> -->
-              <div class="col-sm-1 ml-4"></div>
-              <!-- </div> -->
-              <div class="col-sm-4 form-group">
-                <input type="text" class="form-control inputborder" formControlName="I_AddressLine1" name="I_AddressLine1"
-                  id="I_AddressLine1"
-                  [ngClass]="{'is-invalid':EditForm.get('I_AddressLine1').touched && EditForm.get('I_AddressLine1').invalid}">
-                <!-- <div class="invalid-feedback">
-                  Enter a Address Line 1
-                </div> -->
-                <div *ngIf="EditForm.get('I_AddressLine1').touched && EditForm.get('I_AddressLine1').invalid"
-              class="invalid-feedback">
-              <div *ngIf=" EditForm.get('I_AddressLine1').errors.required">Address Line 1 is required</div>
-
-              <div *ngIf=" EditForm.get('I_AddressLine1').errors.minlength">Min 1 Numbers</div>
-            </div>
-
-              </div>
-              <div class="col-sm-5 form-group">
-                <input type="text" class="form-control inputborder" formControlName="I_AddressLine2" name="I_AddressLine2"
-                  id="I_AddressLine2"
-                  [ngClass]="{'is-invalid':EditForm.get('I_AddressLine2').touched && EditForm.get('I_AddressLine2').invalid}">
-                <!-- <div class="invalid-feedback">
-                  Enter a I_AddressLine2
-                </div> -->
-                <div *ngIf="EditForm.get('I_AddressLine2').touched && EditForm.get('I_AddressLine2').invalid"
-              class="invalid-feedback">
-              <div *ngIf=" EditForm.get('I_AddressLine2').errors.required">Address Line 2 is required</div>
-
-              <div *ngIf=" EditForm.get('I_AddressLine2').errors.minlength">Min 1 Numbers</div>
-            </div>
-
-              </div>
-              <!-- <div class="col-sm-2"></div> -->
-            </div>
-
-            <div class="col-md-12 row">
-              <div class="col-sm-2 ml-4"></div>
-              <!-- <div style="width: 110px;"></div> -->
-
-              <div class="col-sm-2 ml-1 form-group">
-                <input type="text" class="form-control inputborder" formControlName="I_City" name="I_City" id="I_City"
-                  [ngClass]="{'is-invalid':EditForm.get('I_City').touched && EditForm.get('I_City').invalid}">
-                <!-- <div class="invalid-feedback">
-                  Enter a I_City
-                </div> -->
-                <div *ngIf="EditForm.get('I_City').touched && EditForm.get('I_City').invalid"
-              class="invalid-feedback">
-              <div *ngIf=" EditForm.get('I_City').errors.required">City is required</div>
-
-              <div *ngIf=" EditForm.get('I_City').errors.minlength">Min 2 Numbers</div>
-            </div>
-
-              </div>
-              <div class="col-sm-2 form-group">
-                <input type="text" class="form-control inputborder" formControlName="I_State" name="I_State" id="I_State"
-                  [ngClass]="{'is-invalid':EditForm.get('I_State').touched && EditForm.get('I_State').invalid}">
-                <!-- <div class="invalid-feedback">
-                  Enter a I_State
-                </div> -->
-                <div *ngIf="EditForm.get('I_State').touched && EditForm.get('I_State').invalid"
-              class="invalid-feedback">
-              <div *ngIf=" EditForm.get('I_State').errors.required">State Name is required</div>
-
-              <div *ngIf=" EditForm.get('I_State').errors.minlength">Min 2 Numbers</div>
-            </div>
-
-              </div>
-              <div class="col-sm-2 form-group">
-                <input type="text" class="form-control inputborder" formControlName="I_Pincode" name="I_Pincode"
-                  id="I_Pincode"
-                  [ngClass]="{'is-invalid':EditForm.get('I_Pincode').touched && EditForm.get('I_Pincode').invalid}">
-                <!-- <div class="invalid-feedback">
-                  Enter a I_Pincode
-                </div> -->
-                <div *ngIf="EditForm.get('I_Pincode').touched && EditForm.get('I_Pincode').invalid"
-              class="invalid-feedback">
-              <div *ngIf=" EditForm.get('I_Pincode').errors.required">Pincode is required</div>
-
-              <div *ngIf=" EditForm.get('I_Pincode').errors.minlength">Min 2 Numbers</div>
-            </div>
-
-              </div>
-              <div class="col-sm-3 form-group">
-                <input type="text" class="form-control inputborder" formControlName="I_Landmark" name="I_Landmark"
-                  id="I_Landmark"
-                  [ngClass]="{'is-invalid':EditForm.get('I_Landmark').touched && EditForm.get('I_Landmark').invalid}">
-                <!-- <div class="invalid-feedback">
-                  Enter a I_Landmark
-                </div> -->
-                <div *ngIf="EditForm.get('I_Landmark').touched && EditForm.get('I_Landmark').invalid"
-              class="invalid-feedback">
-              <div *ngIf=" EditForm.get('I_Landmark').errors.required">Landmark is required</div>
-
-              <div *ngIf=" EditForm.get('I_Landmark').errors.minlength">Min 1 Numbers</div>
-            </div>
-
-              </div>
-              <!-- <div class="col-sm-2"></div> -->
-
-            </div>
-
-            <div class="row mt-0">
-              <div class="col-sm-2" style="margin-left: 31px;"></div>
-              <label for="notes" class="col-form-label col-sm-9">Notes:</label>
-            </div>
-
-            <div class=" row">
-              <div class="col-sm-1"></div>
-              <div class="col-sm-1"></div>
-              <div class=" col-sm-8 ml-5 ">
-                <textarea class="form-control" formControlName="InsurerVerificationNotes" name="InsurerVerificationNotes"
-                  rows="6" placeholder="Insurer Questions"
-                  [ngClass]="{'is-invalid':EditForm.get('InsurerVerificationNotes').touched && EditForm.get('InsurerVerificationNotes').invalid}">
-               </textarea>
-                <!-- <div class="invalid-feedback">
-                  Enter a InsurerVerificationNotes
-                </div> -->
-                <div *ngIf="EditForm.get('InsurerVerificationNotes').touched && EditForm.get('InsurerVerificationNotes').invalid"
-              class="invalid-feedback">
-              <div *ngIf=" EditForm.get('InsurerVerificationNotes').errors.required">Insurer Verification Notes is required</div>
-
-              <div *ngIf=" EditForm.get('InsurerVerificationNotes').errors.minlength">Min 1 Numbers</div>
-            </div>
-
-              </div>
-              <div class="col-sm-1 btn-group-vertical">
-                <button type="button" class="btn btn-sm btn-outline-primary buttonfont"><svg
-                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mic"
-                    viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                      d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z" />
-                    <path fill-rule="evenodd"
-                      d="M10 8V3a2 2 0 1 0-4 0v5a2 2 0 1 0 4 0zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z" />
-                  </svg></button>
-                <div class="mt-5"></div>
-                <button type="button" class="btn btn-sm btn-outline-info buttonfont"><svg
-                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-camera-video" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                      d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5zm11.5 5.175l3.5 1.556V4.269l-3.5 1.556v4.35zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H2z" />
-                  </svg></button>
-                <div class="mt-5"></div>
-              </div>
+          <div class="col-md-12 row">
+            <div class="col-md-6 form-group row p-adjust-mob">
               <div></div>
+              <label for="InsurerName" class="col-form-label col-sm-5 text-align">Insurer Name:</label>
+              <div class="col-sm-6 p-adjust-mob">
+                <input type="text" class="form-control inputborder" formControlName="InsurerName" name="InsurerName"
+                  id="InsurerName"
+                  [ngClass]="{'is-invalid':EditForm.get('InsurerName').touched && EditForm.get('InsurerName').invalid}">
+                <!-- <div class="invalid-feedback">
+                  Enter a InsurerName
+                </div> -->
+
+                <div *ngIf="EditForm.get('InsurerName').touched && EditForm.get('InsurerName').invalid"
+            class="invalid-feedback">
+            <div *ngIf=" EditForm.get('InsurerName').errors.required">InsurerName is required</div>
+
+            <div *ngIf=" EditForm.get('InsurerName').errors.minlength">Min 2 Numbers</div>
+          </div>
+              </div>
             </div>
 
+            <div class="col-md-6 form-group row p-adjust-mob">
+              <div class="col-sm-1"></div>
+              <label for="PhoneNumber" class="col-form-label col-sm-5 text-align">Phone Number:</label>
+              <div class="col-sm-6 p-adjust-mob">
+                <input type="text" class="form-control inputborder" formControlName="PhoneNumber" name="PhoneNumber"
+                  id="PhoneNumber"
+                  [ngClass]="{'is-invalid':EditForm.get('PhoneNumber').touched && EditForm.get('PhoneNumber').invalid}">
+                <!-- <div class="invalid-feedback">
+                  Enter a Phone Number
+                </div> -->
+                <div *ngIf="EditForm.get('PhoneNumber').touched && EditForm.get('PhoneNumber').invalid"
+            class="invalid-feedback">
+            <div *ngIf=" EditForm.get('PhoneNumber').errors.required">Phone Number is required</div>
 
+            <div *ngIf=" EditForm.get('PhoneNumber').errors.minlength">Min 1 Numbers</div>
+          </div>
 
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-md-12 row">
+            <div class="col-md-6 form-group row p-adjust-mob">
+              <div class="col-sm-1"></div>
+              <label for="EmailID" class="col-form-label col-sm-4 text-align">Email:</label>
+              <div class="col-sm-6 p-adjust-mob">
+                <input type="email" class="form-control inputborder" formControlName="EmailID" name="EmailID"
+                  id="EmailID"
+                  [ngClass]="{'is-invalid':EditForm.get('EmailID').touched && EditForm.get('EmailID').invalid}">
+                <div *ngIf="EditForm.get('EmailID').touched && EditForm.get('EmailID').invalid"
+                  class="invalid-feedback">
+                  <div *ngIf=" EditForm.get('EmailID').errors.required">Email Address is required</div>
+                  <div *ngIf=" EditForm.get('EmailID').errors.email">Enter a Valid Email Address</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12 row">
+            <div class="col-sm-1 ml-1"></div>
+            <!-- <div style="width: 110px;"> -->
+            <div class="col-sm-1 ml-4"></div>
+            <!-- </div> -->
+            <div class="col-sm-4 form-group">
+              <input type="text" class="form-control inputborder" formControlName="I_AddressLine1" name="I_AddressLine1"
+                id="I_AddressLine1"
+                [ngClass]="{'is-invalid':EditForm.get('I_AddressLine1').touched && EditForm.get('I_AddressLine1').invalid}">
+              <!-- <div class="invalid-feedback">
+                Enter a Address Line 1
+              </div> -->
+              <div *ngIf="EditForm.get('I_AddressLine1').touched && EditForm.get('I_AddressLine1').invalid"
+            class="invalid-feedback">
+            <div *ngIf=" EditForm.get('I_AddressLine1').errors.required">Address Line 1 is required</div>
+
+            <div *ngIf=" EditForm.get('I_AddressLine1').errors.minlength">Min 1 Numbers</div>
+          </div>
+
+            </div>
+            <div class="col-sm-5 form-group">
+              <input type="text" class="form-control inputborder" formControlName="I_AddressLine2" name="I_AddressLine2"
+                id="I_AddressLine2"
+                [ngClass]="{'is-invalid':EditForm.get('I_AddressLine2').touched && EditForm.get('I_AddressLine2').invalid}">
+              <!-- <div class="invalid-feedback">
+                Enter a I_AddressLine2
+              </div> -->
+              <div *ngIf="EditForm.get('I_AddressLine2').touched && EditForm.get('I_AddressLine2').invalid"
+            class="invalid-feedback">
+            <div *ngIf=" EditForm.get('I_AddressLine2').errors.required">Address Line 2 is required</div>
+
+            <div *ngIf=" EditForm.get('I_AddressLine2').errors.minlength">Min 1 Numbers</div>
+          </div>
+
+            </div>
+            <!-- <div class="col-sm-2"></div> -->
+          </div>
+
+          <div class="col-md-12 row">
+            <div class="col-sm-2 ml-4"></div>
+            <!-- <div style="width: 110px;"></div> -->
+
+            <div class="col-sm-2 ml-1 form-group">
+              <input type="text" class="form-control inputborder" formControlName="I_City" name="I_City" id="I_City"
+                [ngClass]="{'is-invalid':EditForm.get('I_City').touched && EditForm.get('I_City').invalid}">
+              <!-- <div class="invalid-feedback">
+                Enter a I_City
+              </div> -->
+              <div *ngIf="EditForm.get('I_City').touched && EditForm.get('I_City').invalid"
+            class="invalid-feedback">
+            <div *ngIf=" EditForm.get('I_City').errors.required">City is required</div>
+
+            <div *ngIf=" EditForm.get('I_City').errors.minlength">Min 2 Numbers</div>
+          </div>
+
+            </div>
+            <div class="col-sm-2 form-group">
+              <input type="text" class="form-control inputborder" formControlName="I_State" name="I_State" id="I_State"
+                [ngClass]="{'is-invalid':EditForm.get('I_State').touched && EditForm.get('I_State').invalid}">
+              <!-- <div class="invalid-feedback">
+                Enter a I_State
+              </div> -->
+              <div *ngIf="EditForm.get('I_State').touched && EditForm.get('I_State').invalid"
+            class="invalid-feedback">
+            <div *ngIf=" EditForm.get('I_State').errors.required">State Name is required</div>
+
+            <div *ngIf=" EditForm.get('I_State').errors.minlength">Min 2 Numbers</div>
+          </div>
+
+            </div>
+            <div class="col-sm-2 form-group">
+              <input type="text" class="form-control inputborder" formControlName="I_Pincode" name="I_Pincode"
+                id="I_Pincode"
+                [ngClass]="{'is-invalid':EditForm.get('I_Pincode').touched && EditForm.get('I_Pincode').invalid}">
+              <!-- <div class="invalid-feedback">
+                Enter a I_Pincode
+              </div> -->
+              <div *ngIf="EditForm.get('I_Pincode').touched && EditForm.get('I_Pincode').invalid"
+            class="invalid-feedback">
+            <div *ngIf=" EditForm.get('I_Pincode').errors.required">Pincode is required</div>
+
+            <div *ngIf=" EditForm.get('I_Pincode').errors.minlength">Min 2 Numbers</div>
+          </div>
+
+            </div>
+            <div class="col-sm-3 form-group">
+              <input type="text" class="form-control inputborder" formControlName="I_Landmark" name="I_Landmark"
+                id="I_Landmark"
+                [ngClass]="{'is-invalid':EditForm.get('I_Landmark').touched && EditForm.get('I_Landmark').invalid}">
+              <!-- <div class="invalid-feedback">
+                Enter a I_Landmark
+              </div> -->
+              <div *ngIf="EditForm.get('I_Landmark').touched && EditForm.get('I_Landmark').invalid"
+            class="invalid-feedback">
+            <div *ngIf=" EditForm.get('I_Landmark').errors.required">Landmark is required</div>
+
+            <div *ngIf=" EditForm.get('I_Landmark').errors.minlength">Min 1 Numbers</div>
+          </div>
+
+            </div>
+            <!-- <div class="col-sm-2"></div> -->
 
           </div>
+
+          <div class="row mt-0">
+            <div class="col-sm-2" style="margin-left: 31px;"></div>
+            <label for="notes" class="col-form-label col-sm-9">Notes:</label>
+          </div>
+
+          <div class=" row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-1"></div>
+            <div class=" col-sm-8 ml-5 ">
+              <textarea class="form-control" formControlName="InsurerVerificationNotes" name="InsurerVerificationNotes"
+                rows="6" placeholder="Insurer Questions"
+                [ngClass]="{'is-invalid':EditForm.get('InsurerVerificationNotes').touched && EditForm.get('InsurerVerificationNotes').invalid}">
+             </textarea>
+              <!-- <div class="invalid-feedback">
+                Enter a InsurerVerificationNotes
+              </div> -->
+              <div *ngIf="EditForm.get('InsurerVerificationNotes').touched && EditForm.get('InsurerVerificationNotes').invalid"
+            class="invalid-feedback">
+            <div *ngIf=" EditForm.get('InsurerVerificationNotes').errors.required">Insurer Verification Notes is required</div>
+
+            <div *ngIf=" EditForm.get('InsurerVerificationNotes').errors.minlength">Min 1 Numbers</div>
+          </div>
+
+            </div>
+            <div class="col-sm-1 btn-group-vertical">
+              <button type="button" class="btn btn-sm btn-outline-primary buttonfont"><svg
+                  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mic"
+                  viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z" />
+                  <path fill-rule="evenodd"
+                    d="M10 8V3a2 2 0 1 0-4 0v5a2 2 0 1 0 4 0zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z" />
+                </svg></button>
+              <div class="mt-5"></div>
+              <button type="button" class="btn btn-sm btn-outline-info buttonfont"><svg
+                  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-camera-video" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5zm11.5 5.175l3.5 1.556V4.269l-3.5 1.556v4.35zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H2z" />
+                </svg></button>
+              <div class="mt-5"></div>
+            </div>
+            <div></div>
+          </div>
+
+
+
+
         </div>
       </div>
     </div>
+  </div>
 
 
 
 
-    <!-- accordion 3 -->
-    <div class="accordion" id="accordionExample">
-      <div class="card padAndMargin">
-        <div class="card-header padsize hvr-grow-shadow" id="headingThree ">
-          <h2 class="mb-0">
-            <button class="btn btn-link btn-block text-center cardsizeAdjust" type="button" data-toggle="collapse"
-              data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-              Thirdparty Details
-            </button>
-          </h2>
-        </div>
+  <!-- accordion 3 -->
+  <div class="accordion" id="accordionExample">
+    <div class="card padAndMargin">
+      <div class="card-header padsize hvr-grow-shadow" id="headingThree ">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-center cardsizeAdjust" type="button" data-toggle="collapse"
+            data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+            Thirdparty Details
+          </button>
+        </h2>
+      </div>
 
-        <div id="collapseThree" class="collapse show" aria-labelledby="headingthree" data-parent="#accordionExample">
-          <div class="card-body">
-
-
-
-            <div class="col-md-12 row">
-              <div class="col-md-6 form-group row p-adjust-mob">
-                <!-- <div class="col-sm-1"></div> -->
-                <label for="InsurerName" class="col-form-label col-sm-5 text-align">Thirdparty Name:</label>
-                <div class="col-sm-6 p-adjust-mob">
-                  <input type="text" class="form-control inputborder" formControlName="ThirdpartyName"
-                    name="ThirdpartyName" id="ThirdpartyName"
-                    [ngClass]="{'is-invalid':EditForm.get('ThirdpartyName').touched && EditForm.get('ThirdpartyName').invalid}">
-                  <!-- <div class="invalid-feedback">
-                    Enter a ThirdpartyName
-                  </div> -->
-                  <div *ngIf="EditForm.get('ThirdpartyName').touched && EditForm.get('ThirdpartyName').invalid"
-              class="invalid-feedback">
-              <div *ngIf=" EditForm.get('ThirdpartyName').errors.required">Thirdparty Name is required</div>
-
-              <div *ngIf=" EditForm.get('ThirdpartyName').errors.minlength">Min 2 Numbers</div>
-            </div>
-
-                </div>
-              </div>
-
-              <div class="col-md-6 form-group row p-adjust-mob">
-                <div class="col-sm-1"></div>
-                <label for="PhoneNumber" class="col-form-label col-sm-5 text-align">Phone Number:</label>
-                <div class="col-sm-6 p-adjust-mob">
-                  <input type="text" class="form-control inputborder" formControlName="T_PhoneNumber" name="T_PhoneNumber"
-                    id="T_PhoneNumber"
-                    [ngClass]="{'is-invalid':EditForm.get('T_PhoneNumber').touched && EditForm.get('T_PhoneNumber').invalid}">
-                  <!-- <div class="invalid-feedback">
-                    Enter a T_PhoneNumber
-                  </div> -->
-                  <div *ngIf="EditForm.get('T_PhoneNumber').touched && EditForm.get('T_PhoneNumber').invalid"
-              class="invalid-feedback">
-              <div *ngIf=" EditForm.get('T_PhoneNumber').errors.required">Phone Number is required</div>
-
-              <div *ngIf=" EditForm.get('T_PhoneNumber').errors.minlength">Min 1 Numbers</div>
-            </div>
-
-                </div>
-
-              </div>
-            </div>
+      <div id="collapseThree" class="collapse show" aria-labelledby="headingthree" data-parent="#accordionExample">
+        <div class="card-body">
 
 
-            <div class="col-md-12 row">
-              <div class="col-md-6 form-group row p-adjust-mob">
-                <div class="col-sm-1"></div>
-                <label for="InsurerName" class="col-form-label col-sm-4 text-align">Email:</label>
-                <div class="col-sm-6 p-adjust-mob">
-                  <input type="email" class="form-control inputborder" formControlName="T_EmailID" name="T_EmailID"
-                    id="T_EmailID"
-                    [ngClass]="{'is-invalid':EditForm.get('T_EmailID').touched && EditForm.get('T_EmailID').invalid}">
-                  <div *ngIf="EditForm.get('T_EmailID').touched && EditForm.get('T_EmailID').invalid"
-                    class="invalid-feedback">
-                    <div *ngIf=" EditForm.get('T_EmailID').errors.required">email is required</div>
-                    <div *ngIf=" EditForm.get('T_EmailID').errors.email">enter valid email</div>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            <div class="col-md-12 row">
-              <div class="col-sm-1 ml-1"></div>
-              <div class="col-sm-1 ml-4"></div>
-              <!-- <div style="width: 110px;">
-                            </div> -->
-              <div class="col-sm-4 form-group">
-                <input type="text" class="form-control inputborder" formControlName="T_AddressLine1" name="T_AddressLine1"
-                  id="T_AddressLine1"
-                  [ngClass]="{'is-invalid':EditForm.get('T_AddressLine1').touched && EditForm.get('T_AddressLine1').invalid}">
+          <div class="col-md-12 row">
+            <div class="col-md-6 form-group row p-adjust-mob">
+              <!-- <div class="col-sm-1"></div> -->
+              <label for="InsurerName" class="col-form-label col-sm-5 text-align">Thirdparty Name:</label>
+              <div class="col-sm-6 p-adjust-mob">
+                <input type="text" class="form-control inputborder" formControlName="ThirdpartyName"
+                  name="ThirdpartyName" id="ThirdpartyName"
+                  [ngClass]="{'is-invalid':EditForm.get('ThirdpartyName').touched && EditForm.get('ThirdpartyName').invalid}">
                 <!-- <div class="invalid-feedback">
-                  Enter a T_AddressLine1
+                  Enter a ThirdpartyName
                 </div> -->
-                <div *ngIf="EditForm.get('T_AddressLine1').touched && EditForm.get('T_AddressLine1').invalid"
-              class="invalid-feedback">
-              <div *ngIf=" EditForm.get('T_AddressLine1').errors.required">AddressLine 1 is required</div>
+                <div *ngIf="EditForm.get('ThirdpartyName').touched && EditForm.get('ThirdpartyName').invalid"
+            class="invalid-feedback">
+            <div *ngIf=" EditForm.get('ThirdpartyName').errors.required">Thirdparty Name is required</div>
 
-              <div *ngIf=" EditForm.get('T_AddressLine1').errors.minlength">Min 1 Numbers</div>
-            </div>
+            <div *ngIf=" EditForm.get('ThirdpartyName').errors.minlength">Min 2 Numbers</div>
+          </div>
 
               </div>
-              <div class="col-sm-5 form-group">
-                <input type="text" class="form-control inputborder" formControlName="T_AddressLine2" name="T_AddressLine2"
-                  id="T_AddressLine2"
-                  [ngClass]="{'is-invalid':EditForm.get('T_AddressLine2').touched && EditForm.get('T_AddressLine2').invalid}">
-                <!-- <div class="invalid-feedback">
-                  Enter a T_AddressLine2
-                </div> -->
-                <div *ngIf="EditForm.get('T_AddressLine2').touched && EditForm.get('T_AddressLine2').invalid"
-              class="invalid-feedback">
-              <div *ngIf=" EditForm.get('T_AddressLine2').errors.required">AddressLine 2 is required</div>
-
-              <div *ngIf=" EditForm.get('T_AddressLine2').errors.minlength">Min 1 Numbers</div>
             </div>
 
-              </div>
-              <!-- <div class="col-sm-2"></div> -->
-            </div>
-
-            <div class="col-md-12 row">
-              <div class="col-sm-2 ml-4"></div>
-              <!-- <div style="width: 110px;"></div> -->
-
-              <div class="col-sm-2 ml-1 form-group">
-                <input type="text" class="form-control inputborder" formControlName="T_City" name="T_City" id="T_City"
-                  [ngClass]="{'is-invalid':EditForm.get('T_City').touched && EditForm.get('T_City').invalid}">
-                <!-- <div class="invalid-feedback">
-                  Enter a T_City
-                </div> -->
-                <div *ngIf="EditForm.get('T_City').touched && EditForm.get('T_City').invalid"
-              class="invalid-feedback">
-              <div *ngIf=" EditForm.get('T_City').errors.required">City is required</div>
-
-              <div *ngIf=" EditForm.get('T_City').errors.minlength">Min 2 Numbers</div>
-            </div>
-
-              </div>
-              <div class="col-sm-2 form-group">
-                <input type="text" class="form-control inputborder" formControlName="T_State" name="T_State" id="T_State"
-                  [ngClass]="{'is-invalid':EditForm.get('T_State').touched && EditForm.get('T_State').invalid}">
-                <!-- <div class="invalid-feedback">
-                  Enter a T_State
-                </div> -->
-                <div *ngIf="EditForm.get('T_State').touched && EditForm.get('T_State').invalid"
-              class="invalid-feedback">
-              <div *ngIf=" EditForm.get('T_State').errors.required">State is required</div>
-
-              <div *ngIf=" EditForm.get('T_State').errors.minlength">Min 2 Numbers</div>
-            </div>
-
-              </div>
-              <div class="col-sm-2 form-group">
-                <input type="text" class="form-control inputborder" formControlName="T_Pincode" name="T_Pincode"
-                  id="T_Pincode"
-                  [ngClass]="{'is-invalid':EditForm.get('T_Pincode').touched && EditForm.get('T_Pincode').invalid}">
-                <!-- <div class="invalid-feedback">
-                  Enter a T_Pincode
-                </div> -->
-                <div *ngIf="EditForm.get('T_Pincode').touched && EditForm.get('T_Pincode').invalid"
-              class="invalid-feedback">
-              <div *ngIf=" EditForm.get('T_Pincode').errors.required">Pincode is required</div>
-
-              <div *ngIf=" EditForm.get('T_Pincode').errors.minlength">Min 2 Numbers</div>
-            </div>
-
-              </div>
-              <div class="col-sm-3 form-group">
-                <input type="text" class="form-control inputborder" formControlName="T_Landmark" name="T_Landmark"
-                  id="T_Landmark"
-                  [ngClass]="{'is-invalid':EditForm.get('T_Landmark').touched && EditForm.get('T_Landmark').invalid}">
-                <!-- <div class="invalid-feedback">
-                  Enter a T_Landmark
-                </div> -->
-                <div *ngIf="EditForm.get('T_Landmark').touched && EditForm.get('T_Landmark').invalid"
-              class="invalid-feedback">
-              <div *ngIf=" EditForm.get('T_Landmark').errors.required">Landmark is required</div>
-
-              <div *ngIf=" EditForm.get('T_Landmark').errors.minlength">Min 1 Numbers</div>
-            </div>
-
-              </div>
-              <!-- <div class="col-sm-2"></div> -->
-
-            </div>
-
-            <div class="row mt-0">
-              <div class="col-sm-2" style="margin-left: 31px;"></div>
-              <label for="notes" class="col-form-label col-sm-9">Notes:</label>
-            </div>
-
-            <div class=" row">
+            <div class="col-md-6 form-group row p-adjust-mob">
               <div class="col-sm-1"></div>
-              <div class="col-sm-1"></div>
-              <div class="col-sm-8 ml-5 ">
-                <textarea class="form-control " formControlName="T_VerificationNotes" name="T_VerificationNotes" rows="6"
-                  placeholder="Thirdparty Questions"
-                  [ngClass]="{'is-invalid':EditForm.get('T_VerificationNotes').touched && EditForm.get('T_VerificationNotes').invalid}">
-               </textarea>
+              <label for="PhoneNumber" class="col-form-label col-sm-5 text-align">Phone Number:</label>
+              <div class="col-sm-6 p-adjust-mob">
+                <input type="text" class="form-control inputborder" formControlName="T_PhoneNumber" name="T_PhoneNumber"
+                  id="T_PhoneNumber"
+                  [ngClass]="{'is-invalid':EditForm.get('T_PhoneNumber').touched && EditForm.get('T_PhoneNumber').invalid}">
                 <!-- <div class="invalid-feedback">
-                  Enter a T_VerificationNotes
+                  Enter a T_PhoneNumber
                 </div> -->
-                <div *ngIf="EditForm.get('T_VerificationNotes').touched && EditForm.get('T_VerificationNotes').invalid"
-              class="invalid-feedback">
-              <div *ngIf=" EditForm.get('T_VerificationNotes').errors.required">Verification Notes is required</div>
+                <div *ngIf="EditForm.get('T_PhoneNumber').touched && EditForm.get('T_PhoneNumber').invalid"
+            class="invalid-feedback">
+            <div *ngIf=" EditForm.get('T_PhoneNumber').errors.required">Phone Number is required</div>
 
-              <div *ngIf=" EditForm.get('T_VerificationNotes').errors.minlength">Min 1 Numbers</div>
-            </div>
+            <div *ngIf=" EditForm.get('T_PhoneNumber').errors.minlength">Min 1 Numbers</div>
+          </div>
 
               </div>
 
-              <div class="col-sm-1 btn-group-vertical">
-                <button type="button" class="btn btn-sm btn-outline-primary buttonfont"><svg
-                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mic"
-                    viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                      d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z" />
-                    <path fill-rule="evenodd"
-                      d="M10 8V3a2 2 0 1 0-4 0v5a2 2 0 1 0 4 0zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z" />
-                  </svg></button>
-                <div class="mt-5"></div>
-                <button type="button" class="btn btn-sm btn-outline-info buttonfont"><svg
-                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-camera-video" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                      d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5zm11.5 5.175l3.5 1.556V4.269l-3.5 1.556v4.35zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H2z" />
-                  </svg></button>
-                <div class="mt-5"></div>
-              </div>
-              <div></div>
             </div>
-            <br>
+          </div>
 
 
+          <div class="col-md-12 row">
+            <div class="col-md-6 form-group row p-adjust-mob">
+              <div class="col-sm-1"></div>
+              <label for="InsurerName" class="col-form-label col-sm-4 text-align">Email:</label>
+              <div class="col-sm-6 p-adjust-mob">
+                <input type="email" class="form-control inputborder" formControlName="T_EmailID" name="T_EmailID"
+                  id="T_EmailID"
+                  [ngClass]="{'is-invalid':EditForm.get('T_EmailID').touched && EditForm.get('T_EmailID').invalid}">
+                <div *ngIf="EditForm.get('T_EmailID').touched && EditForm.get('T_EmailID').invalid"
+                  class="invalid-feedback">
+                  <div *ngIf=" EditForm.get('T_EmailID').errors.required">email is required</div>
+                  <div *ngIf=" EditForm.get('T_EmailID').errors.email">enter valid email</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12 row">
+            <div class="col-sm-1 ml-1"></div>
+            <div class="col-sm-1 ml-4"></div>
+            <!-- <div style="width: 110px;">
+                          </div> -->
+            <div class="col-sm-4 form-group">
+              <input type="text" class="form-control inputborder" formControlName="T_AddressLine1" name="T_AddressLine1"
+                id="T_AddressLine1"
+                [ngClass]="{'is-invalid':EditForm.get('T_AddressLine1').touched && EditForm.get('T_AddressLine1').invalid}">
+              <!-- <div class="invalid-feedback">
+                Enter a T_AddressLine1
+              </div> -->
+              <div *ngIf="EditForm.get('T_AddressLine1').touched && EditForm.get('T_AddressLine1').invalid"
+            class="invalid-feedback">
+            <div *ngIf=" EditForm.get('T_AddressLine1').errors.required">AddressLine 1 is required</div>
+
+            <div *ngIf=" EditForm.get('T_AddressLine1').errors.minlength">Min 1 Numbers</div>
+          </div>
+
+            </div>
+            <div class="col-sm-5 form-group">
+              <input type="text" class="form-control inputborder" formControlName="T_AddressLine2" name="T_AddressLine2"
+                id="T_AddressLine2"
+                [ngClass]="{'is-invalid':EditForm.get('T_AddressLine2').touched && EditForm.get('T_AddressLine2').invalid}">
+              <!-- <div class="invalid-feedback">
+                Enter a T_AddressLine2
+              </div> -->
+              <div *ngIf="EditForm.get('T_AddressLine2').touched && EditForm.get('T_AddressLine2').invalid"
+            class="invalid-feedback">
+            <div *ngIf=" EditForm.get('T_AddressLine2').errors.required">AddressLine 2 is required</div>
+
+            <div *ngIf=" EditForm.get('T_AddressLine2').errors.minlength">Min 1 Numbers</div>
+          </div>
+
+            </div>
+            <!-- <div class="col-sm-2"></div> -->
+          </div>
+
+          <div class="col-md-12 row">
+            <div class="col-sm-2 ml-4"></div>
+            <!-- <div style="width: 110px;"></div> -->
+
+            <div class="col-sm-2 ml-1 form-group">
+              <input type="text" class="form-control inputborder" formControlName="T_City" name="T_City" id="T_City"
+                [ngClass]="{'is-invalid':EditForm.get('T_City').touched && EditForm.get('T_City').invalid}">
+              <!-- <div class="invalid-feedback">
+                Enter a T_City
+              </div> -->
+              <div *ngIf="EditForm.get('T_City').touched && EditForm.get('T_City').invalid"
+            class="invalid-feedback">
+            <div *ngIf=" EditForm.get('T_City').errors.required">City is required</div>
+
+            <div *ngIf=" EditForm.get('T_City').errors.minlength">Min 2 Numbers</div>
+          </div>
+
+            </div>
+            <div class="col-sm-2 form-group">
+              <input type="text" class="form-control inputborder" formControlName="T_State" name="T_State" id="T_State"
+                [ngClass]="{'is-invalid':EditForm.get('T_State').touched && EditForm.get('T_State').invalid}">
+              <!-- <div class="invalid-feedback">
+                Enter a T_State
+              </div> -->
+              <div *ngIf="EditForm.get('T_State').touched && EditForm.get('T_State').invalid"
+            class="invalid-feedback">
+            <div *ngIf=" EditForm.get('T_State').errors.required">State is required</div>
+
+            <div *ngIf=" EditForm.get('T_State').errors.minlength">Min 2 Numbers</div>
+          </div>
+
+            </div>
+            <div class="col-sm-2 form-group">
+              <input type="text" class="form-control inputborder" formControlName="T_Pincode" name="T_Pincode"
+                id="T_Pincode"
+                [ngClass]="{'is-invalid':EditForm.get('T_Pincode').touched && EditForm.get('T_Pincode').invalid}">
+              <!-- <div class="invalid-feedback">
+                Enter a T_Pincode
+              </div> -->
+              <div *ngIf="EditForm.get('T_Pincode').touched && EditForm.get('T_Pincode').invalid"
+            class="invalid-feedback">
+            <div *ngIf=" EditForm.get('T_Pincode').errors.required">Pincode is required</div>
+
+            <div *ngIf=" EditForm.get('T_Pincode').errors.minlength">Min 2 Numbers</div>
+          </div>
+
+            </div>
+            <div class="col-sm-3 form-group">
+              <input type="text" class="form-control inputborder" formControlName="T_Landmark" name="T_Landmark"
+                id="T_Landmark"
+                [ngClass]="{'is-invalid':EditForm.get('T_Landmark').touched && EditForm.get('T_Landmark').invalid}">
+              <!-- <div class="invalid-feedback">
+                Enter a T_Landmark
+              </div> -->
+              <div *ngIf="EditForm.get('T_Landmark').touched && EditForm.get('T_Landmark').invalid"
+            class="invalid-feedback">
+            <div *ngIf=" EditForm.get('T_Landmark').errors.required">Landmark is required</div>
+
+            <div *ngIf=" EditForm.get('T_Landmark').errors.minlength">Min 1 Numbers</div>
+          </div>
+
+            </div>
+            <!-- <div class="col-sm-2"></div> -->
 
           </div>
+
+          <div class="row mt-0">
+            <div class="col-sm-2" style="margin-left: 31px;"></div>
+            <label for="notes" class="col-form-label col-sm-9">Notes:</label>
+          </div>
+
+          <div class=" row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-8 ml-5 ">
+              <textarea class="form-control " formControlName="T_VerificationNotes" name="T_VerificationNotes" rows="6"
+                placeholder="Thirdparty Questions"
+                [ngClass]="{'is-invalid':EditForm.get('T_VerificationNotes').touched && EditForm.get('T_VerificationNotes').invalid}">
+             </textarea>
+              <!-- <div class="invalid-feedback">
+                Enter a T_VerificationNotes
+              </div> -->
+              <div *ngIf="EditForm.get('T_VerificationNotes').touched && EditForm.get('T_VerificationNotes').invalid"
+            class="invalid-feedback">
+            <div *ngIf=" EditForm.get('T_VerificationNotes').errors.required">Verification Notes is required</div>
+
+            <div *ngIf=" EditForm.get('T_VerificationNotes').errors.minlength">Min 1 Numbers</div>
+          </div>
+
+            </div>
+
+            <div class="col-sm-1 btn-group-vertical">
+              <button type="button" class="btn btn-sm btn-outline-primary buttonfont"><svg
+                  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mic"
+                  viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z" />
+                  <path fill-rule="evenodd"
+                    d="M10 8V3a2 2 0 1 0-4 0v5a2 2 0 1 0 4 0zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z" />
+                </svg></button>
+              <div class="mt-5"></div>
+              <button type="button" class="btn btn-sm btn-outline-info buttonfont"><svg
+                  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-camera-video" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5zm11.5 5.175l3.5 1.556V4.269l-3.5 1.556v4.35zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H2z" />
+                </svg></button>
+              <div class="mt-5"></div>
+            </div>
+            <div></div>
+          </div>
+          <br>
+
+
+
         </div>
       </div>
     </div>
-    <br>
-    <div class="text-center">
-      <button type="submit" class="btn btn-md btn-outline-primary ml-5"><i class="fa fa-check"></i> Save</button>
-    </div>
+  </div>
+  <br>
+  <div class="text-center">
+    <button type="submit" class="btn btn-md btn-outline-primary ml-5"><i class="fa fa-check"></i> Save</button>
+  </div>
 
-  </form>
+</form>
 
-  <!-- </div> -->
+<!-- </div> -->
