@@ -88,6 +88,7 @@ export class SidebarComponent {
       this.headercom.collapseSidebar
   }
 
+
   firstComponentFunction(){
     this.caseservice.onFirstComponentButtonClick();
   }
