@@ -252,8 +252,8 @@ export class DigitalListComponent implements OnInit {
       //   title: 'Status'
       // },
 
-      username: {
-        title: 'Status',
+      // username: {
+      //   title: 'Status',
 
         // filter: {
         //   type: 'checkbox',
@@ -263,8 +263,8 @@ export class DigitalListComponent implements OnInit {
         //     resetText: 'clear',
         //   },
         // },
-        width: '15%'
-      },
+      //   width: '15%'
+      // },
     },
     attr: {
         class: 'table table-bordered'

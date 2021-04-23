@@ -1,6 +1,9 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { CasedetailsService } from './../../../services/casedetails.service';
+import { HeaderComponent } from './../header/header.component';
+import { Component,OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { NavService, Menu } from '../../service/nav.service';
+
 
 @Component({
   selector: 'app-sidebar',
@@ -13,8 +16,9 @@ export class SidebarComponent {
   public menuItems: Menu[];
   public url: any;
   public fileurl: any;
+  public headercom : HeaderComponent;
 
-  constructor(private router: Router, public navServices: NavService) {
+  constructor(private router: Router, public navServices: NavService, public caseservice : CasedetailsService) {
     this.navServices.items.subscribe(menuItems => {
       this.menuItems = menuItems
       this.router.events.subscribe((event) => {
@@ -58,6 +62,7 @@ export class SidebarComponent {
 
   // Click Toggle menu
   toggletNavActive(item) {
+
     if (!item.active) {
       this.menuItems.forEach(a => {
         if (this.menuItems.includes(item))
@@ -71,6 +76,20 @@ export class SidebarComponent {
       });
     }
     item.active = !item.active
+  }
+
+  ngOnInit(){
+
+
+    }
+
+    navclosee(){
+      debugger
+      this.headercom.collapseSidebar
+  }
+
+  firstComponentFunction(){
+    this.caseservice.onFirstComponentButtonClick();
   }
 
   //Fileupload

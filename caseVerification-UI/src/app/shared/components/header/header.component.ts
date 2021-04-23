@@ -1,3 +1,4 @@
+import { CasedetailsService } from './../../../services/casedetails.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NavService } from '../../service/nav.service';
 import { Router } from "@angular/router";
@@ -16,16 +17,18 @@ export class HeaderComponent implements OnInit {
   public isOpenMobile : boolean;
   public userName : string = "";
   isAuthenticated = false;
-  
+
 
   @Output() rightSidebarEvent = new EventEmitter<boolean>();
 
-  constructor(public navServices: NavService, 
-    private authService: AuthService, 
-    private router: Router
+  constructor(public navServices: NavService,
+    private authService: AuthService,
+    private router: Router,
+    public caseservice : CasedetailsService
     ) { }
 
   collapseSidebar() {
+    debugger
     this.open = !this.open;
     this.navServices.collapseSidebar = !this.navServices.collapseSidebar
   }
@@ -43,9 +46,23 @@ export class HeaderComponent implements OnInit {
     this.authService.isUserLoggedIn$.subscribe((isLoggedIn) => {
       this.isAuthenticated = isLoggedIn;
     this.userName = localStorage.getItem("userName").toString()
-   
+
    });
+
+   if (this.caseservice.subsVar==undefined) {
+     debugger
+    this.caseservice.subsVar = this.caseservice.
+    invokeFirstComponentFunction.subscribe((name:string) => {
+      this.collapseSidebar();
+    });
   }
+  }
+
+  firstFunction() {
+    this.collapseSidebar();
+    //alert( 'Hello ' + '\nWelcome to C# Corner \nFunction in First Component');
+  }
+
   logout(): void {
     localStorage.removeItem("token");
     this.authService.isUserLoggedIn$.next(false);

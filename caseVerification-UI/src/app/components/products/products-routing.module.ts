@@ -1,4 +1,5 @@
 import { AssignmentDashboardComponent } from './digital/assignment-dashboard/assignment-dashboard.component';
+import { CommonModule } from '@angular/common';
 
 import { CaseViewComponent } from './digital/case-view/case-view.component';
 import { NgModule } from '@angular/core';
@@ -138,7 +139,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes),CommonModule],
   exports: [RouterModule]
 })
 export class ProductsRoutingModule { }

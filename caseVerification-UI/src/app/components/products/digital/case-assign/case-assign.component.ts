@@ -291,6 +291,7 @@ console.log(bigCities);
       Name: {
         title: 'Agent Name',
         width: '15%',
+        hide: true
       },
 
       AssignmentID:{
@@ -315,6 +316,7 @@ console.log(bigCities);
       //   title: "Status"
       // },
       StatusName: {
+        width:'15%',
         title: 'Current Status',
         filter: {
           type: 'list',
