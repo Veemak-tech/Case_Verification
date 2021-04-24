@@ -196,7 +196,7 @@ export class DigitalAddComponent implements OnInit {
   }
 
   getPremiumData(){
-
+    debugger
     this.paginateData =  this.pagesize
      .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
 
