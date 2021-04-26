@@ -111,6 +111,9 @@ export class DigitalAddComponent implements OnInit {
 
     this.selecteditems = new Array<string>();
     this.selecteditems2 = new Array<string>();
+
+
+
   }
   selectID(e: any) {
     console.log(e[e.selectedIndex].id);
@@ -181,24 +184,28 @@ export class DigitalAddComponent implements OnInit {
   }
   @Output() sendValues = new EventEmitter<any>();
 
-  private loadPage(page) {
-    // debugger;
-    // get page of items from api
-    this.httpClient
-      .get<any>(`${environment.rooturl}${environment.apiUrlpostcase}/${page}/${10}`)
-      .subscribe((result) => {
-        this.pageno = result.pager;
-        this.pagesize = result.pageOfItems;
-        this.collectionSize = this.pagesize.length;
-        // debugger;
-        console.log(result.pagining);
-      });
-  }
+  public loadPage(page) {
+    debugger;
+   // get page of items from api
+   this.httpClient
+     .get<any>(`${environment.rooturl}${environment.apiUrlpostcase}/${page}/${10}`)
+     .subscribe((result) => {
+       this.pageno = result.pager;
+       this.pagesize = result.pageOfItems;
+       this.collectionSize = this.pagesize.length;
+       // debugger;
+       console.log(result.pagining);
+       this.paginateData = this.pagesize
+       .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+     });
+ }
 
   getPremiumData(){
     debugger
     this.paginateData =  this.pagesize
      .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+
+
 
    }
 

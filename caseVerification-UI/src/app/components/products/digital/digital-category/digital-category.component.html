@@ -204,7 +204,7 @@
                 <div *ngIf="submitted && f.PhoneNumber.errors" class="invalid-feedback">
                   <div *ngIf="f.PhoneNumber.errors.required">Phone Number is required</div>
                   <div *ngIf="f.PhoneNumber.errors.minlength"> Min 10 Characters </div>
-                  <div *ngIf="f.PhoneNumber.errors.maxlength">Phone Number should be less than 13 </div>
+                  <div *ngIf="f.PhoneNumber.errors.maxlength">Phone Number should be less than 10 </div>
                 </div>
               </div>
 
@@ -292,7 +292,7 @@
               <div *ngIf="submitted && f.Pincode.errors" class="invalid-feedback">
                 <div *ngIf="f.Pincode.errors.required">Pincode is required</div>
                 <div *ngIf="f.Pincode.errors.minlength"> Min 6 Characters </div>
-                <div *ngIf="f.Pincode.errors.maxlength">Pincode should be less than 7 </div>
+                <div *ngIf="f.Pincode.errors.maxlength">Pincode should be less than 6 </div>
               </div>
             </div>
             <div class="col-sm-3 form-group">
@@ -465,7 +465,7 @@
                 <div *ngIf="submitted && f.T_PhoneNumber.errors" class="invalid-feedback">
                   <div *ngIf="f.T_PhoneNumber.errors.required">Third party PhoneNumber is required</div>
                   <div *ngIf="f.T_PhoneNumber.errors.minlength"> Min 10 Characters </div>
-                  <div *ngIf="f.T_PhoneNumber.errors.maxlength">PhoneNumber should be less than 12 </div>
+                  <div *ngIf="f.T_PhoneNumber.errors.maxlength">PhoneNumber should be less than 10</div>
                 </div>
               </div>
 
@@ -553,7 +553,7 @@
               <div *ngIf="submitted && f.T_Pincode.errors" class="invalid-feedback">
                 <div *ngIf="f.T_Pincode.errors.required">Pincode is required</div>
                 <div *ngIf="f.T_Pincode.errors.minlength"> Min 6 Characters </div>
-                <div *ngIf="f.T_Pincode.errors.maxlength">Pincode should be less than 7 </div>
+                <div *ngIf="f.T_Pincode.errors.maxlength">Pincode should be less than 6 </div>
               </div>
             </div>
             <div class="col-sm-3 form-group">

@@ -118,7 +118,7 @@ export class DigitalCategoryComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(10),
-          Validators.maxLength(13),
+          Validators.maxLength(10),
         ],
       ],
       EmailID: ['', [Validators.required, Validators.email]],
@@ -156,7 +156,7 @@ export class DigitalCategoryComponent implements OnInit {
       ],
       Pincode: [
         '',
-        [Validators.required, Validators.minLength(6), Validators.maxLength(7)],
+        [Validators.required, Validators.minLength(6), Validators.maxLength(6)],
       ],
       Landmark: [
         '',
@@ -187,7 +187,7 @@ export class DigitalCategoryComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(10),
-          Validators.maxLength(12),
+          Validators.maxLength(10),
         ],
       ],
       T_EmailID: ['', [Validators.required, Validators.email]],
@@ -225,7 +225,7 @@ export class DigitalCategoryComponent implements OnInit {
       ],
       T_Pincode: [
         '',
-        [Validators.required, Validators.minLength(6), Validators.maxLength(7)],
+        [Validators.required, Validators.minLength(6), Validators.maxLength(6)],
       ],
       T_Landmark: [
         '',

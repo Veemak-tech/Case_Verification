@@ -70,15 +70,26 @@
 
   <div class="card-body" id="myDropdown">
     <div class="col-md-12 col-12 row">
-      <div class="col-md-5 col-5">
+      <div class="col-md-5 col-4">
     <input class="form-control mb-2" id="myInput" type="text" placeholder="Search Case ID.." style="width: 15rem;" onkeyup="filterFunction()">
   </div>
 
-    <div class="col-7 col-md-7 pl-0 mb-1">
+  <div class="row">
+    <div class="col-5 col-md-2 pl-0 mb-1">
       <button class="btn btn-outline-primary btn-md"  type="button" style="height: 37px;" (click)="reloadComponent()">
       <i class="fa fa-refresh" aria-hidden="true"></i>
       </button>
     </div>
+    <div class="col-md-5 col-6 col-sm-5">
+      <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="getPremiumData();">
+        <option [ngValue]="5">5 items per page</option>
+        <option [ngValue]="10">10 items per page</option>
+        <option [ngValue]="20">20 items per page</option>
+      </select>
+    </div>
+  </div>
+
+
   </div>
 
 
@@ -125,11 +136,7 @@
         <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="getPremiumData();">
         </ngb-pagination>
 
-        <!-- <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="getPremiumData();">
-          <option [ngValue]="5">5 items per page</option>
-          <option [ngValue]="10">10 items per page</option>
-          <option [ngValue]="20">20 items per page</option>
-        </select> -->
+
       </div>
 
     </div>

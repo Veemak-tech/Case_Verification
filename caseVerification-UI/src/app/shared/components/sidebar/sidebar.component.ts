@@ -85,8 +85,22 @@ export class SidebarComponent {
 
 
   firstComponentFunction(){
-    this.caseservice.onFirstComponentButtonClick();
+    if ((window.innerWidth) < 769) {
+      debugger
+      this.caseservice.onFirstComponentButtonClick();
+    } else {
+      return
+    }
   }
+
+  // $(window).resize(function() {
+  //   if ($(window).width() < 960) {
+  //      alert('Less than 960');
+  //   }
+  //  else {
+  //     alert('More than 960');
+  //  }
+  // });
 
   //Fileupload
   readUrl(event: any) {
