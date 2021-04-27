@@ -573,7 +573,9 @@
             </div>
 
             <div class="col-sm-1 btn-group-vertical">
-              <button type="button" class="btn btn-sm btn-outline-primary buttonfont"><svg
+              <!-- ------------------------------audio --------------------->
+              <button  *ngIf="!isRecording && !blobUrl" (click)="startRecording()"
+              type="button" class="btn btn-sm btn-outline-primary buttonfont"><svg
                   xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mic"
                   viewBox="0 0 16 16">
                   <path fill-rule="evenodd"
@@ -581,7 +583,20 @@
                   <path fill-rule="evenodd"
                     d="M10 8V3a2 2 0 1 0-4 0v5a2 2 0 1 0 4 0zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z" />
                 </svg></button>
+                <button type="button"  *ngIf="isRecording && !blobUrl" (click)="stopRecording()"
+                class="btn btn-sm btn-outline-primary buttonfont" ><i class="fa fa-stop-circle-o" aria-hidden="true">
+                </i></button>
+                <button class="btn btn-sm btn-outline-primary buttonfont" *ngIf="!isRecording && blobUrl"
+                (click)="clearRecordedData()"> <i class="fa fa-reply" aria-hidden="true"></i></button>
+                <div *ngIf="isRecording && !blobUrl"> {{recordedTime}} </div>
+                <div>
+                <audio *ngIf="!isRecording && blobUrl"  controls>
+                  <source [src]="blobUrl" type="audio/webm">
+                </audio>
+                </div>
+
               <div class="mt-5"></div>
+              <!-- ---------------------------------------------video -------------------------------------->
               <button type="button" class="btn btn-sm btn-outline-info buttonfont"><svg
                   xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                   class="bi bi-camera-video" viewBox="0 0 16 16">
@@ -602,8 +617,9 @@
   </div>
   <br>
   <div class="text-center">
-    <button type="submit" class="btn btn-md btn-outline-primary ml-5"><i class="fa fa-check"></i> Save</button>
+    <button type="submit" class="btn btn-md btn-outline-primary ml-5"><i class="fa fa-check"></i> Update</button>
   </div>
+
 
 </form>
 

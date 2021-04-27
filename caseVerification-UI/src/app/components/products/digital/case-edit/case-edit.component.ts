@@ -1,3 +1,4 @@
+import { AudioRecordingService } from './../../../../services/audio-recording.service';
 import { insurerDetails } from './../../../../models/insurerDetails';
 import { address } from './../../../../models/address';
 import { CasedetailsService } from './../../../../services/casedetails.service';
@@ -19,6 +20,7 @@ import {
   Output,
   EventEmitter,
   Input,
+  OnDestroy
 } from '@angular/core';
 import {
   NgbModal,
@@ -34,6 +36,9 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
 import swal from 'sweetalert';
 import { first } from 'rxjs/operators';
+import * as RecordRTC from 'recordrtc';
+import { DomSanitizer } from '@angular/platform-browser';
+
 
 
 @Component({
@@ -57,6 +62,9 @@ export class CaseEditComponent implements OnInit {
   fetchAll: any;
   casedet$: any;
   submitted = false;
+  isRecording = false;
+  recordedTime;
+  blobUrl;
 
   constructor(
     private httpClient: HttpClient,
@@ -64,9 +72,23 @@ export class CaseEditComponent implements OnInit {
     private route: ActivatedRoute,
     private caseservice: CasedetailsService,
     private formbuilder: FormBuilder,
-    private toastrService: ToastrService
-
+    private toastrService: ToastrService,
+    private audiorecordservice : AudioRecordingService,
+    private sanitizer : DomSanitizer
   ) {
+    // Audio Record
+    this.audiorecordservice.recordingFailed().subscribe(() => {
+      this.isRecording = false;
+    });
+
+    this.audiorecordservice.getRecordedTime().subscribe((time) => {
+      this.recordedTime = time;
+    });
+
+    this.audiorecordservice.getRecordedBlob().subscribe((data) => {
+      this.blobUrl = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(data.blob));
+    });
+    //---------------------------------------------Audio Reco End---------------------------
     var ID: number;
 
     this.route.queryParams.subscribe((params) => {
@@ -158,6 +180,42 @@ export class CaseEditComponent implements OnInit {
         });
     }
   }
+
+  // Audio Record
+  startRecording() {
+    if (!this.isRecording) {
+      this.isRecording = true;
+      this.audiorecordservice.startRecording();
+    }
+  }
+
+  abortRecording() {
+    if (this.isRecording) {
+      this.isRecording = false;
+      this.audiorecordservice.abortRecording();
+    }
+  }
+
+  stopRecording() {
+    if (this.isRecording) {
+      this.audiorecordservice.stopRecording();
+      this.isRecording = false;
+    }
+  }
+
+  clearRecordedData() {
+    this.blobUrl = null;
+  }
+
+  ngOnDestroy(): void {
+    this.abortRecording();
+  }
+
+
+
+
+
+
 
   // casedetailsupdate(){
   //   this.submitted = true;

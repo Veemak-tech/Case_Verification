@@ -162,7 +162,7 @@ debugger;
 this.user.caseassign(formData,this.caseidlist,this.selectedRowsAID,this.selectedRows).pipe(first()).subscribe(() => { this.create.emit(null); });
 swal({
   icon: "success",
-  title: "Submitted Successfully",
+  title: "Assigned Successfully",
   buttons: [false],
   timer: 1500,
 });
