@@ -286,7 +286,7 @@ export class DigitalCategoryComponent implements OnInit {
     this.progress = 0;
 
     this.currentFile = this.selectedFiles.item(0);
-    this.CasedetailsService.upload(this.currentFile).subscribe(
+    this.CasedetailsService.upload(this.currentFile,this.message).subscribe(
       (event) => {
         if (event.type === HttpEventType.UploadProgress) {
           this.progress = Math.round((100 * event.loaded) / event.total);
@@ -308,17 +308,19 @@ export class DigitalCategoryComponent implements OnInit {
   selectFile(event): void {
     debugger;
     this.selectedFiles = event.target.files;
-    this.filename = event.target.files[0].name;
+
     this.filesizeinkb = event.target.files[0].size;
-    this.filesize = this.filesizeinkb / 1024;
+
     this.currentFile = this.selectedFiles.item(0);
 
-    if (this.filesizeinkb > 400000  )
+    if (this.filesizeinkb > 4307840  )
     {
       alert("Select file below 4 MB");
+      return event = null
     }
     else{
-
+      this.filename = event.target.files[0].name;
+      this.filesize = this.filesizeinkb / 1024;
     }
 
     console.log(this.filename);
@@ -335,9 +337,9 @@ export class DigitalCategoryComponent implements OnInit {
       this.CasedetailsService.createPost(
         this.RegisterForm.value
       ).subscribe((msg) => {});
-
+        var casecreatFile_Upload = "CaseCreation-"
       this.currentFile = this.selectedFiles.item(0);
-      this.CasedetailsService.upload(this.currentFile).subscribe(
+      this.CasedetailsService.upload(this.currentFile,casecreatFile_Upload).subscribe(
         (event) => {
           if (event.type === HttpEventType.UploadProgress) {
             this.progress = Math.round((100 * event.loaded) / event.total);

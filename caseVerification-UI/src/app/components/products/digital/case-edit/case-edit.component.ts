@@ -8,11 +8,11 @@ import {
   Validators,
   FormsModule,
   NgForm,
-  FormBuilder,
+  FormBuilder
 } from '@angular/forms';
 import { casedetails } from './../../../../models/casedetails';
 import { Router, ActivatedRoute } from '@angular/router';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpEventType, HttpHeaders, HttpResponse } from '@angular/common/http';
 import {
   Component,
   OnInit,
@@ -20,7 +20,7 @@ import {
   Output,
   EventEmitter,
   Input,
-  OnDestroy
+  OnDestroy,ElementRef,AfterViewInit,
 } from '@angular/core';
 import {
   NgbModal,
@@ -38,7 +38,11 @@ import swal from 'sweetalert';
 import { first } from 'rxjs/operators';
 import * as RecordRTC from 'recordrtc';
 import { DomSanitizer } from '@angular/platform-browser';
-
+import videojs from 'video.js';
+import * as adapter from 'webrtc-adapter/out/adapter_no_global.js';
+import * as Record from 'videojs-record/dist/videojs.record.js';
+import { Observable } from 'rxjs';
+let ReecordRTC = require('recordrtc/RecordRTC.min');
 
 
 @Component({
@@ -49,7 +53,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 // @Injectable({
 //   providedIn: 'root'
 // })
-export class CaseEditComponent implements OnInit {
+export class CaseEditComponent implements OnInit, OnDestroy {
   private selectCaseID: number;
   @Input() Casedetails: casedetails;
   @Input() searchTerm: string;
@@ -65,6 +69,28 @@ export class CaseEditComponent implements OnInit {
   isRecording = false;
   recordedTime;
   blobUrl;
+  vdata:any;
+  fileInfos: Observable<any>;
+  progress = 0;
+  message = ''
+  caseidForFileName: any;
+  //video
+  private stream!: MediaStream;
+  private recordRTC: any;
+
+  @ViewChild('video') video;
+  // reference to the element itself: used to access events and methods
+  // reference to the element itself: used to access events and methods
+
+
+  public _elementRef!: ElementRef;
+
+  // index to create unique ID for component
+  idx = 'clip1';
+
+  private config: any;
+  private player: any;
+  private plugin: any;
 
   constructor(
     private httpClient: HttpClient,
@@ -74,7 +100,8 @@ export class CaseEditComponent implements OnInit {
     private formbuilder: FormBuilder,
     private toastrService: ToastrService,
     private audiorecordservice : AudioRecordingService,
-    private sanitizer : DomSanitizer
+    private sanitizer : DomSanitizer,
+    elementRef: ElementRef
   ) {
     // Audio Record
     this.audiorecordservice.recordingFailed().subscribe(() => {
@@ -86,6 +113,7 @@ export class CaseEditComponent implements OnInit {
     });
 
     this.audiorecordservice.getRecordedBlob().subscribe((data) => {
+      debugger
       this.blobUrl = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(data.blob));
     });
     //---------------------------------------------Audio Reco End---------------------------
@@ -143,7 +171,67 @@ export class CaseEditComponent implements OnInit {
         I_AddressID: new FormControl(this.case['I_AddressID']),
         T_AddressID: new FormControl(this.case['T_AddressID']),
       });
+
+      this.caseidForFileName = this.case.CaseID
+      console.log(this.caseidForFileName + " its me")
     });
+
+    // video record
+    this.player = false;
+
+    // save reference to plugin (so it initializes)
+    this.plugin = Record;
+
+    // video.js configuration
+    this.config = {
+      frameWidth: 10,
+      frameHeight: 10,
+      controls: true,
+      autoplay: false,
+      fluid: true,
+      loop: false,
+      width: 320,
+      height: 240,
+      bigPlayButton: false,
+      controlBar: {
+        volumePanel: true
+      },
+      plugins: {
+        /*
+        // wavesurfer section is only needed when recording audio-only
+        wavesurfer: {
+            backend: 'WebAudio',
+            waveColor: '#36393b',
+            progressColor: 'black',
+            debug: true,
+            cursorWidth: 1,
+            displayMilliseconds: true,
+            hideScrollbar: true,
+            plugins: [
+                // enable microphone plugin
+                WaveSurfer.microphone.create({
+                    bufferSize: 4096,
+                    numberOfInputChannels: 1,
+                    numberOfOutputChannels: 1,
+                    constraints: {
+                        video: false,
+                        audio: true
+                    }
+                })
+            ]
+        },
+        */
+        // configure videojs-record plugin
+        record: {
+          audio: true,
+          video: true,
+          debug: true,
+          maxLength: 3600,
+          displayMilliseconds: true,
+
+        }
+      }
+    };
   }
 
   // update
@@ -164,6 +252,7 @@ export class CaseEditComponent implements OnInit {
     } else {
       debugger;
       //  alert("it's me !!")
+      let sendvdata = this.vdata
       this.caseservice
         .update(this.route.queryParams, this.EditForm.value)
         .subscribe((result) => {
@@ -175,6 +264,22 @@ export class CaseEditComponent implements OnInit {
         buttons: [false],
         timer: 1500,
       });
+
+      this.caseservice.upload(sendvdata,this.caseidForFileName).subscribe(
+        (event) => {
+          if (event.type === HttpEventType.UploadProgress) {
+            this.progress = Math.round((100 * event.loaded) / event.total);
+          } else if (event instanceof HttpResponse) {
+            this.message = event.body.message;
+            this.fileInfos = this.caseservice.getFiles();
+          }
+        },
+        (err) => {
+          this.progress = 0;
+          this.message = 'Could not upload the file!';
+          //this.sendvdata = undefined;
+        }
+      )
       // debugger;
       this.router.navigate(['/products/digital/digital-product-list']);
         });
@@ -209,7 +314,81 @@ export class CaseEditComponent implements OnInit {
 
   ngOnDestroy(): void {
     this.abortRecording();
+
+    // Video Record
+    if (this.player) {
+      this.player.dispose();
+      this.player = false;
+    }
   }
+
+  // audio recor dend----------------------------------------------
+
+  // video record start----------------------------------------------
+
+
+  // use ngAfterViewInit to make sure we initialize the videojs element
+  // after the component template itself has been rendered
+  ngAfterViewInit() {
+    // ID with which to access the template's video element
+    let el = 'video_' + this.idx;
+
+    // setup the player via the unique element ID
+    this.player = videojs(document.getElementById(el), this.config, () => {
+      console.log('player ready! id:', el);
+
+      // print version information at startup
+      var msg = 'Using video.js ' + videojs.VERSION +
+        ' with videojs-record ' + videojs.getPluginVersion('record') +
+        ' and recordrtc ' + RecordRTC.version;
+      videojs.log(msg);
+    });
+
+    // device is ready
+    this.player.on('deviceReady', () => {
+      console.log('device is ready!');
+    });
+
+    // user clicked the record button and started recording
+    this.player.on('startRecord', () => {
+      console.log('started recording!');
+    });
+
+    // user completed recording and stream is available
+    this.player.on('finishRecord', (_player: any) => {
+      // recordedData is a blob object containing the recorded data that
+      // can be downloaded by the user, stored on server etc.
+
+      var curecttime = new Date()
+      var mytime = curecttime.toDateString()
+      var time = String(mytime)
+        // show save as dialog
+       var videodata = this.player.record().saveAs({'video': 'my-video-file-name ' + time + '.webm' });
+      let sendvideodata = this.player.recordedData
+      this.vdata = sendvideodata
+      // console.log(videodata)
+
+    });
+
+
+
+    // error handling
+    this.player.on('error', (element, error) => {
+      console.warn(error);
+    });
+
+    this.player.on('deviceError', () => {
+      console.error('device error:', this.player.deviceErrorCode);
+    });
+
+    // audio record
+    let video:HTMLVideoElement = this.video.nativeElement;
+    video.muted = false;
+    video.controls = true;
+    video.autoplay = false;
+  }
+
+  // use ngOnDestroy to detach event handlers and remove the player
 
 
 

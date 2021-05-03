@@ -29,10 +29,18 @@ export class CasedetailsService {
   invokeFirstComponentFunction = new EventEmitter();
   subsVar: Subscription;
 
+  constructor(
+    private http: HttpClient,
+    private errorHandlerService: ErrorHandlerService,
+    private router:Router
+  ) {}
+
+  // side menu closing start-------------------
   onFirstComponentButtonClick() {
     debugger
     this.invokeFirstComponentFunction.emit();
   }
+  // side menu closing end --------------------
 
   getDropDownText(id, object){
     const selObj = _.filter(object, function (o) {
@@ -51,12 +59,13 @@ export class CasedetailsService {
 
 
 
+// file upload in case creation start--------------
+  upload(file: File,caseidForFileName): Observable<HttpEvent<any>> {
 
-  upload(file: File): Observable<HttpEvent<any>> {
     debugger
     const formData: FormData = new FormData();
 
-    formData.append('file', file);
+    formData.append('file', file,caseidForFileName);
 
     const req = new HttpRequest('POST', `${environment.rooturl}/upload`, formData, {
       reportProgress: true,
@@ -70,6 +79,8 @@ export class CasedetailsService {
     return this.http.get(`${environment.rooturl}/files`);
   }
 
+  // end file upload
+
 
 
   headers = new HttpHeaders().set('Content-Type', 'application/json');
@@ -79,12 +90,9 @@ export class CasedetailsService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
-  constructor(
-    private http: HttpClient,
-    private errorHandlerService: ErrorHandlerService,
-    private router:Router
-  ) {}
 
+
+  // Create case start-------------------------------------------
   createPost(RegisterForm): Observable<casedetails> {
 
     debugger
@@ -149,6 +157,8 @@ export class CasedetailsService {
         }, this.httpOptions).pipe(first(),
         catchError(this.errorHandlerService.handleError<casedetails>('create Address')));
   }
+  // create csae end---------------------------------
+
 
   getData(){
     // let url = "http://localhost:3000/casedetails";
@@ -156,18 +166,19 @@ export class CasedetailsService {
 
   }
 
-  // number of cases
+  // number of cases---------------
   numberofcases(){
     return this.http.get(`${environment.rooturl}${environment.numberofcases}`)
   }
 
 
-
+  // get questions------------------
   getquestions(selectedid:any){
     debugger;
     return this.http.get(`${environment.rooturl}${environment.apigetquestion}/${selectedid}`)
   }
 
+    // get question options------------------
   getquestionoptions(selectedid:any){
     debugger;
     return this.http.get(`${environment.rooturl}${environment.apigetquestionoptions}/${selectedid}`)
@@ -189,7 +200,7 @@ export class CasedetailsService {
     return this.http.delete<DigitalListComponent>(url, this.httpOptions);
   }
 
-
+  // update case ----------------------------------------------------------
   update(CaseID:Observable<Params>,data:any){
     debugger;
     return this.http.put<casedetails>(`${environment.rooturl}${environment.apiUrlpostcase}`,{

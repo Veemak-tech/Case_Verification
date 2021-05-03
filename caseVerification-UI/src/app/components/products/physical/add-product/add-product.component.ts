@@ -127,9 +127,9 @@ export class AddProductComponent implements OnInit {
   upload(): void {
     debugger
     this.progress = 0;
-
+    var uploadfilename = "physicalTest"
     this.currentFile = this.selectedFiles.item(0);
-    this.CasedetailsService.upload(this.currentFile).subscribe(
+    this.CasedetailsService.upload(this.currentFile,uploadfilename).subscribe(
       event => {
         if (event.type === HttpEventType.UploadProgress) {
           this.progress = Math.round(100 * event.loaded / event.total);

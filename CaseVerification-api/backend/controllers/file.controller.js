@@ -32,7 +32,7 @@ const upload = async (req, res) => {
 };
 
 const getListFiles = (req, res) => {
-  const directoryPath = __basedir + "/resources/static/assets/uploads/";
+  const directoryPath = __basedir + "/resources";
   //C:\Users\karth\Documents\GitHub\Verification\CaseVerification-api\backend\resources\static\assets\uploads
   //backend/resources/static/assets/uploads/
 
@@ -58,7 +58,7 @@ const getListFiles = (req, res) => {
 
 const download = (req, res) => {
   const fileName = req.params.name;
-  const directoryPath = __basedir + "/resources/static/assets/uploads/";
+  const directoryPath = __basedir + "/resources";
 
   res.download(directoryPath + fileName, fileName, (err) => {
     if (err) {

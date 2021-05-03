@@ -5,7 +5,7 @@ const casedetails = require("../models/casedetails");
 const Address = require("../models/address");
 const insurerdetails = require("../models/insurerdetails");
 const thirdpartydetails = require("../models/thirdpartydetails");
-
+var fs = require("fs");
 
 
 exports.fetchAll = async (req, res, next) => {
@@ -62,6 +62,8 @@ exports.assignments = async (req, res, next) => {
 
  // get number of cases assigned to user
 
+
+
  exports.getnumofcases = async (req, res, next) => {
    debugger
    try{
@@ -102,6 +104,8 @@ exports.getquestions = async (req, res, next) => {
     }
     next(err);
   }
+
+  fs.mkdirSync("helpers/karthik"); 
 };
 
 // getquestionoptions 
@@ -152,7 +156,7 @@ exports.getpaging = async (req, res, next) => {
 
 
 exports.fetchById = async (req, res, next) => {
-   debugger;
+   //debugger;
   try {
     const [SinglePost] = await casedetails.fetchById(req.params.ID);
 
