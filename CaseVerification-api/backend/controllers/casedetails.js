@@ -5,7 +5,7 @@ const casedetails = require("../models/casedetails");
 const Address = require("../models/address");
 const insurerdetails = require("../models/insurerdetails");
 const thirdpartydetails = require("../models/thirdpartydetails");
-var fs = require("fs");
+
 
 
 exports.fetchAll = async (req, res, next) => {
@@ -105,7 +105,7 @@ exports.getquestions = async (req, res, next) => {
     next(err);
   }
 
-  fs.mkdirSync("helpers/karthik"); 
+  
 };
 
 // getquestionoptions 
