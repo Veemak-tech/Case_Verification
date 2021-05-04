@@ -11,8 +11,16 @@ let storage = multer.diskStorage({
     debugger
     console.log(file.originalname);
     var curdate = new Date();
-    cb(null, file.originalname+" Video"+`${curdate.toDateString()}`+".webm");
-    
+    //cb(null, file.originalname+" Video"+`${curdate.toDateString()}`+".webm");
+
+
+
+    if(file.mimetype == 'image/jpeg'){
+      cb(null, file.originalname+'.jpeg');
+    }
+    else{
+      cb(null, file.originalname);
+    }
   },
 });
 

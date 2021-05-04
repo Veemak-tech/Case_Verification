@@ -240,15 +240,15 @@
             </div>
             <div class="col-sm-2 form-group">
               <input type="text" class="form-control inputborder" formControlName="I_State" name="I_State" id="I_State"
-                [ngClass]="{'is-invalid':EditForm.get('I_State').touched && EditForm.get('I_State').invalid}">
+                [ngClass]="{'is-invalid':submitted && f.I_State.errors }">
               <!-- <div class="invalid-feedback">
                 Enter a I_State
               </div> -->
-              <div *ngIf="EditForm.get('I_State').touched && EditForm.get('I_State').invalid" class="invalid-feedback">
-                <div *ngIf=" EditForm.get('I_State').errors.required">State Name is required</div>
+              <div *ngIf="submitted && f.I_State.errors" class="invalid-feedback">
+                <div *ngIf=" f.I_State.errors.required">State Name is required</div>
 
-                <div *ngIf=" EditForm.get('I_State').errors.minlength">Min 3 Characters</div>
-                <div *ngIf=" EditForm.get('I_State').errors.maxlength">Max 20 Characters</div>
+                <div *ngIf=" f.I_State.errors.minlength">Min 3 Characters</div>
+                <div *ngIf=" f.I_State.errors.maxlength">Max 20 Characters</div>
 
               </div>
 
@@ -572,6 +572,13 @@
                 <div *ngIf=" EditForm.get('T_VerificationNotes').errors.maxlength">Max 250 Characters</div>
 
               </div>
+              <div class="remove-vol-control">
+                <audio *ngIf="!isRecording && blobUrl" controls >
+                  <source [src]="blobUrl" type="audio/webm">
+                </audio>
+              </div>
+              <!-- <button (click)="download()">Download</button> -->
+
 
             </div>
 
@@ -592,9 +599,7 @@
                 (click)="clearRecordedData()"> <i class="fa fa-reply" aria-hidden="true"></i></button>
               <div *ngIf="isRecording && !blobUrl"> {{recordedTime}} </div>
               <div>
-                <audio *ngIf="!isRecording && blobUrl" controls>
-                  <source [src]="blobUrl" type="audio/webm">
-                </audio>
+
               </div>
 
               <div class="mt-5"></div>

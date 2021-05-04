@@ -26,7 +26,9 @@ export class AudioRecordingService {
 
 
   getRecordedBlob(): Observable<RecordedAudioOutput> {
-    return this._recorded.asObservable();
+    debugger
+    //return this._recorded.asObservable();
+    return this._recorded
   }
 
   getRecordedTime(): Observable<string> {
@@ -93,6 +95,7 @@ export class AudioRecordingService {
   stopRecording() {
 
     if (this.recorder) {
+      debugger
       this.recorder.stop((blob) => {
         if (this.startTime) {
           const mp3Name = encodeURIComponent('audio_' + new Date().getTime() + '.mp3');

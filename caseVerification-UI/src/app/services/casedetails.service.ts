@@ -75,6 +75,21 @@ export class CasedetailsService {
     return this.http.request(req);
   }
 
+  uploadAudio(file: File,caseidForFileName): Observable<HttpEvent<any>> {
+
+    debugger
+    const formData: FormData = new FormData();
+
+    formData.append('file', file,caseidForFileName);
+
+    const req = new HttpRequest('POST', `${environment.rooturl}/upload`, formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+
+    return this.http.request(req);
+  }
+
   getFiles(): Observable<any> {
     return this.http.get(`${environment.rooturl}/files`);
   }

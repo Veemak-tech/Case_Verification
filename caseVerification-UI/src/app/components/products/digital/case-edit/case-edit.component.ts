@@ -20,7 +20,7 @@ import {
   Output,
   EventEmitter,
   Input,
-  OnDestroy,ElementRef,AfterViewInit,
+  OnDestroy,ElementRef,AfterViewInit, ChangeDetectorRef,
 } from '@angular/core';
 import {
   NgbModal,
@@ -74,6 +74,8 @@ export class CaseEditComponent implements OnInit, OnDestroy {
   progress = 0;
   message = ''
   caseidForFileName: any;
+  audioBlob;
+  adata:any;
   //video
   private stream!: MediaStream;
   private recordRTC: any;
@@ -101,7 +103,8 @@ export class CaseEditComponent implements OnInit, OnDestroy {
     private toastrService: ToastrService,
     private audiorecordservice : AudioRecordingService,
     private sanitizer : DomSanitizer,
-    elementRef: ElementRef
+    elementRef: ElementRef,
+    private ref: ChangeDetectorRef,
   ) {
     // Audio Record
     this.audiorecordservice.recordingFailed().subscribe(() => {
@@ -115,7 +118,15 @@ export class CaseEditComponent implements OnInit, OnDestroy {
     this.audiorecordservice.getRecordedBlob().subscribe((data) => {
       debugger
       this.blobUrl = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(data.blob));
+      this.audioBlob = data.blob
+      //this.audioName = data.title;
+      //this.audioBlobUrl = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(data.blob));
+      this.ref.detectChanges();
+
     });
+
+
+
     //---------------------------------------------Audio Reco End---------------------------
     var ID: number;
 
@@ -234,6 +245,23 @@ export class CaseEditComponent implements OnInit, OnDestroy {
     };
   }
 
+
+
+  _downloadFile(data: any, type: string, filename: string): any {
+    const blob = new Blob([data], { type: type });
+    const url = window.URL.createObjectURL(blob);
+    //this.video.srcObject = stream;
+    //const url = data;
+    const anchor = document.createElement('a');
+    anchor.download = filename;
+    anchor.href = url;
+    document.body.appendChild(anchor);
+    anchor.click();
+    document.body.removeChild(anchor);
+
+
+  }
+
   // update
 
   get f() {
@@ -253,6 +281,7 @@ export class CaseEditComponent implements OnInit, OnDestroy {
       debugger;
       //  alert("it's me !!")
       let sendvdata = this.vdata
+      let sendAdata = this.adata
       this.caseservice
         .update(this.route.queryParams, this.EditForm.value)
         .subscribe((result) => {
@@ -265,6 +294,7 @@ export class CaseEditComponent implements OnInit, OnDestroy {
         timer: 1500,
       });
 
+      // Video Upload
       this.caseservice.upload(sendvdata,this.caseidForFileName).subscribe(
         (event) => {
           if (event.type === HttpEventType.UploadProgress) {
@@ -280,6 +310,31 @@ export class CaseEditComponent implements OnInit, OnDestroy {
           //this.sendvdata = undefined;
         }
       )
+
+      // Audio Upload
+      var audioName= "my-audio"
+    //var Audioblob = this._downloadFile(this.audioBlob, 'audio/mp3', audioName);
+
+    this.adata = this.audioBlob
+
+      this.caseservice.uploadAudio(this.adata,this.caseidForFileName).subscribe(
+        (event) => {
+          debugger
+          if (event.type === HttpEventType.UploadProgress) {
+            this.progress = Math.round((100 * event.loaded) / event.total);
+          } else if (event instanceof HttpResponse) {
+            this.message = event.body.message;
+            this.fileInfos = this.caseservice.getFiles();
+          }
+        },
+        (err) => {
+          this.progress = 0;
+          this.message = 'Could not upload the file!';
+          //this.sendvdata = undefined;
+        }
+      )
+
+
       // debugger;
       this.router.navigate(['/products/digital/digital-product-list']);
         });
@@ -307,6 +362,8 @@ export class CaseEditComponent implements OnInit, OnDestroy {
       this.isRecording = false;
     }
   }
+
+
 
   clearRecordedData() {
     this.blobUrl = null;
