@@ -295,7 +295,7 @@ export class CaseEditComponent implements OnInit, OnDestroy {
       });
 
       // Video Upload
-      this.caseservice.upload(sendvdata,this.caseidForFileName).subscribe(
+      this.caseservice.upload(sendvdata).subscribe(
         (event) => {
           if (event.type === HttpEventType.UploadProgress) {
             this.progress = Math.round((100 * event.loaded) / event.total);

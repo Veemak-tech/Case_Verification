@@ -286,7 +286,7 @@ export class DigitalCategoryComponent implements OnInit {
     this.progress = 0;
 
     this.currentFile = this.selectedFiles.item(0);
-    this.CasedetailsService.upload(this.currentFile,this.message).subscribe(
+    this.CasedetailsService.upload(this.currentFile).subscribe(
       (event) => {
         if (event.type === HttpEventType.UploadProgress) {
           this.progress = Math.round((100 * event.loaded) / event.total);
@@ -339,7 +339,7 @@ export class DigitalCategoryComponent implements OnInit {
       ).subscribe((msg) => {});
         var casecreatFile_Upload = "CaseCreation-"
       this.currentFile = this.selectedFiles.item(0);
-      this.CasedetailsService.upload(this.currentFile,casecreatFile_Upload).subscribe(
+      this.CasedetailsService.upload(this.currentFile).subscribe(
         (event) => {
           if (event.type === HttpEventType.UploadProgress) {
             this.progress = Math.round((100 * event.loaded) / event.total);
