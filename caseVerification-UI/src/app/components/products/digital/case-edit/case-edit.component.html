@@ -1,7 +1,7 @@
 <!-- <div class="card text-center m-3">
   <h3 class="card-header">Case List</h3> -->
 
-<form [formGroup]="EditForm" (ngSubmit)="alertthis()" novalidate>
+<form [formGroup]="EditForm" (ngSubmit)="update()" novalidate>
 
   <!-- accordion 1 start --------------------------------------------------->
   <div class="accordion" id="accordionExample">
@@ -316,11 +316,17 @@
                 <div *ngIf=" EditForm.get('InsurerVerificationNotes').errors.maxlength">Max 250 Characters</div>
 
               </div>
+              <div class="remove-vol-control">
+                <audio *ngIf="!IisRecording && IblobUrl" controls >
+                  <source [src]="IblobUrl" type="audio/webm">
+                </audio>
+              </div>
 
             </div>
             <div class="col-sm-1 btn-group-vertical">
               <!-- audio -->
-              <button *ngIf="!isRecording && !blobUrl" (click)="startRecording()" type="button"
+              <div id="InsurerAudio">
+              <button id="InsAudio" *ngIf="!IisRecording && !IblobUrl" (click)="IstartRecording()" type="button"
               class="btn btn-sm btn-outline-primary buttonfont"><svg xmlns="http://www.w3.org/2000/svg" width="16"
                 height="16" fill="currentColor" class="bi bi-mic" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
@@ -328,12 +334,13 @@
                 <path fill-rule="evenodd"
                   d="M10 8V3a2 2 0 1 0-4 0v5a2 2 0 1 0 4 0zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z" />
               </svg></button>
-            <button type="button" *ngIf="isRecording && !blobUrl" (click)="stopRecording()"
+            <button type="button" *ngIf="IisRecording && !IblobUrl" (click)="IstopRecording()"
               class="btn btn-sm btn-outline-primary buttonfont"><i class="fa fa-stop-circle-o" aria-hidden="true">
               </i></button>
-            <button class="btn btn-sm btn-outline-primary buttonfont" *ngIf="!isRecording && blobUrl"
-              (click)="clearRecordedData()"> <i class="fa fa-reply" aria-hidden="true"></i></button>
-              <div *ngIf="isRecording && !blobUrl"> {{recordedTime}} </div>
+            <button class="btn btn-sm btn-outline-primary buttonfont" *ngIf="!IisRecording && IblobUrl"
+              (click)="IclearRecordedData()"> <i class="fa fa-reply" aria-hidden="true"></i></button>
+              <div *ngIf="IisRecording && !IblobUrl"> {{IrecordedTime}} </div>
+            </div>
 
 
               <div class="mt-5"></div>
@@ -584,7 +591,8 @@
 
             <div class="col-sm-1 btn-group-vertical">
               <!-- ------------------------------audio --------------------->
-              <button *ngIf="!isRecording && !blobUrl" (click)="startRecording()" type="button"
+              <div id="tpartyAudio">
+              <button id="TpAudio" *ngIf="!isRecording && !blobUrl" (click)="startRecording()" type="button"
                 class="btn btn-sm btn-outline-primary buttonfont"><svg xmlns="http://www.w3.org/2000/svg" width="16"
                   height="16" fill="currentColor" class="bi bi-mic" viewBox="0 0 16 16">
                   <path fill-rule="evenodd"
@@ -598,6 +606,7 @@
               <button class="btn btn-sm btn-outline-primary buttonfont" *ngIf="!isRecording && blobUrl"
                 (click)="clearRecordedData()"> <i class="fa fa-reply" aria-hidden="true"></i></button>
               <div *ngIf="isRecording && !blobUrl"> {{recordedTime}} </div>
+            </div>
               <div>
 
               </div>

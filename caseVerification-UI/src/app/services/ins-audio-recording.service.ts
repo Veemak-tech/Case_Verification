@@ -12,7 +12,7 @@ interface RecordedAudioOutput {
 @Injectable({
   providedIn: 'root'
 })
-export class AudioRecordingService {
+export class InsAudioRecordingService {
 
 
 
@@ -120,6 +120,5 @@ export class AudioRecordingService {
       }
     }
   }
-
 
 }
