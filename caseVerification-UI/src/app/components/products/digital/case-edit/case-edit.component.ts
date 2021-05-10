@@ -52,7 +52,7 @@ import * as adapter from 'webrtc-adapter/out/adapter_no_global.js';
 import * as Record from 'videojs-record/dist/videojs.record.js';
 import { Observable } from 'rxjs';
 let ReecordRTC = require('recordrtc/RecordRTC.min');
-
+declare var $ : any
 @Component({
   selector: 'app-case-edit',
   templateUrl: './case-edit.component.html',
@@ -85,10 +85,12 @@ export class CaseEditComponent implements OnInit, OnDestroy {
   IblobUrl;
 
   vdata: any;
+  Ivdata: any
   fileInfos: Observable<any>;
   progress = 0;
   message = '';
   caseidForFileName: any;
+  IcaseidForFileName: any;
   audioBlob;
   IaudioBlob;
   adata: any;
@@ -104,9 +106,12 @@ export class CaseEditComponent implements OnInit, OnDestroy {
 
   // index to create unique ID for component
   idx = 'clip1';
+  idxI = 'clip2'
 
   private config: any;
   private player: any;
+  private Iplayer : any;
+
   private plugin: any;
 
   constructor(
@@ -330,7 +335,8 @@ export class CaseEditComponent implements OnInit, OnDestroy {
         T_AddressID: new FormControl(this.case['T_AddressID']),
       });
 
-      this.caseidForFileName = this.case.CaseID;
+      this.caseidForFileName = this.case.CaseID + '-InsAudio';
+      this.IcaseidForFileName = this.case.CaseID + '-Tparty'
       console.log(this.caseidForFileName + ' its me');
     });
     // -------------------case details update end-----------------------------
@@ -448,6 +454,7 @@ export class CaseEditComponent implements OnInit, OnDestroy {
   ngAfterViewInit() {
     // ID with which to access the template's video element
     let el = 'video_' + this.idx;
+    let elI = 'Ivideo_'+this.idxI;
 
     // setup the player via the unique element ID
     this.player = videojs(document.getElementById(el), this.config, () => {
@@ -464,13 +471,46 @@ export class CaseEditComponent implements OnInit, OnDestroy {
       videojs.log(msg);
     });
 
+    // setup the player via the unique element ID
+    this.Iplayer = videojs(document.getElementById(elI), this.config, () => {
+      debugger
+      console.log('player ready! id:', elI);
+
+      // print version information at startup
+      var msg =
+        'Using video.js ' +
+        videojs.VERSION +
+        ' with videojs-record ' +
+        videojs.getPluginVersion('record') +
+        ' and recordrtc ' +
+        RecordRTC.version;
+      videojs.log(msg);
+    });
+
+
+
+
+
+
     // device is ready
     this.player.on('deviceReady', () => {
       console.log('device is ready!');
     });
 
+    this.Iplayer.on('deviceReady', () => {
+      debugger
+      console.log('device is ready!');
+    });
+
+
+
     // user clicked the record button and started recording
     this.player.on('startRecord', () => {
+      console.log('started recording!');
+    });
+
+    this.Iplayer.on('startRecord', () => {
+      debugger
       console.log('started recording!');
     });
 
@@ -498,6 +538,36 @@ export class CaseEditComponent implements OnInit, OnDestroy {
     this.player.on('deviceError', () => {
       console.error('device error:', this.player.deviceErrorCode);
     });
+
+
+    // user completed recording and stream is available
+    this.Iplayer.on('finishRecord', (_player: any) => {
+      debugger
+      // recordedData is a blob object containing the recorded data that
+      // can be downloaded by the user, stored on server etc.
+
+      var curecttime = new Date();
+      var mytime = curecttime.toDateString();
+      var time = String(mytime);
+      // show save as dialog
+      var videodata = this.Iplayer
+        .record()
+        .saveAs({ video: 'my-video-file-name ' + time + '.webm' });
+      let sendIvideodata = this.Iplayer.recordedData;
+      this.Ivdata = sendIvideodata;
+       console.log(videodata)
+    });
+    // error handling
+    this.Iplayer.on('error', (element, error) => {
+      console.warn(error);
+    });
+
+    this.Iplayer.on('deviceError', () => {
+      console.error('device error:', this.Iplayer.deviceErrorCode);
+    });
+
+
+
     // audio record for video
     let video: HTMLVideoElement = this.video.nativeElement;
     video.muted = false;
@@ -536,7 +606,14 @@ export class CaseEditComponent implements OnInit, OnDestroy {
     return this.EditForm.controls;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // $('#opacity-slider').on("change mousemove", function() {
+    //   $('#slider-value').html($(this).val());
+    //   $('.wrapper img').css({
+    //     'opacity': $(this).val()
+    //   });
+    // });
+  }
 
   update() {
     this.submitted = true;
@@ -544,7 +621,10 @@ export class CaseEditComponent implements OnInit, OnDestroy {
       return;
     } else {
       debugger;
+      var Ifilename = 'InsV'
+      var Tfilename = 'TpartyV'
       let sendvdata = this.vdata;
+      let sendIvdata = this.Ivdata;
 
       this.caseservice
         .update(this.route.queryParams, this.EditForm.value)
@@ -559,21 +639,45 @@ export class CaseEditComponent implements OnInit, OnDestroy {
           });
 
           // ---------------------Video Upload------------------------------------
-          this.caseservice.upload(sendvdata).subscribe(
-            (event) => {
-              if (event.type === HttpEventType.UploadProgress) {
-                this.progress = Math.round((100 * event.loaded) / event.total);
-              } else if (event instanceof HttpResponse) {
-                this.message = event.body.message;
-                this.fileInfos = this.caseservice.getFiles();
+          if(sendvdata){
+            debugger
+            this.caseservice.upload(sendvdata, Ifilename).subscribe(
+              (event) => {
+                if (event.type === HttpEventType.UploadProgress) {
+                  this.progress = Math.round((100 * event.loaded) / event.total);
+                } else if (event instanceof HttpResponse) {
+                  this.message = event.body.message;
+                  this.fileInfos = this.caseservice.getFiles();
+                }
+              },
+              (err) => {
+                this.progress = 0;
+                this.message = 'Could not upload the file!';
+                //this.sendvdata = undefined;
               }
-            },
-            (err) => {
-              this.progress = 0;
-              this.message = 'Could not upload the file!';
-              //this.sendvdata = undefined;
-            }
-          );
+            );
+          }
+
+
+           // ---------------------Ins Video Upload------------------------------------
+          if(sendIvdata){
+            debugger
+            this.caseservice.upload(sendIvdata, Tfilename).subscribe(
+              (event) => {
+                if (event.type === HttpEventType.UploadProgress) {
+                  this.progress = Math.round((100 * event.loaded) / event.total);
+                } else if (event instanceof HttpResponse) {
+                  this.message = event.body.message;
+                  this.fileInfos = this.caseservice.getFiles();
+                }
+              },
+              (err) => {
+                this.progress = 0;
+                this.message = 'Could not upload the file!';
+                //this.sendvdata = undefined;
+              }
+            );
+          }
 
           // --------------------------Audio Upload---------------------------------
           var audioName = 'my-audio';
@@ -581,7 +685,9 @@ export class CaseEditComponent implements OnInit, OnDestroy {
 
           this.adata = this.audioBlob;
 
-          this.caseservice
+          if(this.adata){
+            debugger
+            this.caseservice
             .uploadAudio(this.adata, this.caseidForFileName)
             .subscribe(
               (event) => {
@@ -601,33 +707,38 @@ export class CaseEditComponent implements OnInit, OnDestroy {
                 //this.sendvdata = undefined;
               }
             );
+          }
+
 
       //--------------------------------------Ins Audio Upload------------------------------------------
       var audioName = 'my-audio';
       //var Audioblob = this._downloadFile(this.audioBlob, 'audio/mp3', audioName);
 
       this.adataI = this.IaudioBlob;
-
-      this.caseservice
-        .uploadAudio(this.adataI, this.caseidForFileName)
-        .subscribe(
-          (event) => {
-            debugger;
-            if (event.type === HttpEventType.UploadProgress) {
-              this.progress = Math.round(
-                (100 * event.loaded) / event.total
-              );
-            } else if (event instanceof HttpResponse) {
-              this.message = event.body.message;
-              this.fileInfos = this.caseservice.getFiles();
-            }
-          },
-          (err) => {
-            this.progress = 0;
-            this.message = 'Could not upload the file!';
-            //this.sendvdata = undefined;
+          if (this.adata) {
+            debugger
+            this.caseservice
+            .uploadAudio(this.adataI, this.IcaseidForFileName)
+            .subscribe(
+              (event) => {
+                debugger;
+                if (event.type === HttpEventType.UploadProgress) {
+                  this.progress = Math.round(
+                    (100 * event.loaded) / event.total
+                  );
+                } else if (event instanceof HttpResponse) {
+                  this.message = event.body.message;
+                  this.fileInfos = this.caseservice.getFiles();
+                }
+              },
+              (err) => {
+                this.progress = 0;
+                this.message = 'Could not upload the file!';
+                //this.sendvdata = undefined;
+              }
+            );
           }
-        );
+
 
 
           // debugger;

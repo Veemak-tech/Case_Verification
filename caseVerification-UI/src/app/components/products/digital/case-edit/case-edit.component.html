@@ -256,32 +256,31 @@
             <div class="col-sm-2 form-group">
               <input type="text" class="form-control inputborder" formControlName="I_Pincode" name="I_Pincode"
                 id="I_Pincode"
-                [ngClass]="{'is-invalid':EditForm.get('I_Pincode').touched && EditForm.get('I_Pincode').invalid}">
+                [ngClass]="{'is-invalid':submitted && f.I_Pincode.errors}">
               <!-- <div class="invalid-feedback">
                 Enter a I_Pincode
               </div> -->
-              <div *ngIf="EditForm.get('I_Pincode').touched && EditForm.get('I_Pincode').invalid"
-                class="invalid-feedback">
-                <div *ngIf=" EditForm.get('I_Pincode').errors.required">Pincode is required</div>
+              <div *ngIf="submitted && f.I_Pincode.errors" class="invalid-feedback">
+                <div *ngIf="f.I_Pincode.errors.required">Pincode is required</div>
 
-                <div *ngIf=" EditForm.get('I_Pincode').errors.minlength">Min 6 Numbers</div>
-                <div *ngIf=" EditForm.get('I_Pincode').errors.maxlength">Max 6 Numbers</div>
+                <div *ngIf="f.I_Pincode.errors.maxlength">Min 6 Numbers</div>
+                <div *ngIf="f.I_Pincode.errors.minlength">Max 6 Numbers</div>
               </div>
 
             </div>
             <div class="col-sm-3 form-group">
               <input type="text" class="form-control inputborder" formControlName="I_Landmark" name="I_Landmark"
                 id="I_Landmark"
-                [ngClass]="{'is-invalid':EditForm.get('I_Landmark').touched && EditForm.get('I_Landmark').invalid}">
+                [ngClass]="{'is-invalid':submitted && f.I_Landmark.errors}">
               <!-- <div class="invalid-feedback">
                 Enter a I_Landmark
               </div> -->
-              <div *ngIf="EditForm.get('I_Landmark').touched && EditForm.get('I_Landmark').invalid"
+              <div *ngIf="submitted && f.I_Landmark.errors"
                 class="invalid-feedback">
-                <div *ngIf=" EditForm.get('I_Landmark').errors.required">Landmark is required</div>
+                <div *ngIf="f.I_Landmark.errors.required">Landmark is required</div>
 
-                <div *ngIf=" EditForm.get('I_Landmark').errors.minlength">Min 5 Characters</div>
-                <div *ngIf=" EditForm.get('I_Landmark').errors.maxlength">Max 50 Characters</div>
+                <div *ngIf="f.I_Landmark.errors.maxlength">Min 5 Characters</div>
+                <div *ngIf="f.I_Landmark.errors.minlength">Max 50 Characters</div>
 
               </div>
 
@@ -301,19 +300,19 @@
             <div class=" col-sm-8 ml-5 ">
               <textarea class="form-control" formControlName="InsurerVerificationNotes" name="InsurerVerificationNotes"
                 rows="6" placeholder="Insurer Questions"
-                [ngClass]="{'is-invalid':EditForm.get('InsurerVerificationNotes').touched && EditForm.get('InsurerVerificationNotes').invalid}">
+                [ngClass]="{'is-invalid': submitted && f.InsurerVerificationNotes.errors}">
              </textarea>
               <!-- <div class="invalid-feedback">
                 Enter a InsurerVerificationNotes
               </div> -->
               <div
-                *ngIf="EditForm.get('InsurerVerificationNotes').touched && EditForm.get('InsurerVerificationNotes').invalid"
+                *ngIf="submitted && f.InsurerVerificationNotes.errors"
                 class="invalid-feedback">
-                <div *ngIf=" EditForm.get('InsurerVerificationNotes').errors.required">Insurer Verification Notes is
+                <div *ngIf="f.InsurerVerificationNotes.errors.required">Insurer Verification Notes is
                   required</div>
 
-                <div *ngIf=" EditForm.get('InsurerVerificationNotes').errors.minlength">Min 5 Characters</div>
-                <div *ngIf=" EditForm.get('InsurerVerificationNotes').errors.maxlength">Max 250 Characters</div>
+                <div *ngIf="f.InsurerVerificationNotes.errors.minlength">Min 5 Characters</div>
+                <div *ngIf="f.InsurerVerificationNotes.errors.maxlength">Max 250 Characters</div>
 
               </div>
               <div class="remove-vol-control">
@@ -345,7 +344,8 @@
 
               <div class="mt-5"></div>
               <!-- video -->
-              <button type="button" class="btn btn-sm btn-outline-info buttonfont"><svg
+              <button type="button" class="btn btn-sm btn-outline-info buttonfont" data-toggle="modal"
+              data-target=".bd-example-modal-lg-1"><svg
                   xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                   class="bi bi-camera-video" viewBox="0 0 16 16">
                   <path fill-rule="evenodd"
@@ -354,6 +354,19 @@
               <div class="mt-5"></div>
             </div>
             <div></div>
+            <div class="modal fade bd-example-modal-lg-1" tabindex="-1" role="dialog"
+            aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content">
+                <!-- <div class="container"> -->
+                <div class="">
+                  <video id="Ivideo_{{idxI}}" class="video-js vjs-default-skin" playsinline><i
+                      class="fa fa-video-camera" aria-hidden="true"></i></video>
+                </div>
+                <!-- </div> -->
+              </div>
+            </div>
+          </div>
           </div>
 
 
@@ -391,16 +404,15 @@
               <div class="col-sm-6 p-adjust-mob">
                 <input type="text" class="form-control inputborder" formControlName="ThirdpartyName"
                   name="ThirdpartyName" id="ThirdpartyName"
-                  [ngClass]="{'is-invalid':EditForm.get('ThirdpartyName').touched && EditForm.get('ThirdpartyName').invalid}">
+                  [ngClass]="{'is-invalid': submitted && f.ThirdpartyName.errors}">
                 <!-- <div class="invalid-feedback">
                   Enter a ThirdpartyName
                 </div> -->
-                <div *ngIf="EditForm.get('ThirdpartyName').touched && EditForm.get('ThirdpartyName').invalid"
-                  class="invalid-feedback">
-                  <div *ngIf=" EditForm.get('ThirdpartyName').errors.required">Thirdparty Name is required</div>
+                <div *ngIf="submitted && f.ThirdpartyName.errors" class="invalid-feedback">
+                  <div *ngIf=" f.ThirdpartyName.errors.required">Thirdparty Name is required</div>
 
-                  <div *ngIf=" EditForm.get('ThirdpartyName').errors.minlength">Min 2 Characters</div>
-                  <div *ngIf=" EditForm.get('ThirdpartyName').errors.maxlength">Max 30 Characters</div>
+                  <div *ngIf="f.ThirdpartyName.errors.minlength">Min 2 Characters</div>
+                  <div *ngIf="f.ThirdpartyName.errors.maxlength">Max 30 Characters</div>
 
                 </div>
 
@@ -413,16 +425,16 @@
               <div class="col-sm-6 p-adjust-mob">
                 <input type="text" class="form-control inputborder" formControlName="T_PhoneNumber" name="T_PhoneNumber"
                   id="T_PhoneNumber"
-                  [ngClass]="{'is-invalid':EditForm.get('T_PhoneNumber').touched && EditForm.get('T_PhoneNumber').invalid}">
+                  [ngClass]="{'is-invalid':submitted && f.T_PhoneNumber.errors}">
                 <!-- <div class="invalid-feedback">
                   Enter a T_PhoneNumber
                 </div> -->
-                <div *ngIf="EditForm.get('T_PhoneNumber').touched && EditForm.get('T_PhoneNumber').invalid"
+                <div *ngIf="submitted && f.T_PhoneNumber.errors"
                   class="invalid-feedback">
-                  <div *ngIf=" EditForm.get('T_PhoneNumber').errors.required">Phone Number is required</div>
+                  <div *ngIf=" f.T_PhoneNumber.errors.required">Phone Number is required</div>
 
-                  <div *ngIf=" EditForm.get('T_PhoneNumber').errors.minlength">Min 10 Numbers</div>
-                  <div *ngIf=" EditForm.get('T_PhoneNumber').errors.maxlength">Max 10 Numbers</div>
+                  <div *ngIf="f.T_PhoneNumber.errors.minlength">Min 10 Numbers</div>
+                  <div *ngIf="f.T_PhoneNumber.errors.maxlength">Max 10 Numbers</div>
 
                 </div>
 
@@ -439,12 +451,12 @@
               <div class="col-sm-6 p-adjust-mob">
                 <input type="email" class="form-control inputborder" formControlName="T_EmailID" name="T_EmailID"
                   id="T_EmailID"
-                  [ngClass]="{'is-invalid':EditForm.get('T_EmailID').touched && EditForm.get('T_EmailID').invalid}">
-                <div *ngIf="EditForm.get('T_EmailID').touched && EditForm.get('T_EmailID').invalid"
+                  [ngClass]="{'is-invalid':submitted && f.T_EmailID.errors}">
+                <div *ngIf="submitted && f.T_EmailID.errors"
                   class="invalid-feedback">
-                  <div *ngIf=" EditForm.get('T_EmailID').errors.required">Email is required</div>
-                  <div *ngIf=" EditForm.get('T_EmailID').errors.email">Enter valid Email</div>
-                  <div *ngIf=" EditForm.get('T_EmailID').errors.maxlength">Email should less than 40 Characters</div>
+                  <div *ngIf="f.T_EmailID.errors.required">Email is required</div>
+                  <div *ngIf="f.T_EmailID.errors.email">Enter valid Email</div>
+                  <div *ngIf="f.T_EmailID.errors.maxlength">Email should less than 40 Characters</div>
                 </div>
               </div>
             </div>
@@ -458,15 +470,15 @@
             <div class="col-sm-4 form-group">
               <input type="text" class="form-control inputborder" formControlName="T_AddressLine1" name="T_AddressLine1"
                 id="T_AddressLine1"
-                [ngClass]="{'is-invalid':EditForm.get('T_AddressLine1').touched && EditForm.get('T_AddressLine1').invalid}">
+                [ngClass]="{'is-invalid':submitted && f.T_AddressLine1.errors}">
               <!-- <div class="invalid-feedback">
                 Enter a T_AddressLine1
               </div> -->
-              <div *ngIf="EditForm.get('T_AddressLine1').touched && EditForm.get('T_AddressLine1').invalid"
+              <div *ngIf="submitted && f.T_AddressLine1.errors"
                 class="invalid-feedback">
-                <div *ngIf=" EditForm.get('T_AddressLine1').errors.required">AddressLine 1 is required</div>
-                <div *ngIf=" EditForm.get('T_AddressLine1').errors.minlength">Min 5 Characters</div>
-                <div *ngIf=" EditForm.get('T_AddressLine1').errors.maxlength">Max 50 Character</div>
+                <div *ngIf="f.T_AddressLine1.errors.required">AddressLine 1 is required</div>
+                <div *ngIf="f.T_AddressLine1.errors.minlength">Min 5 Characters</div>
+                <div *ngIf="f.T_AddressLine1.errors.maxlength">Max 50 Character</div>
 
               </div>
 
@@ -474,15 +486,15 @@
             <div class="col-sm-5 form-group">
               <input type="text" class="form-control inputborder" formControlName="T_AddressLine2" name="T_AddressLine2"
                 id="T_AddressLine2"
-                [ngClass]="{'is-invalid':EditForm.get('T_AddressLine2').touched && EditForm.get('T_AddressLine2').invalid}">
+                [ngClass]="{'is-invalid':submitted && f.T_AddressLine2.errors}">
               <!-- <div class="invalid-feedback">
                 Enter a T_AddressLine2
               </div> -->
-              <div *ngIf="EditForm.get('T_AddressLine2').touched && EditForm.get('T_AddressLine2').invalid"
+              <div *ngIf="submitted && f.T_AddressLine2.errors"
                 class="invalid-feedback">
-                <div *ngIf=" EditForm.get('T_AddressLine2').errors.required">AddressLine 2 is required</div>
-                <div *ngIf=" EditForm.get('T_AddressLine2').errors.minlength">Min 5 Characters</div>
-                <div *ngIf=" EditForm.get('T_AddressLine2').errors.maxlength">Max 50 Characters</div>
+                <div *ngIf=" f.T_AddressLine2.errors.required">AddressLine 2 is required</div>
+                <div *ngIf=" f.T_AddressLine2.errors.minlength">Min 5 Characters</div>
+                <div *ngIf=" f.T_AddressLine2.errors.maxlength">Max 50 Characters</div>
               </div>
 
             </div>
@@ -495,58 +507,58 @@
 
             <div class="col-sm-2 ml-1 form-group">
               <input type="text" class="form-control inputborder" formControlName="T_City" name="T_City" id="T_City"
-                [ngClass]="{'is-invalid':EditForm.get('T_City').touched && EditForm.get('T_City').invalid}">
+                [ngClass]="{'is-invalid':submitted && f.T_City.errors}">
               <!-- <div class="invalid-feedback">
                 Enter a T_City
               </div> -->
-              <div *ngIf="EditForm.get('T_City').touched && EditForm.get('T_City').invalid" class="invalid-feedback">
-                <div *ngIf=" EditForm.get('T_City').errors.required">City is required</div>
-                <div *ngIf=" EditForm.get('T_City').errors.minlength">Min 3 Characters</div>
-                <div *ngIf=" EditForm.get('T_City').errors.maxlength">Max 20 Characters</div>
+              <div *ngIf="submitted && f.T_City.errors" class="invalid-feedback">
+                <div *ngIf="f.T_City.errors.required">City is required</div>
+                <div *ngIf="f.T_City.errors.minlength">Min 3 Characters</div>
+                <div *ngIf="f.T_City.errors.maxlength">Max 20 Characters</div>
 
               </div>
 
             </div>
             <div class="col-sm-2 form-group">
               <input type="text" class="form-control inputborder" formControlName="T_State" name="T_State" id="T_State"
-                [ngClass]="{'is-invalid':EditForm.get('T_State').touched && EditForm.get('T_State').invalid}">
+                [ngClass]="{'is-invalid':submitted && f.T_State.errors}">
               <!-- <div class="invalid-feedback">
                 Enter a T_State
               </div> -->
-              <div *ngIf="EditForm.get('T_State').touched && EditForm.get('T_State').invalid" class="invalid-feedback">
-                <div *ngIf=" EditForm.get('T_State').errors.required">State is required</div>
-                <div *ngIf=" EditForm.get('T_State').errors.minlength">Min 3 characters</div>
-                <div *ngIf=" EditForm.get('T_State').errors.maxlength">Max 25 Characters</div>
+              <div *ngIf="submitted && f.T_State.errors" class="invalid-feedback">
+                <div *ngIf="f.T_State.errors.required">State is required</div>
+                <div *ngIf="f.T_State.errors.minlength">Min 3 characters</div>
+                <div *ngIf="f.T_State.errors.maxlength">Max 25 Characters</div>
               </div>
 
             </div>
             <div class="col-sm-2 form-group">
               <input type="text" class="form-control inputborder" formControlName="T_Pincode" name="T_Pincode"
                 id="T_Pincode"
-                [ngClass]="{'is-invalid':EditForm.get('T_Pincode').touched && EditForm.get('T_Pincode').invalid}">
+                [ngClass]="{'is-invalid':submitted && f.T_Pincode.errors}">
               <!-- <div class="invalid-feedback">
                 Enter a T_Pincode
               </div> -->
-              <div *ngIf="EditForm.get('T_Pincode').touched && EditForm.get('T_Pincode').invalid"
+              <div *ngIf="submitted && f.T_Pincode.errors"
                 class="invalid-feedback">
-                <div *ngIf=" EditForm.get('T_Pincode').errors.required">Pincode is required</div>
-                <div *ngIf=" EditForm.get('T_Pincode').errors.minlength">Min 6 Numbers</div>
-                <div *ngIf=" EditForm.get('T_Pincode').errors.maxlength">Max 6 Numbers</div>
+                <div *ngIf=" f.T_Pincode.errors.required">Pincode is required</div>
+                <div *ngIf=" f.T_Pincode.errors.minlength">Min 6 Numbers</div>
+                <div *ngIf=" f.T_Pincode.errors.maxlength">Max 6 Numbers</div>
               </div>
 
             </div>
             <div class="col-sm-3 form-group">
               <input type="text" class="form-control inputborder" formControlName="T_Landmark" name="T_Landmark"
                 id="T_Landmark"
-                [ngClass]="{'is-invalid':EditForm.get('T_Landmark').touched && EditForm.get('T_Landmark').invalid}">
+                [ngClass]="{'is-invalid': submitted && f.T_Landmark.errors}">
               <!-- <div class="invalid-feedback">
                 Enter a T_Landmark
               </div> -->
-              <div *ngIf="EditForm.get('T_Landmark').touched && EditForm.get('T_Landmark').invalid"
+              <div *ngIf="submitted && f.T_Landmark.errors"
                 class="invalid-feedback">
-                <div *ngIf=" EditForm.get('T_Landmark').errors.required">Landmark is required</div>
-                <div *ngIf=" EditForm.get('T_Landmark').errors.minlength">Min 5 Characters</div>
-                <div *ngIf=" EditForm.get('T_Landmark').errors.maxlength">Max 50 Characters</div>
+                <div *ngIf=" f.T_Landmark.errors.required">Landmark is required</div>
+                <div *ngIf=" f.T_Landmark.errors.minlength">Min 5 Characters</div>
+                <div *ngIf=" f.T_Landmark.errors.maxlength">Max 50 Characters</div>
 
               </div>
 
@@ -566,17 +578,17 @@
             <div class="col-sm-8 ml-5 ">
               <textarea class="form-control " formControlName="T_VerificationNotes" name="T_VerificationNotes" rows="6"
                 placeholder="Thirdparty Questions"
-                [ngClass]="{'is-invalid':EditForm.get('T_VerificationNotes').touched && EditForm.get('T_VerificationNotes').invalid}">
+                [ngClass]="{'is-invalid':submitted && f.T_VerificationNotes.errors}">
              </textarea>
               <!-- <div class="invalid-feedback">
                 Enter a T_VerificationNotes
               </div> -->
-              <div *ngIf="EditForm.get('T_VerificationNotes').touched && EditForm.get('T_VerificationNotes').invalid"
+              <div *ngIf="submitted && f.T_VerificationNotes.errors"
                 class="invalid-feedback">
-                <div *ngIf=" EditForm.get('T_VerificationNotes').errors.required">Third party Verification Notes is
+                <div *ngIf=" f.T_VerificationNotes.errors.required">Third party Verification Notes is
                   required</div>
-                <div *ngIf=" EditForm.get('T_VerificationNotes').errors.minlength">Min 5 Characters</div>
-                <div *ngIf=" EditForm.get('T_VerificationNotes').errors.maxlength">Max 250 Characters</div>
+                <div *ngIf="f.T_VerificationNotes.errors.minlength">Min 5 Characters</div>
+                <div *ngIf="f.T_VerificationNotes.errors.maxlength">Max 250 Characters</div>
 
               </div>
               <div class="remove-vol-control">
@@ -631,10 +643,18 @@
                   <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content">
                       <!-- <div class="container"> -->
-                      <div class="">
+                      <!-- <div class="">
                         <video id="video_{{idx}}" class="video-js vjs-default-skin" playsinline><i
                             class="fa fa-video-camera" aria-hidden="true"></i></video>
-                      </div>
+                      </div> -->
+                      <!-- <div class="wrapper">
+                        <img src="http://placekitten.com/999/500" alt="" />
+                        <div class="slider-wrapper">
+                        <label for="opacity-slider">Opacity</label>
+                        <input type="range" min="0" max="1" value="1" id="opacity-slider" step="0.01">
+                          <output for="opacity-slider" id="slider-value">1</output>
+                          </div>
+                      </div> -->
                       <!-- </div> -->
                     </div>
                   </div>

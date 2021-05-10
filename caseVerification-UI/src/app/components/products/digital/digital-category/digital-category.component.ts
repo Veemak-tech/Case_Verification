@@ -284,9 +284,10 @@ export class DigitalCategoryComponent implements OnInit {
   upload(): void {
     debugger;
     this.progress = 0;
+    var filename = ''
 
     this.currentFile = this.selectedFiles.item(0);
-    this.CasedetailsService.upload(this.currentFile).subscribe(
+    this.CasedetailsService.upload(this.currentFile,filename).subscribe(
       (event) => {
         if (event.type === HttpEventType.UploadProgress) {
           this.progress = Math.round((100 * event.loaded) / event.total);
@@ -334,12 +335,13 @@ export class DigitalCategoryComponent implements OnInit {
     if (this.RegisterForm.invalid) {
       return;
     } else {
+      var filename = ''
       this.CasedetailsService.createPost(
         this.RegisterForm.value
       ).subscribe((msg) => {});
-        var casecreatFile_Upload = "CaseCreation-"
+
       this.currentFile = this.selectedFiles.item(0);
-      this.CasedetailsService.upload(this.currentFile).subscribe(
+      this.CasedetailsService.upload(this.currentFile,filename).subscribe(
         (event) => {
           if (event.type === HttpEventType.UploadProgress) {
             this.progress = Math.round((100 * event.loaded) / event.total);

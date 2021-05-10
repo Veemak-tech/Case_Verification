@@ -60,12 +60,13 @@ export class CasedetailsService {
 
 
 // file upload in case creation start--------------
-  upload(file: File): Observable<HttpEvent<any>> {
+  upload(file: File,filename): Observable<HttpEvent<any>> {
 
     debugger
     const formData: FormData = new FormData();
 
-    formData.append('file', file);
+
+    formData.append('file', file,filename);
 
     const req = new HttpRequest('POST', `${environment.rooturl}/upload`, formData, {
       reportProgress: true,
@@ -80,7 +81,7 @@ export class CasedetailsService {
     debugger
     const formData: FormData = new FormData();
 
-    formData.append('file', file,caseidForFileName);
+    formData.append('file',file,caseidForFileName);
 
     const req = new HttpRequest('POST', `${environment.rooturl}/upload`, formData, {
       reportProgress: true,
