@@ -14,4 +14,5 @@ export const environment = {
   apiassign: '/casedetails/caseassign',
   apigetquestion: '/casedetails/group/questions',
   apigetquestionoptions: '/casedetails/group/questionoptions',
+  numberofcases: '/casedetails/assignments/numberofassignments/users'
 };

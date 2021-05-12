@@ -171,14 +171,8 @@ exports.Update = async (req, res, next) => {
 
 
 
-
-
-
-
-
-
-
 exports.login = async (req, res, next) => {
+  debugger
   const email = req.body.email;
   const password = req.body.password;
   try {
@@ -195,6 +189,7 @@ exports.login = async (req, res, next) => {
     const isEqual = await bcrypt.compare(password, storedUser.password);
 
     if (!isEqual) {
+      debugger
       const error = new Error('Wrong password!');
       error.statusCode = 401;
       throw error;
@@ -204,11 +199,12 @@ exports.login = async (req, res, next) => {
       {
         email: storedUser.email,
         userId: storedUser.id,
+        name: storedUser.name
       },
       'secretfortoken',
-      { expiresIn: '1h' }
+      { expiresIn: '5h' }
     );
-    res.status(200).json({ token: token, userId: storedUser.id });
+    res.status(200).json({ token: token, userId: storedUser.id, name: storedUser.name } );
   } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;
@@ -251,7 +247,7 @@ exports.login = async (req, res, next) => {
           name: storedUser.name
         },
         'secretfortoken',
-        { expiresIn: '1h' }
+        { expiresIn: '5h' }
       );
       res.status(200).json({ token: token, userId: storedUser.id, name: storedUser.name });
     } catch (err) {

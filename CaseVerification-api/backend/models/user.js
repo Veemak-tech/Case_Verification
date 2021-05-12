@@ -36,7 +36,7 @@ static fetchbyname(RoleID){
   }
 
   static find(email) {
-    // debugger;
+    debugger;
     return db.execute('SELECT * FROM users WHERE email = ?', [email]);
   }
   
