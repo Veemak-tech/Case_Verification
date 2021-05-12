@@ -5,13 +5,34 @@ const maxSize = 10 * 1024 * 1024;
 let storage = multer.diskStorage({
   destination: (req, file, cb) => {
     debugger
-    cb(null, __basedir + "/resources/static/assets/uploads");
+    cb(null, __basedir + "/resources");
   },
-  filename: (req, file, cb) => {
+  filename: (req, file, cb, caseidForFileName) => {
+    debugger
     console.log(file.originalname);
-    cb(null, file.originalname);
+    var curdate = new Date();
+    var randomnumber = Math.floor((Math.random()*100000) + 1)
+
+    //cb(null, file.originalname+" Video"+`${curdate.toDateString()}`+".webm");
+    if(file.mimetype == 'image/jpeg'){
+      cb(null, file.originalname+'.jpeg');
+    }
+    else if(file.mimetype == 'video/webm'){
+      cb(null, file.originalname+randomnumber+'-Video'+'.webm');
+    }
+    else if(file.mimetype == 'audio/wav'){
+      cb(null, file.originalname+'-'+randomnumber+"-Audio"+'.wav')
+    }
+    else{
+      cb(null, file.originalname)
+    }
   },
 });
+
+// let uploadFile = multer({
+//   storage: storage,
+//   limits: { fileSize: maxSize },
+// }).single("file");
 
 let uploadFile = multer({
   storage: storage,
@@ -19,6 +40,9 @@ let uploadFile = multer({
 }).single("file");
 
 let uploadFileMiddleware = util.promisify(uploadFile);
+
+// var uploadFiles = multer({ storage: storage }).array("multi-files", 10);
+//  var uploadFilesMiddleware = util.promisify(uploadFiles);
 module.exports = uploadFileMiddleware;
 
 

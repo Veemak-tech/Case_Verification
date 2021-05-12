@@ -34,7 +34,7 @@ module.exports = class casedetails {
   // get questionoptions 
 
   static getquestionoptions (ingroupid){
-    debugger
+    
     return db.execute ("CALL getquestionoptions(?)", [ingroupid])
   }
 
@@ -60,7 +60,7 @@ module.exports = class casedetails {
 
 
   static fetchById(ID){
-    debugger
+    //debugger
     console.log("Get by id Casedetails works!!")
   return db.execute ("call getbyid(?)", [ID]);
   }

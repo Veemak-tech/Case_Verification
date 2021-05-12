@@ -118,7 +118,7 @@ export class DigitalCategoryComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(10),
-          Validators.maxLength(13),
+          Validators.maxLength(10),
         ],
       ],
       EmailID: ['', [Validators.required, Validators.email]],
@@ -156,7 +156,7 @@ export class DigitalCategoryComponent implements OnInit {
       ],
       Pincode: [
         '',
-        [Validators.required, Validators.minLength(6), Validators.maxLength(7)],
+        [Validators.required, Validators.minLength(6), Validators.maxLength(6)],
       ],
       Landmark: [
         '',
@@ -187,7 +187,7 @@ export class DigitalCategoryComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(10),
-          Validators.maxLength(12),
+          Validators.maxLength(10),
         ],
       ],
       T_EmailID: ['', [Validators.required, Validators.email]],
@@ -225,7 +225,7 @@ export class DigitalCategoryComponent implements OnInit {
       ],
       T_Pincode: [
         '',
-        [Validators.required, Validators.minLength(6), Validators.maxLength(7)],
+        [Validators.required, Validators.minLength(6), Validators.maxLength(6)],
       ],
       T_Landmark: [
         '',
@@ -284,9 +284,10 @@ export class DigitalCategoryComponent implements OnInit {
   upload(): void {
     debugger;
     this.progress = 0;
+    var filename = ''
 
     this.currentFile = this.selectedFiles.item(0);
-    this.CasedetailsService.upload(this.currentFile).subscribe(
+    this.CasedetailsService.upload(this.currentFile,filename).subscribe(
       (event) => {
         if (event.type === HttpEventType.UploadProgress) {
           this.progress = Math.round((100 * event.loaded) / event.total);
@@ -308,17 +309,19 @@ export class DigitalCategoryComponent implements OnInit {
   selectFile(event): void {
     debugger;
     this.selectedFiles = event.target.files;
-    this.filename = event.target.files[0].name;
+
     this.filesizeinkb = event.target.files[0].size;
-    this.filesize = this.filesizeinkb / 1024;
+
     this.currentFile = this.selectedFiles.item(0);
 
-    if (this.filesizeinkb > 400000  )
+    if (this.filesizeinkb > 4307840  )
     {
       alert("Select file below 4 MB");
+      return event = null
     }
     else{
-
+      this.filename = event.target.files[0].name;
+      this.filesize = this.filesizeinkb / 1024;
     }
 
     console.log(this.filename);
@@ -332,12 +335,13 @@ export class DigitalCategoryComponent implements OnInit {
     if (this.RegisterForm.invalid) {
       return;
     } else {
+      var filename = ''
       this.CasedetailsService.createPost(
         this.RegisterForm.value
       ).subscribe((msg) => {});
 
       this.currentFile = this.selectedFiles.item(0);
-      this.CasedetailsService.upload(this.currentFile).subscribe(
+      this.CasedetailsService.upload(this.currentFile,filename).subscribe(
         (event) => {
           if (event.type === HttpEventType.UploadProgress) {
             this.progress = Math.round((100 * event.loaded) / event.total);

@@ -59,7 +59,7 @@
           </a>
           <!-- Link -->
           <a [routerLink]="!childrenItem.type ? null : [childrenItem.path]" *ngIf="childrenItem.type === 'link'"
-            routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="firstComponentFunction()">
             <i class="fa fa-circle"></i><span>{{childrenItem.title}} <span
                 class="badge badge-{{childrenItem.badgeType}} pull-right"
                 *ngIf="childrenItem.badgeType">{{childrenItem.badgeValue}}</span></span>
@@ -86,7 +86,7 @@
             <li *ngFor="let childrenSubItem of childrenItem.children">
               <!-- Link -->
               <a [routerLink]="!childrenSubItem.type ? null : [childrenSubItem.path]"
-                *ngIf="childrenSubItem.type === 'link'" routerLinkActive="active"
+                *ngIf="childrenSubItem.type === 'link'" routerLinkActive="active" (click)="firstComponentFunction()"
                 [routerLinkActiveOptions]="{exact: true}">
                 <i class="fa fa-circle"></i><span> {{childrenSubItem.title}} <span
                     class="badge badge-{{childrenSubItem.badgeType}} pull-right"

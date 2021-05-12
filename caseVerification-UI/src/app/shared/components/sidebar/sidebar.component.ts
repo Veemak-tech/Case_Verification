@@ -1,3 +1,4 @@
+import { CasedetailsService } from './../../../services/casedetails.service';
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { NavService, Menu } from '../../service/nav.service';
@@ -14,7 +15,7 @@ export class SidebarComponent {
   public url: any;
   public fileurl: any;
 
-  constructor(private router: Router, public navServices: NavService) {
+  constructor(private router: Router, public navServices: NavService, public caseservice: CasedetailsService) {
     this.navServices.items.subscribe(menuItems => {
       this.menuItems = menuItems
       this.router.events.subscribe((event) => {
@@ -72,6 +73,34 @@ export class SidebarComponent {
     }
     item.active = !item.active
   }
+
+  ngOnInit(){
+
+
+    }
+
+    navclosee(){
+      debugger
+  }
+
+
+  firstComponentFunction(){
+    if ((window.innerWidth) < 769) {
+      debugger
+      this.caseservice.onFirstComponentButtonClick();
+    } else {
+      return
+    }
+  }
+
+  // $(window).resize(function() {
+  //   if ($(window).width() < 960) {
+  //      alert('Less than 960');
+  //   }
+  //  else {
+  //     alert('More than 960');
+  //  }
+  // });
 
   //Fileupload
   readUrl(event: any) {

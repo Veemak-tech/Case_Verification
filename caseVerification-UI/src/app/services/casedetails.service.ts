@@ -10,9 +10,10 @@ import { User } from './../models/User';
 import { catchError, first } from 'rxjs/operators';
 import {Observable, BehaviorSubject, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse, HttpHeaders,HttpRequest, HttpEvent } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter  } from '@angular/core';
 import * as _ from 'lodash';
 import { assignments } from '../models/assignments';
+import { Subscription } from 'rxjs/internal/Subscription';
 
 
 
@@ -25,6 +26,21 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class CasedetailsService {
+  invokeFirstComponentFunction = new EventEmitter();
+  subsVar: Subscription;
+
+  constructor(
+    private http: HttpClient,
+    private errorHandlerService: ErrorHandlerService,
+    private router:Router
+  ) {}
+
+  // side menu closing start-------------------
+  onFirstComponentButtonClick() {
+    debugger
+    this.invokeFirstComponentFunction.emit();
+  }
+  // side menu closing end --------------------
 
   getDropDownText(id, object){
     const selObj = _.filter(object, function (o) {
@@ -43,12 +59,29 @@ export class CasedetailsService {
 
 
 
+// file upload in case creation start--------------
+  upload(file: File,filename): Observable<HttpEvent<any>> {
 
-  upload(file: File): Observable<HttpEvent<any>> {
     debugger
     const formData: FormData = new FormData();
 
-    formData.append('file', file);
+
+    formData.append('file', file,filename);
+
+    const req = new HttpRequest('POST', `${environment.rooturl}/upload`, formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+
+    return this.http.request(req);
+  }
+
+  uploadAudio(file: File,caseidForFileName): Observable<HttpEvent<any>> {
+
+    debugger
+    const formData: FormData = new FormData();
+
+    formData.append('file',file,caseidForFileName);
 
     const req = new HttpRequest('POST', `${environment.rooturl}/upload`, formData, {
       reportProgress: true,
@@ -62,6 +95,8 @@ export class CasedetailsService {
     return this.http.get(`${environment.rooturl}/files`);
   }
 
+  // end file upload
+
 
 
   headers = new HttpHeaders().set('Content-Type', 'application/json');
@@ -71,12 +106,9 @@ export class CasedetailsService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
-  constructor(
-    private http: HttpClient,
-    private errorHandlerService: ErrorHandlerService,
-    private router:Router
-  ) {}
 
+
+  // Create case start-------------------------------------------
   createPost(RegisterForm): Observable<casedetails> {
 
     debugger
@@ -141,6 +173,8 @@ export class CasedetailsService {
         }, this.httpOptions).pipe(first(),
         catchError(this.errorHandlerService.handleError<casedetails>('create Address')));
   }
+  // create csae end---------------------------------
+
 
   getData(){
     // let url = "http://localhost:3000/casedetails";
@@ -148,18 +182,19 @@ export class CasedetailsService {
 
   }
 
-  // number of cases
+  // number of cases---------------
   numberofcases(){
     return this.http.get(`${environment.rooturl}${environment.numberofcases}`)
   }
 
 
-
+  // get questions------------------
   getquestions(selectedid:any){
     debugger;
     return this.http.get(`${environment.rooturl}${environment.apigetquestion}/${selectedid}`)
   }
 
+    // get question options------------------
   getquestionoptions(selectedid:any){
     debugger;
     return this.http.get(`${environment.rooturl}${environment.apigetquestionoptions}/${selectedid}`)
@@ -181,7 +216,7 @@ export class CasedetailsService {
     return this.http.delete<DigitalListComponent>(url, this.httpOptions);
   }
 
-
+  // update case ----------------------------------------------------------
   update(CaseID:Observable<Params>,data:any){
     debugger;
     return this.http.put<casedetails>(`${environment.rooturl}${environment.apiUrlpostcase}`,{
@@ -200,7 +235,7 @@ export class CasedetailsService {
         PhoneNumber: data.PhoneNumber,
         EmailID: data.EmailID,
         I_AddressID: data.I_AddressID,
-        I_CaseID:data.I_CaseID
+        //I_CaseID:data.I_CaseID
       },
 
       insAddress: {

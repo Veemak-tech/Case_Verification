@@ -62,6 +62,8 @@ exports.assignments = async (req, res, next) => {
 
  // get number of cases assigned to user
 
+
+
  exports.getnumofcases = async (req, res, next) => {
    debugger
    try{
@@ -84,7 +86,7 @@ exports.assignments = async (req, res, next) => {
 // getgroupid
 
 exports.getquestions = async (req, res, next) => {
-  debugger
+  
   try {
     const [allquestions] = await casedetails.getgroupquestions(req.params.groupid);
     if(allquestions.length > 0)
@@ -102,12 +104,14 @@ exports.getquestions = async (req, res, next) => {
     }
     next(err);
   }
+
+  
 };
 
 // getquestionoptions 
 
 exports.getquestionoptions = async (req,res,next) => {
-debugger
+
   try {
     const [questionoptions] = await casedetails.getquestionoptions(req.params.ingroupid);
     if (questionoptions.length > 0){
@@ -152,7 +156,7 @@ exports.getpaging = async (req, res, next) => {
 
 
 exports.fetchById = async (req, res, next) => {
-   debugger;
+   //debugger;
   try {
     const [SinglePost] = await casedetails.fetchById(req.params.ID);
 
