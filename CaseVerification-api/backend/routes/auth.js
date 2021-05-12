@@ -29,7 +29,7 @@ router.post(
   auth,authController.signup
 );
 router.post('/admin',authController.Adminlogin);
-router.post('/login',authController.login);
+router.post('/agent',authController.login);
 // debugger
 router.get('/', authController.fetchAll);
 router.get('/roleid/:RoleID',authController.fetchbyname);

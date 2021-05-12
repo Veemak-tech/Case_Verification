@@ -82,7 +82,7 @@ return this.http.put(`${environment.rooturl}${environment.apiauth}`,data);
     token: string;
     userId: Pick<User, "id">;
   }> {
-
+     debugger
     return this.http.post(`${environment.rooturl}${environment.apiauthlogin}`, { email, password }, this.httpOptions)
       .pipe(
         first(),
