@@ -154,6 +154,28 @@ exports.getpaging = async (req, res, next) => {
   }
 };
 
+exports.getpagingbyuserlogged = async (req, res, next) => {
+   debugger
+  try {
+     // get page from query params or default to first page
+    const pageno = parseInt(req.query.pageno) || 1;
+    const username = req.params.username
+//    const username = req.body[0].username
+    const [pagining] = await casedetails.getpagingbyusername(pageno, 50, username);
+ 
+    const pageOfItems = pagining[0];
+    const pager = paginate(100, pageno,10);
+    res.status(200).json({ pager, pageOfItems });
+    console.log({ pager});
+
+  } catch (err) {
+    if (!err.statusCode){
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};
+
 
 exports.fetchById = async (req, res, next) => {
    //debugger;

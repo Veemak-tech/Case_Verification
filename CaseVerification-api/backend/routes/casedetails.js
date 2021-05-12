@@ -14,6 +14,8 @@ router.get('/case/:ID', casedetailsController.fetchById);
 
 router.get('/:pageno/:pagesize', casedetailsController.getpaging);
 
+router.get('/usercase/:pageno/:pagesize/:username', casedetailsController.getpagingbyuserlogged);
+
 router.put('/', casedetailsController.putCasedetails);
 
 router.post('/caseassign',casedetailsController.assignments);
