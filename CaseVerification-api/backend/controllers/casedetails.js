@@ -159,7 +159,7 @@ exports.getpagingbyuserlogged = async (req, res, next) => {
   try {
      // get page from query params or default to first page
     const pageno = parseInt(req.query.pageno) || 1;
-    const username = req.params.username
+    const username = parseInt(req.params.username)
 //    const username = req.body[0].username
     const [pagining] = await casedetails.getpagingbyusername(pageno, 50, username);
  
