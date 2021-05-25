@@ -7,25 +7,9 @@ let storage = multer.diskStorage({
     debugger
     cb(null, __basedir + "/resources");
   },
-  filename: (req, file, cb, caseidForFileName) => {
-    debugger
+  filename: (req, file, cb) => {
     console.log(file.originalname);
-    var curdate = new Date();
-    var randomnumber = Math.floor((Math.random()*100000) + 1)
-
-    //cb(null, file.originalname+" Video"+`${curdate.toDateString()}`+".webm");
-    if(file.mimetype == 'image/jpeg'){
-      cb(null, file.originalname+'.jpeg');
-    }
-    else if(file.mimetype == 'video/webm'){
-      cb(null, file.originalname+randomnumber+'-Video'+'.webm');
-    }
-    else if(file.mimetype == 'audio/wav'){
-      cb(null, file.originalname+'-'+randomnumber+"-Audio"+'.wav')
-    }
-    else{
-      cb(null, file.originalname)
-    }
+    cb(null, file.originalname);
   },
 });
 

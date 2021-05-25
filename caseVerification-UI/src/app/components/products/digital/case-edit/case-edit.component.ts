@@ -641,7 +641,7 @@ export class CaseEditComponent implements OnInit, OnDestroy {
           // ---------------------Video Upload------------------------------------
           if(sendvdata){
             debugger
-            this.caseservice.upload(sendvdata, Ifilename).subscribe(
+            this.caseservice.uploadvideo(sendvdata, Ifilename).subscribe(
               (event) => {
                 if (event.type === HttpEventType.UploadProgress) {
                   this.progress = Math.round((100 * event.loaded) / event.total);
@@ -662,7 +662,7 @@ export class CaseEditComponent implements OnInit, OnDestroy {
            // ---------------------Ins Video Upload------------------------------------
           if(sendIvdata){
             debugger
-            this.caseservice.upload(sendIvdata, Tfilename).subscribe(
+            this.caseservice.uploadvideo(sendIvdata, Tfilename).subscribe(
               (event) => {
                 if (event.type === HttpEventType.UploadProgress) {
                   this.progress = Math.round((100 * event.loaded) / event.total);
