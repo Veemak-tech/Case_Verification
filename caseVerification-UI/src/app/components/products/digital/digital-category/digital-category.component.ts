@@ -258,6 +258,7 @@ export class DigitalCategoryComponent implements OnInit {
         var selectedid2 = 2;
         this.CasedetailsService.getquestions(selectedid2).subscribe(
           (t_questionsdata: questions) => {
+            debugger
             this.t_questionsarray = t_questionsdata;
             // console.log(this.t_questionsarray);
             var optionlist;
@@ -277,6 +278,10 @@ export class DigitalCategoryComponent implements OnInit {
             });
           }
         );
+
+
+
+
       }
     );
   }

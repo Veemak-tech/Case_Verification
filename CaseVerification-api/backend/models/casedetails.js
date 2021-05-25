@@ -26,7 +26,7 @@ module.exports = class casedetails {
 
   // get questions
   static getgroupquestions(groupid){
-    
+    debugger
     console.log("Get all casedetails works!!")
   return db.execute ("CALL getquestionsbygroupid(?)", [groupid])
   }

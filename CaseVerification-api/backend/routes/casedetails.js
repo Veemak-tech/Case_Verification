@@ -8,26 +8,26 @@ const auth = require('../middleware/auth');
 
 const router = express.Router();
 
-router.get('/getall', auth, casedetailsController.fetchAll);
+router.get('/getall', casedetailsController.fetchAll);
 
-router.get('/case/:ID', auth,casedetailsController.fetchById);
+router.get('/case/:ID', casedetailsController.fetchById);
 
-router.get('/:pageno/:pagesize', auth, casedetailsController.getpaging);
+router.get('/:pageno/:pagesize',  casedetailsController.getpaging);
 
-router.get('/usercase/:pageno/:pagesize/:username', auth, casedetailsController.getpagingbyuserlogged);
+router.get('/usercase/:pageno/:pagesize/:username', casedetailsController.getpagingbyuserlogged);
 
-router.put('/', auth, casedetailsController.putCasedetails);
+router.put('/',  casedetailsController.putCasedetails);
 
-router.post('/caseassign', auth,casedetailsController.assignments);
+router.post('/caseassign', casedetailsController.assignments);
 
-router.get ('/group/questions/:groupid', auth,casedetailsController.getquestions);
+router.get ('/group/questions/:groupid', casedetailsController.getquestions);
 
-router.get ('/group/questionoptions/:ingroupid', auth, casedetailsController.getquestionoptions);
+router.get ('/group/questionoptions/:ingroupid',  casedetailsController.getquestionoptions);
 
-router.get ('/assignments/numberofassignments/users', auth, casedetailsController.getnumofcases);
+router.get ('/assignments/numberofassignments/users',  casedetailsController.getnumofcases);
 
 router.post(
-  '/',auth,
+  '/',
   [
      
     
