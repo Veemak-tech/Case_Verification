@@ -281,6 +281,29 @@ exports.postcasedetails = async (req, res, next) => {
     console.log(req.body.ThirdpartyDetails);
     const result3 = await thirdpartydetails.save(ThirdpartyDetails);
 
+    // question answers 
+    var insurerAns = req.body.insanswers;
+    var insanswerdata = []
+
+    for(let i=0; i< insurerAns.length; i++){
+      if(insurerAns[i].questionid > 0) {
+        insanswerdata.push(insanswerdata[i])
+      }
+      
+      const result4 = await casedetails.postQanswers(insanswerdata)
+    }
+
+    insanswerdata["CaseID"] = req.body.CaseID;
+    insanswerdata["CreatedBy"] = CreatedBy;
+    insanswerdata["LastModifiedBy"] = LastModifiedBy;
+
+    console.log(insanswerdata)
+  
+    //var tpartyAns  = req.body.questionanswers.t_answers;
+
+    // console.log(insurerAns)
+    // console.log(tpartyAns)
+
     res.status(201).json({ message: "casedetails Added 👌" });
   } catch (err) {
     if (!err.statusCode) {

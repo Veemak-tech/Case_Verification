@@ -47,6 +47,8 @@ export class DigitalCategoryComponent implements OnInit {
   ins_questionsarray: any;
   t_questionsarray: any;
   questionoptionsarray: questionoptions[];
+  insanswer : any;
+  insanswerdata: any;
 
   selectedFiles: FileList;
   filename: string;
@@ -385,8 +387,20 @@ export class DigitalCategoryComponent implements OnInit {
         })
       });
 
+
       Regformdata["i_answerarray"] = i_answerarray;
       Regformdata["t_answerarray"] = t_answerarray;
+
+      this.insanswer = Regformdata.i_answerarray;
+      this.insanswerdata = []
+
+      for(let i=0; i< this.insanswer.length; i++){
+        if(this.insanswer[i].questionid > 0){
+          this.insanswerdata.push(this.insanswer[i].questionid)
+        }
+      }
+
+      console.log(i_answerarray);
 
 
       this.CasedetailsService.createPost(Regformdata).subscribe((msg) => {});

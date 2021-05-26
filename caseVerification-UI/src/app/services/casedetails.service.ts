@@ -1,3 +1,4 @@
+import { questions } from './../models/questions';
 import { map } from 'rxjs/internal/operators';
 
 import { environment } from './../../environments/environment';
@@ -133,8 +134,10 @@ export class CasedetailsService {
 
     debugger
      let userid = localStorage.getItem("id");
-    return this.http
-      .post<casedetails>(
+      var insanswers = [];
+
+    return this.http.post<casedetails>(
+
         `${environment.rooturl}${environment.apiUrlpostcase}`,
         {
           CaseID: RegisterForm.CaseID,
@@ -186,12 +189,17 @@ export class CasedetailsService {
             T_VideoDocID: RegisterForm.T_VideoDocID,
             T_PhotoWithSelfieDocID: RegisterForm.T_PhotoWithSelfieDocID,
             T_VerificationNotes: RegisterForm.T_VerificationNotes,
-          }
+          },
 
+          insanswers : RegisterForm.i_answerarray,
 
 
         }, this.httpOptions).pipe(first(),
         catchError(this.errorHandlerService.handleError<casedetails>('create Address')));
+
+
+
+
   }
   // create csae end---------------------------------
 

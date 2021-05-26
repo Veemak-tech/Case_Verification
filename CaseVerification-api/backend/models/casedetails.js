@@ -24,6 +24,23 @@ module.exports = class casedetails {
     this.LastModifiedBy = LastModifiedBy;
   }
 
+  // ins answers
+
+  static postQanswers(insurerAns){
+    debugger
+    return db.execute(
+      "INSERT INTO questionanswers (questionid, answerintext, CaseID, CreatedBy, LastModifiedBy) VALUES (?,?,?,?,?)",
+      [
+        insurerAns.questionid,
+        insurerAns.answer,
+        insurerAns.CaseID,
+        insurerAns.CreatedBy,
+        insurerAns.LastModifiedBy
+      ]
+    )
+
+  }
+
   // get questions
   static getgroupquestions(groupid){
     debugger
