@@ -9,6 +9,7 @@ import {
   NgForm,
   FormsModule,
   FormBuilder,
+  FormArray,
 } from '@angular/forms';
 import {
   Component,
@@ -38,6 +39,7 @@ const URL = './src/assets/images';
 })
 export class DigitalCategoryComponent implements OnInit {
   RegisterForm: FormGroup;
+  questionform : FormGroup;
   form: FormGroup;
   submitted = false;
   @Input() agents;
@@ -91,9 +93,11 @@ export class DigitalCategoryComponent implements OnInit {
       ReferenceNumber: [
         '',
         [
+
           Validators.required,
           Validators.minLength(5),
           Validators.maxLength(10),
+          Validators.pattern('^[0-9]*$')
         ],
       ],
       DueDate: ['', Validators.required],
@@ -119,6 +123,7 @@ export class DigitalCategoryComponent implements OnInit {
           Validators.required,
           Validators.minLength(10),
           Validators.maxLength(10),
+          Validators.pattern('^[0-9]*$')
         ],
       ],
       EmailID: ['', [Validators.required, Validators.email]],
@@ -156,7 +161,7 @@ export class DigitalCategoryComponent implements OnInit {
       ],
       Pincode: [
         '',
-        [Validators.required, Validators.minLength(6), Validators.maxLength(6)],
+        [Validators.required, Validators.minLength(6), Validators.maxLength(6), Validators.pattern('^[0-9]*$')]
       ],
       Landmark: [
         '',
@@ -188,6 +193,7 @@ export class DigitalCategoryComponent implements OnInit {
           Validators.required,
           Validators.minLength(10),
           Validators.maxLength(10),
+          Validators.pattern('^[0-9]*$')
         ],
       ],
       T_EmailID: ['', [Validators.required, Validators.email]],
@@ -225,7 +231,7 @@ export class DigitalCategoryComponent implements OnInit {
       ],
       T_Pincode: [
         '',
-        [Validators.required, Validators.minLength(6), Validators.maxLength(6)],
+        [Validators.required, Validators.minLength(6), Validators.maxLength(6), Validators.pattern('^[0-9]*$')],
       ],
       T_Landmark: [
         '',
@@ -244,7 +250,11 @@ export class DigitalCategoryComponent implements OnInit {
         ],
       ],
       FileUpload: ['', Validators.required],
+
+
+
     });
+
 
     // to get Questions
     // Ins question
@@ -252,6 +262,11 @@ export class DigitalCategoryComponent implements OnInit {
     this.CasedetailsService.getquestions(selectedid).subscribe(
       (questionsdata: questions) => {
         this.ins_questionsarray = questionsdata;
+
+        debugger
+        this.ins_questionsarray.forEach(element => {
+          this.RegisterForm.addControl(element.questionname, new FormControl())
+        });
         //console.log(this.t_questionsarray);
 
         // t party questions
@@ -260,17 +275,24 @@ export class DigitalCategoryComponent implements OnInit {
           (t_questionsdata: questions) => {
             debugger
             this.t_questionsarray = t_questionsdata;
+
+            this.t_questionsarray.forEach(element => {
+              this.RegisterForm.addControl(element.questionname, new FormControl())
+
+            });
+
+
             // console.log(this.t_questionsarray);
             var optionlist;
             // question options
             this.CasedetailsService.getquestionoptions(selectedid).subscribe(
               (questionoptionslist: questionoptions) => {
                  optionlist = questionoptionslist;
-                console.log(questionoptionslist);
+                 console.log(questionoptionslist);
               }
             );
             debugger
-             this.questionoptionsarray = optionlist;
+            this.questionoptionsarray = optionlist;
             this.t_questionsarray.forEach(element => {
               debugger
               element.questionoptions = this.questionoptionsarray.filter(p => p.questionid === element.questionid)
@@ -278,13 +300,13 @@ export class DigitalCategoryComponent implements OnInit {
             });
           }
         );
-
-
-
-
       }
     );
+
+
   }
+
+
 
   upload(): void {
     debugger;
@@ -334,16 +356,40 @@ export class DigitalCategoryComponent implements OnInit {
   }
 
   onSubmit() {
+
     this.submitted = true;
 
     // stop here if form is invalid
     if (this.RegisterForm.invalid) {
       return;
     } else {
+      debugger
       var filename = ''
-      this.CasedetailsService.createPost(
-        this.RegisterForm.value
-      ).subscribe((msg) => {});
+      var t_answerarray = []
+      var i_answerarray = []
+      var Regformdata = this.RegisterForm.value;
+
+      this.t_questionsarray.forEach(element => {
+        t_answerarray.push ({
+          questiontext: element.questionname,
+          questionid : element.questionid,
+          answer: this.RegisterForm.get(element.questionname).value
+        })
+
+      });
+      this.ins_questionsarray.forEach(element => {
+        i_answerarray.push({
+          questiontext: element.questionname,
+          questionid : element.questionid,
+          answer: this.RegisterForm.get(element.questionname).value
+        })
+      });
+
+      Regformdata["i_answerarray"] = i_answerarray;
+      Regformdata["t_answerarray"] = t_answerarray;
+
+
+      this.CasedetailsService.createPost(Regformdata).subscribe((msg) => {});
 
       this.currentFile = this.selectedFiles.item(0);
       this.CasedetailsService.upload(this.currentFile).subscribe(

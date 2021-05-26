@@ -47,11 +47,11 @@
                   <div *ngIf="f.ReferenceNumber.errors.required">ReferenceNumber is required</div>
                   <div *ngIf="f.ReferenceNumber.errors.minlength"> Min 5 Characters </div>
                   <div *ngIf="f.ReferenceNumber.errors.maxlength">Ref Number should be less than 10 </div>
+                  <div *ngIf="f.ReferenceNumber.errors.pattern">Number only</div>
                 </div>
               </div>
             </div>
           </div>
-
 
 
           <div class="col-md-12 row">
@@ -101,7 +101,7 @@
                 [ngClass]="{ 'is-invalid': submitted && f.Description.errors }"></textarea>
               <div *ngIf="submitted && f.Description.errors" class="invalid-feedback">
                 <div *ngIf="f.Description.errors.required">Description is required</div>
-                <div *ngIf="f.Description.errors.minlength"> Min 5 Characters </div>
+                <div *ngIf="f.Description.errors.minlength"> Min 10 Characters </div>
                 <div *ngIf="f.Description.errors.maxlength">Description should be less than 256 </div>
               </div>
             </div>
@@ -174,8 +174,6 @@
             <div class="alert alert-light ml-4" role="alert">{{ message }}</div>
           </div>
 
-
-
           <hr>
           <h3 class="subhead2">Insurer Details</h3>
           <div class="col-md-12 row">
@@ -205,6 +203,7 @@
                   <div *ngIf="f.PhoneNumber.errors.required">Phone Number is required</div>
                   <div *ngIf="f.PhoneNumber.errors.minlength"> Min 10 Characters </div>
                   <div *ngIf="f.PhoneNumber.errors.maxlength">Phone Number should be less than 10 </div>
+                  <div *ngIf="f.PhoneNumber.errors.pattern">Numbers only</div>
                 </div>
               </div>
 
@@ -293,6 +292,7 @@
                 <div *ngIf="f.Pincode.errors.required">Pincode is required</div>
                 <div *ngIf="f.Pincode.errors.minlength"> Min 6 Characters </div>
                 <div *ngIf="f.Pincode.errors.maxlength">Pincode should be less than 6 </div>
+                <div *ngIf="f.Pincode.errors.pattern">Should be Numbers</div>
               </div>
             </div>
             <div class="col-sm-3 form-group">
@@ -344,7 +344,8 @@
                     </div>
                     <div class="col-md-12">
                       <input type="{{control.controltype}}" class="{{control.controlcss}}"
-                        aria-describedby="passwordHelpBlock" placeholder="{{control.questionname}}" id="{{control.questionid}}">
+                        aria-describedby="passwordHelpBlock" formControlName={{control.questionname}}
+                        placeholder="{{control.questionname}}" id="{{control.questionid}}">
                       <small id="passwordHelpBlock" class="form-text text-muted">
                         {{control.helptext}}
                       </small>
@@ -359,7 +360,7 @@
                       <div class="col-md-12 row">
                         <div class="form-check mr-3" *ngFor="let val of control.questiondisplaytext.split(',')">
                           <label class="form-check-label" for="{{val}}">
-                            <input type="radio" class="form-check-input" name="radio" id="{{control.questionid}}"
+                            <input type="radio" class="form-check-input" formControlName={{control.questionname}} name="radio" id="{{control.questionid}}"
                               value="{{val}}">{{val}}
                           </label>
                         </div>
@@ -408,8 +409,6 @@
                           </div>
                         </div>
                       </div>
-
-
 
 
                 </div>
@@ -466,6 +465,7 @@
                   <div *ngIf="f.T_PhoneNumber.errors.required">Third party PhoneNumber is required</div>
                   <div *ngIf="f.T_PhoneNumber.errors.minlength"> Min 10 Characters </div>
                   <div *ngIf="f.T_PhoneNumber.errors.maxlength">PhoneNumber should be less than 10</div>
+                  <div *ngIf="f.T_PhoneNumber.errors.pattern">Should be number</div>
                 </div>
               </div>
 
@@ -554,6 +554,7 @@
                 <div *ngIf="f.T_Pincode.errors.required">Pincode is required</div>
                 <div *ngIf="f.T_Pincode.errors.minlength"> Min 6 Characters </div>
                 <div *ngIf="f.T_Pincode.errors.maxlength">Pincode should be less than 6 </div>
+                <div *ngIf="f.T_Pincode.errors.pattern">Should be numbers</div>
               </div>
             </div>
             <div class="col-sm-3 form-group">
@@ -593,12 +594,13 @@
               <div class="col-md-12 pl-0" *ngFor="let control of t_questionsarray">
                 <div [ngSwitch]="control.controltype">
                   <div *ngSwitchCase="'text'">
-                    <div class="col-md-12 pl-">
-                      <label class="{{control.labelcss}}">{{control.questionname}}</label>
+                    <div class="col-md-12">
+                      <label class="{{control.labelcss}}">{{control.questiondisplaytext}}</label>
                     </div>
                     <div class="col-md-12">
                       <input type="{{control.controltype}}" class="{{control.controlcss}}" class=""
-                        aria-describedby="passwordHelpBlock" placeholder="{{control.questiondisplaytext}}" value="">
+                        aria-describedby="passwordHelpBlock" placeholder="{{control.questionname}}"
+                        value="" formControlName={{control.questionname}}>
                       <small id="passwordHelpBlock" class="form-text text-muted">
                         {{control.helptext}}
                       </small>
@@ -613,8 +615,9 @@
                       <div class="col-md-12 row">
                         <div class="form-check mr-3" *ngFor="let val of control.questionname.split(',')">
                           <label class="form-check-label" for="{{val}}">
-                            <input type="radio" class="form-check-input" name="radio" id="{{control.questionid}}"
-                              value="{{val}}">{{val}}
+                            <input type="radio" class="form-check-input" formControlName={{control.questionname}}
+                             name="{{control.questionname}}" id="{{control.questionid}}"
+                              value="{{val}}" >{{val}}
                           </label>
                         </div>
                       </div>
@@ -631,6 +634,7 @@
 
 
 
+
                     </div>
                   </div>
                   <!-- select -->
@@ -641,8 +645,9 @@
 
                       <div class="col-md-12 row pl-0">
                         <div class="form-check mr-3">
-                          <select class="custom-select" name="city" id="city">
-                            <option *ngFor="let val of control.questionname.split(',')" value="{{val}}">{{val}}</option>
+                          <select class="custom-select" name="city" id="city" formControlName="{{control.questionname}}">
+                            <option *ngFor="let val of control.questionname.split(',')" value="{{val}}"
+                             >{{val}}</option>
                           </select>
                         </div>
                       </div>
