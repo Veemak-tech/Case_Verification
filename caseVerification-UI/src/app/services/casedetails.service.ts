@@ -192,6 +192,7 @@ export class CasedetailsService {
           },
 
           insanswers : RegisterForm.i_answerarray,
+          tpanswers : RegisterForm.t_answerarray
 
 
         }, this.httpOptions).pipe(first(),

@@ -282,22 +282,29 @@ exports.postcasedetails = async (req, res, next) => {
     const result3 = await thirdpartydetails.save(ThirdpartyDetails);
 
     // question answers 
-    var insurerAns = req.body.insanswers;
-    var insanswerdata = []
+     
+       
+    var insanswerdata = req.body.insanswers
+    var tpanswerdata = req.body.tpanswers
+    //insanswerdata = req.body.insanswers;
+    
+        insanswerdata.forEach( function output (item){
 
-    for(let i=0; i< insurerAns.length; i++){
-      if(insurerAns[i].questionid > 0) {
-        insanswerdata.push(insanswerdata[i])
-      }
-      
-      const result4 = await casedetails.postQanswers(insanswerdata)
-    }
+        //console.log(item)
+        item['CaseID'] = req.body.CaseID,
+        item['CreatedBy'] = req.body.name,
+        item['LastModifiedBy'] = req.body.name
+        const result4 =  casedetails.postQanswers(item)
+       })
 
-    insanswerdata["CaseID"] = req.body.CaseID;
-    insanswerdata["CreatedBy"] = CreatedBy;
-    insanswerdata["LastModifiedBy"] = LastModifiedBy;
+        tpanswerdata.forEach( function tanswerfun (item){
 
-    console.log(insanswerdata)
+        item['CaseID'] = req.body.CaseID,
+        item['CreatedBy'] = req.body.name,
+        item['LastModifiedBy'] = req.body.name
+          const result5 = casedetails.postQanswers(item)
+        })
+    
   
     //var tpartyAns  = req.body.questionanswers.t_answers;
 
