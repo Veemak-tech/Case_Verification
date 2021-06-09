@@ -26,6 +26,8 @@ router.get ('/group/questionoptions/:ingroupid',  casedetailsController.getquest
 
 router.get ('/assignments/numberofassignments/users',  casedetailsController.getnumofcases);
 
+router.get ('/questions/getanswers/caseid/:CaseID', casedetailsController.getanswer);
+
 router.post(
   '/',
   [

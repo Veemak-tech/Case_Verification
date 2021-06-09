@@ -41,6 +41,12 @@ module.exports = class casedetails {
 
   }
 
+  // get answers
+
+  static getanswers(caseid){
+    return db.execute('Call getanswerbycaseid(?)', [caseid])
+  }
+
   // get questions
   static getgroupquestions(groupid){
     

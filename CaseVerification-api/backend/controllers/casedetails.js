@@ -320,6 +320,27 @@ exports.postcasedetails = async (req, res, next) => {
   }
 };
 
+
+exports.getanswer = async (req,res,next) => {
+
+  try {
+    const [answerresult] = await casedetails.getanswers(req.params.CaseID)
+
+    const resultdata = answerresult[0];
+    res.status(200).json(resultdata)
+    console.log(resultdata )
+
+  } catch (error) {
+    if(!error.statusCode){
+      err.statusCode = 500
+    }
+    next (err);
+  }
+
+};
+
+
+
 exports.deletePost = async (req, res, next) => {
   try {
     const deleteResponse = await casedetails.delete(req.params.id);
