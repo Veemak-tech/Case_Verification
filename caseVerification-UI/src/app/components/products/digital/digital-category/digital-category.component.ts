@@ -89,6 +89,7 @@ export class DigitalCategoryComponent implements OnInit {
           Validators.required,
           Validators.minLength(5),
           Validators.maxLength(10),
+          Validators.pattern('^[0-9]*$')
         ],
       ],
       name: ['', Validators.required],
@@ -117,6 +118,7 @@ export class DigitalCategoryComponent implements OnInit {
           Validators.required,
           Validators.minLength(2),
           Validators.maxLength(20),
+          Validators.pattern('^[a-z.A-Z ]*$')
         ],
       ],
       PhoneNumber: [
@@ -151,6 +153,7 @@ export class DigitalCategoryComponent implements OnInit {
           Validators.required,
           Validators.minLength(3),
           Validators.maxLength(20),
+
         ],
       ],
       State: [
@@ -352,6 +355,8 @@ export class DigitalCategoryComponent implements OnInit {
       this.filename = event.target.files[0].name;
       this.filesize = this.filesizeinkb / 1024;
     }
+
+
 
     console.log(this.filename);
     console.log(this.selectedFiles);

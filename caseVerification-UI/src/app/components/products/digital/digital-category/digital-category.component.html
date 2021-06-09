@@ -29,6 +29,7 @@
                   <div *ngIf="f.CaseID.errors.required">Case ID is required</div>
                   <div *ngIf="f.CaseID.errors.minlength"> Min 5 Characters </div>
                   <div *ngIf="f.CaseID.errors.maxlength">Case ID should be less than 10 </div>
+                  <div *ngIf="f.CaseID.errors.pattern">Should be Numbers</div>
                 </div>
               </div>
             </div>
@@ -188,6 +189,8 @@
                   <div *ngIf="f.InsurerName.errors.required">Insurer Name is required</div>
                   <div *ngIf="f.InsurerName.errors.minlength"> Min 3 Characters </div>
                   <div *ngIf="f.InsurerName.errors.maxlength">Insurer Name should be less than 20 </div>
+                  <div *ngIf="f.InsurerName.errors.pattern">Should only contain words</div>
+
                 </div>
               </div>
             </div>

@@ -607,6 +607,9 @@ export class CaseEditComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+
+
+
     // $('#opacity-slider').on("change mousemove", function() {
     //   $('#slider-value').html($(this).val());
     //   $('.wrapper img').css({
