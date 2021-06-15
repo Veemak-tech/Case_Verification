@@ -1,15 +1,19 @@
 const util = require("util");
 const multer = require("multer");
 const maxSize = 10 * 1024 * 1024;
+const {v1 : uuidv1} = require('uuid');
 
 let storage = multer.diskStorage({
   destination: (req, file, cb) => {
     debugger
     cb(null, __basedir + "/resources");
   },
+
   filename: (req, file, cb) => {
+    const newuuid = uuidv1()
+
     console.log(file.originalname);
-    cb(null, file.originalname);
+    cb(null,newuuid+file.originalname);
   },
 });
 
