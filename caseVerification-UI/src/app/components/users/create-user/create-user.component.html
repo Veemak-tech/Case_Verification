@@ -17,7 +17,8 @@
                       <label for="validationCustom0" class="col-xl-3 col-md-4"><span>*</span>
                         Name</label>
                       <input class="form-control col-xl-8 col-md-7" id="validationCustom0" type="text"
-                        formControlName="name" required=""
+                        formControlName="name" required="" 
+                        onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)"
                         [ngClass]="{'is-invalid':RegisterForm.get('name').touched && RegisterForm.get('name').invalid}">
                       <div class="invalid-feedback" style="margin-left: 50%">
                         Enter a Name
@@ -57,7 +58,8 @@
                     <div class="form-group row">
                       <label for="validationCustom3" class="col-xl-3 col-md-4"><span>*</span>
                         Role</label>
-                      <select class="form-control col-xl-8 col-md-7" id="validationCustom3" formControlName="RoleID">
+                      <select class="form-control col-xl-8 col-md-7" id="validationCustom3" formControlName="RoleID" [ngClass]="{'is-invalid':RegisterForm.get('RoleID').touched && RegisterForm.get('RoleID').invalid}">
+                        <p *ngIf=" RegisterForm.get('RoleID').errors.required">RoleID is required</p>
                         <option value="1" >Admin</option>
                         <option value="2">Agent </option>
                         <option value="3">Reviewer</option>

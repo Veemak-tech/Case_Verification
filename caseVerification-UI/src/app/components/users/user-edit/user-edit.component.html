@@ -3,6 +3,8 @@
     <label for="validationCustom2" class="col-xl-3 col-md-4"><span>*</span>
       Name</label>
     <input class="form-control col-xl-5 col-md-5" id="validationCustom2" type="text" formControlName="name"
+    onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)"
+ 
       [ngClass]="{'is-invalid':EditForm.get('name').touched && EditForm.get('name').invalid}">
     <div class="invalid-feedback" style="margin-left: 50%">
       Enter a Name
