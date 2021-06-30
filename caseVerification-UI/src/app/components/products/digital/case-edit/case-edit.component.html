@@ -291,8 +291,124 @@
 
           <div class="row mt-0">
             <div class="col-sm-2" style="margin-left: 31px;"></div>
-            <label for="notes" class="col-form-label col-sm-9">Notes:</label>
+            <label for="notes" class="col-form-label col-sm-9">Insurer Questions :</label>
           </div>
+
+
+
+          <div class="row mobile-adjust-questionbox">
+            <div class="col-sm-2 ml-4"></div>
+            <!-- <div style="width: 135px;"></div> -->
+
+            <!-- ins question -->
+            <div class="col-sm-8 ml-4 pb-2 borderstyle border border-info">
+              <div class="col-md-12 pl-0" *ngFor="let control of answerdataarray" >
+                <div [ngSwitch]="control.controltype">
+
+                  <!-- text -->
+
+                  <div *ngSwitchCase="'text'">
+                    <div [ngSwitch] = "control.groupid">
+
+                      <div *ngSwitchCase = "control.groupid == 1">
+                    <div class="col-md-12">
+                      <label class="{{control.labelcss}}">{{control.questiondisplaytext}}</label>
+                        </div>
+                    <div class="col-md-12">
+                      <input type="{{control.controltype}}" class="{{control.controlcss}}" class=""
+                        aria-describedby="passwordHelpBlock" placeholder="{{control.helptext}}"
+                        value="{{control.answerintext}}">
+                      <small id="passwordHelpBlock" class="form-text text-muted">
+                        {{control.helptext}}
+                      </small>
+                    </div>
+                    </div>
+                  </div>
+                  <!-- </div> -->
+                  </div>
+                  <!-- radio -->
+                  <div *ngSwitchCase="'radio'">
+                    <div [ngSwitch] = "control.groupid">
+
+                      <div  *ngSwitchCase = "1">
+                    <div class="col-md-12 mb-3">
+
+                      <label for = "radio1">{{control.questiondisplaytext}}</label>
+                      </div>
+                      <div class="col-md-12 row">
+                        <div class="form-check mr-3" *ngFor="let val of control.questionname.split(',')" >
+                          <label class="form-check-label" for="{{val}}">
+                            <input type="radio" class="form-check-input"
+                             name="{{control.questionname}}" id="{{control.questionid}}"
+                              value="{{val}}" [checked]="val == control.answerintext" >{{val}}
+                          </label>
+
+                        </div>
+                      </div>
+
+                      <!-- <div class="col-md-12 row">
+                        <div class="form-check form-check-inline mr-3"
+                         *ngFor="let val of questionoptionsarray  ">
+                          <label class="form-check-label" for="{{val}}">
+                            <input class="form-check-input" type="radio" name="radio" id="{{val}}"
+                              value="{{val}}">{{val}}
+                          </label>
+                        </div>
+                      </div> -->
+
+
+                    </div>
+                    </div>
+                  </div>
+                  <!-- select -->
+                  <div *ngSwitchCase="'Select'">
+                    <div  [ngSwitch] = "control.groupid">
+                      <div  *ngSwitchCase = "1">
+                    <div class="col-md-12">
+                      <label for="city">{{control.questiondisplaytext}}</label>
+                        </div>
+                      <div class="col-md-12 row pl-0">
+                        <div class="form-check mr-3">
+                          <select class="custom-select" name="city" id="city">
+                            <option *ngFor="let val of control.questionname.split(',')" value="{{val}}"
+                            [selected] = "val == control.answerintext"
+                             >{{val}}</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+
+                  <!-- checkbox -->
+                      <div *ngSwitchCase="'checkbox'">
+                        <div  *ngSwitchCase = "control.groupid == 1">
+                        <div class="col-md-12 mb-3 mt-2">
+                          <!-- <label for="gender">{{control.questionname}}</label><br> -->
+                          <div class="form-check form-check-inline">
+                            <label class="form-check-label " for="{{control.questionname}}">
+                              <input class="form-check-input" type="checkbox" value="{{control.questiondisplaytext}}">
+                              {{control.questionname}}
+
+                            </label>
+                          </div>
+                        </div>
+                        </div>
+                      </div>
+                    <!-- </div> -->
+
+
+
+
+              </div>
+              </div>
+            </div>
+
+
+            <div class="col-sm-1"></div>
+          </div>
+
+
 
           <div class=" row">
             <div class="col-sm-1"></div>
@@ -569,7 +685,123 @@
 
           <div class="row mt-0">
             <div class="col-sm-2" style="margin-left: 31px;"></div>
-            <label for="notes" class="col-form-label col-sm-9">Notes:</label>
+            <label for="notes" class="col-form-label col-sm-9">Third party Questions:</label>
+          </div>
+
+          <div class="row mobile-adjust-questionbox">
+            <div class="col-sm-2 ml-4"></div>
+            <!-- <div style="width: 135px;"></div> -->
+
+            <!-- tpart question -->
+            <div class="col-sm-8 ml-4 pb-2 borderstyle border border-info">
+              <div class="col-md-12 pl-0" *ngFor="let control of answerdataarray" >
+                <div [ngSwitch]="control.controltype">
+
+                  <!-- text -->
+
+                  <div *ngSwitchCase="'text'">
+                    <div [ngSwitch] = "control.groupid">
+
+                      <div *ngSwitchCase = "2">
+                    <div class="col-md-12">
+                      <label class="{{control.labelcss}}">{{control.questiondisplaytext}}</label>
+                        </div>
+                    <div class="col-md-12">
+
+                      <input type="{{control.controltype}}" class="{{control.controlcss}}" class=""
+                        aria-describedby="passwordHelpBlock" placeholder="{{control.helptext}}"
+                        value="{{control.answerintext}}" >
+                      <small id="passwordHelpBlock" class="form-text text-muted">
+                        {{control.helptext}}
+                      </small>
+                    </div>
+                    </div>
+                  </div>
+                  <!-- </div> -->
+                  </div>
+                  <!-- radio -->
+                  <div *ngSwitchCase="'radio'">
+                    <div [ngSwitch] = "control.groupid">
+
+                    <div class="col-md-12 mb-3">
+                      <div  *ngSwitchCase = "2">
+                      <label for="gender">{{control.questiondisplaytext}}</label>
+                      </div>
+                      <div class="col-md-12 row">
+                        <div class="form-check mr-3" *ngFor="let val of control.questionname.split(',')" >
+                          <label class="form-check-label" for="{{val}}">
+                            <input type="radio" class="form-check-input"
+                             name="{{control.questionname}}" id="{{control.questionid}}"
+                              value="{{val}}" [checked]="val == control.answerintext" >{{val}}
+                          </label>
+
+                        </div>
+                      </div>
+
+                      <!-- <div class="col-md-12 row">
+                        <div class="form-check form-check-inline mr-3"
+                         *ngFor="let val of questionoptionsarray  ">
+                          <label class="form-check-label" for="{{val}}">
+                            <input class="form-check-input" type="radio" name="radio" id="{{val}}"
+                              value="{{val}}">{{val}}
+                          </label>
+                        </div>
+                      </div> -->
+
+
+
+
+                    </div>
+                    </div>
+                  </div>
+                  <!-- select -->
+                  <div *ngSwitchCase="'Select'">
+                    <div  [ngSwitch] = "control.groupid">
+                    <div class="col-md-12">
+                      <div  *ngSwitchCase = "2">
+                      <label for="city">{{control.questiondisplaytext}}</label>
+                        </div>
+                      <div class="col-md-12 row pl-0">
+                        <div class="form-check mr-3">
+                          <select class="custom-select" name="city" id="city">
+                            <option *ngFor="let val of control.questionname.split(',')" value="{{val}}"
+                            [selected] = "val == control.answerintext"
+                             >{{val}}</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+
+                  <!-- checkbox -->
+                      <div *ngSwitchCase="'checkbox'">
+                        <div  *ngSwitchCase = "control.groupid == 1">
+                        <div class="col-md-12 mb-3 mt-2">
+                          <!-- <label for="gender">{{control.questionname}}</label><br> -->
+                          <div class="form-check form-check-inline">
+                            <label class="form-check-label " for="{{control.questionname}}">
+                              <input class="form-check-input" type="checkbox" value="{{control.questiondisplaytext}}">
+                              {{control.questionname}}
+
+                            </label>
+                          </div>
+                        </div>
+                        </div>
+                      </div>
+                    <!-- </div> -->
+
+
+
+
+              </div>
+              </div>
+            </div>
+
+
+
+
+            <div class="col-sm-1"></div>
           </div>
 
           <div class=" row">

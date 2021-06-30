@@ -264,6 +264,7 @@ export class DigitalCategoryComponent implements OnInit {
     // to get Questions
     // Ins question
     var selectedid = 1;
+
     this.CasedetailsService.getquestions(selectedid).subscribe(
       (questionsdata: questions) => {
         this.ins_questionsarray = questionsdata;
@@ -283,7 +284,6 @@ export class DigitalCategoryComponent implements OnInit {
 
             this.t_questionsarray.forEach(element => {
               this.RegisterForm.addControl(element.questionname, new FormControl())
-
             });
 
 

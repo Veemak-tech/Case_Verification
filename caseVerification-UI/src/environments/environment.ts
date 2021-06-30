@@ -18,6 +18,7 @@ export const environment = {
   apiassign: '/casedetails/caseassign',
   apigetquestion: '/casedetails/group/questions',
   apigetquestionoptions: '/casedetails/group/questionoptions',
+  apigetanswers: '/casedetails/questions/getanswers/caseid',
   numberofcases: '/casedetails/assignments/numberofassignments/users'
 
 };

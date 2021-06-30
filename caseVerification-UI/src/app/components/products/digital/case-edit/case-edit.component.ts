@@ -51,6 +51,8 @@ import videojs from 'video.js';
 import * as adapter from 'webrtc-adapter/out/adapter_no_global.js';
 import * as Record from 'videojs-record/dist/videojs.record.js';
 import { Observable } from 'rxjs';
+import { questions } from 'src/app/models/questions';
+import { answers } from 'src/app/models/questionanswers';
 let ReecordRTC = require('recordrtc/RecordRTC.min');
 declare var $ : any
 @Component({
@@ -113,6 +115,10 @@ export class CaseEditComponent implements OnInit, OnDestroy {
   private Iplayer : any;
 
   private plugin: any;
+  ins_questionsarray: any;
+  t_questionsarray: any;
+  answerdataarray: any;
+
 
   constructor(
     private httpClient: HttpClient,
@@ -136,9 +142,6 @@ export class CaseEditComponent implements OnInit, OnDestroy {
       debugger
       this.IisRecording = false;
     });
-
-
-
 
     this.audiorecordservice.getRecordedTime().subscribe((time) => {
       this.recordedTime = time;
@@ -336,6 +339,7 @@ export class CaseEditComponent implements OnInit, OnDestroy {
       });
 
       this.caseidForFileName = this.case.CaseID + '-InsAudio';
+
       this.IcaseidForFileName = this.case.CaseID + '-Tparty'
       console.log(this.caseidForFileName + ' its me');
     });
@@ -608,7 +612,64 @@ export class CaseEditComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
+    // to get Questions
+    // Ins question
+    var selectedid = 1;
+    this.caseservice.getquestions(selectedid).subscribe(
+      (questionsdata: questions) => {
+        this.ins_questionsarray = questionsdata;
 
+        debugger
+        // this.ins_questionsarray.forEach(element => {
+        //   this.RegisterForm.addControl(element.questionname, new FormControl())
+        // });
+        //console.log(this.t_questionsarray);
+
+        // t party questions
+        var selectedid2 = 2;
+        this.caseservice.getquestions(selectedid2).subscribe(
+          (t_questionsdata: questions) => {
+            debugger
+            this.t_questionsarray = t_questionsdata;
+            console.log(this.t_questionsarray)
+
+            // this.t_questionsarray.forEach(element => {
+            //   this.RegisterForm.addControl(element.questionname, new FormControl())
+
+            // });
+
+
+            // console.log(this.t_questionsarray);
+            // var optionlist;
+            // // question options
+            // this.CasedetailsService.getquestionoptions(selectedid).subscribe(
+            //   (questionoptionslist: questionoptions) => {
+            //      optionlist = questionoptionslist;
+            //      console.log(questionoptionslist);
+            //   }
+            // );
+            // debugger
+            // this.questionoptionsarray = optionlist;
+            // this.t_questionsarray.forEach(element => {
+            //   debugger
+            //   element.questionoptions = this.questionoptionsarray.filter(p => p.questionid === element.questionid)
+
+            // });
+          }
+        );
+
+        this.caseservice.getanswers(this.case.CaseID).subscribe(
+          (answersdata : answers) => {
+            debugger
+            this.answerdataarray = answersdata;
+
+            this.answerdataarray.forEach(element => {
+              this.EditForm.addControl(element.questionname, new FormControl)
+            })
+          }
+        )
+      }
+    );
 
     // $('#opacity-slider').on("change mousemove", function() {
     //   $('#slider-value').html($(this).val());

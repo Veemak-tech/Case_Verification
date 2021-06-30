@@ -229,6 +229,11 @@ export class CasedetailsService {
     return this.http.get(`${environment.rooturl}${environment.apigetquestionoptions}/${selectedid}`)
   }
 
+    // get answers-----------------------
+  getanswers(caseid: any){
+    return this.http.get(`${environment.rooturl}${environment.apigetanswers}/${caseid}`);
+  }
+
   getpaging(pageno:number){
     debugger;
     return this.http.get(`${environment.rooturl}${environment.apiUrlpostcase}/${pageno}/${10}`)
