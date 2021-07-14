@@ -10,6 +10,7 @@ import {
   FormsModule,
   NgForm,
   FormBuilder,
+  FormArray,
 } from '@angular/forms';
 import { casedetails } from './../../../../models/casedetails';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -69,6 +70,7 @@ export class CaseEditComponent implements OnInit, OnDestroy {
   @Input() searchTerm: string;
   private _route: any;
   EditForm: FormGroup;
+  AnswerForm: FormGroup;
   form: FormGroup;
   case: casedetails;
   caseForm: NgForm;
@@ -188,7 +190,7 @@ export class CaseEditComponent implements OnInit, OnDestroy {
     });
 
     this.caseservice.getByID(ID).subscribe((data: casedetails) => {
-      console.log(data);
+      // console.log(data);
       this.case = data[0];
       debugger;
       this.EditForm = new FormGroup({
@@ -336,13 +338,18 @@ export class CaseEditComponent implements OnInit, OnDestroy {
         // I_CaseID: new FormControl(this.case['I_CaseID']),
         I_AddressID: new FormControl(this.case['I_AddressID']),
         T_AddressID: new FormControl(this.case['T_AddressID']),
+
       });
 
       this.caseidForFileName = this.case.CaseID + '-InsAudio';
 
       this.IcaseidForFileName = this.case.CaseID + '-Tparty'
-      console.log(this.caseidForFileName + ' its me');
+      // console.log(this.caseidForFileName + ' its me');
     });
+
+    this.AnswerForm = new FormGroup ({
+
+    })
     // -------------------case details update end-----------------------------
 
     // video record
@@ -460,9 +467,10 @@ export class CaseEditComponent implements OnInit, OnDestroy {
     let el = 'video_' + this.idx;
     let elI = 'Ivideo_'+this.idxI;
 
+
     // setup the player via the unique element ID
     this.player = videojs(document.getElementById(el), this.config, () => {
-      console.log('player ready! id:', el);
+     // console.log('player ready! id:', el);
 
       // print version information at startup
       var msg =
@@ -478,7 +486,7 @@ export class CaseEditComponent implements OnInit, OnDestroy {
     // setup the player via the unique element ID
     this.Iplayer = videojs(document.getElementById(elI), this.config, () => {
       debugger
-      console.log('player ready! id:', elI);
+     // console.log('player ready! id:', elI);
 
       // print version information at startup
       var msg =
@@ -498,24 +506,24 @@ export class CaseEditComponent implements OnInit, OnDestroy {
 
     // device is ready
     this.player.on('deviceReady', () => {
-      console.log('device is ready!');
+     // console.log('device is ready!');
     });
 
     this.Iplayer.on('deviceReady', () => {
       debugger
-      console.log('device is ready!');
+     // console.log('device is ready!');
     });
 
 
 
     // user clicked the record button and started recording
     this.player.on('startRecord', () => {
-      console.log('started recording!');
+      //console.log('started recording!');
     });
 
     this.Iplayer.on('startRecord', () => {
       debugger
-      console.log('started recording!');
+     // console.log('started recording!');
     });
 
     // user completed recording and stream is available
@@ -559,7 +567,7 @@ export class CaseEditComponent implements OnInit, OnDestroy {
         .saveAs({ video: 'my-video-file-name ' + time + '.webm' });
       let sendIvideodata = this.Iplayer.recordedData;
       this.Ivdata = sendIvideodata;
-       console.log(videodata)
+     //  console.log(videodata)
     });
     // error handling
     this.Iplayer.on('error', (element, error) => {
@@ -631,7 +639,7 @@ export class CaseEditComponent implements OnInit, OnDestroy {
           (t_questionsdata: questions) => {
             debugger
             this.t_questionsarray = t_questionsdata;
-            console.log(this.t_questionsarray)
+           // console.log(this.t_questionsarray)
 
             // this.t_questionsarray.forEach(element => {
             //   this.RegisterForm.addControl(element.questionname, new FormControl())
@@ -663,9 +671,12 @@ export class CaseEditComponent implements OnInit, OnDestroy {
             debugger
             this.answerdataarray = answersdata;
 
-            this.answerdataarray.forEach(element => {
-              this.EditForm.addControl(element.questionname, new FormControl)
-            })
+
+          const needata =   this.answerdataarray.forEach(element => {
+              debugger
+              this.EditForm.addControl( element.questionname, new FormControl(element.answerintext || '') )
+            });
+
           }
         )
       }
@@ -690,10 +701,39 @@ export class CaseEditComponent implements OnInit, OnDestroy {
       let sendvdata = this.vdata;
       let sendIvdata = this.Ivdata;
 
+      let insansdata = [];
+      let tpartydata = [];
+      let editformdata = this.EditForm.value;
+
+      this.answerdataarray.forEach(element => {
+        if(element.groupid == 1){
+          insansdata.push ({
+            answerintext : element.answerintext,
+            answerid: element.answerid
+
+          })
+        }
+
+      })
+
+      this.answerdataarray.forEach(element => {
+        if(element.groupid == 2){
+          tpartydata.push ({
+            answerintext : element.answerintext,
+            answerid: element.answerid
+          })
+        }
+
+      })
+
+      editformdata["iansarray"] = insansdata;
+      editformdata["tpansarray"] = tpartydata;
+
+
       this.caseservice
-        .update(this.route.queryParams, this.EditForm.value)
+        .update(this.route.queryParams, editformdata)
         .subscribe((result) => {
-          console.log('Case Details updated!');
+        //  console.log('Case Details updated!');
 
           swal({
             icon: 'success',
@@ -809,6 +849,8 @@ export class CaseEditComponent implements OnInit, OnDestroy {
           this.router.navigate(['/products/digital/digital-product-list']);
         });
     }
+
+   // console.log(this.AnswerForm.controls)
   }
 
   // casedetailsupdate(){

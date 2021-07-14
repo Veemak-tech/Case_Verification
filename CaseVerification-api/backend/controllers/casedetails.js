@@ -5,7 +5,7 @@ const casedetails = require("../models/casedetails");
 const Address = require("../models/address");
 const insurerdetails = require("../models/insurerdetails");
 const thirdpartydetails = require("../models/thirdpartydetails");
-
+const moment = require('moment')
 
 
 exports.fetchAll = async (req, res, next) => {
@@ -288,16 +288,17 @@ exports.postcasedetails = async (req, res, next) => {
     var tpanswerdata = req.body.tpanswers
     //insanswerdata = req.body.insanswers;
     
-        insanswerdata.forEach( function output (item){
+        insanswerdata.forEach( function insanswer (item){
 
         //console.log(item)
+
         item['CaseID'] = req.body.CaseID,
         item['CreatedBy'] = req.body.name,
         item['LastModifiedBy'] = req.body.name
         const result4 =  casedetails.postQanswers(item)
        })
 
-        tpanswerdata.forEach( function tanswerfun (item){
+        tpanswerdata.forEach( function tpanswer (item){
 
         item['CaseID'] = req.body.CaseID,
         item['CreatedBy'] = req.body.name,
@@ -353,6 +354,32 @@ exports.deletePost = async (req, res, next) => {
   }
 };
 
+// exports.updateans = async (req,res,next) => {
+//   try {
+//      // update question answers
+   
+//      var updateqanswers = req.body
+
+//     // updateqanswers.forEach(function updateQans (item){
+//       updateqanswers['answerid'] = req.body.answerid
+//       updateqanswers['CaseID'] = req.body.CaseID,
+//       updateqanswers['CreatedBy'] = req.body.CreatedBy,
+//       updateqanswers['LastModifiedBy'] = req.body.LastModifiedBy
+//       updateqanswers['questionid'] = req.body.questionid,
+//       updateqanswers['answerintext'] = req.body.answerintext
+ 
+//        const updateansresult = casedetails.updateQnAnswers(updateqanswers)
+//        res.status(200).json(updateqanswers);
+//     // })
+//   }
+//   catch (err) {
+//     if (!err.statusCode) {
+//       err.statusCode = 500;
+//     }
+//     next (err)
+//   }
+// }
+
 
 
 // Update working
@@ -361,6 +388,7 @@ exports.deletePost = async (req, res, next) => {
 exports.putCasedetails = async (req, res, next) => {
   try {
      debugger;
+     var lastModDate = moment().format('YYYY-MM-DD HH:mm:ss');
     const putResponse = {
       CaseID: req.body.CaseID,
       Name: req.body.Name,
@@ -370,7 +398,8 @@ exports.putCasedetails = async (req, res, next) => {
       ReferenceNumber: req.body.ReferenceNumber,
       DueDate: req.body.DueDate,
       LastModifiedBy: req.body.LastModifiedBy,
-      ID:req.body.insDetails.ID
+      ID:req.body.insDetails.ID,
+     // LastModifiedDate:lastModDate
     };
 
     const result = await casedetails.update(putResponse);
@@ -437,6 +466,32 @@ exports.putCasedetails = async (req, res, next) => {
     console.log("Thirdparty Address Updated!!",updatetpartyAddress);
 
      res.status(200).json(putResponse);
+
+   
+     var updateinsanswers = req.body.insanswers;
+     var updatetpanswers = req.body.tpanswers;
+
+     updateinsanswers.forEach ( function insanswer (item){
+
+      //console.log(item)
+
+      item['CaseID'] = req.body.CaseID,
+      item['CreatedBy'] = req.body.Name,
+      item['LastModifiedBy'] = req.body.Name
+    
+      const updateansresult = casedetails.updateQnAnswers(item)
+     })
+
+     updatetpanswers.forEach ( function insanswer (item){
+
+      //console.log(item)
+
+      item['CaseID'] = req.body.CaseID,
+      item['CreatedBy'] = req.body.Name,
+      item['LastModifiedBy'] = req.body.Name
+    
+      const updateansresult = casedetails.updateQnAnswers(item)
+     })
   
   } catch (err) {
     if (!err.statusCode) {
@@ -444,6 +499,11 @@ exports.putCasedetails = async (req, res, next) => {
     }
     next(err);
   }
+
+
+  
+
+
 };
 
 

@@ -1,11 +1,18 @@
 import { questions } from './questions';
 export interface answers {
-  answerid: number;
-  questionid: number;
-  answerintext: string;
-  CaseID: any;
-  CreatedBy: any;
-  CreatedDate: any;
-  LastModifiedBy: any;
-  LastModifiedDate: any;
+  CaseID: string,
+  questionid: number,
+  answerintext: string,
+  questionname: string,
+  questiondisplaytext: string,
+  helptext: string,
+  labelcss: string,
+  controlcss: string,
+  maxlength: number,
+  controltype: string,
+  groupid: number,
+  displayorderno: number,
+  CreatedBy: string,
+  CreatedDate: string,
+  LastModifiedBy: string
 }

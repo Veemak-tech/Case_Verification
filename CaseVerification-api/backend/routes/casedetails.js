@@ -28,6 +28,8 @@ router.get ('/assignments/numberofassignments/users',  casedetailsController.get
 
 router.get ('/questions/getanswers/caseid/:CaseID', casedetailsController.getanswer);
 
+// router.put ('/questions/update/ans', casedetailsController.updateans);
+
 router.post(
   '/',
   [

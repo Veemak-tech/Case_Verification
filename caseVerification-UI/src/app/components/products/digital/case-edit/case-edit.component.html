@@ -69,7 +69,7 @@
               <div class="col-sm-1"></div>
               <label for="name" class="col-form-label col-sm-4 text-align">Due date:</label>
               <div class="col-sm-6 p-adjust-mob">
-                <input type="text" class="form-control inputborder" formControlName="DueDate" name="DueDate"
+                <input type="date" min="01-07-2021" class="form-control inputborder" formControlName="DueDate" name="DueDate"
                   id="DueDate" required [ngClass]="{ 'is-invalid': submitted && f.DueDate.errors }">
                 <div *ngIf="submitted && f.DueDate.errors" class="invalid-feedback">
                   <div *ngIf="f.DueDate.errors.required">DueDate is required</div>
@@ -307,6 +307,7 @@
 
                   <!-- text -->
 
+                  <div>
                   <div *ngSwitchCase="'text'">
                     <div [ngSwitch] = "control.groupid">
 
@@ -315,8 +316,9 @@
                       <label class="{{control.labelcss}}">{{control.questiondisplaytext}}</label>
                         </div>
                     <div class="col-md-12">
-                      <input type="{{control.controltype}}" class="{{control.controlcss}}" class=""
-                        aria-describedby="passwordHelpBlock" placeholder="{{control.helptext}}"
+                      <input type="{{control.controltype}}" class="{{control.controlcss}}" id="{{control.answerid}}"
+                         placeholder="{{control.helptext}}" name="{{control.questionname}}"
+                         formControlName={{control.questionname}}
                         value="{{control.answerintext}}">
                       <small id="passwordHelpBlock" class="form-text text-muted">
                         {{control.helptext}}
@@ -324,8 +326,9 @@
                     </div>
                     </div>
                   </div>
-                  <!-- </div> -->
                   </div>
+                </div>
+
                   <!-- radio -->
                   <div *ngSwitchCase="'radio'">
                     <div [ngSwitch] = "control.groupid">
@@ -339,8 +342,9 @@
                         <div class="form-check mr-3" *ngFor="let val of control.questionname.split(',')" >
                           <label class="form-check-label" for="{{val}}">
                             <input type="radio" class="form-check-input"
-                             name="{{control.questionname}}" id="{{control.questionid}}"
-                              value="{{val}}" [checked]="val == control.answerintext" >{{val}}
+                             name="{{control.answerintext}}" id="{{control.answerid}}"
+                              value="{{val}}" [checked]="val == control.answerintext"
+                              >{{val}}
                           </label>
 
                         </div>
@@ -369,7 +373,7 @@
                         </div>
                       <div class="col-md-12 row pl-0">
                         <div class="form-check mr-3">
-                          <select class="custom-select" name="city" id="city">
+                          <select class="custom-select" name="city" id="{{control.answerid}}">
                             <option *ngFor="let val of control.questionname.split(',')" value="{{val}}"
                             [selected] = "val == control.answerintext"
                              >{{val}}</option>
@@ -387,7 +391,8 @@
                           <!-- <label for="gender">{{control.questionname}}</label><br> -->
                           <div class="form-check form-check-inline">
                             <label class="form-check-label " for="{{control.questionname}}">
-                              <input class="form-check-input" type="checkbox" value="{{control.questiondisplaytext}}">
+                              <input class="form-check-input" type="checkbox" value="{{control.answerintext}}"
+                              id="{{control.answerid}}">
                               {{control.questionname}}
 
                             </label>
@@ -439,9 +444,9 @@
 
             </div>
             <div class="col-sm-1 btn-group-vertical">
-              <!-- audio -->
+              <!-- audio (click)="IstartRecording()" -->
               <div id="InsurerAudio">
-              <button id="InsAudio" *ngIf="!IisRecording && !IblobUrl" (click)="IstartRecording()" type="button"
+              <button id="InsAudio" *ngIf="!IisRecording && !IblobUrl"  type="button"
               class="btn btn-sm btn-outline-primary buttonfont"><svg xmlns="http://www.w3.org/2000/svg" width="16"
                 height="16" fill="currentColor" class="bi bi-mic" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
@@ -470,19 +475,19 @@
               <div class="mt-5"></div>
             </div>
             <div></div>
-            <div class="modal fade bd-example-modal-lg-1" tabindex="-1" role="dialog"
+            <!-- <div class="modal fade bd-example-modal-lg-1" tabindex="-1" role="dialog"
             aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
               <div class="modal-content">
-                <!-- <div class="container"> -->
+
                 <div class="">
                   <video id="Ivideo_{{idxI}}" class="video-js vjs-default-skin" playsinline><i
                       class="fa fa-video-camera" aria-hidden="true"></i></video>
                 </div>
-                <!-- </div> -->
+
               </div>
             </div>
-          </div>
+          </div> -->
           </div>
 
 
@@ -708,9 +713,9 @@
                         </div>
                     <div class="col-md-12">
 
-                      <input type="{{control.controltype}}" class="{{control.controlcss}}" class=""
+                      <input type="{{control.controltype}}" class="{{control.controlcss}}" class="" id="{{control.answerid}}"
                         aria-describedby="passwordHelpBlock" placeholder="{{control.helptext}}"
-                        value="{{control.answerintext}}" >
+                        value="{{control.answerintext}}">
                       <small id="passwordHelpBlock" class="form-text text-muted">
                         {{control.helptext}}
                       </small>
@@ -730,26 +735,14 @@
                       <div class="col-md-12 row">
                         <div class="form-check mr-3" *ngFor="let val of control.questionname.split(',')" >
                           <label class="form-check-label" for="{{val}}">
-                            <input type="radio" class="form-check-input"
-                             name="{{control.questionname}}" id="{{control.questionid}}"
-                              value="{{val}}" [checked]="val == control.answerintext" >{{val}}
+                            <input type="radio" class="form-check-input" id="{{control.answerid}}"
+                             name="{{control.answerintext}}"
+                              value="{{val}}" [checked]="val == control.answerintext"
+                             >{{val}}
                           </label>
 
                         </div>
                       </div>
-
-                      <!-- <div class="col-md-12 row">
-                        <div class="form-check form-check-inline mr-3"
-                         *ngFor="let val of questionoptionsarray  ">
-                          <label class="form-check-label" for="{{val}}">
-                            <input class="form-check-input" type="radio" name="radio" id="{{val}}"
-                              value="{{val}}">{{val}}
-                          </label>
-                        </div>
-                      </div> -->
-
-
-
 
                     </div>
                     </div>
@@ -763,7 +756,7 @@
                         </div>
                       <div class="col-md-12 row pl-0">
                         <div class="form-check mr-3">
-                          <select class="custom-select" name="city" id="city">
+                          <select class="custom-select" name="city" id="{{control.answerid}}">
                             <option *ngFor="let val of control.questionname.split(',')" value="{{val}}"
                             [selected] = "val == control.answerintext"
                              >{{val}}</option>
@@ -781,7 +774,9 @@
                           <!-- <label for="gender">{{control.questionname}}</label><br> -->
                           <div class="form-check form-check-inline">
                             <label class="form-check-label " for="{{control.questionname}}">
-                              <input class="form-check-input" type="checkbox" value="{{control.questiondisplaytext}}">
+                              <input class="form-check-input" type="checkbox" value="{{control.questiondisplaytext}}"
+                              id="{{control.answerid}}"
+                             >
                               {{control.questionname}}
 
                             </label>

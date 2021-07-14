@@ -392,7 +392,8 @@
                       <div class="col-md-12 row pl-0">
                         <div class="form-check mr-3">
                           <select class="custom-select" name="city" id="city">
-                            <option *ngFor="let val of control.questionname.split(',')" value="{{val}}">{{val}}</option>
+                            <option *ngFor="let val of control.questionname.split(',')" value="{{val}}"
+                            formControlName={{control.questionname}} >{{val}}</option>
                           </select>
                         </div>
                       </div>

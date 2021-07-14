@@ -299,7 +299,10 @@ export class CasedetailsService {
         T_State:data.T_State,
         T_Pincode:data.T_Pincode,
         T_Landmark:data.T_Landmark
-      }
+      },
+
+      insanswers : data.iansarray,
+      tpanswers  : data.tpansarray
     },
 
 

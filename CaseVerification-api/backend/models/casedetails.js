@@ -1,5 +1,6 @@
 const db = require("../util/database");
 const { fetchAll } = require("./address");
+const moment = require('moment');
 
 module.exports = class casedetails {
   constructor(
@@ -39,6 +40,26 @@ module.exports = class casedetails {
       ]
     )
 
+  }
+
+  // update qns answers
+
+  static updateQnAnswers(updateAns){
+    debugger
+    
+    var LastModifiedDate = moment().format('YYYY-MM-DD HH:mm:ss');
+
+    return db.execute(
+      "UPDATE questionanswers SET  CaseID=?, answerintext=?, CreatedBy=?, LastModifiedBy=?, LastModifiedDate=?  WHERE answerid=?",
+      [
+        updateAns.CaseID,
+        updateAns.answerintext,
+        updateAns.CreatedBy,
+        updateAns.LastModifiedBy,
+        LastModifiedDate,
+        updateAns.answerid,
+      ]
+    )
   }
 
   // get answers
@@ -126,8 +147,9 @@ module.exports = class casedetails {
   // Update Method
   static update(putResponse) {
       debugger;
+      var LastModifiedDate = moment().format('YYYY-MM-DD HH:mm:ss');
     return db.execute(
-      "UPDATE casedetails SET Name=?, Description=?, InsurerVerificationNotes=?, T_VerificationNotes=?, ReferenceNumber=?, DueDate=?,LastModifiedBy=?, CaseID=? WHERE ID=?",
+      "UPDATE casedetails SET Name=?, Description=?, InsurerVerificationNotes=?, T_VerificationNotes=?, ReferenceNumber=?, DueDate=?,LastModifiedBy=?, CaseID=?, LastModifiedDate = ? WHERE ID=?",
       [
        putResponse.Name,
        putResponse.Description,
@@ -137,6 +159,7 @@ module.exports = class casedetails {
        putResponse.DueDate,
        putResponse.LastModifiedBy,
        putResponse.CaseID,
+       LastModifiedDate,
        putResponse.ID
       ]
     );
