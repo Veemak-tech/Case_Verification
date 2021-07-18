@@ -469,7 +469,7 @@ exports.putCasedetails = async (req, res, next) => {
 
    
      var updateinsanswers = req.body.insanswers;
-     var updatetpanswers = req.body.tpanswers;
+     // var updatetpanswers = req.body.tpanswers;
 
      updateinsanswers.forEach ( function insanswer (item){
 
@@ -482,16 +482,16 @@ exports.putCasedetails = async (req, res, next) => {
       const updateansresult = casedetails.updateQnAnswers(item)
      })
 
-     updatetpanswers.forEach ( function insanswer (item){
+    //  updatetpanswers.forEach ( function insanswer (item){
 
-      //console.log(item)
+    //   //console.log(item)
 
-      item['CaseID'] = req.body.CaseID,
-      item['CreatedBy'] = req.body.Name,
-      item['LastModifiedBy'] = req.body.Name
+    //   item['CaseID'] = req.body.CaseID,
+    //   item['CreatedBy'] = req.body.Name,
+    //   item['LastModifiedBy'] = req.body.Name
     
-      const updateansresult = casedetails.updateQnAnswers(item)
-     })
+    //   const updateansresult = casedetails.updateQnAnswers(item)
+    //  })
   
   } catch (err) {
     if (!err.statusCode) {

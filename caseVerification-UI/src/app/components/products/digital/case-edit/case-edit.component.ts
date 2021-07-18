@@ -339,17 +339,22 @@ export class CaseEditComponent implements OnInit, OnDestroy {
         I_AddressID: new FormControl(this.case['I_AddressID']),
         T_AddressID: new FormControl(this.case['T_AddressID']),
 
+
       });
+
+      this.AnswerForm = new FormGroup ({
+
+      })
 
       this.caseidForFileName = this.case.CaseID + '-InsAudio';
 
       this.IcaseidForFileName = this.case.CaseID + '-Tparty'
       // console.log(this.caseidForFileName + ' its me');
+
+
     });
 
-    this.AnswerForm = new FormGroup ({
 
-    })
     // -------------------case details update end-----------------------------
 
     // video record
@@ -599,7 +604,7 @@ export class CaseEditComponent implements OnInit, OnDestroy {
   }
   // video record end---------------------------------------------------
 
-  // --------this is for download video file in local if we want bro download button
+  // --------this is for download video file in local if we want through download button
   _downloadFile(data: any, type: string, filename: string): any {
     const blob = new Blob([data], { type: type });
     const url = window.URL.createObjectURL(blob);
@@ -670,9 +675,9 @@ export class CaseEditComponent implements OnInit, OnDestroy {
           (answersdata : answers) => {
             debugger
             this.answerdataarray = answersdata;
+            console.log(this.answerdataarray)
 
-
-          const needata =   this.answerdataarray.forEach(element => {
+           this.answerdataarray.forEach(element => {
               debugger
               this.EditForm.addControl( element.questionname, new FormControl(element.answerintext || '') )
             });
@@ -705,26 +710,25 @@ export class CaseEditComponent implements OnInit, OnDestroy {
       let tpartydata = [];
       let editformdata = this.EditForm.value;
 
-      this.answerdataarray.forEach(element => {
-        if(element.groupid == 1){
-          insansdata.push ({
-            answerintext : element.answerintext,
-            answerid: element.answerid
 
-          })
-        }
+     var editformcontrols = this.EditForm.controls
 
-      })
+     this.answerdataarray.forEach(element => {
+       insansdata.push({
+         answerintext: this.EditForm.get(element.questionname).value,
+         answerid: element.answerid
+       })
+     })
 
-      this.answerdataarray.forEach(element => {
-        if(element.groupid == 2){
-          tpartydata.push ({
-            answerintext : element.answerintext,
-            answerid: element.answerid
-          })
-        }
+     this.answerdataarray.forEach(element => {
+       Object.keys(editformcontrols).forEach(item => {
+         if (element.questionname == item){
+           console.log(item)
+            // insansdata.push(item)
+         }
+       })
+     })
 
-      })
 
       editformdata["iansarray"] = insansdata;
       editformdata["tpansarray"] = tpartydata;

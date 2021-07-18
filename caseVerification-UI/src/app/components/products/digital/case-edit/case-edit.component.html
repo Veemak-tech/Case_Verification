@@ -344,6 +344,7 @@
                             <input type="radio" class="form-check-input"
                              name="{{control.answerintext}}" id="{{control.answerid}}"
                               value="{{val}}" [checked]="val == control.answerintext"
+                              formControlName={{control.questionname}}
                               >{{val}}
                           </label>
 
@@ -715,7 +716,7 @@
 
                       <input type="{{control.controltype}}" class="{{control.controlcss}}" class="" id="{{control.answerid}}"
                         aria-describedby="passwordHelpBlock" placeholder="{{control.helptext}}"
-                        value="{{control.answerintext}}">
+                        value="{{control.answerintext}}"  formControlName={{control.questionname}}>
                       <small id="passwordHelpBlock" class="form-text text-muted">
                         {{control.helptext}}
                       </small>
@@ -736,7 +737,7 @@
                         <div class="form-check mr-3" *ngFor="let val of control.questionname.split(',')" >
                           <label class="form-check-label" for="{{val}}">
                             <input type="radio" class="form-check-input" id="{{control.answerid}}"
-                             name="{{control.answerintext}}"
+                              formControlName={{control.questionname}}
                               value="{{val}}" [checked]="val == control.answerintext"
                              >{{val}}
                           </label>
@@ -756,7 +757,7 @@
                         </div>
                       <div class="col-md-12 row pl-0">
                         <div class="form-check mr-3">
-                          <select class="custom-select" name="city" id="{{control.answerid}}">
+                          <select class="custom-select" id="{{control.answerid}}" formControlName={{control.questionname}} >
                             <option *ngFor="let val of control.questionname.split(',')" value="{{val}}"
                             [selected] = "val == control.answerintext"
                              >{{val}}</option>

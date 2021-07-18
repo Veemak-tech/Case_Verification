@@ -45,7 +45,7 @@ module.exports = class casedetails {
   // update qns answers
 
   static updateQnAnswers(updateAns){
-    debugger
+    
     
     var LastModifiedDate = moment().format('YYYY-MM-DD HH:mm:ss');
 
