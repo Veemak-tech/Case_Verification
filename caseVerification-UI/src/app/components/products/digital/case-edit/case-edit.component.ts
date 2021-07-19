@@ -199,11 +199,13 @@ export class CaseEditComponent implements OnInit, OnDestroy {
           Validators.required,
           Validators.minLength(5),
           Validators.maxLength(10),
+          Validators.pattern('^[0-9]*$')
         ]),
         ReferenceNumber: new FormControl(this.case['ReferenceNumber'], [
           Validators.required,
           Validators.minLength(5),
           Validators.maxLength(10),
+          Validators.pattern('^[0-9]*$')
         ]),
         DueDate: new FormControl(this.case['DueDate'], [
           Validators.required,
@@ -214,6 +216,7 @@ export class CaseEditComponent implements OnInit, OnDestroy {
           Validators.required,
           Validators.minLength(5),
           Validators.maxLength(15),
+          Validators.pattern('^[a-z.A-Z ]*$')
         ]),
         Description: new FormControl(this.case['Description'], [
           Validators.required,
@@ -224,16 +227,18 @@ export class CaseEditComponent implements OnInit, OnDestroy {
           Validators.required,
           Validators.minLength(2),
           Validators.maxLength(20),
+          Validators.pattern('^[a-z.A-Z ]*$')
         ]),
         PhoneNumber: new FormControl(this.case['PhoneNumber'], [
           Validators.required,
           Validators.minLength(10),
           Validators.maxLength(10),
+          Validators.pattern('^[0-9]*$')
         ]),
         EmailID: new FormControl(this.case['EmailID'], [
           Validators.required,
           Validators.email,
-          Validators.maxLength(40),
+          Validators.maxLength(50),
         ]),
         I_AddressLine1: new FormControl(this.case['I_AddressLine1'], [
           Validators.required,
@@ -259,6 +264,7 @@ export class CaseEditComponent implements OnInit, OnDestroy {
           Validators.required,
           Validators.minLength(6),
           Validators.maxLength(6),
+          Validators.pattern('^[0-9]*$')
         ]),
         I_Landmark: new FormControl(this.case['I_Landmark'], [
           Validators.required,
@@ -277,16 +283,18 @@ export class CaseEditComponent implements OnInit, OnDestroy {
           Validators.required,
           Validators.minLength(2),
           Validators.maxLength(30),
+          Validators.pattern('^[a-z.A-Z ]*$')
         ]),
         T_PhoneNumber: new FormControl(this.case['T_PhoneNumber'], [
           Validators.required,
           Validators.minLength(10),
           Validators.maxLength(10),
+          Validators.pattern('^[0-9]*$')
         ]),
         T_EmailID: new FormControl(this.case['T_EmailID'], [
           Validators.required,
           Validators.email,
-          Validators.maxLength(40),
+          Validators.maxLength(50),
         ]),
         T_AddressLine1: new FormControl(this.case['T_AddressLine1'], [
           Validators.required,
@@ -312,6 +320,7 @@ export class CaseEditComponent implements OnInit, OnDestroy {
           Validators.required,
           Validators.minLength(6),
           Validators.maxLength(6),
+          Validators.pattern('^[0-9]*$')
         ]),
         T_Landmark: new FormControl(this.case['T_Landmark'], [
           Validators.required,

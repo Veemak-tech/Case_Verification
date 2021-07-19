@@ -79,6 +79,7 @@ export class DigitalCategoryComponent implements OnInit {
 
   get f() {
     return this.RegisterForm.controls;
+
   }
 
   ngOnInit(): void {
@@ -130,7 +131,7 @@ export class DigitalCategoryComponent implements OnInit {
           Validators.pattern('^[0-9]*$')
         ],
       ],
-      EmailID: ['', [Validators.required, Validators.email]],
+      EmailID: ['', [Validators.required, Validators.email, Validators.maxLength(50)]],
       AddressLine1: [
         '',
         [
@@ -190,6 +191,7 @@ export class DigitalCategoryComponent implements OnInit {
           Validators.required,
           Validators.minLength(2),
           Validators.maxLength(30),
+          Validators.pattern('^[a-z.A-Z ]*$')
         ],
       ],
       T_PhoneNumber: [
@@ -201,7 +203,7 @@ export class DigitalCategoryComponent implements OnInit {
           Validators.pattern('^[0-9]*$')
         ],
       ],
-      T_EmailID: ['', [Validators.required, Validators.email]],
+      T_EmailID: ['', [Validators.required, Validators.email, Validators.maxLength(50)]],
       T_AddressLine1: [
         '',
         [
@@ -255,7 +257,7 @@ export class DigitalCategoryComponent implements OnInit {
         ],
       ],
       FileUpload: ['', Validators.required],
-
+     // questionname: ['', [Validators.required]]
 
 
     });
@@ -271,7 +273,8 @@ export class DigitalCategoryComponent implements OnInit {
 
         debugger
         this.ins_questionsarray.forEach(element => {
-          this.RegisterForm.addControl(element.questionname, new FormControl())
+          this.RegisterForm.addControl(element.questionname, new FormControl( ))
+          //this.RegisterForm.controls[element.questionname].setValidators(Validators.required)
         });
         //console.log(this.t_questionsarray);
 
@@ -284,6 +287,7 @@ export class DigitalCategoryComponent implements OnInit {
 
             this.t_questionsarray.forEach(element => {
               this.RegisterForm.addControl(element.questionname, new FormControl())
+             // this.RegisterForm.controls[element.questionname].setValidators(Validators.required)
             });
 
 
@@ -376,20 +380,41 @@ export class DigitalCategoryComponent implements OnInit {
       var i_answerarray = []
       var Regformdata = this.RegisterForm.value;
 
+
       this.t_questionsarray.forEach(element => {
-        t_answerarray.push ({
-          questiontext: element.questionname,
-          questionid : element.questionid,
-          answer: this.RegisterForm.get(element.questionname).value
-        })
+        if(this.RegisterForm.get(element.questionname).value == null){
+          t_answerarray.push ({
+            questiontext: element.questionname,
+            questionid : element.questionid,
+            answer: 'Not Available'
+          })
+        }else{
+          t_answerarray.push ({
+            questiontext: element.questionname,
+            questionid : element.questionid,
+            answer: this.RegisterForm.get(element.questionname).value
+          })
+        }
+
 
       });
       this.ins_questionsarray.forEach(element => {
-        i_answerarray.push({
-          questiontext: element.questionname,
-          questionid : element.questionid,
-          answer: this.RegisterForm.get(element.questionname).value
-        })
+        if(this.RegisterForm.get(element.questionname).value == null)
+        {
+          i_answerarray.push({
+            questiontext: element.questionname,
+            questionid : element.questionid,
+            answer: 'Null'
+          })
+        }
+        else{
+          i_answerarray.push({
+            questiontext: element.questionname,
+            questionid : element.questionid,
+            answer: this.RegisterForm.get(element.questionname).value
+          })
+        }
+
       });
 
 

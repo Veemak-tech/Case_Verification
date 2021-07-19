@@ -33,6 +33,7 @@
                   <div *ngIf="f.CaseID.errors.required">Case ID is required</div>
                   <div *ngIf="f.CaseID.errors.minlength"> Min 5 Characters </div>
                   <div *ngIf="f.CaseID.errors.maxlength">Case ID should be less than 10 </div>
+                  <div *ngIf="f.CaseID.errors.pattern">Should be Numbers</div>
                 </div>
 
               </div>
@@ -57,6 +58,7 @@
                   <div *ngIf="f.ReferenceNumber.errors.required">ReferenceNumber is required</div>
                   <div *ngIf="f.ReferenceNumber.errors.minlength"> Min 5 Characters </div>
                   <div *ngIf="f.ReferenceNumber.errors.maxlength">Ref Number should be less than 10 </div>
+                  <div *ngIf="f.ReferenceNumber.errors.pattern">Should be Numbers</div>
                 </div>
               </div>
             </div>
@@ -92,6 +94,7 @@
                   <div *ngIf="f.Name.errors.required">Name is required</div>
                   <div *ngIf="f.Name.errors.minlength">Name should be min 5 Characters</div>
                   <div *ngIf="f.Name.errors.maxlength">Name should not be more than 20 Characters</div>
+                  <div *ngIf="f.Name.errors.pattern">Should be Words</div>
                 </div>
 
               </div>
@@ -159,6 +162,7 @@
                   <div *ngIf="f.InsurerName.errors.required">Insurer Name is required</div>
                   <div *ngIf="f.InsurerName.errors.minlength"> Min 2 Characters </div>
                   <div *ngIf="f.InsurerName.errors.maxlength">Insurer Name should be less than 20 </div>
+                  <div *ngIf="f.InsurerName.errors.pattern">Should be Words</div>
                 </div>
               </div>
             </div>
@@ -173,6 +177,7 @@
                   <div *ngIf="f.PhoneNumber.errors.required">Phone Number is required</div>
                   <div *ngIf="f.PhoneNumber.errors.minlength"> Min 10 Characters </div>
                   <div *ngIf="f.PhoneNumber.errors.maxlength">Phone Number should be less than 10 </div>
+                  <div *ngIf="f.PhoneNumber.errors.pattern">Should be Numbers</div>
                 </div>
 
               </div>
@@ -190,7 +195,7 @@
                 <div *ngIf="submitted && f.EmailID.errors" class="invalid-feedback">
                   <div *ngIf=" f.EmailID.errors.required">Email Address is required</div>
                   <div *ngIf=" f.EmailID.errors.email">Email must be Valid</div>
-                  <div *ngIf="f.EmailID.errors.maxlength">Email should be less than 40 Characters</div>
+                  <div *ngIf="f.EmailID.errors.maxlength">Email should be less than 50 Characters</div>
                 </div>
               </div>
             </div>
@@ -265,6 +270,7 @@
 
                 <div *ngIf="f.I_Pincode.errors.maxlength">Min 6 Numbers</div>
                 <div *ngIf="f.I_Pincode.errors.minlength">Max 6 Numbers</div>
+                <div *ngIf="f.I_Pincode.errors.pattern">Should be Numbers</div>
               </div>
 
             </div>
@@ -535,7 +541,7 @@
 
                   <div *ngIf="f.ThirdpartyName.errors.minlength">Min 2 Characters</div>
                   <div *ngIf="f.ThirdpartyName.errors.maxlength">Max 30 Characters</div>
-
+                  <div *ngIf="f.ThirdpartyName.errors.pattern">Should be Words</div>
                 </div>
 
               </div>
@@ -557,6 +563,7 @@
 
                   <div *ngIf="f.T_PhoneNumber.errors.minlength">Min 10 Numbers</div>
                   <div *ngIf="f.T_PhoneNumber.errors.maxlength">Max 10 Numbers</div>
+                  <div *ngIf="f.T_PhoneNumber.errors.pattern">Should be Numbers</div>
 
                 </div>
 
@@ -578,7 +585,7 @@
                   class="invalid-feedback">
                   <div *ngIf="f.T_EmailID.errors.required">Email is required</div>
                   <div *ngIf="f.T_EmailID.errors.email">Enter valid Email</div>
-                  <div *ngIf="f.T_EmailID.errors.maxlength">Email should less than 40 Characters</div>
+                  <div *ngIf="f.T_EmailID.errors.maxlength">Email should less than 50 Characters</div>
                 </div>
               </div>
             </div>
@@ -666,6 +673,7 @@
                 <div *ngIf=" f.T_Pincode.errors.required">Pincode is required</div>
                 <div *ngIf=" f.T_Pincode.errors.minlength">Min 6 Numbers</div>
                 <div *ngIf=" f.T_Pincode.errors.maxlength">Max 6 Numbers</div>
+                <div *ngIf="f.T_Pincode.errors.pattern">Should be Numbers</div>
               </div>
 
             </div>
